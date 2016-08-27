@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rss version='2.0' xmlns:atom='http://www.w3.org/2005/Atom'>
+<channel>
+<atom:link href='http://blogawesome.com/' rel='self' type='application/rss+xml'/>
+<title>
+Physics. Computers. Code.
+</title>
+<link>
+http://blogawesome.com/
+</link>
+<description>
+A place to share my knowledge
+</description>
+<lastBuildDate>
+Sat, 27 Aug 2016 12:33:27 -0400
+</lastBuildDate>
+<generator>
+clj-rss
+</generator>
+<item>
+<guid>
+http://blogawesome.com/posts-output/2016-08-27-new/
+</guid>
+<link>
+http://blogawesome.com/posts-output/2016-08-27-new/
+</link>
+<title>
+A new beginning
+</title>
+<description>
+ &lt;p&gt; This is a post to clerify the usage of this site. One this site was created in order to demonstrate the knowledge that I will accumulate over time during my time in college. Two I accidently deleted all my web files from the previous site I was worked on over the past year (3 AM and I actually did the rm -rf command and I also deleted my backup files thinking I didnt need them. Yeah.) Hopefully this one will be even better than the previous one. Third I'll be posting guides and once in a blue moon something more intimate. I think that's all I'm going to type since I been going on with 4 hours of sleep this entire day... night.  &lt;/p&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Sat, 27 Aug 2016 00:00:00 -0400
+</pubDate>
+</item>
+</channel>
+</rss>
