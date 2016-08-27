@@ -12,11 +12,61 @@ http://blogawesome.com/
 A place to share my knowledge
 </description>
 <lastBuildDate>
-Sat, 27 Aug 2016 17:10:30 -0400
+Sat, 27 Aug 2016 18:43:47 -0400
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://blogawesome.com/posts-output/2016-08-28-jar/
+</guid>
+<link>
+http://blogawesome.com/posts-output/2016-08-28-jar/
+</link>
+<title>
+Clojure File to Standalone Jar
+</title>
+<description>
+&lt;p&gt;Clojure luckily relies on the JVM and thus it is easy to turn a .clj into a .jar with relative ease. Of course there are some things you have to watch out for such as making sure that the -main function contains everything and nothing is in the top level that's supposed to be in the -main function.&lt;/p&gt;&lt;p&gt;So start with the basics start a leiningen project running the following.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;$ lein new defunsmproject
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;This will create a new leiningen project which now means you should have a project.clj file. That looks something like this.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;defproject defunsmproject &amp;quot;0.1.0-SNAPSHOT&amp;quot;
+  :description &amp;quot;FIXME: write description&amp;quot;
+  :url &amp;quot;http://example.com/FIXME&amp;quot;
+  :license {:name &amp;quot;Eclipse Public License&amp;quot;
+            :url &amp;quot;http://www.eclipse.org/legal/epl-v10.html&amp;quot;}
+  :dependencies &amp;#91;&amp;#91;org.clojure/clojure &amp;quot;1.8.0&amp;quot;&amp;#93;&amp;#93;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Your core.clj should look like this which is located in the src directory of the leiningen project directory. &lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;ns defunsmproject.core&amp;#41;
+
+&amp;#40;defn foo
+  &amp;quot;I don't do a whole lot.&amp;quot;
+  &amp;#91;x&amp;#93;
+  &amp;#40;println x &amp;quot;Hello, World!&amp;quot;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Step 1: Edit project.clj so that leiningen knows which one is your -main function.  In this cause it would be defunsmproject.core.&lt;/p&gt;&lt;p&gt;As well as adding :profiles telling leiningen how to build the jar file.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;defproject defunsmproject &amp;quot;0.1.0-SNAPSHOT&amp;quot;
+  :description &amp;quot;FIXME: write description&amp;quot;
+  :url &amp;quot;http://example.com/FIXME&amp;quot;
+  :license {:name &amp;quot;Eclipse Public License&amp;quot;
+            :url &amp;quot;http://www.eclipse.org/legal/epl-v10.html&amp;quot;}
+  :dependencies &amp;#91;&amp;#91;org.clojure/clojure &amp;quot;1.8.0&amp;quot;&amp;#93;&amp;#93;
+  :profiles {:uberjar {:aot &amp;#91;defunsmproject.core&amp;#93;}} ;; add this
+  :jar-name &amp;quot;defunsmproject.jar&amp;quot; ;; add this
+  :uberjar-name &amp;quot;defunsmproject-uber.jar&amp;quot; ;; add this
+  :main defunsmproject.core&amp;#41; ;; add this
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Step 2: Add :gen-class and -main function in the core.clj.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;ns defunsmproject.core
+  &amp;#40;:gen-class&amp;#41;&amp;#41; ;; add this gen-class
+
+&amp;#40;defn -main &amp;#91;&amp;amp; args&amp;#93;  ;; add this -main function
+  &amp;#40;println &amp;quot;Converting a clojure file to a standalone jar!&amp;quot;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Step 3: Now you can make a uberjar which is the standalone jar by running ...&lt;/p&gt;&lt;pre&gt;&lt;code&gt;$ lein uberjar
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;If that worked than your in good luck and should have a uber-jar and a jar. The standalone one that you probably want is the uber-jar one which will be in the the target directory that was generated.&lt;/p&gt;&lt;p&gt;To run the jar file do the following. And you should see the output as expected.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;$ java -jar defunsmproject-uber.jar
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;If you run into problems make sure that your project.clj and core.clj is set up just like mine. Otherwise you now have a .jar file from a .clj file!&lt;/p&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Sun, 28 Aug 2016 00:00:00 -0400
+</pubDate>
+</item>
 <item>
 <guid>
 http://blogawesome.com/posts-output/2016-08-27-new/
@@ -25,7 +75,7 @@ http://blogawesome.com/posts-output/2016-08-27-new/
 http://blogawesome.com/posts-output/2016-08-27-new/
 </link>
 <title>
-A new beginning
+A New Beginning
 </title>
 <description>
  &lt;p&gt; This is a post to clerify the usage of this site. One this site was created in order to demonstrate the knowledge that I will accumulate over time during my time in college. Two I accidently deleted all my web files from the previous site I was worked on over the past year (3 AM and I actually did the rm -rf command and I also deleted my backup files thinking I didnt need them. Yeah.) Hopefully this one will be even better than the previous one. Third I'll be posting guides and once in a blue moon something more intimate. I think that's all I'm going to type since I been going on with 4 hours of sleep this entire day... night.  &lt;/p&gt;
