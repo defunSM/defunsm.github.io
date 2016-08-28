@@ -53,11 +53,11 @@
                         <li class="divider"></li>
                         <li class="dropdown-header">Recent Posts</li>
                         
+                        <li><a href="/posts-output/2016-08-29-Clojure_GUI_as_an_Exe/">Creating an Exechuteable GUI</a></li>
+                        
                         <li><a href="/posts-output/2016-08-28-jar/">Clojure File to Standalone Jar</a></li>
                         
                         <li><a href="/posts-output/2016-08-27-new/">A New Beginning</a></li>
-                        
-                        <li><a href="/posts-output/2016-08-27-clojure_to_exe/">Creating an Exechuteable GUI Using Seesaw</a></li>
                         
                         
 
@@ -92,44 +92,14 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">August 28, 2016</div>
+        <div class="col-lg-6">August 29, 2016</div>
         
     </div>
-    <h2>Clojure File to Standalone Jar</h2>
+    <h2>Creating an Exechuteable GUI</h2>
 </div>
 <div>
     
-    <p>Clojure luckily relies on the JVM and thus it is easy to turn a .clj into a .jar with relative ease. Of course there are some things you have to watch out for such as making sure that the -main function contains everything and nothing is in the top level that's supposed to be in the -main function.</p><p>So start with the basics start a leiningen project running the following.</p><pre><code>$ lein new defunsmproject
-</code></pre><p>This will create a new leiningen project which now means you should have a project.clj file. That looks something like this.</p><pre><code>&#40;defproject defunsmproject &quot;0.1.0-SNAPSHOT&quot;
-  :description &quot;FIXME: write description&quot;
-  :url &quot;http://example.com/FIXME&quot;
-  :license {:name &quot;Eclipse Public License&quot;
-            :url &quot;http://www.eclipse.org/legal/epl-v10.html&quot;}
-  :dependencies &#91;&#91;org.clojure/clojure &quot;1.8.0&quot;&#93;&#93;&#41;
-</code></pre><p>Your core.clj should look like this which is located in the src directory of the leiningen project directory. </p><pre><code>&#40;ns defunsmproject.core&#41;
-
-&#40;defn foo
-  &quot;I don't do a whole lot.&quot;
-  &#91;x&#93;
-  &#40;println x &quot;Hello, World!&quot;&#41;&#41;
-</code></pre><p>Step 1: Edit project.clj so that leiningen knows which one is your -main function.  In this cause it would be defunsmproject.core.</p><p>As well as adding :profiles telling leiningen how to build the jar file.</p><pre><code>&#40;defproject defunsmproject &quot;0.1.0-SNAPSHOT&quot;
-  :description &quot;FIXME: write description&quot;
-  :url &quot;http://example.com/FIXME&quot;
-  :license {:name &quot;Eclipse Public License&quot;
-            :url &quot;http://www.eclipse.org/legal/epl-v10.html&quot;}
-  :dependencies &#91;&#91;org.clojure/clojure &quot;1.8.0&quot;&#93;&#93;
-  :profiles {:uberjar {:aot &#91;defunsmproject.core&#93;}} ;; add this
-  :jar-name &quot;defunsmproject.jar&quot; ;; add this
-  :uberjar-name &quot;defunsmproject-uber.jar&quot; ;; add this
-  :main defunsmproject.core&#41; ;; add this
-</code></pre><p>Step 2: Add :gen-class and -main function in the core.clj.</p><pre><code>&#40;ns defunsmproject.core
-  &#40;:gen-class&#41;&#41; ;; add this gen-class
-
-&#40;defn -main &#91;&amp; args&#93;  ;; add this -main function
-  &#40;println &quot;Converting a clojure file to a standalone jar!&quot;&#41;&#41;
-</code></pre><p>Step 3: Now you can make a uberjar which is the standalone jar by running ...</p><pre><code>$ lein uberjar
-</code></pre><p>If that worked than your in good luck and should have a uber-jar and a jar. The standalone one that you probably want is the uber-jar one which will be in the the target directory that was generated.</p><p>To run the jar file do the following. And you should see the output as expected.</p><pre><code>$ java -jar defunsmproject-uber.jar
-</code></pre><p>If you run into problems make sure that your project.clj and core.clj is set up just like mine. Otherwise you now have a .jar file from a .clj file!</p>
+     <p> Note: Before following this guide you may want to familiar yourself with <a href='https://defunsm.github.io/posts-output/2016-08-28-jar/'>making jars</a>.   </p><p> You should have the uberjar which can be created by following a guide I have written previously.  Now you want to take it one step further and make the jar into an exe to distribute to different windows platforms. There is a few ways to go about it but I typically use <a href='http://launch4j.sourceforge.net/'>launch4j</a>.  </p><p> After downloading Launch4j,</p><p>Step 1: </p><p>Open it up and fill in the output file and Jar field as the following. The output file determines what the .exe file will be called. While the jar field is the uber-jar you select and the launch4j will use to create the .exe file.  </p><p><img src="https://defunsm.github.io/img/launch4jfirst.png" alt="image" /></p><p>Step 2: </p><p>After filling those fields switch to the header tab. Click on the GUI radio button unless you're using just console.  </p><p><img src="https://defunsm.github.io/img/launch4jsecond.png" alt="image" /></p><p>Step 3: </p><p>Click the JRE tab and enter Min JRE version as what minimum java you need to run the code.  Also click the + property button by variables / registry field to add the EXEDIR property.</p><p><img src="https://defunsm.github.io/img/launch4jthird.png" alt="image" /> </p><p>Now click on build wrapper which is the  gear icon on top and it should build your .exe file!</p>
 </div>
 
 <div id="post-tags">
@@ -146,14 +116,14 @@
 
     
     <div id="comments">
-        <a href="/posts-output/2016-08-28-jar/#disqus_thread">View Comments</a>
+        <a href="/posts-output/2016-08-29-Clojure_GUI_as_an_Exe/#disqus_thread">View Comments</a>
     </div>
     
 
     <div id="prev-next">
         
         
-        <a class="right" href="/posts-output/2016-08-27-new/">A New Beginning &raquo;</a>
+        <a class="right" href="/posts-output/2016-08-28-jar/">Clojure File to Standalone Jar &raquo;</a>
         
     </div>
 </div>
