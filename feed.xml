@@ -12,7 +12,7 @@ http://blogawesome.com/
 A place to share my knowledge
 </description>
 <lastBuildDate>
-Sat, 27 Aug 2016 22:56:14 -0400
+Sun, 28 Aug 2016 00:04:58 -0400
 </lastBuildDate>
 <generator>
 clj-rss
@@ -98,7 +98,7 @@ http://blogawesome.com/posts-output/2016-08-27-clojure_to_exe/
 Creating an Exechuteable GUI Using Seesaw
 </title>
 <description>
- &lt;p&gt; Note: Before following this guide you may want to familiar yourself with &lt;a href='https://defunsm.github.io/posts-output/2016-08-28-jar/'&gt;making jars&lt;/a&gt;.   &lt;/p&gt;&lt;p&gt; You should have the uberjar which can be created by following a guide I have written previously.  Now you want to take it one step further and make the jar into an exe to distribute to different windows platforms. There is a few ways to go about it but I typically use &lt;a href='http://launch4j.sourceforge.net/'&gt;launch4j&lt;/a&gt;.  &lt;/p&gt;&lt;p&gt; After downloading Launch4j,  &lt;/p&gt;&lt;p&gt; Open it up and fill in the output file and Jar field as the following.  The output file determines what the .exe file will be called. While the jar field is the uber-jar you select and the launch4j will use to create the .exe file.  &lt;/p&gt;&lt;p&gt;&lt;a href='//img/launch4jfirst.png'&gt;image&lt;/a&gt;  &lt;/p&gt;   
+ &lt;p&gt; Note: Before following this guide you may want to familiar yourself with &lt;a href='https://defunsm.github.io/posts-output/2016-08-28-jar/'&gt;making jars&lt;/a&gt;.   &lt;/p&gt;&lt;p&gt; You should have the uberjar which can be created by following a guide I have written previously.  Now you want to take it one step further and make the jar into an exe to distribute to different windows platforms. There is a few ways to go about it but I typically use &lt;a href='http://launch4j.sourceforge.net/'&gt;launch4j&lt;/a&gt;.  &lt;/p&gt;&lt;p&gt; After downloading Launch4j,&lt;/p&gt;&lt;p&gt;Step 1: Open it up and fill in the output file and Jar field as the following. The output file determines what the .exe file will be called. While the jar field is the uber-jar you select and the launch4j will use to create the .exe file.  &lt;/p&gt;&lt;p&gt;&lt;img src=&quot;https://defunsm.github.io/img/launch4jfirst.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;&lt;p&gt;Step 2: After filling those fields switch to the header tab. Click on the GUI radio button unless you're using just console.  &lt;/p&gt;&lt;p&gt;&lt;img src=&quot;https://defunsm.github.io/img/launch4jsecond.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;&lt;p&gt;Step 3: Click the JRE tab and enter Min JRE version as what minimum java you need to run the code.  Also click the + property button by variables / registry field to add the EXEDIR property.&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;https://defunsm.github.io/img/launch4jthird.png&quot; alt=&quot;image&quot; /&gt; &lt;/p&gt;&lt;p&gt;After that click on build wrapper which is the gear icon on top which should build your .exe file.&lt;/p&gt;
 </description>
 <enclosure>
 
