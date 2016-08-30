@@ -12,11 +12,81 @@ http://blogawesome.com/
 A place to share my knowledge
 </description>
 <lastBuildDate>
-Sun, 28 Aug 2016 00:17:53 -0400
+Mon, 29 Aug 2016 20:17:51 -0400
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://blogawesome.com/posts-output/2016-08-30-Using_Swing/
+</guid>
+<link>
+http://blogawesome.com/posts-output/2016-08-30-Using_Swing/
+</link>
+<title>
+Creating JFrames using Swing APIs in Clojure (Part 1)
+</title>
+<description>
+&lt;p&gt;Swing is a powerful java library and also at times be complex however thanks to Dave Ray's &lt;a href='https://github.com/daveray/seesaw'&gt;seesaw&lt;/a&gt; which you should look at if you plan on doing any GUI building with Clojure.&lt;/p&gt;&lt;p&gt;I suggest reading the &lt;a href='https://gist.github.com/daveray/1441520'&gt;tutorial&lt;/a&gt; as well to get used to the basics.&lt;/p&gt;&lt;p&gt;But here I want to show you some things that aren't quite mentioned specifically in the tutorial. So lets create a new leiningen project.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;$ lein new hello-swing
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;This will create the leiningen project and now add the seesaw library to your projects.clj. Edit your project.clj file to include Seesaw. As well as adding where the main function will reside which will be in the hello-swing.core.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;defproject hello-swing &amp;quot;0.1.0-SNAPSHOT&amp;quot;
+  :description &amp;quot;FIXME: write description&amp;quot;
+  :url &amp;quot;http://example.com/FIXME&amp;quot;
+  :license {:name &amp;quot;Eclipse Public License&amp;quot;
+            :url &amp;quot;http://www.eclipse.org/legal/epl-v10.html&amp;quot;}
+  :dependencies &amp;#91;&amp;#91;org.clojure/clojure &amp;quot;1.8.0&amp;quot;&amp;#93;
+                 &amp;#91;seesaw &amp;quot;1.4.2&amp;quot;&amp;#93;&amp;#93; ;; add this
+  :main hello-swing.core&amp;#41; ;; add this
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Afterwards let start writing into our core.clj which is in the /src directory. Set up your core.clj as the following.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;ns hello-swing.core
+  &amp;#40;:gen-class&amp;#41;&amp;#41; ;; In case you want to make this into a jar.
+
+&amp;#40;use 'seesaw.core&amp;#41; ;; allows you to use the seesaw library. However highly discouraged in production code.
+
+&amp;#40;def jframe &amp;#40;frame :title &amp;quot;hello Frame&amp;quot;
+                   :height 300 
+                   :width 300
+                   :on-close :exit ;; Exits on close you can also set it to :hide which will make the frame disappear.
+                   :content &amp;#40;label :text &amp;quot;Hello this is a label!&amp;quot;&amp;#41;&amp;#41;&amp;#41; ;; A simple label with text.
+
+&amp;#40;defn -main &amp;#91;&amp;#93;
+  &amp;#40;native!&amp;#41;     ;; Makes the frame appear correctly based on the OS. Which should be called as soon as possible.
+  &amp;#40;invoke-later ;; executes the body in the near future.
+   &amp;#40;-&amp;gt; jframe show!&amp;#41;&amp;#41;&amp;#41; ;; displays the jframe.
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now you can run the code by entering the following in the project directory.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;$ lein run
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;You should see a frame like this.&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;https://defunsm.github.io/img/jframefirst.png&quot; alt=&quot;jframe&quot; /&gt;&lt;/p&gt;&lt;p&gt;Now that you made a frame pop up lets decorate the frame to be a little nicer. Adding a menubar to close it.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;ns hello-swing.core
+  &amp;#40;:gen-class&amp;#41;&amp;#41;
+
+&amp;#40;use 'seesaw.core&amp;#41;
+
+&amp;#40;defn handler &amp;#91;event&amp;#93;  ;; Handler that will be listening to the action commands being recieved.
+  &amp;#40;let &amp;#91;e &amp;#40;.getActionCommand event&amp;#41;&amp;#93;
+    &amp;#40;if &amp;#40;= e &amp;quot;Close Frame&amp;quot;&amp;#41;
+      &amp;#40;System/exit 0&amp;#41;&amp;#41;&amp;#41;&amp;#41; ;; Exits the program with a exit status of 0.
+
+&amp;#40;def close-frame &amp;#40;menu-item :text &amp;quot;Close Frame&amp;quot;
+                            :tip &amp;quot;This will close the frame.&amp;quot;
+                            :listen &amp;#91;:action handler&amp;#93;&amp;#41;&amp;#41;  ;; Assigning a function that will handle its action commands.
+
+&amp;#40;def jframe &amp;#40;frame :title &amp;quot;hello Frame&amp;quot;
+                   :menubar &amp;#40;menubar :items &amp;#91;&amp;#40;menu :text &amp;quot;File&amp;quot; :items &amp;#91;close-frame&amp;#93;&amp;#41;&amp;#93;&amp;#41; ;; adding a menubar
+                   :height 300
+                   :width 300
+                   :on-close :exit ;; Exits on close
+                   :content &amp;#40;label :text &amp;quot;Hello this is a label!&amp;quot;&amp;#41;&amp;#41;&amp;#41; ;; Label
+
+&amp;#40;defn -main &amp;#91;&amp;#93;
+  &amp;#40;native!&amp;#41;
+  &amp;#40;invoke-later
+   &amp;#40;-&amp;gt; jframe show!&amp;#41;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;I think that'll be all for today since that in itself is a lot specially if you never worked with GUI's before. You can mess around and make the menubar do all kinds of things just by changing the (System/exit 0) part.&lt;/p&gt;&lt;p&gt;Part Two to come later.&lt;/p&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Tue, 30 Aug 2016 00:00:00 -0400
+</pubDate>
+</item>
 <item>
 <guid>
 http://blogawesome.com/posts-output/2016-08-29-Clojure_GUI_as_an_Exe/
