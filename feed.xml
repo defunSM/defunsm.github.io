@@ -12,11 +12,74 @@ http://blogawesome.com/
 A place to share my knowledge
 </description>
 <lastBuildDate>
-Mon, 29 Aug 2016 20:17:51 -0400
+Thu, 01 Sep 2016 23:36:43 -0400
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://blogawesome.com/posts-output/2016-08-31-Using_Swing_Part_2/
+</guid>
+<link>
+http://blogawesome.com/posts-output/2016-08-31-Using_Swing_Part_2/
+</link>
+<title>
+Creating JFrames using Swing APIs in Clojure (Part 2)
+</title>
+<description>
+ &lt;p&gt;Ok so continuing on with what we have so far. If you havent read the &lt;a href='https://defunsm.github.io/posts-output/2016-08-30-Using_Swing/'&gt;first part&lt;/a&gt; I suggest reading it to follow through.&lt;/p&gt;&lt;p&gt;I want to show you a quick way to add more flavor to your frame since it looks rather dull. One way to do this is by adding substance to your dependencies which is basically like a bunch of themes for your frames.&lt;/p&gt;&lt;p&gt;Add the following to your dependencies in your project.clj&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#91;com.github.insubstantial/substance &amp;quot;7.1&amp;quot;&amp;#93;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now you can import substance by changing your namespace to the following.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;ns hello-swing.core
+  &amp;#40;:import org.pushingpixels.substance.api.SubstanceLookAndFeel&amp;#41; ;; add this
+  &amp;#40;:gen-class&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now that you can use the substance themes you can set a default theme by adding to your -main.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;defn -main &amp;#91;&amp;#93;
+  &amp;#40;native!&amp;#41;
+  &amp;#40;invoke-later
+   &amp;#40;-&amp;gt; jframe show!&amp;#41;
+   &amp;#40;SubstanceLookAndFeel/setSkin &amp;quot;org.pushingpixels.substance.api.skin.GraphiteAquaSkin&amp;quot;&amp;#41;&amp;#41;&amp;#41; ;; add this
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now that you have set the theme automatically you can run what you have so far.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;$ lein run
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;A frame like this should appear now and as you notice it has been decorated.&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;https://defunsm.github.io/img/jframesecond.png&quot; alt=&quot;jframe 2&quot; /&gt;&lt;/p&gt;&lt;p&gt;However you may now notice that there is a problem when opening the menubar and it just disappears. To fix this add pack! to your -main.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;defn -main &amp;#91;&amp;#93;
+  &amp;#40;native!&amp;#41;
+  &amp;#40;invoke-later
+   &amp;#40;-&amp;gt; jframe pack! show!&amp;#41; ;; add pack! Which should fix the menubar problem.
+   &amp;#40;SubstanceLookAndFeel/setSkin &amp;quot;org.pushingpixels.substance.api.skin.GraphiteAquaSkin&amp;quot;&amp;#41;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now what if we want to select what theme we want? Now we can use the menubar to select what theme we want. In order to do this make a menubar item called theme-selector.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;def jframe &amp;#40;frame :title &amp;quot;hello Frame&amp;quot;
+                   :menubar &amp;#40;menubar :items &amp;#91;&amp;#40;menu :text &amp;quot;File&amp;quot; :items &amp;#91;close-frame theme-selector&amp;#93;&amp;#41;&amp;#93;&amp;#41; ;; add theme selector
+                   :height 300
+                   :width 300
+                   :on-close :exit ;; Exits on close
+                   :content &amp;#40;label :text &amp;quot;Hello this is a label!&amp;quot;&amp;#41;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now make the menu-item for the theme-selector. Also don't forget to add theme-select into :items in your jframe.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;def theme-select &amp;#40;menu-item :text &amp;quot;Theme Select&amp;quot;
+                               :tip &amp;quot;This will allow you to select a theme.&amp;quot;
+                               :listen &amp;#91;:action handler&amp;#93;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now that you have the theme-select you can change your handler to do something when that is clicked on.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;defn handler &amp;#91;event&amp;#93;
+  &amp;#40;let &amp;#91;e &amp;#40;.getActionCommand event&amp;#41;&amp;#93;
+    &amp;#40;if &amp;#40;= e &amp;quot;Close Frame&amp;quot;&amp;#41;
+      &amp;#40;System/exit 0&amp;#41;&amp;#41;
+    &amp;#40;if &amp;#40;= e &amp;quot;Theme Select&amp;quot;&amp;#41;  ;; add this to incorporate the theme selector.
+      &amp;#40;-&amp;gt; &amp;#40;frame :title &amp;quot;Themes&amp;quot; :id 3 :content &amp;#40;theme-selector&amp;#41; :on-close :hide :height 600 :width 300&amp;#41; pack! show!&amp;#41;&amp;#41;&amp;#41;&amp;#41; ;; frame for the themes.
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now we create the actual combobox that will select the theme.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;defn theme-selector &amp;#91;&amp;#93;
+  &amp;#40;horizontal-panel  
+   :items &amp;#91;
+           &amp;#40;combobox
+            :model    &amp;#40;vals &amp;#40;SubstanceLookAndFeel/getAllSkins&amp;#41;&amp;#41; ;; list out all of the skins
+            :renderer &amp;#40;fn &amp;#91;this {:keys &amp;#91;value&amp;#93;}&amp;#93;  ;; takes the values and displays them from all the skins.
+                        &amp;#40;text! this &amp;#40;.getClassName value&amp;#41;&amp;#41;&amp;#41;
+            :listen   &amp;#91;:selection &amp;#40;fn &amp;#91;e&amp;#93; 
+                                    &amp;#40;invoke-later
+                                     &amp;#40;-&amp;gt; e
+                                         selection
+                                         .getClassName
+                                         SubstanceLookAndFeel/setSkin&amp;#41;&amp;#41;&amp;#41;&amp;#93;&amp;#41;&amp;#93;&amp;#41;&amp;#41; ;; changes the theme to the skin selected.
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now you can open it up and go to file and select theme-selector which will allow you to change the theme!&lt;/p&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Wed, 31 Aug 2016 00:00:00 -0400
+</pubDate>
+</item>
 <item>
 <guid>
 http://blogawesome.com/posts-output/2016-08-30-Using_Swing/
