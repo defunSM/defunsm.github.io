@@ -12,11 +12,31 @@ http://blogawesome.com/
 A place to share my knowledge
 </description>
 <lastBuildDate>
-Thu, 01 Sep 2016 23:40:19 -0400
+Sat, 03 Sep 2016 00:17:57 -0400
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://blogawesome.com/posts-output/using_quil/
+</guid>
+<link>
+http://blogawesome.com/posts-output/using_quil/
+</link>
+<title>
+Graphics using Quil in Clojure
+</title>
+<description>
+ &lt;p&gt; I stumbled upon &lt;a href='http://quil.info/'&gt;quil&lt;/a&gt; which can be used to generate rather interesting graphics.&lt;/p&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Thu, 01 Sep 2016 00:00:00 -0400
+</pubDate>
+</item>
 <item>
 <guid>
 http://blogawesome.com/posts-output/2016-08-31-Using_Swing_Part_2/

@@ -53,11 +53,11 @@
                         <li class="divider"></li>
                         <li class="dropdown-header">Recent Posts</li>
                         
+                        <li><a href="/posts-output/using_quil/">Graphics using Quil in Clojure</a></li>
+                        
                         <li><a href="/posts-output/2016-08-31-Using_Swing_Part_2/">Creating JFrames using Swing APIs in Clojure (Part 2)</a></li>
                         
                         <li><a href="/posts-output/2016-08-30-Using_Swing/">Creating JFrames using Swing APIs in Clojure (Part 1)</a></li>
-                        
-                        <li><a href="/posts-output/2016-08-29-Clojure_GUI_as_an_Exe/">Creating an Exechuteable GUI</a></li>
                         
                         
 
@@ -65,11 +65,13 @@
                         <li class="divider"></li>
                         <li class="dropdown-header">Tags</li>
                         
-                        <li><a href="/tags-output/Clojure Guide Code/">Clojure Guide Code</a></li>
+                        <li><a href="/tags-output/Graphics/">Graphics</a></li>
                         
                         <li><a href="/tags-output/Clojure/">Clojure</a></li>
                         
                         <li><a href="/tags-output/Code/">Code</a></li>
+                        
+                        <li><a href="/tags-output/Clojure Guide Code/">Clojure Guide Code</a></li>
                         
                         <li><a href="/tags-output/Guide/">Guide</a></li>
                         
@@ -94,77 +96,38 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">August 31, 2016</div>
+        <div class="col-lg-6">September 1, 2016</div>
         
     </div>
-    <h2>Creating JFrames using Swing APIs in Clojure (Part 2)</h2>
+    <h2>Graphics using Quil in Clojure</h2>
 </div>
 <div>
     
-     <p>Ok so continuing on with what we have so far. If you havent read the <a href='https://defunsm.github.io/posts-output/2016-08-30-Using_Swing/'>first part</a> I suggest reading it to follow through.</p><p>I want to show you a quick way to add more flavor to your frame since it looks rather dull. One way to do this is by adding substance to your dependencies which is basically like a bunch of themes for your frames.</p><p>Add the following to your dependencies in your project.clj</p><pre><code>&#91;com.github.insubstantial/substance &quot;7.1&quot;&#93;
-</code></pre><p>Now you can import substance by changing your namespace to the following.</p><pre><code>&#40;ns hello-swing.core
-  &#40;:import org.pushingpixels.substance.api.SubstanceLookAndFeel&#41; ;; add this
-  &#40;:gen-class&#41;&#41;
-</code></pre><p>Now that you can use the substance themes you can set a default theme by adding to your -main.</p><pre><code>&#40;defn -main &#91;&#93;
-  &#40;native!&#41;
-  &#40;invoke-later
-   &#40;-&gt; jframe show!&#41;
-   &#40;SubstanceLookAndFeel/setSkin &quot;org.pushingpixels.substance.api.skin.GraphiteAquaSkin&quot;&#41;&#41;&#41; ;; add this
-</code></pre><p>Now that you have set the theme automatically you can run what you have so far.</p><pre><code>$ lein run
-</code></pre><p>A frame like this should appear now and as you notice it has been decorated.</p><p><img src="https://defunsm.github.io/img/jframesecond.png" alt="jframe 2" /></p><p>However you may now notice that there is a problem when opening the menubar and it just disappears. To fix this add pack! to your -main.</p><pre><code>&#40;defn -main &#91;&#93;
-  &#40;native!&#41;
-  &#40;invoke-later
-   &#40;-&gt; jframe pack! show!&#41; ;; add pack! Which should fix the menubar problem.
-   &#40;SubstanceLookAndFeel/setSkin &quot;org.pushingpixels.substance.api.skin.GraphiteAquaSkin&quot;&#41;&#41;&#41;
-</code></pre><p>Now what if we want to select what theme we want? Now we can use the menubar to select what theme we want. In order to do this make a menubar item called theme-selector.</p><pre><code>&#40;def jframe &#40;frame :title &quot;hello Frame&quot;
-                   :menubar &#40;menubar :items &#91;&#40;menu :text &quot;File&quot; :items &#91;close-frame theme-selector&#93;&#41;&#93;&#41; ;; add theme selector
-                   :height 300
-                   :width 300
-                   :on-close :exit ;; Exits on close
-                   :content &#40;label :text &quot;Hello this is a label!&quot;&#41;&#41;&#41;
-</code></pre><p>Now make the menu-item for the theme-selector. Also don't forget to add theme-select into :items in your jframe.</p><pre><code>&#40;def theme-select &#40;menu-item :text &quot;Theme Select&quot;
-                               :tip &quot;This will allow you to select a theme.&quot;
-                               :listen &#91;:action handler&#93;&#41;&#41;
-</code></pre><p>Now that you have the theme-select you can change your handler to do something when that is clicked on.</p><pre><code>&#40;defn handler &#91;event&#93;
-  &#40;let &#91;e &#40;.getActionCommand event&#41;&#93;
-    &#40;if &#40;= e &quot;Close Frame&quot;&#41;
-      &#40;System/exit 0&#41;&#41;
-    &#40;if &#40;= e &quot;Theme Select&quot;&#41;  ;; add this to incorporate the theme selector.
-      &#40;-&gt; &#40;frame :title &quot;Themes&quot; :id 3 :content &#40;theme-selector&#41; :on-close :hide :height 600 :width 300&#41; pack! show!&#41;&#41;&#41;&#41; ;; frame for the themes.
-</code></pre><p>Now we create the actual combobox that will select the theme.</p><pre><code>&#40;defn theme-selector &#91;&#93;
-  &#40;horizontal-panel  
-   :items &#91;
-           &#40;combobox
-            :model    &#40;vals &#40;SubstanceLookAndFeel/getAllSkins&#41;&#41; ;; list out all of the skins
-            :renderer &#40;fn &#91;this {:keys &#91;value&#93;}&#93;  ;; takes the values and displays them from all the skins.
-                        &#40;text! this &#40;.getClassName value&#41;&#41;&#41;
-            :listen   &#91;:selection &#40;fn &#91;e&#93; 
-                                    &#40;invoke-later
-                                     &#40;-&gt; e
-                                         selection
-                                         .getClassName
-                                         SubstanceLookAndFeel/setSkin&#41;&#41;&#41;&#93;&#41;&#93;&#41;&#41; ;; changes the theme to the skin selected.
-</code></pre><p>Now you can open it up and go to file and select theme-selector which will allow you to change the theme!</p>
+     <p> I stumbled upon <a href='http://quil.info/'>quil</a> which can be used to generate rather interesting graphics.</p>
 </div>
 
 <div id="post-tags">
     <b>Tags: </b>
     
-    <a href="/tags-output/Clojure Guide Code/">Clojure Guide Code</a>
+    <a href="/tags-output/Graphics/">Graphics</a>
+    
+    <a href="/tags-output/Clojure/">Clojure</a>
+    
+    <a href="/tags-output/Code/">Code</a>
     
 </div>
 
 
     
     <div id="comments">
-        <a href="/posts-output/2016-08-31-Using_Swing_Part_2/#disqus_thread">View Comments</a>
+        <a href="/posts-output/using_quil/#disqus_thread">View Comments</a>
     </div>
     
 
     <div id="prev-next">
         
         
-        <a class="right" href="/posts-output/2016-08-30-Using_Swing/">Creating JFrames using Swing APIs in Clojure (Part 1) &raquo;</a>
+        <a class="right" href="/posts-output/2016-08-31-Using_Swing_Part_2/">Creating JFrames using Swing APIs in Clojure (Part 2) &raquo;</a>
         
     </div>
 </div>
