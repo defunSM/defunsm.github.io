@@ -12,11 +12,135 @@ http://blogawesome.com/
 A place to share my knowledge
 </description>
 <lastBuildDate>
-Sat, 03 Sep 2016 20:20:57 -0400
+Sun, 04 Sep 2016 11:36:25 -0400
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://blogawesome.com/posts-output/2016-09-03-using_quil_part_2/
+</guid>
+<link>
+http://blogawesome.com/posts-output/2016-09-03-using_quil_part_2/
+</link>
+<title>
+Graphics using Quil in Clojure (Part 2)
+</title>
+<description>
+ &lt;p&gt;If you are interested in following along please read the &lt;a href='https://defunsm.github.io/posts-output/using_quil/'&gt;first part&lt;/a&gt; or it may not make sense. &lt;/p&gt;&lt;p&gt;&lt;img src=&quot;https://defunsm.github.io/img/quilthird.png&quot; alt=&quot;quil line segments&quot; /&gt;&lt;/p&gt;&lt;p&gt;We are going to continue with the same project as we did in part 1 with newquil-project. However we are going to rewrite the draw function. First we need some defs to be added in the beginning so add the following in the top after the name space.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;def mouse-press-time &amp;#40;atom 0&amp;#41;&amp;#41;     ;; The original time for when them mouse was clicked.
+&amp;#40;def mouse-hold-x &amp;#40;atom 0&amp;#41;&amp;#41;         ;; The x-location when the mouse was clicked.
+&amp;#40;def mouse-hold-y &amp;#40;atom 0&amp;#41;&amp;#41;         ;; The y-location when the mouse was clicked.
+&amp;#40;def mouse-release-stage &amp;#40;atom 0&amp;#41;&amp;#41;  ;; The release stage &amp;#40;0 - nothing, 1 - pressed&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Those will come in handy while setting up our draw function which we'll completely rewrite. Change the stroke/stroke-weight/fill to the following values.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;  &amp;#40;q/stroke 100&amp;#41;          ;; Change to 100 rather than q/random
+  &amp;#40;q/stroke-weight 5&amp;#41;     ;; Change to 5
+  &amp;#40;q/fill 100&amp;#41;            ;; Change to 100
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now you can remove everything else in the draw function. Adding the following into the draw function after the stroke/stroke-weight/fill.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;if &amp;#40;q/mouse-pressed?&amp;#41; ;; When the mouse is pressed it returns true.
+    &amp;#40;do &amp;#40;if &amp;#40;= 0 @mouse-release-stage&amp;#41;      ;; This can only happen when mouse-release-stage is 0 so that the values aren't reset every time it's held.
+          &amp;#40;do &amp;#40;let &amp;#91;diam 10&amp;#93;                 
+                &amp;#40;q/ellipse &amp;#40;q/mouse-x&amp;#41; &amp;#40;q/mouse-y&amp;#41; diam diam&amp;#41;&amp;#41;  ;; Creates a circle of 10 diam.
+              &amp;#40;reset! mouse-press-time &amp;#40;q/millis&amp;#41;&amp;#41; ;; Sets the press time to the current time in milliseconds.
+              &amp;#40;reset! mouse-hold-x &amp;#40;q/mouse-x&amp;#41;&amp;#41;    ;; Sets the mouse-hold-x time to where the mouse is on the x coordinate.
+              &amp;#40;reset! mouse-hold-y &amp;#40;q/mouse-y&amp;#41;&amp;#41;    ;; Same for the y coordinate.
+              &amp;#40;reset! mouse-release-stage 1&amp;#41;&amp;#41;&amp;#41;&amp;#41;    ;; Sets the mouse-release-stage to 1 so that the release can trigger only once. 
+    &amp;#40;do &amp;#40;if &amp;#40;= 1 @mouse-release-stage&amp;#41;             ;; Only occurs if the mouse-release stage is 1.
+          &amp;#40;do &amp;#40;reset! mouse-release-stage 0&amp;#41;                     
+              &amp;#40;let &amp;#91;delta-time &amp;#40;- &amp;#40;q/millis&amp;#41; @mouse-press-time&amp;#41; ;; The time change between the click and release.
+                    mouse-release-x &amp;#40;q/mouse-x&amp;#41;     ;; Release x coordinate.
+                    mouse-release-y &amp;#40;q/mouse-y&amp;#41;     ;; Release y coordinate.
+                    delta-x &amp;#40;- mouse-release-x @mouse-hold-x&amp;#41;  ;; Change in x coordinate.
+                    delta-y &amp;#40;- mouse-release-y @mouse-hold-y&amp;#41;  ;; Change in y coordinate.
+                    distance &amp;#40;Math/sqrt &amp;#40;+ &amp;#40;&amp;#42; delta-x delta-x&amp;#41; &amp;#40;&amp;#42; delta-y delta-y&amp;#41;&amp;#41;&amp;#41; ;; Finds the distance between two points.
+                    vel &amp;#40;/ distance delta-time&amp;#41;&amp;#93; ;; Calculates the avg velocity by taking the distance and time changed.
+                &amp;#40;let &amp;#91;diam 10&amp;#93;
+                  &amp;#40;q/ellipse &amp;#40;q/mouse-x&amp;#41; &amp;#40;q/mouse-y&amp;#41; diam diam&amp;#41;&amp;#41; ; creates another circle at the end point of release.
+                &amp;#40;q/stroke 255 0 0&amp;#41;  
+                &amp;#40;q/stroke-weight 2&amp;#41;
+                &amp;#40;q/line @mouse-hold-x @mouse-hold-y mouse-release-x mouse-release-y&amp;#41; ;; Creates a line from the first to end circle.
+                &amp;#40;println &amp;quot;Dt: &amp;quot; delta-time &amp;quot;Dx: &amp;quot; delta-x &amp;quot;Dy: &amp;quot; delta-y &amp;quot;X: &amp;quot; distance &amp;quot;V: &amp;quot; vel&amp;#41;&amp;#41;&amp;#41;&amp;#41;&amp;#41;&amp;#41; ;; Prints out all the information.
+
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now you can run it by the following...&lt;/p&gt;&lt;pre&gt;&lt;code&gt;lein run
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now you can click on the applet and release in a different place and should see lines connecting two circles! As a bonus if you want to clear the applet without exiting you can add the following in the draw function...&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;if &amp;#40;q/key-pressed?&amp;#41;
+  &amp;#40;do &amp;#40;if &amp;#40;= &amp;#40;.toString &amp;#40;q/raw-key&amp;#41;&amp;#41; &amp;quot;c&amp;quot;&amp;#41;
+          &amp;#40;do &amp;#40;q/clear&amp;#41;
+              &amp;#40;q/background 200&amp;#41;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;So this is what your entire core.clj should look like. More or less with some extra key presses.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;ns newquil-project.core
+  &amp;#40;:require &amp;#91;quil.core :as q&amp;#93;
+            &amp;#91;quil.middleware :as m&amp;#93;&amp;#41;&amp;#41;
+
+&amp;#40;def brush &amp;#40;atom 0&amp;#41;&amp;#41; ;; if the brush is up or down &amp;#40;0 - down 1 - up&amp;#41;
+&amp;#40;def mouse-press-time &amp;#40;atom 0&amp;#41;&amp;#41; ;; The original time for the mouse press
+&amp;#40;def mouse-hold-x &amp;#40;atom 0&amp;#41;&amp;#41;
+&amp;#40;def mouse-hold-y &amp;#40;atom 0&amp;#41;&amp;#41;
+&amp;#40;def mouse-release-stage &amp;#40;atom 0&amp;#41;&amp;#41;
+
+&amp;#40;defn setup &amp;#91;&amp;#93;
+  &amp;#40;q/frame-rate 20&amp;#41;
+  &amp;#40;q/background 200&amp;#41;&amp;#41;
+
+&amp;#40;defn draw &amp;#91;&amp;#93;
+  &amp;#40;q/stroke 100&amp;#41;
+  &amp;#40;q/stroke-weight 5&amp;#41;
+  &amp;#40;q/fill 100&amp;#41;
+
+  &amp;#40;if &amp;#40;= 1 @brush&amp;#41;
+    &amp;#40;let &amp;#91;diam &amp;#40;q/random 100&amp;#41;&amp;#93;
+      &amp;#40;q/ellipse &amp;#40;q/mouse-x&amp;#41; &amp;#40;q/mouse-y&amp;#41; diam diam&amp;#41;&amp;#41;&amp;#41;
+
+  &amp;#40;if &amp;#40;q/mouse-pressed?&amp;#41;
+    &amp;#40;do &amp;#40;if &amp;#40;= 0 @mouse-release-stage&amp;#41;
+          &amp;#40;do &amp;#40;let &amp;#91;diam 10&amp;#93;
+                &amp;#40;q/ellipse &amp;#40;q/mouse-x&amp;#41; &amp;#40;q/mouse-y&amp;#41; diam diam&amp;#41;&amp;#41;
+              &amp;#40;reset! mouse-press-time &amp;#40;q/millis&amp;#41;&amp;#41;
+              &amp;#40;reset! mouse-hold-x &amp;#40;q/mouse-x&amp;#41;&amp;#41;
+              &amp;#40;reset! mouse-hold-y &amp;#40;q/mouse-y&amp;#41;&amp;#41;
+              &amp;#40;reset! mouse-release-stage 1&amp;#41;&amp;#41;&amp;#41;&amp;#41;
+    &amp;#40;do &amp;#40;if &amp;#40;= 1 @mouse-release-stage&amp;#41;
+          &amp;#40;do &amp;#40;reset! mouse-release-stage 0&amp;#41;
+              &amp;#40;let &amp;#91;delta-time &amp;#40;- &amp;#40;q/millis&amp;#41; @mouse-press-time&amp;#41;
+                    mouse-release-x &amp;#40;q/mouse-x&amp;#41;
+                    mouse-release-y &amp;#40;q/mouse-y&amp;#41;
+                    delta-x &amp;#40;- mouse-release-x @mouse-hold-x&amp;#41;
+                    delta-y &amp;#40;- mouse-release-y @mouse-hold-y&amp;#41;
+                    distance &amp;#40;Math/sqrt &amp;#40;+ &amp;#40;&amp;#42; delta-x delta-x&amp;#41; &amp;#40;&amp;#42; delta-y delta-y&amp;#41;&amp;#41;&amp;#41;
+                    vel &amp;#40;/ distance delta-time&amp;#41;&amp;#93;
+                &amp;#40;let &amp;#91;diam 10&amp;#93;
+                  &amp;#40;q/ellipse &amp;#40;q/mouse-x&amp;#41; &amp;#40;q/mouse-y&amp;#41; diam diam&amp;#41;&amp;#41;
+                &amp;#40;q/stroke 255 0 0&amp;#41;
+                &amp;#40;q/stroke-weight 2&amp;#41;
+                &amp;#40;q/line @mouse-hold-x @mouse-hold-y mouse-release-x mouse-release-y&amp;#41;
+                &amp;#40;println &amp;quot;Dt: &amp;quot; delta-time &amp;quot;Dx: &amp;quot; delta-x &amp;quot;Dy: &amp;quot; delta-y &amp;quot;X: &amp;quot; distance &amp;quot;V: &amp;quot; vel&amp;#41;&amp;#41;&amp;#41;&amp;#41;&amp;#41;&amp;#41;
+
+  &amp;#40;if &amp;#40;q/key-pressed?&amp;#41;
+    &amp;#40;do &amp;#40;if &amp;#40;= &amp;#40;.toString &amp;#40;q/raw-key&amp;#41;&amp;#41; &amp;quot;q&amp;quot;&amp;#41;
+          &amp;#40;do &amp;#40;q/exit&amp;#41;&amp;#41;&amp;#41;
+        &amp;#40;if &amp;#40;= &amp;#40;.toString &amp;#40;q/raw-key&amp;#41;&amp;#41; &amp;quot;u&amp;quot;&amp;#41;
+          &amp;#40;do &amp;#40;if &amp;#40;= 0 @brush&amp;#41;
+                &amp;#40;reset! brush 1&amp;#41;
+                &amp;#40;reset! brush 0&amp;#41;&amp;#41;&amp;#41;&amp;#41;
+        &amp;#40;if &amp;#40;= &amp;#40;.toString &amp;#40;q/raw-key&amp;#41;&amp;#41; &amp;quot;e&amp;quot;&amp;#41;
+          &amp;#40;do &amp;#40;let &amp;#91;radius &amp;#40;q/random 75&amp;#41;&amp;#93;
+                &amp;#40;q/box radius radius radius&amp;#41;&amp;#41;&amp;#41;&amp;#41;
+        &amp;#40;if &amp;#40;= &amp;#40;.toString &amp;#40;q/raw-key&amp;#41;&amp;#41; &amp;quot;c&amp;quot;&amp;#41;
+          &amp;#40;do &amp;#40;q/clear&amp;#41;
+              &amp;#40;q/background 200&amp;#41;&amp;#41;&amp;#41;&amp;#41;&amp;#41;&amp;#41;
+
+&amp;#40;q/defsketch example
+  :title &amp;quot;Oh so many grey circles&amp;quot;
+  :settings #&amp;#40;q/smooth 2&amp;#41;
+  :setup setup
+  :draw draw
+  :size &amp;#91;640 480&amp;#93;&amp;#41;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;And there you have it you can make line segments! And do all kinds of things if you add onto them.&lt;/p&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Sat, 03 Sep 2016 00:00:00 -0400
+</pubDate>
+</item>
 <item>
 <guid>
 http://blogawesome.com/posts-output/getting-started-with-clojure/
