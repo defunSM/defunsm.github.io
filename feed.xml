@@ -12,11 +12,31 @@ http://blogawesome.com/
 A place to share my knowledge
 </description>
 <lastBuildDate>
-Mon, 05 Sep 2016 10:18:48 -0400
+Wed, 07 Sep 2016 19:35:17 -0400
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://blogawesome.com/posts-output/path-finding/
+</guid>
+<link>
+http://blogawesome.com/posts-output/path-finding/
+</link>
+<title>
+Pathfinding
+</title>
+<description>
+&lt;p&gt;&lt;img src=&quot;https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.spaceandmotion.com%2FImages%2FMirror-Experiment.gif&amp;f=1&quot; alt=&quot;light&quot; /&gt;&lt;/p&gt;&lt;p&gt;You may have been told that light takes the fastest path. Or if you ever used a GPS (Global Positioning System) and magically a path is shown usually the shortest path unless theres traffic than the shortest time is shown. But how? Do protons somehow perform mathmatical calculations in their head to determine which path they should take? &lt;/p&gt;&lt;p&gt;Nope, light actually takes all paths and then due to wave interface only the fastest path is &quot;shown&quot;. Of course thats much more simply said and much more than that happens and if really want to know how light takes the &quot;fastest&quot; path you can read Richard P. Feynman's book &lt;/i&gt;'The Strange Theory of Light and Matter'&lt;/i&gt;. He explains the topic rather well in a way that you don't need to be a physic's major to understand. &lt;/p&gt;&lt;p&gt;&lt;img src=&quot;https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fsdsu-physics.org%2Fphysics180%2Fphysics180B%2Fp180b_images%2Fp197_timedialtion.gif&amp;f=1&quot; alt=&quot;time dialation&quot; /&gt;&lt;/p&gt;&lt;p&gt;As for a GPS, satellites are calibrated percisely because  we know of special relativity in 1905 from Einstein that time for moving objects are slower than objects that are stationary thus with the help of relativity to account for this small change in time we can figure out the position of a person using a gps from the time the signal takes to reach that person. Even a slight error would make the position off by a good amount. Not only that but than the gps calculates the shortest or fastest path to get to your destination using an algorithm. &lt;/p&gt;&lt;p&gt;Algorithms can be used for things from data processing, response automation, optimization and pathfinding is just one thing that can be done by implmenting such a thing. The A* algorithm is a common one implemented in games. There are all kinds of algorithms for pathfinding some are better and some are worse, and than there are some that are more extensive and some that are less extensive to use. If you take computer science you'll probably be familiar with the quicksort, bubblesort and later on probably the greedy and divide and conquer algorithm. Point is there is a lot of them. &lt;/p&gt; 
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Wed, 07 Sep 2016 00:00:00 -0400
+</pubDate>
+</item>
 <item>
 <guid>
 http://blogawesome.com/posts-output/2016-09-03-using_quil_part_2/

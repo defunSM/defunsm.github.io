@@ -53,17 +53,19 @@
                         <li class="divider"></li>
                         <li class="dropdown-header">Recent Posts</li>
                         
+                        <li><a href="/posts-output/path-finding/">Pathfinding</a></li>
+                        
                         <li><a href="/posts-output/2016-09-03-using_quil_part_2/">Graphics using Quil in Clojure (Part 2)</a></li>
                         
                         <li><a href="/posts-output/getting-started-with-clojure/">Getting Started with Clojure</a></li>
-                        
-                        <li><a href="/posts-output/using_quil/">Graphics using Quil in Clojure (Part 1)</a></li>
                         
                         
 
                         
                         <li class="divider"></li>
                         <li class="dropdown-header">Tags</li>
+                        
+                        <li><a href="/tags-output/Pathfinding/">Pathfinding</a></li>
                         
                         <li><a href="/tags-output/Graphics/">Graphics</a></li>
                         
@@ -96,140 +98,34 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">September 3, 2016</div>
+        <div class="col-lg-6">September 7, 2016</div>
         
     </div>
-    <h2>Graphics using Quil in Clojure (Part 2)</h2>
+    <h2>Pathfinding</h2>
 </div>
 <div>
     
-     <p>If you are interested in following along please read the <a href='https://defunsm.github.io/posts-output/using_quil/'>first part</a> or it may not make sense. </p><p><img src="https://defunsm.github.io/img/quilthird.png" alt="quil line segments" /></p><p>We are going to continue with the same project as we did in part 1 with newquil-project. However we are going to rewrite the draw function. First we need some defs to be added in the beginning so add the following in the top after the name space.</p><pre><code>&#40;def mouse-press-time &#40;atom 0&#41;&#41;     ;; The original time for when them mouse was clicked.
-&#40;def mouse-hold-x &#40;atom 0&#41;&#41;         ;; The x-location when the mouse was clicked.
-&#40;def mouse-hold-y &#40;atom 0&#41;&#41;         ;; The y-location when the mouse was clicked.
-&#40;def mouse-release-stage &#40;atom 0&#41;&#41;  ;; The release stage &#40;0 - nothing, 1 - pressed&#41;
-</code></pre><p>Those will come in handy while setting up our draw function which we'll completely rewrite. Change the stroke/stroke-weight/fill to the following values.</p><pre><code>  &#40;q/stroke 100&#41;          ;; Change to 100 rather than q/random
-  &#40;q/stroke-weight 5&#41;     ;; Change to 5
-  &#40;q/fill 100&#41;            ;; Change to 100
-</code></pre><p>Now you can remove everything else in the draw function. Adding the following into the draw function after the stroke/stroke-weight/fill.</p><pre><code>&#40;if &#40;q/mouse-pressed?&#41; ;; When the mouse is pressed it returns true.
-    &#40;do &#40;if &#40;= 0 @mouse-release-stage&#41;      ;; This can only happen when mouse-release-stage is 0 so that the values aren't reset every time it's held.
-          &#40;do &#40;let &#91;diam 10&#93;                 
-                &#40;q/ellipse &#40;q/mouse-x&#41; &#40;q/mouse-y&#41; diam diam&#41;&#41;  ;; Creates a circle of 10 diam.
-              &#40;reset! mouse-press-time &#40;q/millis&#41;&#41; ;; Sets the press time to the current time in milliseconds.
-              &#40;reset! mouse-hold-x &#40;q/mouse-x&#41;&#41;    ;; Sets the mouse-hold-x time to where the mouse is on the x coordinate.
-              &#40;reset! mouse-hold-y &#40;q/mouse-y&#41;&#41;    ;; Same for the y coordinate.
-              &#40;reset! mouse-release-stage 1&#41;&#41;&#41;&#41;    ;; Sets the mouse-release-stage to 1 so that the release can trigger only once. 
-    &#40;do &#40;if &#40;= 1 @mouse-release-stage&#41;             ;; Only occurs if the mouse-release stage is 1.
-          &#40;do &#40;reset! mouse-release-stage 0&#41;                     
-              &#40;let &#91;delta-time &#40;- &#40;q/millis&#41; @mouse-press-time&#41; ;; The time change between the click and release.
-                    mouse-release-x &#40;q/mouse-x&#41;     ;; Release x coordinate.
-                    mouse-release-y &#40;q/mouse-y&#41;     ;; Release y coordinate.
-                    delta-x &#40;- mouse-release-x @mouse-hold-x&#41;  ;; Change in x coordinate.
-                    delta-y &#40;- mouse-release-y @mouse-hold-y&#41;  ;; Change in y coordinate.
-                    distance &#40;Math/sqrt &#40;+ &#40;&#42; delta-x delta-x&#41; &#40;&#42; delta-y delta-y&#41;&#41;&#41; ;; Finds the distance between two points.
-                    vel &#40;/ distance delta-time&#41;&#93; ;; Calculates the avg velocity by taking the distance and time changed.
-                &#40;let &#91;diam 10&#93;
-                  &#40;q/ellipse &#40;q/mouse-x&#41; &#40;q/mouse-y&#41; diam diam&#41;&#41; ; creates another circle at the end point of release.
-                &#40;q/stroke 255 0 0&#41;  
-                &#40;q/stroke-weight 2&#41;
-                &#40;q/line @mouse-hold-x @mouse-hold-y mouse-release-x mouse-release-y&#41; ;; Creates a line from the first to end circle.
-                &#40;println &quot;Dt: &quot; delta-time &quot;Dx: &quot; delta-x &quot;Dy: &quot; delta-y &quot;X: &quot; distance &quot;V: &quot; vel&#41;&#41;&#41;&#41;&#41;&#41; ;; Prints out all the information.
-
-</code></pre><p>Now you can run it by the following...</p><pre><code>lein run
-</code></pre><p>Now you can click on the applet and release in a different place and should see lines connecting two circles! As a bonus if you want to clear the applet without exiting you can add the following in the draw function...</p><pre><code>&#40;if &#40;q/key-pressed?&#41;
-  &#40;do &#40;if &#40;= &#40;.toString &#40;q/raw-key&#41;&#41; &quot;c&quot;&#41;
-          &#40;do &#40;q/clear&#41;
-              &#40;q/background 200&#41;&#41;&#41;
-</code></pre><p>So this is what your entire core.clj should look like. More or less with some extra key presses.</p><pre><code>&#40;ns newquil-project.core
-  &#40;:require &#91;quil.core :as q&#93;
-            &#91;quil.middleware :as m&#93;&#41;&#41;
-
-&#40;def brush &#40;atom 0&#41;&#41; ;; if the brush is up or down &#40;0 - down 1 - up&#41;
-&#40;def mouse-press-time &#40;atom 0&#41;&#41; ;; The original time for the mouse press
-&#40;def mouse-hold-x &#40;atom 0&#41;&#41;
-&#40;def mouse-hold-y &#40;atom 0&#41;&#41;
-&#40;def mouse-release-stage &#40;atom 0&#41;&#41;
-
-&#40;defn setup &#91;&#93;
-  &#40;q/frame-rate 20&#41;
-  &#40;q/background 200&#41;&#41;
-
-&#40;defn draw &#91;&#93;
-  &#40;q/stroke 100&#41;
-  &#40;q/stroke-weight 5&#41;
-  &#40;q/fill 100&#41;
-
-  &#40;if &#40;= 1 @brush&#41;
-    &#40;let &#91;diam &#40;q/random 100&#41;&#93;
-      &#40;q/ellipse &#40;q/mouse-x&#41; &#40;q/mouse-y&#41; diam diam&#41;&#41;&#41;
-
-  &#40;if &#40;q/mouse-pressed?&#41;
-    &#40;do &#40;if &#40;= 0 @mouse-release-stage&#41;
-          &#40;do &#40;let &#91;diam 10&#93;
-                &#40;q/ellipse &#40;q/mouse-x&#41; &#40;q/mouse-y&#41; diam diam&#41;&#41;
-              &#40;reset! mouse-press-time &#40;q/millis&#41;&#41;
-              &#40;reset! mouse-hold-x &#40;q/mouse-x&#41;&#41;
-              &#40;reset! mouse-hold-y &#40;q/mouse-y&#41;&#41;
-              &#40;reset! mouse-release-stage 1&#41;&#41;&#41;&#41;
-    &#40;do &#40;if &#40;= 1 @mouse-release-stage&#41;
-          &#40;do &#40;reset! mouse-release-stage 0&#41;
-              &#40;let &#91;delta-time &#40;- &#40;q/millis&#41; @mouse-press-time&#41;
-                    mouse-release-x &#40;q/mouse-x&#41;
-                    mouse-release-y &#40;q/mouse-y&#41;
-                    delta-x &#40;- mouse-release-x @mouse-hold-x&#41;
-                    delta-y &#40;- mouse-release-y @mouse-hold-y&#41;
-                    distance &#40;Math/sqrt &#40;+ &#40;&#42; delta-x delta-x&#41; &#40;&#42; delta-y delta-y&#41;&#41;&#41;
-                    vel &#40;/ distance delta-time&#41;&#93;
-                &#40;let &#91;diam 10&#93;
-                  &#40;q/ellipse &#40;q/mouse-x&#41; &#40;q/mouse-y&#41; diam diam&#41;&#41;
-                &#40;q/stroke 255 0 0&#41;
-                &#40;q/stroke-weight 2&#41;
-                &#40;q/line @mouse-hold-x @mouse-hold-y mouse-release-x mouse-release-y&#41;
-                &#40;println &quot;Dt: &quot; delta-time &quot;Dx: &quot; delta-x &quot;Dy: &quot; delta-y &quot;X: &quot; distance &quot;V: &quot; vel&#41;&#41;&#41;&#41;&#41;&#41;
-
-  &#40;if &#40;q/key-pressed?&#41;
-    &#40;do &#40;if &#40;= &#40;.toString &#40;q/raw-key&#41;&#41; &quot;q&quot;&#41;
-          &#40;do &#40;q/exit&#41;&#41;&#41;
-        &#40;if &#40;= &#40;.toString &#40;q/raw-key&#41;&#41; &quot;u&quot;&#41;
-          &#40;do &#40;if &#40;= 0 @brush&#41;
-                &#40;reset! brush 1&#41;
-                &#40;reset! brush 0&#41;&#41;&#41;&#41;
-        &#40;if &#40;= &#40;.toString &#40;q/raw-key&#41;&#41; &quot;e&quot;&#41;
-          &#40;do &#40;let &#91;radius &#40;q/random 75&#41;&#93;
-                &#40;q/box radius radius radius&#41;&#41;&#41;&#41;
-        &#40;if &#40;= &#40;.toString &#40;q/raw-key&#41;&#41; &quot;c&quot;&#41;
-          &#40;do &#40;q/clear&#41;
-              &#40;q/background 200&#41;&#41;&#41;&#41;&#41;&#41;
-
-&#40;q/defsketch example
-  :title &quot;Oh so many grey circles&quot;
-  :settings #&#40;q/smooth 2&#41;
-  :setup setup
-  :draw draw
-  :size &#91;640 480&#93;&#41;
-
-</code></pre><p>And there you have it you can make line segments! And do all kinds of things if you add onto them.</p>
+    <p><img src="https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.spaceandmotion.com%2FImages%2FMirror-Experiment.gif&f=1" alt="light" /></p><p>You may have been told that light takes the fastest path. Or if you ever used a GPS (Global Positioning System) and magically a path is shown usually the shortest path unless theres traffic than the shortest time is shown. But how? Do protons somehow perform mathmatical calculations in their head to determine which path they should take? </p><p>Nope, light actually takes all paths and then due to wave interface only the fastest path is "shown". Of course thats much more simply said and much more than that happens and if really want to know how light takes the "fastest" path you can read Richard P. Feynman's book </i>'The Strange Theory of Light and Matter'</i>. He explains the topic rather well in a way that you don't need to be a physic's major to understand. </p><p><img src="https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fsdsu-physics.org%2Fphysics180%2Fphysics180B%2Fp180b_images%2Fp197_timedialtion.gif&f=1" alt="time dialation" /></p><p>As for a GPS, satellites are calibrated percisely because  we know of special relativity in 1905 from Einstein that time for moving objects are slower than objects that are stationary thus with the help of relativity to account for this small change in time we can figure out the position of a person using a gps from the time the signal takes to reach that person. Even a slight error would make the position off by a good amount. Not only that but than the gps calculates the shortest or fastest path to get to your destination using an algorithm. </p><p>Algorithms can be used for things from data processing, response automation, optimization and pathfinding is just one thing that can be done by implmenting such a thing. The A* algorithm is a common one implemented in games. There are all kinds of algorithms for pathfinding some are better and some are worse, and than there are some that are more extensive and some that are less extensive to use. If you take computer science you'll probably be familiar with the quicksort, bubblesort and later on probably the greedy and divide and conquer algorithm. Point is there is a lot of them. </p> 
 </div>
 
 <div id="post-tags">
     <b>Tags: </b>
     
-    <a href="/tags-output/Graphics/">Graphics</a>
-    
-    <a href="/tags-output/Clojure/">Clojure</a>
+    <a href="/tags-output/Pathfinding/">Pathfinding</a>
     
 </div>
 
 
     
     <div id="comments">
-        <a href="/posts-output/2016-09-03-using_quil_part_2/#disqus_thread">View Comments</a>
+        <a href="/posts-output/path-finding/#disqus_thread">View Comments</a>
     </div>
     
 
     <div id="prev-next">
         
         
-        <a class="right" href="/posts-output/getting-started-with-clojure/">Getting Started with Clojure &raquo;</a>
+        <a class="right" href="/posts-output/2016-09-03-using_quil_part_2/">Graphics using Quil in Clojure (Part 2) &raquo;</a>
         
     </div>
 </div>
