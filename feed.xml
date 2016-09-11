@@ -12,7 +12,7 @@ http://blogawesome.com/
 A place to share my knowledge
 </description>
 <lastBuildDate>
-Sun, 11 Sep 2016 14:30:11 -0400
+Sun, 11 Sep 2016 14:34:38 -0400
 </lastBuildDate>
 <generator>
 clj-rss
@@ -72,7 +72,7 @@ Basics of Clojure (Part 1)
 &amp;#40;find-hypothenuse 3 4&amp;#41; ;; if you know your pythagorean triples you know easily this is 5 which is what the result gives us.
 
 ;; 5.0  
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;That is about it for now as you can see you can make some useful things out of these functions and get them to work for you rather easily. Becareful when using def and defn since sometimes it is confusing to realize the subtle difference between them. &lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;That is about it for now as you can see you can make some useful things out of these functions and get them to work for you rather easily. Be careful when using def and defn since sometimes it is confusing to realize the subtle difference between them. &lt;/p&gt;
 </description>
 <enclosure>
 
