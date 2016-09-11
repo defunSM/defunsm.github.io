@@ -53,11 +53,11 @@
                         <li class="divider"></li>
                         <li class="dropdown-header">Recent Posts</li>
                         
+                        <li><a href="/posts-output/basics-of-clojure/">Basics of Clojure (Part 1)</a></li>
+                        
                         <li><a href="/posts-output/path-finding/">Pathfinding</a></li>
                         
                         <li><a href="/posts-output/2016-09-03-using_quil_part_2/">Graphics using Quil in Clojure (Part 2)</a></li>
-                        
-                        <li><a href="/posts-output/getting-started-with-clojure/">Getting Started with Clojure</a></li>
                         
                         
 
@@ -65,15 +65,15 @@
                         <li class="divider"></li>
                         <li class="dropdown-header">Tags</li>
                         
-                        <li><a href="/tags-output/Pathfinding/">Pathfinding</a></li>
-                        
-                        <li><a href="/tags-output/Graphics/">Graphics</a></li>
-                        
                         <li><a href="/tags-output/Clojure/">Clojure</a></li>
+                        
+                        <li><a href="/tags-output/Code/">Code</a></li>
                         
                         <li><a href="/tags-output/Guide/">Guide</a></li>
                         
-                        <li><a href="/tags-output/Code/">Code</a></li>
+                        <li><a href="/tags-output/Pathfinding/">Pathfinding</a></li>
+                        
+                        <li><a href="/tags-output/Graphics/">Graphics</a></li>
                         
                         <li><a href="/tags-output/Clojure Guide Code/">Clojure Guide Code</a></li>
                         
@@ -98,34 +98,82 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">September 7, 2016</div>
+        <div class="col-lg-6">September 11, 2016</div>
         
     </div>
-    <h2>Pathfinding</h2>
+    <h2>Basics of Clojure (Part 1)</h2>
 </div>
 <div>
     
-    <p><img src="https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.spaceandmotion.com%2FImages%2FMirror-Experiment.gif&f=1" alt="light" /></p><p>You may have been told that light takes the fastest path. Or if you ever used a GPS (Global Positioning System) and magically a path is shown usually the shortest path unless theres traffic than the shortest time is shown. But how? Do protons somehow perform mathmatical calculations in their head to determine which path they should take? </p><p>Nope, light actually takes all paths and then due to wave interface only the fastest path is "shown". Of course thats much more simply said and much more than that happens and if really want to know how light takes the "fastest" path you can read Richard P. Feynman's book </i>'The Strange Theory of Light and Matter'</i>. He explains the topic rather well in a way that you don't need to be a physic's major to understand. </p><p><img src="https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fsdsu-physics.org%2Fphysics180%2Fphysics180B%2Fp180b_images%2Fp197_timedialtion.gif&f=1" alt="time dialation" /></p><p>As for a GPS, satellites are calibrated percisely because  we know of special relativity in 1905 from Einstein that time for moving objects are slower than objects that are stationary thus with the help of relativity to account for this small change in time we can figure out the position of a person using a gps from the time the signal takes to reach that person. Even a slight error would make the position off by a good amount. Not only that but than the gps calculates the shortest or fastest path to get to your destination using an algorithm. </p><p>Algorithms can be used for things from data processing, response automation, optimization and pathfinding is just one thing that can be done by implmenting such a thing. The A* algorithm is a common one implemented in games. There are all kinds of algorithms for pathfinding some are better and some are worse, and than there are some that are more extensive and some that are less extensive to use. If you take computer science you'll probably be familiar with the quicksort, bubblesort and later on probably the greedy and divide and conquer algorithm. Point is there is a lot of them. </p> 
+    <p>Hello world is kind of the basic thing to start off with in any kind of programming language so we'll start with that. So open up your favorite text editor that has clojure preferably emacs or vim. Type out the following code. First start a nrepl in your text editor. Type the following into the repl.</p><pre><code>&#40;println &quot;Hello World&quot;&#41; ;; displays hello world in the repl.
+
+;; &quot;Hello World&quot;
+</code></pre>Now that you have done the hello world lets look at addition, subtraction, multiplication, and division.<pre><code>&#40;+ 2 3&#41; ;; same as doing 2 + 3
+
+;; 5
+
+&#40;- 2 3&#41; ;; same as doing 2 - 3
+
+;; -1
+
+&#40;&#42; 2 3&#41; ;; same as doing 2 &#42; 3
+
+;; 6
+
+&#40;/ 2 3&#41; ;; same as doing 2 / 3 notice that the result is displayed in a fraction try doing &#40;float &#40;/ 2 3&#41;&#41;.
+
+;; 2/3
+
+</code></pre><p>Notice that the operand is <i>after</i> the operator. This is polish notation which is used in lisp dialects. This way doing 2 + 2 + 2 is easier since you won't have to repeat the + operator (+ 2 2 2). You can think of the applying the addition to all of the things in the parantheses. At first you might wonder whats the point of doing it like that instead of just doing (2 + 2) which will give you an error.</p><pre><code>&#40;def five 5&#41; ;; binds the symbol five to the number 5. Creating a global variable.
+
+&#40;+ 2 five&#41; ;; same thing as doing &#40;+ 2 5&#41; since five is binded to 5.
+
+;; 7
+</code></pre><p>Using def is how you can create variables and I'll show you now how to make functions.</p><pre><code>&#40;&#40;fn &#91;x&#93; &#40;&#42; x x&#41;&#41; 5&#41; ;; as you can see the fn is how you start the function and than it takes one input the x and than does whatever is in the parantheses.
+
+;; 25
+
+&#40;def square &#40;fn &#91;x&#93; &#40;&#42; x x&#41;&#41;&#41; ;; this is the same thing as before but now we are binding the function to the symbol square. So we can use it else where without typing the function again.
+
+&#40;square 5&#41; ;; same result of 25.
+
+;; 25
+
+&#40;defn square &#91;x&#93; &#40;&#42; x x&#41;&#41; ;; this creates the function and notice how we don't use fn anymore.
+
+&#40;square 5&#41; ;; results are the same so now you have 3 different ways to produce the same result.
+
+;; 25
+</code></pre><p>A quick useful example of using functions is making a function that calculates the hypothenuse given both legs a and b.</p><pre><code>&#40;defn find-hypothenuse &#91;a b&#93; &#40;Math/sqrt &#40;+ &#40;&#42; a a&#41; &#40;&#42; b b&#41;&#41;&#41;&#41; ;; this is making our function basically using the pythagorean theorem a&#94;2 + b&#94;2 = c&#94;2.
+
+&#40;find-hypothenuse 3 4&#41; ;; if you know your pythagorean triples you know easily this is 5 which is what the result gives us.
+
+;; 5.0  
+</code></pre><p>That is about it for now as you can see you can make some useful things out of these functions and get them to work for you rather easily. Becareful when using def and defn since sometimes it is confusing to realize the subtle difference between them. </p>
 </div>
 
 <div id="post-tags">
     <b>Tags: </b>
     
-    <a href="/tags-output/Pathfinding/">Pathfinding</a>
+    <a href="/tags-output/Clojure/">Clojure</a>
+    
+    <a href="/tags-output/Code/">Code</a>
+    
+    <a href="/tags-output/Guide/">Guide</a>
     
 </div>
 
 
     
     <div id="comments">
-        <a href="/posts-output/path-finding/#disqus_thread">View Comments</a>
+        <a href="/posts-output/basics-of-clojure/#disqus_thread">View Comments</a>
     </div>
     
 
     <div id="prev-next">
         
         
-        <a class="right" href="/posts-output/2016-09-03-using_quil_part_2/">Graphics using Quil in Clojure (Part 2) &raquo;</a>
+        <a class="right" href="/posts-output/path-finding/">Pathfinding &raquo;</a>
         
     </div>
 </div>

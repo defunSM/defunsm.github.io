@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Physics. Computers. Code.: Posts Tagged &quot;Blog&quot;</title>
-    <link rel="canonical" href="http://blogawesome.com/tags-output/Blog/">
+    <title>Physics. Computers. Code.: Basics of Clojure (Part 1)</title>
+    <link rel="canonical" href="http://blogawesome.com/posts-output/basics-of-clojure/">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='http://fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700' rel='stylesheet'
           type='text/css'>
@@ -95,17 +95,94 @@
         <div class="col-lg-12">
             <div id="content">
                 
-<div id="posts-by-tag">
-    <div id="page-header">
-        <h2>Posts Tagged &quot;Blog&quot;</h2>
+<div id="post">
+    <div class="post-header">
+    <div id="post-meta" class="row">
+        <div class="col-lg-6">September 11, 2016</div>
+        
     </div>
-    <ul>
+    <h2>Basics of Clojure (Part 1)</h2>
+</div>
+<div>
     
-        <li>
-            <a href="/posts-output/2016-08-27-new/">A New Beginning</a>
-        </li>
+    <p>Hello world is kind of the basic thing to start off with in any kind of programming language so we'll start with that. So open up your favorite text editor that has clojure preferably emacs or vim. Type out the following code. First start a nrepl in your text editor. Type the following into the repl.</p><pre><code>&#40;println &quot;Hello World&quot;&#41; ;; displays hello world in the repl.
+
+;; &quot;Hello World&quot;
+</code></pre>Now that you have done the hello world lets look at addition, subtraction, multiplication, and division.<pre><code>&#40;+ 2 3&#41; ;; same as doing 2 + 3
+
+;; 5
+
+&#40;- 2 3&#41; ;; same as doing 2 - 3
+
+;; -1
+
+&#40;&#42; 2 3&#41; ;; same as doing 2 &#42; 3
+
+;; 6
+
+&#40;/ 2 3&#41; ;; same as doing 2 / 3 notice that the result is displayed in a fraction try doing &#40;float &#40;/ 2 3&#41;&#41;.
+
+;; 2/3
+
+</code></pre><p>Notice that the operand is <i>after</i> the operator. This is polish notation which is used in lisp dialects. This way doing 2 + 2 + 2 is easier since you won't have to repeat the + operator (+ 2 2 2). You can think of the applying the addition to all of the things in the parantheses. At first you might wonder whats the point of doing it like that instead of just doing (2 + 2) which will give you an error.</p><pre><code>&#40;def five 5&#41; ;; binds the symbol five to the number 5. Creating a global variable.
+
+&#40;+ 2 five&#41; ;; same thing as doing &#40;+ 2 5&#41; since five is binded to 5.
+
+;; 7
+</code></pre><p>Using def is how you can create variables and I'll show you now how to make functions.</p><pre><code>&#40;&#40;fn &#91;x&#93; &#40;&#42; x x&#41;&#41; 5&#41; ;; as you can see the fn is how you start the function and than it takes one input the x and than does whatever is in the parantheses.
+
+;; 25
+
+&#40;def square &#40;fn &#91;x&#93; &#40;&#42; x x&#41;&#41;&#41; ;; this is the same thing as before but now we are binding the function to the symbol square. So we can use it else where without typing the function again.
+
+&#40;square 5&#41; ;; same result of 25.
+
+;; 25
+
+&#40;defn square &#91;x&#93; &#40;&#42; x x&#41;&#41; ;; this creates the function and notice how we don't use fn anymore.
+
+&#40;square 5&#41; ;; results are the same so now you have 3 different ways to produce the same result.
+
+;; 25
+</code></pre><p>A quick useful example of using functions is making a function that calculates the hypothenuse given both legs a and b.</p><pre><code>&#40;defn find-hypothenuse &#91;a b&#93; &#40;Math/sqrt &#40;+ &#40;&#42; a a&#41; &#40;&#42; b b&#41;&#41;&#41;&#41; ;; this is making our function basically using the pythagorean theorem a&#94;2 + b&#94;2 = c&#94;2.
+
+&#40;find-hypothenuse 3 4&#41; ;; if you know your pythagorean triples you know easily this is 5 which is what the result gives us.
+
+;; 5.0  
+</code></pre><p>That is about it for now as you can see you can make some useful things out of these functions and get them to work for you rather easily. Becareful when using def and defn since sometimes it is confusing to realize the subtle difference between them. </p>
+</div>
+
+<div id="post-tags">
+    <b>Tags: </b>
     
-    </ul>
+    <a href="/tags-output/Clojure/">Clojure</a>
+    
+    <a href="/tags-output/Code/">Code</a>
+    
+    <a href="/tags-output/Guide/">Guide</a>
+    
+</div>
+
+
+    <div id="prev-next">
+        
+        
+        <a class="right" href="/posts-output/path-finding/">Pathfinding &raquo;</a>
+        
+    </div>
+
+    
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//defunsm-github-io.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    
+
+
 </div>
 
             </div>
