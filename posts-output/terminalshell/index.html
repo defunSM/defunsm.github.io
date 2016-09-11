@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Physics. Computers. Code.: Creating an Exechuteable GUI</title>
-    <link rel="canonical" href="http://blogawesome.com/posts-output/2016-08-29-Clojure_GUI_as_an_Exe/">
+    <title>Physics. Computers. Code.: Terminals and Shell Commands</title>
+    <link rel="canonical" href="http://blogawesome.com/posts-output/terminalshell/">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='http://fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700' rel='stylesheet'
           type='text/css'>
@@ -102,34 +102,32 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">August 29, 2016</div>
+        <div class="col-lg-6">September 8, 2016</div>
         
     </div>
-    <h2>Creating an Exechuteable GUI</h2>
+    <h2>Terminals and Shell Commands</h2>
 </div>
 <div>
     
-     <p> Note: Before following this guide you may want to familiar yourself with <a href='https://defunsm.github.io/posts-output/2016-08-28-jar/'>making jars</a>.   </p><p> You should have the uberjar which can be created by following a guide I have written previously.  Now you want to take it one step further and make the jar into an exe to distribute to different windows platforms. There is a few ways to go about it but I typically use <a href='http://launch4j.sourceforge.net/'>launch4j</a>.  </p><p> After downloading Launch4j,</p><p>Step 1: </p><p>Open it up and fill in the output file and Jar field as the following. The output file determines what the .exe file will be called. While the jar field is the uber-jar you select and the launch4j will use to create the .exe file.  </p><p><img src="https://defunsm.github.io/img/launch4jfirst.png" alt="image" /></p><p>Step 2: </p><p>After filling those fields switch to the header tab. Click on the GUI radio button unless you're using just console.  </p><p><img src="https://defunsm.github.io/img/launch4jsecond.png" alt="image" /></p><p>Step 3: </p><p>Click the JRE tab and enter Min JRE version as what minimum java you need to run the code.  Also click the + property button by variables / registry field to add the EXEDIR property.</p><p><img src="https://defunsm.github.io/img/launch4jthird.png" alt="image" /> </p><p>Now click on build wrapper which is the  gear icon on top and it should build your .exe file!</p>
+    <p><h2>What is a Terminal?</h2> You might have seen these in those hacker movies. The terminal allows the user to gain access to the computer. However there is much more than just that.<br /></p><p><img src="http://s12.postimg.org/7nwy7pr7x/terminals.png" alt="Terminal" /></p><p><h2>What is a TTY? Are they the same?</h2> Often they are said interchangably and they do essentially the same thing. However a key characteristic is that a TTY is provided by the system and the terminal is run on a TTY. While there is no real difference between them unless further examination. </p><p><h2>Commands on the Terminal</h2></p><p><code>dir </code>&nbsp; - list (dir)ectories.</p><p><code>cd </code>&nbsp; - (c)hange (d)irectory - Changes to a different folder or directory.</p><p><code>mkdir </code>&nbsp; - (m)a(k)e (dir)ectory - Creates a new folder or directory.</p><p><code>rm </code>&nbsp; - (r)e(m)oves a file.</p><p><code>mv </code>&nbsp; - (m)o(v)e a file or can be used to rename a file.</p><p><code>cp </code>&nbsp; - (c)o(p)y a file to another location.</p><p><code>grep </code>&nbsp; - prints lines that match the pattern.</p><p><code>touch </code>&nbsp; - creates a file.</p><p><code>cat </code>&nbsp; - prints out the contents of a file.</p><p><code>echo </code>&nbsp; - prints the string.</p><p><code> >> </code>&nbsp; - appending output without removing previous text in a file.</p><p><code> > </code>&nbsp; - rewriting the output to a file.</p><p><code> | </code>&nbsp; - pipes the output.</p><p><code>shutdown </code>&nbsp; - causes the computer to shutdown.</p><p><code>reboot </code>&nbsp; - causes the computer to reboot.</p><p><code>man </code>&nbsp; - searches for the documentation of a certain command.</p><p><code>whatis </code>&nbsp; - provides a one line description of the command.</p><p><code>whoami </code>&nbsp; - returns the user.</p><p><code>find </code>&nbsp; - searches for a file.</p><p>&nbsp;</p><p>Usage of Commands:</p><p><strong>Changing/Making/Removing a File</strong></p><p><code>touch text.txt </code> - creates a file called 'text.txt'.</p><p><code>echo "some text" >> text.txt </code> - writes 'some text' into a file called 'text.txt'.</p><p><code>echo "some other text" > text.txt </code> - rewrites 'some other text' into a file called 'text.txt'.</p><p><code>echo "" > text.txt </code> - easy trick to truncate a file without removing it. </p><p><strong>Changing/Making/Removing Directories</strong></p><p><code>mkdir somedirectory </code> - creates a directory called 'somedirectory'.</p><p><code>rmdir somedirectory </code> - removes a directory called 'somedirectory'.</p><p><code>rmdir -r somedirectory </code> - removes a directory and all of the contents in 'somedirectory'.</p><p><code>cd ~ </code> - changes to the home directory.</p><p><code>cd / </code> - changes to the root directory.</p><p><code>cd .. </code> - moves down a directory.</p><p><strong>Miscellaneous</strong></p><p><code>man man</code> - provides information on the man command itself.<br /></p><p><code>ls | grep "word" </code> - this will highlight any directory that contains the pattern "word".</p><p><code>find -name "*.pdf" </code> - searches for all pdf files.</p><p><code>cat text.txt </code> - quick way to display the contents of a text file in this case will display the contents of text.txt.</p><p><code>pwd </code> - displays the current directory that you are in.</p><p><code>cp file.txt /home/file.txt </code> - copies the file to the home directory saved as file.txt.</p><p><code>cp /home/* /etc </code> - copies all the home files to /etc directory.</p><p>Sources: <a href="http://askubuntu.com/questions/14284/why-is-a-virtual-terminal-virtual-and-what-why-where-is-the-real-terminal/14294#14294" target="<i>blank">Terminals</a>, <a href="http://www.linusakesson.net/programming/tty/index.php" target="</i>blank">TTY</a></p>
 </div>
 
 <div id="post-tags">
     <b>Tags: </b>
     
-    <a href="/tags-output/Clojure/">Clojure</a>
+    <a href="/tags-output/Computers/">Computers</a>
     
-    <a href="/tags-output/Code/">Code</a>
-    
-    <a href="/tags-output/Guide/">Guide</a>
+    <a href="/tags-output/Terminals/">Terminals</a>
     
 </div>
 
 
     <div id="prev-next">
         
-        <a href="/posts-output/2016-08-30-Using_Swing/">&laquo; Creating JFrames using Swing APIs in Clojure (Part 1)</a>
+        <a href="/posts-output/basics-of-clojure/">&laquo; Basics of Clojure (Part 1)</a>
         
         
-        <a class="right" href="/posts-output/2016-08-28-jar/">Clojure File to Standalone Jar &raquo;</a>
+        <a class="right" href="/posts-output/path-finding/">Pathfinding &raquo;</a>
         
     </div>
 
