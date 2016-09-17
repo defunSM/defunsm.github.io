@@ -12,7 +12,7 @@ http://blogawesome.com/
 A place to share my knowledge
 </description>
 <lastBuildDate>
-Sat, 17 Sep 2016 15:26:33 -0400
+Sat, 17 Sep 2016 15:29:54 -0400
 </lastBuildDate>
 <generator>
 clj-rss
@@ -28,7 +28,7 @@ http://blogawesome.com/posts-output/basics-of-clojurepart2/
 Basics of Clojure - Mapping (Part 2)
 </title>
 <description>
-&lt;p&gt;Link to Previous Guide: &lt;a href='https://defunsm.github.io/posts-output/basics-of-clojure/'&gt;Basics of Clojure (Part 1)&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Today we'll explore how to do some mapping, applying and recursion in clojure. &lt;/p&gt;&lt;p&gt;Lets start off with writing a simple function that will add one to whatever argument given.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;defn add &amp;#91;x&amp;#93; &amp;#40;+ x 1&amp;#41;&amp;#41; ;; function that adds one to the argument given.
+&lt;p&gt;Link to Previous Guide: &lt;a href='https://defunsm.github.io/posts-output/basics-of-clojure/'&gt;Basics of Clojure (Part 1)&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Today we'll explore how to do some mapping in clojure. &lt;/p&gt;&lt;p&gt;Lets start off with writing a simple function that will add one to whatever argument given.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;defn add &amp;#91;x&amp;#93; &amp;#40;+ x 1&amp;#41;&amp;#41; ;; function that adds one to the argument given.
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;now lets make something called a vector which will contain numbers that we want to manipulate later on.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;def numbers &amp;#91;1 2 3&amp;#93;&amp;#41; ;; this is how you create a persistant vector.
 
 &amp;#40;type numbers&amp;#41; ;; shows you that the numbers is of type persistantvector.
