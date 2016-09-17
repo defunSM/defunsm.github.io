@@ -12,11 +12,56 @@ http://blogawesome.com/
 A place to share my knowledge
 </description>
 <lastBuildDate>
-Sun, 11 Sep 2016 21:18:24 -0400
+Sat, 17 Sep 2016 15:26:33 -0400
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://blogawesome.com/posts-output/basics-of-clojurepart2/
+</guid>
+<link>
+http://blogawesome.com/posts-output/basics-of-clojurepart2/
+</link>
+<title>
+Basics of Clojure - Mapping (Part 2)
+</title>
+<description>
+&lt;p&gt;Link to Previous Guide: &lt;a href='https://defunsm.github.io/posts-output/basics-of-clojure/'&gt;Basics of Clojure (Part 1)&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Today we'll explore how to do some mapping, applying and recursion in clojure. &lt;/p&gt;&lt;p&gt;Lets start off with writing a simple function that will add one to whatever argument given.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;defn add &amp;#91;x&amp;#93; &amp;#40;+ x 1&amp;#41;&amp;#41; ;; function that adds one to the argument given.
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;now lets make something called a vector which will contain numbers that we want to manipulate later on.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;def numbers &amp;#91;1 2 3&amp;#93;&amp;#41; ;; this is how you create a persistant vector.
+
+&amp;#40;type numbers&amp;#41; ;; shows you that the numbers is of type persistantvector.
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now we can map the function add across the vector to each number using map like so.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;map add numbers&amp;#41; ;; This will essentially add 1 to each number in the vector.
+
+;; &amp;#40;2 3 4&amp;#41; 
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Notice how the end result is a LazySeq and not a vector. I'm not going to get into why that happens but you can do some research into the reason why.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;type &amp;#40;map add numbers&amp;#41;&amp;#41; ;; This is of type LazySeq.
+
+&amp;#40;vec &amp;#40;map add numbers&amp;#41;&amp;#41; ;; turns the LazySeq into a vector if it really bothers you.
+
+&amp;#40;type &amp;#40;vec &amp;#40;map add numebrs&amp;#41;&amp;#41;&amp;#41; ;; Shows that the result from using vec on the lazyseq returns a vector.
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;You could also do it like the following to achieve the same result as previous.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;map &amp;#40;fn &amp;#91;x&amp;#93; &amp;#40;+ x 1&amp;#41;&amp;#41; numbers&amp;#41; ;; this time your just using an anonymous function. 
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now lets say we want the second power of all numbers from 1 to 100? How would we go about such as task? Well lets start off with a function that raises an argument to the second power.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;defn powertwo &amp;#91;x&amp;#93; &amp;#40;&amp;#42; x x&amp;#41;&amp;#41; ;; raises it to the second power since its multiplying by itself.
+
+&amp;#40;powertwo 7&amp;#41; ;; should give you 49 to see that it works.
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now we don't wanna write out 1 to 100 so we'll just create a lazyseq for it by the following using range.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;range 101&amp;#41; ;; it gives us all the numbers 0 to 100. However we don't really want 0 so we can do the following.
+
+&amp;#40;rest &amp;#40;range 101&amp;#41;&amp;#41; ;; this gives us a list so add vec to it.
+
+&amp;#40;vec &amp;#40;rest &amp;#40;range 101&amp;#41;&amp;#41;&amp;#41; ;; there we go.
+
+&amp;#40;def numbers &amp;#40;rest &amp;#40;range 101&amp;#41;&amp;#41;&amp;#41; ;; now we have that binded to numbers.
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now we can use map to use ouwer powertwo function over all then numbers.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;map powertwo numbers&amp;#41; ;; now all the numbers are raised to the second power. 
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Thats about it and finally as a bonus I'll show you another function reduce. That will give you the sum of all the numbers in the vector!&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;reduce + &amp;#40;map powertwo numbers&amp;#41;&amp;#41; ;; BONUS
+&lt;/code&gt;&lt;/pre&gt; 
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Sat, 17 Sep 2016 00:00:00 -0400
+</pubDate>
+</item>
 <item>
 <guid>
 http://blogawesome.com/posts-output/basics-of-clojure/
