@@ -12,11 +12,47 @@ http://blogawesome.com/
 A place to share my knowledge
 </description>
 <lastBuildDate>
-Sat, 17 Sep 2016 15:29:54 -0400
+Sun, 18 Sep 2016 09:54:36 -0400
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://blogawesome.com/posts-output/basics-of-clojurepart3/
+</guid>
+<link>
+http://blogawesome.com/posts-output/basics-of-clojurepart3/
+</link>
+<title>
+Basics of Clojure - Recursion (Part 3)
+</title>
+<description>
+  &lt;p&gt;If you're learning clojure chances are this isn't your first language. So you probably have some familiarity with what recursion is.&lt;/p&gt;&lt;p&gt;We will start off with making a simple factorial function to get us started with seeing recursion.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;defn factorial &amp;#91;n&amp;#93;  ;; our factorial function accepting one argument
+  &amp;#40;if &amp;#40;= n 1&amp;#41;        ;; checks if n is equal to 1 and if so returns 1
+    1
+    &amp;#40;&amp;#42; n &amp;#40;factorial &amp;#40;dec n&amp;#41;&amp;#41;&amp;#41;&amp;#41;&amp;#41;  ;; calls the factorial again after decreasing n by 1.
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Alright now lets see if it works by doing a test.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;factorial 3&amp;#41; ;; which we know should be 3x2x1 which is 6. So it works.
+
+;; 6
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;So lets test the power of our function by doing something larger like 40.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;factorial 40&amp;#41; ;; Oh no a StackOverError. What happened?
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;So our function isn't as great as we may think. It won't accept larger numbers.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;defn factorial &amp;#91;n&amp;#93; ;; Our factorial function accepts one argument.
+  &amp;#40;loop &amp;#91;n n        ;; This is the looping part which sets our argument to n
+         sum 1&amp;#93;     ;; Our sum is just one for now.
+    &amp;#40;if &amp;#40;= n 0&amp;#41;     ;; If n becomes 0 than return the sum basically ends the loop
+      sum
+      &amp;#40;recur &amp;#40;dec n&amp;#41; &amp;#40;&amp;#42; sum n&amp;#41;&amp;#41;&amp;#41;&amp;#41;&amp;#41;  ;; This will continue the loop til the if state is met.
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Using recur will ensure that you won't run into a StackOverError such as the function before was not taking advantage of recur and thus was not head-tail optimized clojure will do tail-call optimization if you use the recur function. Also if use this function now it'll give you a StackOverError but because you have to set the JVM using -Xss and -XThreadStackSize to set the stack size otherwise you'll still get this error for numbers greater than 20. &lt;/p&gt;&lt;p&gt;There is an even shorter two line way of doing it using reduce as I showed you previously.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;defn factorial &amp;#91;n&amp;#93;
+  &amp;#40;reduce &amp;#42; &amp;#40;range 1 &amp;#40;inc n&amp;#41;&amp;#41;&amp;#41;&amp;#41; ;; Takes advantage of range making a list of numbers.
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The second one takes advantage of range since it creates a list of numbers and than reduce multiplies all the numbers that range creates.&lt;/p&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Sun, 18 Sep 2016 00:00:00 -0400
+</pubDate>
+</item>
 <item>
 <guid>
 http://blogawesome.com/posts-output/basics-of-clojurepart2/
@@ -29,7 +65,7 @@ Basics of Clojure - Mapping (Part 2)
 </title>
 <description>
 &lt;p&gt;Link to Previous Guide: &lt;a href='https://defunsm.github.io/posts-output/basics-of-clojure/'&gt;Basics of Clojure (Part 1)&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Today we'll explore how to do some mapping in clojure. &lt;/p&gt;&lt;p&gt;Lets start off with writing a simple function that will add one to whatever argument given.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;defn add &amp;#91;x&amp;#93; &amp;#40;+ x 1&amp;#41;&amp;#41; ;; function that adds one to the argument given.
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;now lets make something called a vector which will contain numbers that we want to manipulate later on.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;def numbers &amp;#91;1 2 3&amp;#93;&amp;#41; ;; this is how you create a persistant vector.
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now lets make something called a vector which will contain numbers that we want to manipulate later on.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;def numbers &amp;#91;1 2 3&amp;#93;&amp;#41; ;; this is how you create a persistant vector.
 
 &amp;#40;type numbers&amp;#41; ;; shows you that the numbers is of type persistantvector.
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now we can map the function add across the vector to each number using map like so.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;map add numbers&amp;#41; ;; This will essentially add 1 to each number in the vector.
@@ -40,7 +76,7 @@ Basics of Clojure - Mapping (Part 2)
 &amp;#40;vec &amp;#40;map add numbers&amp;#41;&amp;#41; ;; turns the LazySeq into a vector if it really bothers you.
 
 &amp;#40;type &amp;#40;vec &amp;#40;map add numebrs&amp;#41;&amp;#41;&amp;#41; ;; Shows that the result from using vec on the lazyseq returns a vector.
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;You could also do it like the following to achieve the same result as previous.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;map &amp;#40;fn &amp;#91;x&amp;#93; &amp;#40;+ x 1&amp;#41;&amp;#41; numbers&amp;#41; ;; this time your just using an anonymous function. 
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;You could also do it like the following to achieve the same result as previous.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;map &amp;#40;fn &amp;#91;x&amp;#93; &amp;#40;+ x 1&amp;#41;&amp;#41; numbers&amp;#41; ;; this time you're just using an anonymous function. 
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now lets say we want the second power of all numbers from 1 to 100? How would we go about such as task? Well lets start off with a function that raises an argument to the second power.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;defn powertwo &amp;#91;x&amp;#93; &amp;#40;&amp;#42; x x&amp;#41;&amp;#41; ;; raises it to the second power since its multiplying by itself.
 
 &amp;#40;powertwo 7&amp;#41; ;; should give you 49 to see that it works.
@@ -51,7 +87,7 @@ Basics of Clojure - Mapping (Part 2)
 &amp;#40;vec &amp;#40;rest &amp;#40;range 101&amp;#41;&amp;#41;&amp;#41; ;; there we go.
 
 &amp;#40;def numbers &amp;#40;rest &amp;#40;range 101&amp;#41;&amp;#41;&amp;#41; ;; now we have that binded to numbers.
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now we can use map to use ouwer powertwo function over all then numbers.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;map powertwo numbers&amp;#41; ;; now all the numbers are raised to the second power. 
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now we can use map to use our powertwo function over all then numbers.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;map powertwo numbers&amp;#41; ;; now all the numbers are raised to the second power. 
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Thats about it and finally as a bonus I'll show you another function reduce. That will give you the sum of all the numbers in the vector!&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;reduce + &amp;#40;map powertwo numbers&amp;#41;&amp;#41; ;; BONUS
 &lt;/code&gt;&lt;/pre&gt; 
 </description>

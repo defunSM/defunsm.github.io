@@ -53,11 +53,11 @@
                         <li class="divider"></li>
                         <li class="dropdown-header">Recent Posts</li>
                         
+                        <li><a href="/posts-output/basics-of-clojurepart3/">Basics of Clojure - Recursion (Part 3)</a></li>
+                        
                         <li><a href="/posts-output/basics-of-clojurepart2/">Basics of Clojure - Mapping (Part 2)</a></li>
                         
                         <li><a href="/posts-output/basics-of-clojure/">Basics of Clojure (Part 1)</a></li>
-                        
-                        <li><a href="/posts-output/terminalshell/">Terminals and Shell Commands</a></li>
                         
                         
 
@@ -110,7 +110,7 @@
 <div>
     
     <p>Link to Previous Guide: <a href='https://defunsm.github.io/posts-output/basics-of-clojure/'>Basics of Clojure (Part 1)</a></p><p>Today we'll explore how to do some mapping in clojure. </p><p>Lets start off with writing a simple function that will add one to whatever argument given.</p><pre><code>&#40;defn add &#91;x&#93; &#40;+ x 1&#41;&#41; ;; function that adds one to the argument given.
-</code></pre><p>now lets make something called a vector which will contain numbers that we want to manipulate later on.</p><pre><code>&#40;def numbers &#91;1 2 3&#93;&#41; ;; this is how you create a persistant vector.
+</code></pre><p>Now lets make something called a vector which will contain numbers that we want to manipulate later on.</p><pre><code>&#40;def numbers &#91;1 2 3&#93;&#41; ;; this is how you create a persistant vector.
 
 &#40;type numbers&#41; ;; shows you that the numbers is of type persistantvector.
 </code></pre><p>Now we can map the function add across the vector to each number using map like so.</p><pre><code>&#40;map add numbers&#41; ;; This will essentially add 1 to each number in the vector.
@@ -121,7 +121,7 @@
 &#40;vec &#40;map add numbers&#41;&#41; ;; turns the LazySeq into a vector if it really bothers you.
 
 &#40;type &#40;vec &#40;map add numebrs&#41;&#41;&#41; ;; Shows that the result from using vec on the lazyseq returns a vector.
-</code></pre><p>You could also do it like the following to achieve the same result as previous.</p><pre><code>&#40;map &#40;fn &#91;x&#93; &#40;+ x 1&#41;&#41; numbers&#41; ;; this time your just using an anonymous function. 
+</code></pre><p>You could also do it like the following to achieve the same result as previous.</p><pre><code>&#40;map &#40;fn &#91;x&#93; &#40;+ x 1&#41;&#41; numbers&#41; ;; this time you're just using an anonymous function. 
 </code></pre><p>Now lets say we want the second power of all numbers from 1 to 100? How would we go about such as task? Well lets start off with a function that raises an argument to the second power.</p><pre><code>&#40;defn powertwo &#91;x&#93; &#40;&#42; x x&#41;&#41; ;; raises it to the second power since its multiplying by itself.
 
 &#40;powertwo 7&#41; ;; should give you 49 to see that it works.
@@ -132,7 +132,7 @@
 &#40;vec &#40;rest &#40;range 101&#41;&#41;&#41; ;; there we go.
 
 &#40;def numbers &#40;rest &#40;range 101&#41;&#41;&#41; ;; now we have that binded to numbers.
-</code></pre><p>Now we can use map to use ouwer powertwo function over all then numbers.</p><pre><code>&#40;map powertwo numbers&#41; ;; now all the numbers are raised to the second power. 
+</code></pre><p>Now we can use map to use our powertwo function over all then numbers.</p><pre><code>&#40;map powertwo numbers&#41; ;; now all the numbers are raised to the second power. 
 </code></pre><p>Thats about it and finally as a bonus I'll show you another function reduce. That will give you the sum of all the numbers in the vector!</p><pre><code>&#40;reduce + &#40;map powertwo numbers&#41;&#41; ;; BONUS
 </code></pre> 
 </div>
@@ -150,6 +150,8 @@
 
 
     <div id="prev-next">
+        
+        <a href="/posts-output/basics-of-clojurepart3/">&laquo; Basics of Clojure - Recursion (Part 3)</a>
         
         
         <a class="right" href="/posts-output/basics-of-clojure/">Basics of Clojure (Part 1) &raquo;</a>
