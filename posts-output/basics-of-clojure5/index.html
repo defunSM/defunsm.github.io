@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Physics. Computers. Code.: Getting Started with Clojure</title>
-    <link rel="canonical" href="http://blogawesome.com/posts-output/getting-started-with-clojure/">
+    <title>Physics. Computers. Code.: Basics of Clojure - Watching an Atom (Part 5)</title>
+    <link rel="canonical" href="http://blogawesome.com/posts-output/basics-of-clojure5/">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='http://fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700' rel='stylesheet'
           type='text/css'>
@@ -102,21 +102,33 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">September 2, 2016</div>
+        <div class="col-lg-6">September 21, 2016</div>
         
     </div>
-    <h2>Getting Started with Clojure</h2>
+    <h2>Basics of Clojure - Watching an Atom (Part 5)</h2>
 </div>
 <div>
     
-     <p> Since my guides are related to Clojure. I might as well write a guide of what my clojure setup looks like and also what resources I read to write clojure code.  </p><p> <img src="https://defunsm.github.io/img/started.png" alt="started" />  </p><p> <a href='https://www.gnu.org/software/emacs/'>Emacs</a>. I don't think there is more flexability when it comes it. You can also try GitHub's <a href='https://atom.io/'>Atom</a> Text Editor.  </p><p> <img src="https://cdn.meme.am/instances/500x/25485507.jpg" alt="clojure memes" />  </p><p> For Atom you may need to download a few plugins before working with clojure code. Like Downloading the proto-nrepl. Paraindent and etc.  </p><p>After having emacs go ahead and get the <a href='https://github.com/overtone/emacs-live'>emacs live</a> one which is absolutely almost necessary to write in any lisp dialect. </p><p>Emacs live might be a little tricky to install but they have an easy install on their repo and typing the following should install emacs live in just one line.</p><pre><code>bash &lt;&#40;curl -fksSL https://raw.github.com/overtone/emacs-live/master/installer/install-emacs-live.sh&#41;
-</code></pre><p>If you truely want to you can see my personal additions to emacs <a href='https://github.com/defunSM/emacs-live'>here</a>.</p><p>Useful resources:</p><ol><li><a href='http://www.braveclojure.com/'>Braveclojure</a></li><li><a href='https://github.com/functional-koans/clojure-koans'>Clojure Koans</a></li><li><a href='https://www.amazon.com/Joy-Clojure-Thinking-Way/dp/1935182641/ref=sr_1_2?ie=UTF8&qid=1472942680&sr=8-2&keywords=joy+of+clojure'>The joy of Clojure</a> (This one is rather advanced.)</li></ol><p>Things to look up as you are learning clojure:</p><ol><li><a href='https://github.com/reagent-project/reagent'>Reagent</a></li><li><a href='https://github.com/daveray/seesaw'>Seesaw</a></li><li><a href='https://github.com/clojure/clojurescript'>ClojureScript</a></li><li><a href='http://quil.info/'>Quil</a></li></ol>
+    <p>Watching an Atom is exactly what it sounds like. Adding a Watch on an Atom keeps track of your atom and monitors them and when a specific condition is met it will trigger some function and alert you to the change.</p><p>Lets say we have our player that starts off with 100 health and when he reaches zero health we want to be notified that the game is over. The way we would go about this is first by creating an atom for the player. We already learned this in part 4.</p><pre><code>&#40;def player &#40;atom {:hp 100}&#41;&#41; ;; creates the player health at 100.
+</code></pre><p>Now we need a function that will lower the health of the player. We'll call this player-damage.</p><pre><code>&#40;defn player-damage &#91;val&#93;
+  &#40;swap! player update-in &#91;:hp&#93; - val&#41;&#41; ;; lowers the health of the player.
+</code></pre><p>Now that we have a way to lower the player's health we can now monitor the atom as we change the player's health. The new part where we create a watch for out atom. This is done by the add-watch function.</p><pre><code>&#40;defn watch-health &#91;key watch old new&#93;  ;; contains the old state and the new state.
+  &#40;let &#91;hp &#40;:hp new&#41;&#93;
+      &#40;if &#40;= 0 hp&#41;
+    &#40;println &quot;You are now dead&quot;&#41;   ;; prints this if hp is equal to 0.
+    &#40;println &quot;You are at&quot; hp &quot;health&quot;&#41;&#41;&#41;&#41;   ;; prints this if not 0.
+    
+&#40;add-watch player :health watch-health&#41;  ;; watch-health is the function used to monitor the player health.    
+</code></pre><p>Now we can check if the atom is actually being watched.</p><pre><code>&#40;player-damage 50&#41; ;; now if you call this you'll see the hp being printed and than the second time it'll be zero and it'll drop into the negative healths.
+</code></pre><p>Now the atom being monitored and we are notified when the health is dropped to 0. This can have all kinds of implementations that require watching a value drop or increase to a specific value and than a certain action being applied in this cause we only printed but we could do anything from programming things like automatically turning on an air conditioner if the temperature is a certain amount in the room or can watch for a specific time and alert you to something u have to do at that time. There is a wide varity of things that can be done with watch and is an extremely important feature.</p>
 </div>
 
 <div id="post-tags">
     <b>Tags: </b>
     
     <a href="/tags-output/Clojure/">Clojure</a>
+    
+    <a href="/tags-output/Code/">Code</a>
     
     <a href="/tags-output/Guide/">Guide</a>
     
@@ -125,10 +137,8 @@
 
     <div id="prev-next">
         
-        <a href="/posts-output/2016-09-03-using_quil_part_2/">&laquo; Graphics using Quil in Clojure (Part 2)</a>
         
-        
-        <a class="right" href="/posts-output/using_quil/">Graphics using Quil in Clojure (Part 1) &raquo;</a>
+        <a class="right" href="/posts-output/basics-of-clojurepart4/">Basics of Clojure - Atoms (Part 4) &raquo;</a>
         
     </div>
 

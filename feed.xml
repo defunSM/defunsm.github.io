@@ -12,11 +12,42 @@ http://blogawesome.com/
 A place to share my knowledge
 </description>
 <lastBuildDate>
-Tue, 20 Sep 2016 09:28:34 -0400
+Tue, 20 Sep 2016 22:48:11 -0400
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://blogawesome.com/posts-output/basics-of-clojure5/
+</guid>
+<link>
+http://blogawesome.com/posts-output/basics-of-clojure5/
+</link>
+<title>
+Basics of Clojure - Watching an Atom (Part 5)
+</title>
+<description>
+&lt;p&gt;Watching an Atom is exactly what it sounds like. Adding a Watch on an Atom keeps track of your atom and monitors them and when a specific condition is met it will trigger some function and alert you to the change.&lt;/p&gt;&lt;p&gt;Lets say we have our player that starts off with 100 health and when he reaches zero health we want to be notified that the game is over. The way we would go about this is first by creating an atom for the player. We already learned this in part 4.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;def player &amp;#40;atom {:hp 100}&amp;#41;&amp;#41; ;; creates the player health at 100.
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now we need a function that will lower the health of the player. We'll call this player-damage.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;defn player-damage &amp;#91;val&amp;#93;
+  &amp;#40;swap! player update-in &amp;#91;:hp&amp;#93; - val&amp;#41;&amp;#41; ;; lowers the health of the player.
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now that we have a way to lower the player's health we can now monitor the atom as we change the player's health. The new part where we create a watch for out atom. This is done by the add-watch function.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;defn watch-health &amp;#91;key watch old new&amp;#93;  ;; contains the old state and the new state.
+  &amp;#40;let &amp;#91;hp &amp;#40;:hp new&amp;#41;&amp;#93;
+      &amp;#40;if &amp;#40;= 0 hp&amp;#41;
+    &amp;#40;println &amp;quot;You are now dead&amp;quot;&amp;#41;   ;; prints this if hp is equal to 0.
+    &amp;#40;println &amp;quot;You are at&amp;quot; hp &amp;quot;health&amp;quot;&amp;#41;&amp;#41;&amp;#41;&amp;#41;   ;; prints this if not 0.
+    
+&amp;#40;add-watch player :health watch-health&amp;#41;  ;; watch-health is the function used to monitor the player health.    
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now we can check if the atom is actually being watched.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;player-damage 50&amp;#41; ;; now if you call this you'll see the hp being printed and than the second time it'll be zero and it'll drop into the negative healths.
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now the atom being monitored and we are notified when the health is dropped to 0. This can have all kinds of implementations that require watching a value drop or increase to a specific value and than a certain action being applied in this cause we only printed but we could do anything from programming things like automatically turning on an air conditioner if the temperature is a certain amount in the room or can watch for a specific time and alert you to something u have to do at that time. There is a wide varity of things that can be done with watch and is an extremely important feature.&lt;/p&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Wed, 21 Sep 2016 00:00:00 -0400
+</pubDate>
+</item>
 <item>
 <guid>
 http://blogawesome.com/posts-output/basics-of-clojurepart4/
@@ -28,7 +59,9 @@ http://blogawesome.com/posts-output/basics-of-clojurepart4/
 Basics of Clojure - Atoms (Part 4)
 </title>
 <description>
-&lt;p&gt;This is like the fun part where you can now begin to model databases using atoms. Atoms are used a whole lot in clojure and are particularly useful so make sure you know them well. Here I'm just going to provide a brief outline of what atoms can do without explaining what atoms are actually which is a whole another conversation.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;def stats &amp;#40;atom {:hp 100 :gold 0}&amp;#41;&amp;#41; ;; How to create an atom in clojure. The :hp and :gold are key-words that can be used to look up the values later on.
+&lt;p&gt;This is like the fun part where you can now begin to model databases using atoms. Atoms are used a whole lot in clojure and are particularly useful so make sure you know them well. Here I'm just going to provide a brief outline of what atoms can do without explaining what atoms are actually which is a whole another conversation.&lt;/p&gt;&lt;p&gt;Let me introduce to you the atom data structure.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;type &amp;#40;atom {}&amp;#41;&amp;#41; ;; This is an atom. 
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Also the persistant Array Map which is another data structure in clojure. Typically we don't use vectors when using atoms. &lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;type {}&amp;#41; ;; Using {} is a persistantArrayMap in other languages this can be thought of as hashes. 
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now that you are familiar with the data structures that will be presented lets use atoms and persistantArrayMaps to create a var called stats that will contain two values which will be health points and gold. We can do this by the following...&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;def stats &amp;#40;atom {:hp 100 :gold 0}&amp;#41;&amp;#41; ;; How to create an atom in clojure. The :hp and :gold are key-words that can be used to look up the values later on.
 
 &amp;#40;println @stats&amp;#41; ;; This shows the value of stats. Notice that you have to add the @ to show the value of stats. This is called dereferencing an atom.
 
@@ -50,6 +83,7 @@ Basics of Clojure - Atoms (Part 4)
 &amp;#40;println @stats&amp;#41; ;; you can now check that your value has changed for gold.  
 
 &amp;#40;change-by &amp;quot;hp&amp;quot; -5&amp;#41; ;; Decreases the hp value by 5.
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;One last thing to add is if you want to reset the entire atom. &lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;reset! stats {:hp 100 :gold 0}&amp;#41; ;; this will set the value of stats to {:hp 100 :gold 0} 
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now you have everything you need to make your own little RPG text games!&lt;/p&gt;
 </description>
 <enclosure>

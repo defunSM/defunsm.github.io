@@ -53,11 +53,11 @@
                         <li class="divider"></li>
                         <li class="dropdown-header">Recent Posts</li>
                         
+                        <li><a href="/posts-output/basics-of-clojure5/">Basics of Clojure - Watching an Atom (Part 5)</a></li>
+                        
                         <li><a href="/posts-output/basics-of-clojurepart4/">Basics of Clojure - Atoms (Part 4)</a></li>
                         
                         <li><a href="/posts-output/basics-of-clojurepart3/">Basics of Clojure - Recursion (Part 3)</a></li>
-                        
-                        <li><a href="/posts-output/basics-of-clojurepart2/">Basics of Clojure - Mapping (Part 2)</a></li>
                         
                         
 
@@ -109,7 +109,9 @@
 </div>
 <div>
     
-    <p>This is like the fun part where you can now begin to model databases using atoms. Atoms are used a whole lot in clojure and are particularly useful so make sure you know them well. Here I'm just going to provide a brief outline of what atoms can do without explaining what atoms are actually which is a whole another conversation.</p><pre><code>&#40;def stats &#40;atom {:hp 100 :gold 0}&#41;&#41; ;; How to create an atom in clojure. The :hp and :gold are key-words that can be used to look up the values later on.
+    <p>This is like the fun part where you can now begin to model databases using atoms. Atoms are used a whole lot in clojure and are particularly useful so make sure you know them well. Here I'm just going to provide a brief outline of what atoms can do without explaining what atoms are actually which is a whole another conversation.</p><p>Let me introduce to you the atom data structure.</p><pre><code>&#40;type &#40;atom {}&#41;&#41; ;; This is an atom. 
+</code></pre><p>Also the persistant Array Map which is another data structure in clojure. Typically we don't use vectors when using atoms. </p><pre><code>&#40;type {}&#41; ;; Using {} is a persistantArrayMap in other languages this can be thought of as hashes. 
+</code></pre><p>Now that you are familiar with the data structures that will be presented lets use atoms and persistantArrayMaps to create a var called stats that will contain two values which will be health points and gold. We can do this by the following...</p><pre><code>&#40;def stats &#40;atom {:hp 100 :gold 0}&#41;&#41; ;; How to create an atom in clojure. The :hp and :gold are key-words that can be used to look up the values later on.
 
 &#40;println @stats&#41; ;; This shows the value of stats. Notice that you have to add the @ to show the value of stats. This is called dereferencing an atom.
 
@@ -131,6 +133,7 @@
 &#40;println @stats&#41; ;; you can now check that your value has changed for gold.  
 
 &#40;change-by &quot;hp&quot; -5&#41; ;; Decreases the hp value by 5.
+</code></pre><p>One last thing to add is if you want to reset the entire atom. </p><pre><code>&#40;reset! stats {:hp 100 :gold 0}&#41; ;; this will set the value of stats to {:hp 100 :gold 0} 
 </code></pre><p>Now you have everything you need to make your own little RPG text games!</p>
 </div>
 
@@ -147,6 +150,8 @@
 
 
     <div id="prev-next">
+        
+        <a href="/posts-output/basics-of-clojure5/">&laquo; Basics of Clojure - Watching an Atom (Part 5)</a>
         
         
         <a class="right" href="/posts-output/basics-of-clojurepart3/">Basics of Clojure - Recursion (Part 3) &raquo;</a>
