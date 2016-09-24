@@ -53,11 +53,11 @@
                         <li class="divider"></li>
                         <li class="dropdown-header">Recent Posts</li>
                         
+                        <li><a href="/posts-output/intro-to-haskell/">Haskell - Introduction</a></li>
+                        
                         <li><a href="/posts-output/basics-of-clojure5/">Basics of Clojure - Watching an Atom (Part 5)</a></li>
                         
                         <li><a href="/posts-output/basics-of-clojurepart4/">Basics of Clojure - Atoms (Part 4)</a></li>
-                        
-                        <li><a href="/posts-output/basics-of-clojurepart3/">Basics of Clojure - Recursion (Part 3)</a></li>
                         
                         
 
@@ -65,23 +65,25 @@
                         <li class="divider"></li>
                         <li class="dropdown-header">Tags</li>
                         
-                        <li><a href="/tags-output/Clojure/">Clojure</a></li>
-                        
-                        <li><a href="/tags-output/Code/">Code</a></li>
-                        
-                        <li><a href="/tags-output/Guide/">Guide</a></li>
-                        
                         <li><a href="/tags-output/Computers/">Computers</a></li>
                         
-                        <li><a href="/tags-output/Terminals/">Terminals</a></li>
+                        <li><a href="/tags-output/Graphics/">Graphics</a></li>
                         
                         <li><a href="/tags-output/Pathfinding/">Pathfinding</a></li>
-                        
-                        <li><a href="/tags-output/Graphics/">Graphics</a></li>
                         
                         <li><a href="/tags-output/Clojure Guide Code/">Clojure Guide Code</a></li>
                         
                         <li><a href="/tags-output/Blog/">Blog</a></li>
+                        
+                        <li><a href="/tags-output/Clojure/">Clojure</a></li>
+                        
+                        <li><a href="/tags-output/Haskell/">Haskell</a></li>
+                        
+                        <li><a href="/tags-output/Code/">Code</a></li>
+                        
+                        <li><a href="/tags-output/Terminals/">Terminals</a></li>
+                        
+                        <li><a href="/tags-output/Guide/">Guide</a></li>
                         
                         
                     </ul>
@@ -102,49 +104,38 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">September 21, 2016</div>
+        <div class="col-lg-6">September 25, 2016</div>
         
     </div>
-    <h2>Basics of Clojure - Watching an Atom (Part 5)</h2>
+    <h2>Haskell - Introduction</h2>
 </div>
 <div>
     
-    <p>Watching an Atom is exactly what it sounds like. Adding a Watch on an Atom keeps track of your atom and monitors them and when a specific condition is met it will trigger some function and alert you to the change.</p><p>Lets say we have our player that starts off with 100 health and when he reaches zero health we want to be notified that the game is over. The way we would go about this is first by creating an atom for the player. We already learned this in part 4.</p><pre><code>&#40;def player &#40;atom {:hp 100}&#41;&#41; ;; creates the player health at 100.
-</code></pre><p>Now we need a function that will lower the health of the player. We'll call this player-damage.</p><pre><code>&#40;defn player-damage &#91;val&#93;
-  &#40;swap! player update-in &#91;:hp&#93; - val&#41;&#41; ;; lowers the health of the player.
-</code></pre><p>Now that we have a way to lower the player's health we can now monitor the atom as we change the player's health. The new part where we create a watch for out atom. This is done by the add-watch function.</p><pre><code>&#40;defn watch-health &#91;key watch old new&#93;  ;; contains the old state and the new state.
-  &#40;let &#91;hp &#40;:hp new&#41;&#93;
-      &#40;if &#40;= 0 hp&#41;
-    &#40;println &quot;You are now dead&quot;&#41;   ;; prints this if hp is equal to 0.
-    &#40;println &quot;You are at&quot; hp &quot;health&quot;&#41;&#41;&#41;&#41;   ;; prints this if not 0.
-    
-&#40;add-watch player :health watch-health&#41;  ;; watch-health is the function used to monitor the player health.    
-</code></pre><p>Now we can check if the atom is actually being watched.</p><pre><code>&#40;player-damage 50&#41; ;; now if you call this you'll see the hp being printed and than the second time it'll be zero and it'll drop into the negative healths.
-</code></pre><p>Now the atom being monitored and we are notified when the health is dropped to 0. This can have all kinds of implementations that require watching a value drop or increase to a specific value and than a certain action being applied in this cause we only printed but we could do anything from programming things like automatically turning on an air conditioner if the temperature is a certain amount in the room or can watch for a specific time and alert you to something u have to do at that time. There is a wide varity of things that can be done with watch and is an extremely important feature.</p>
+    <p><a href='https://www.haskell.org/'>Haskell</a> is a purely functional programming language, statically typed, and lazy. </p><p>Purely Functional being every function in haskell is a function in a mathematical sense. Meaning there is no side effects and a function recieving an argument will always do the same thing. This is very different from object oriented programs which is all about mutating data. Since Haskell is a Pure functional programming language you can not mutate variables.</p><p>GHC is the compiler behind the Haskell language. You'll be testing out most of your code on a repl called ghci. The GHC is actually one behind C in terms of the fastest compilers.</p><p>If you haven't already take a look at their website and download the Haskell Platform which includes GHC, Cabal and some other tools along with a set of libraries <a href='https://www.haskell.org/'>here</a>.</p><p>Haskell is often times known to be the elite functional programming language as it is designed with mathemathics in mind. Haskell is named after logician Haskell Curry and his books regarding logic. However that doesn't mean that you can only do math in Haskell. </p><p>It is said that learning Haskell will however improve programming skills in general and open a new way of seeing and viewing code. Code in Haskell is brief and since it is pure it is easy to reuse code in Haskell. </p><p>Like C Haskell is a strong static typed language but unlike C garbage collection is handled implictly so you dont have to worry about those lingering pointers.</p><p>So after you have downloaded the Haskell platform. Go ahead open up the GHCI by the following...</p><pre><code>ghci
+</code></pre><p>And type ...</p><pre><code>putStrLn &quot;My first line of code in Haskell!&quot;
+</code></pre><p>You have written a line of code in Haskell!</p>
 </div>
 
 <div id="post-tags">
     <b>Tags: </b>
     
-    <a href="/tags-output/Clojure/">Clojure</a>
+    <a href="/tags-output/Haskell/">Haskell</a>
     
     <a href="/tags-output/Code/">Code</a>
-    
-    <a href="/tags-output/Guide/">Guide</a>
     
 </div>
 
 
     
     <div id="comments">
-        <a href="/posts-output/basics-of-clojure5/#disqus_thread">View Comments</a>
+        <a href="/posts-output/intro-to-haskell/#disqus_thread">View Comments</a>
     </div>
     
 
     <div id="prev-next">
         
         
-        <a class="right" href="/posts-output/basics-of-clojurepart4/">Basics of Clojure - Atoms (Part 4) &raquo;</a>
+        <a class="right" href="/posts-output/basics-of-clojure5/">Basics of Clojure - Watching an Atom (Part 5) &raquo;</a>
         
     </div>
 </div>
