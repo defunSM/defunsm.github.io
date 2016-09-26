@@ -5,7 +5,7 @@
 http://blogawesome.com/index.html
 </loc>
 <lastmod>
-2016-09-24
+2016-09-25
 </lastmod>
 </url>
 <url>
@@ -13,7 +13,7 @@ http://blogawesome.com/index.html
 http://blogawesome.com/tags/index.html
 </loc>
 <lastmod>
-2016-09-24
+2016-09-25
 </lastmod>
 </url>
 <url>
@@ -21,7 +21,7 @@ http://blogawesome.com/tags/index.html
 http://blogawesome.com/pages-output/another-page/index.html
 </loc>
 <lastmod>
-2016-09-24
+2016-09-25
 </lastmod>
 </url>
 <url>
@@ -29,7 +29,7 @@ http://blogawesome.com/pages-output/another-page/index.html
 http://blogawesome.com/pages-output/about/index.html
 </loc>
 <lastmod>
-2016-09-24
+2016-09-25
 </lastmod>
 </url>
 <url>
@@ -37,7 +37,7 @@ http://blogawesome.com/pages-output/about/index.html
 http://blogawesome.com/posts-output/2016-08-30-Using_Swing/index.html
 </loc>
 <lastmod>
-2016-09-24
+2016-09-25
 </lastmod>
 </url>
 <url>
@@ -45,7 +45,7 @@ http://blogawesome.com/posts-output/2016-08-30-Using_Swing/index.html
 http://blogawesome.com/posts-output/path-finding/index.html
 </loc>
 <lastmod>
-2016-09-24
+2016-09-25
 </lastmod>
 </url>
 <url>
@@ -53,7 +53,7 @@ http://blogawesome.com/posts-output/path-finding/index.html
 http://blogawesome.com/posts-output/using_quil/index.html
 </loc>
 <lastmod>
-2016-09-24
+2016-09-25
 </lastmod>
 </url>
 <url>
@@ -61,7 +61,7 @@ http://blogawesome.com/posts-output/using_quil/index.html
 http://blogawesome.com/posts-output/getting-started-with-clojure/index.html
 </loc>
 <lastmod>
-2016-09-24
+2016-09-25
 </lastmod>
 </url>
 <url>
@@ -69,7 +69,7 @@ http://blogawesome.com/posts-output/getting-started-with-clojure/index.html
 http://blogawesome.com/posts-output/2016-08-28-jar/index.html
 </loc>
 <lastmod>
-2016-09-24
+2016-09-25
 </lastmod>
 </url>
 <url>
@@ -77,7 +77,7 @@ http://blogawesome.com/posts-output/2016-08-28-jar/index.html
 http://blogawesome.com/posts-output/terminalshell/index.html
 </loc>
 <lastmod>
-2016-09-24
+2016-09-25
 </lastmod>
 </url>
 <url>
@@ -85,7 +85,7 @@ http://blogawesome.com/posts-output/terminalshell/index.html
 http://blogawesome.com/posts-output/intro-to-haskell/index.html
 </loc>
 <lastmod>
-2016-09-24
+2016-09-25
 </lastmod>
 </url>
 <url>
@@ -93,7 +93,7 @@ http://blogawesome.com/posts-output/intro-to-haskell/index.html
 http://blogawesome.com/posts-output/basics-of-clojure5/index.html
 </loc>
 <lastmod>
-2016-09-24
+2016-09-25
 </lastmod>
 </url>
 <url>
@@ -101,7 +101,7 @@ http://blogawesome.com/posts-output/basics-of-clojure5/index.html
 http://blogawesome.com/posts-output/2016-08-29-Clojure_GUI_as_an_Exe/index.html
 </loc>
 <lastmod>
-2016-09-24
+2016-09-25
 </lastmod>
 </url>
 <url>
@@ -109,7 +109,7 @@ http://blogawesome.com/posts-output/2016-08-29-Clojure_GUI_as_an_Exe/index.html
 http://blogawesome.com/posts-output/basics-of-clojurepart2/index.html
 </loc>
 <lastmod>
-2016-09-24
+2016-09-25
 </lastmod>
 </url>
 <url>
@@ -117,7 +117,7 @@ http://blogawesome.com/posts-output/basics-of-clojurepart2/index.html
 http://blogawesome.com/posts-output/2016-08-31-Using_Swing_Part_2/index.html
 </loc>
 <lastmod>
-2016-09-24
+2016-09-25
 </lastmod>
 </url>
 <url>
@@ -125,7 +125,7 @@ http://blogawesome.com/posts-output/2016-08-31-Using_Swing_Part_2/index.html
 http://blogawesome.com/posts-output/2016-09-03-using_quil_part_2/index.html
 </loc>
 <lastmod>
-2016-09-24
+2016-09-25
 </lastmod>
 </url>
 <url>
@@ -133,7 +133,7 @@ http://blogawesome.com/posts-output/2016-09-03-using_quil_part_2/index.html
 http://blogawesome.com/posts-output/basics-of-clojure/index.html
 </loc>
 <lastmod>
-2016-09-24
+2016-09-25
 </lastmod>
 </url>
 <url>
@@ -141,7 +141,15 @@ http://blogawesome.com/posts-output/basics-of-clojure/index.html
 http://blogawesome.com/posts-output/basics-of-clojurepart3/index.html
 </loc>
 <lastmod>
-2016-09-24
+2016-09-25
+</lastmod>
+</url>
+<url>
+<loc>
+http://blogawesome.com/posts-output/Using_swingpart3/index.html
+</loc>
+<lastmod>
+2016-09-25
 </lastmod>
 </url>
 <url>
@@ -149,7 +157,7 @@ http://blogawesome.com/posts-output/basics-of-clojurepart3/index.html
 http://blogawesome.com/posts-output/2016-08-27-new/index.html
 </loc>
 <lastmod>
-2016-09-24
+2016-09-25
 </lastmod>
 </url>
 <url>
@@ -157,7 +165,15 @@ http://blogawesome.com/posts-output/2016-08-27-new/index.html
 http://blogawesome.com/posts-output/basics-of-clojurepart4/index.html
 </loc>
 <lastmod>
-2016-09-24
+2016-09-25
+</lastmod>
+</url>
+<url>
+<loc>
+http://blogawesome.com/posts-output/haskellpart1-ghci/index.html
+</loc>
+<lastmod>
+2016-09-25
 </lastmod>
 </url>
 <url>
@@ -165,7 +181,7 @@ http://blogawesome.com/posts-output/basics-of-clojurepart4/index.html
 http://blogawesome.com/tags-output/Pathfinding/index.html
 </loc>
 <lastmod>
-2016-09-24
+2016-09-25
 </lastmod>
 </url>
 <url>
@@ -173,7 +189,7 @@ http://blogawesome.com/tags-output/Pathfinding/index.html
 http://blogawesome.com/tags-output/Computers/index.html
 </loc>
 <lastmod>
-2016-09-24
+2016-09-25
 </lastmod>
 </url>
 <url>
@@ -181,7 +197,7 @@ http://blogawesome.com/tags-output/Computers/index.html
 http://blogawesome.com/tags-output/Blog/index.html
 </loc>
 <lastmod>
-2016-09-24
+2016-09-25
 </lastmod>
 </url>
 <url>
@@ -189,7 +205,7 @@ http://blogawesome.com/tags-output/Blog/index.html
 http://blogawesome.com/tags-output/Clojure Guide Code/index.html
 </loc>
 <lastmod>
-2016-09-24
+2016-09-25
 </lastmod>
 </url>
 <url>
@@ -197,7 +213,7 @@ http://blogawesome.com/tags-output/Clojure Guide Code/index.html
 http://blogawesome.com/tags-output/Code/index.html
 </loc>
 <lastmod>
-2016-09-24
+2016-09-25
 </lastmod>
 </url>
 <url>
@@ -205,7 +221,7 @@ http://blogawesome.com/tags-output/Code/index.html
 http://blogawesome.com/tags-output/Clojure/index.html
 </loc>
 <lastmod>
-2016-09-24
+2016-09-25
 </lastmod>
 </url>
 <url>
@@ -213,7 +229,7 @@ http://blogawesome.com/tags-output/Clojure/index.html
 http://blogawesome.com/tags-output/Haskell/index.html
 </loc>
 <lastmod>
-2016-09-24
+2016-09-25
 </lastmod>
 </url>
 <url>
@@ -221,7 +237,7 @@ http://blogawesome.com/tags-output/Haskell/index.html
 http://blogawesome.com/tags-output/Graphics/index.html
 </loc>
 <lastmod>
-2016-09-24
+2016-09-25
 </lastmod>
 </url>
 <url>
@@ -229,7 +245,7 @@ http://blogawesome.com/tags-output/Graphics/index.html
 http://blogawesome.com/tags-output/Guide/index.html
 </loc>
 <lastmod>
-2016-09-24
+2016-09-25
 </lastmod>
 </url>
 <url>
@@ -237,7 +253,7 @@ http://blogawesome.com/tags-output/Guide/index.html
 http://blogawesome.com/tags-output/Terminals/index.html
 </loc>
 <lastmod>
-2016-09-24
+2016-09-25
 </lastmod>
 </url>
 <url>
@@ -245,7 +261,7 @@ http://blogawesome.com/tags-output/Terminals/index.html
 http://blogawesome.com/404.html
 </loc>
 <lastmod>
-2016-09-24
+2016-09-25
 </lastmod>
 </url>
 <url>
@@ -253,7 +269,7 @@ http://blogawesome.com/404.html
 http://blogawesome.com/archives/index.html
 </loc>
 <lastmod>
-2016-09-24
+2016-09-25
 </lastmod>
 </url>
 <url>
@@ -261,7 +277,7 @@ http://blogawesome.com/archives/index.html
 http://blogawesome.com/authors-output/SM Salman Hossain/index.html
 </loc>
 <lastmod>
-2016-09-24
+2016-09-25
 </lastmod>
 </url>
 </urlset>

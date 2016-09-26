@@ -12,11 +12,57 @@ http://blogawesome.com/
 A place to share my knowledge
 </description>
 <lastBuildDate>
-Sat, 24 Sep 2016 18:52:10 -0400
+Sun, 25 Sep 2016 20:29:58 -0400
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://blogawesome.com/posts-output/haskellpart1-ghci/
+</guid>
+<link>
+http://blogawesome.com/posts-output/haskellpart1-ghci/
+</link>
+<title>
+Haskell - Loading functions into GHCI (Part 1)
+</title>
+<description>
+ &lt;p&gt;The way you identify a file to be haskell code is by adding a &lt;i&gt;.hs&lt;/i&gt; tag at the end of the file. So make a file called ex1.hs and open up a &lt;i&gt;ghci&lt;/i&gt;. &lt;/p&gt;&lt;p&gt;Before we go any further I want to distinguish when I am typing into the &lt;i&gt;ghci&lt;/i&gt; which will be identified with the &lt;code&gt;Prelude&gt;&lt;/code&gt; which means I am telling you to type into the &lt;i&gt;ghci&lt;/i&gt;. If there is a &lt;code&gt;$&lt;/code&gt; this means you are typing into your terminal. When there is no &lt;code&gt;Prelude&gt;&lt;/code&gt; and &lt;code&gt;$&lt;/code&gt; that means type into whatever text editor you happen to be using onto the ex1.hs file. &lt;/p&gt;&lt;p&gt;Making the ex1.hs using touch. Or however else you may prefer to make a file.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;$ touch ex1.hs 
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Open up a ghci. I suggest you get a little familiar with the ghci since you will be spending a bit of time on it and to do that you can type &lt;code&gt;:?&lt;/code&gt; to view some options for the ghci.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;$ ghci 
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now that you have a ghci up and running lets write some code into ex1.hs and later we can load it into the ghci using :load ex1.hs and afterwards we can use :reload every time we edit ex1.hs. Now lets start with a pythagorean theorem to start off things. If you go back to your middle school and remember that a&lt;sup&gt;2&lt;/sup&gt; + b&lt;sup&gt;2&lt;/sup&gt; = c&lt;sup&gt;2&lt;/sup&gt; which is basically what we are going to be writing. In a lot of ways Haskell is very much just like math.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;{- ################################################
+        ex1.hs
+        defunSM, Sept 2016.
+        Haskell Part 1
+################################################## -}
+
+pythagorean :: Float -&amp;gt; Float -&amp;gt; Float   {-- Notice that there are two arguments pythagorean is taking a and b. --}
+pythagorean a b = sqrt &amp;#40;a &amp;#94; 2 + b &amp;#94; 2&amp;#41;  
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The first line is identifying the type that pythagorean will recieve. In this case it'll recieve two Floats and the out put will be a Float. We do this since Haskell is statically typed and that the function can know before hand what to expect and doing this allows us to reuse our function later on.&lt;/p&gt;&lt;p&gt;Also to have comments you can do curly brackets and a dash like so {- this is a comment -}.&lt;/p&gt;&lt;p&gt;So now we can load our function by heading to the ghci which hopefully you still have running if not you can just run ghci again in the same directory of your ex1.hs file and type in the following to load pythagorean into the ghci. Once you used &lt;code&gt;:load&lt;/code&gt; you can now just use &lt;code&gt;:reload&lt;/code&gt; and it'll just update the functions you have in your file.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;Prelude&amp;gt; :load ex1.hs
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;You should see Ok, Modules Loaded: Main. Meaning you're golden and no errors in your code. So now you can type the following to use pythagorean...&lt;/p&gt;&lt;pre&gt;&lt;code&gt;Prelude&amp;gt; pythagorean 3 4
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now lets look at how to construct a factorial which is rather an easy one two liner in haskell.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;factorial :: Integer -&amp;gt; Integer
+factorial n = if n &amp;gt; 0 then n &amp;#42; factorial &amp;#40;n-1&amp;#41; else 1
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;factorial takes one argument than than checks if it is greater than 0 and if it is than it does n * factorial (n-1) otherwise its 1. This takes advantage of recursion calling itself. Now you can reload the file into ghci using &lt;code&gt;:reload&lt;/code&gt;. &lt;/p&gt;&lt;pre&gt;&lt;code&gt;Prelude&amp;gt; :reload 
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;And use factorial 5 to check that it works.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;Prelude&amp;gt; factorial 5
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now lets look at how to use guards in Haskell which are like conditionals. Lets look at this example of identifying if a quadradic has real roots. If you remember the quadradic equation you might remember that the discriminant is used to determine if a quadradic has real roots. So by using conditions and checking if the discriminant is positive, 0 or negative. Positive being two real numbers, zero being one real number and negative being no real numbers and only imginary roots. a will be the cofficient to the square term, b being the cofficent to the first power and c is the constant.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;numberOfRoots :: Integer-&amp;gt; Integer-&amp;gt; Integer -&amp;gt; Int
+numberOfRoots a b c
+              | &amp;#40;b &amp;#94; 2 &amp;gt; 4 &amp;#42; b &amp;#42; c&amp;#41; = 2    
+              | &amp;#40;b &amp;#94; 2 == 4 &amp;#42; b &amp;#42; c&amp;#41; = 1
+              | &amp;#40;b &amp;#94; 2 &amp;lt; 4 &amp;#42; b &amp;#42; c&amp;#41; = 0
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Notice that to use guards each case is started on a new line with the | which is how you state each condition. Guards are very important in Haskell and can allow you to systemically go through and do different manipulations based on the arguments. However sometimes it isn't possible to account for all of the conditions so there in that case you can use otherwise. So you could have written the numberOfRoots function like this. You can check this works out actually in the &lt;i&gt;ghci&lt;/i&gt; by giving numberOfRoots three arguments.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;numberOfRoots :: Integer-&amp;gt; Integer-&amp;gt; Integer -&amp;gt; Int
+numberOfRoots a b c
+              | &amp;#40;b &amp;#94; 2 &amp;gt; 4 &amp;#42; b &amp;#42; c&amp;#41; = 2    
+              | &amp;#40;b &amp;#94; 2 == 4 &amp;#42; b &amp;#42; c&amp;#41; = 1
+              | otherwise = 0
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;As you may begin to comprend now Haskell allows you to do computational math rather well and probably help you do your math homework I know it has for me.&lt;/p&gt; 
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Mon, 26 Sep 2016 00:00:00 -0400
+</pubDate>
+</item>
 <item>
 <guid>
 http://blogawesome.com/posts-output/intro-to-haskell/
@@ -37,6 +83,26 @@ Haskell - Introduction
 </enclosure>
 <pubDate>
 Sun, 25 Sep 2016 00:00:00 -0400
+</pubDate>
+</item>
+<item>
+<guid>
+http://blogawesome.com/posts-output/Using_swingpart3/
+</guid>
+<link>
+http://blogawesome.com/posts-output/Using_swingpart3/
+</link>
+<title>
+Graphics using Quil in Clojure (Part 3)
+</title>
+<description>
+ &lt;p&gt;Since we done a few examples of Quil already. I would like to show how to utilize states and this demonstration is a lot more prettier than the previous ones.&lt;/p&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Sat, 24 Sep 2016 00:00:00 -0400
 </pubDate>
 </item>
 <item>

@@ -53,11 +53,11 @@
                         <li class="divider"></li>
                         <li class="dropdown-header">Recent Posts</li>
                         
+                        <li><a href="/posts-output/haskellpart1-ghci/">Haskell - Loading functions into GHCI (Part 1)</a></li>
+                        
                         <li><a href="/posts-output/intro-to-haskell/">Haskell - Introduction</a></li>
                         
-                        <li><a href="/posts-output/basics-of-clojure5/">Basics of Clojure - Watching an Atom (Part 5)</a></li>
-                        
-                        <li><a href="/posts-output/basics-of-clojurepart4/">Basics of Clojure - Atoms (Part 4)</a></li>
+                        <li><a href="/posts-output/Using_swingpart3/">Graphics using Quil in Clojure (Part 3)</a></li>
                         
                         
 
@@ -104,16 +104,40 @@
 <div id="post">
     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">September 25, 2016</div>
+        <div class="col-lg-6">September 26, 2016</div>
         
     </div>
-    <h2>Haskell - Introduction</h2>
+    <h2>Haskell - Loading functions into GHCI (Part 1)</h2>
 </div>
 <div>
     
-    <p><a href='https://www.haskell.org/'>Haskell</a> is a purely functional programming language, statically typed, and lazy. </p><p><img src="https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.explainxkcd.com%2Fwiki%2Fimages%2F8%2F8d%2Fhaskell.png&f=1" alt="nosideeffects" /></p><p>Purely Functional being every function in haskell is a function in a mathematical sense. Meaning there is no side effects and a function recieving an argument will always do the same thing. This is very different from object oriented programs which is all about mutating data. Since Haskell is a Pure functional programming language you can not mutate variables.</p><p>GHC is the compiler behind the Haskell language. You'll be testing out most of your code on a repl called ghci. The GHC is actually one behind C in terms of the fastest compilers.</p><p>If you haven't already take a look at their website and download the Haskell Platform which includes GHC, Cabal and some other tools along with a set of libraries <a href='https://www.haskell.org/downloads'>here</a>.</p><p>Haskell is often times known to be the elite functional programming language as it is designed with mathemathics in mind. Haskell is named after logician Haskell Curry and his books regarding logic. However that doesn't mean that you can only do math in Haskell. </p><p>It is said that learning Haskell will however improve programming skills in general and open a new way of seeing and viewing code. Code in Haskell is brief and since it is pure it is easy to reuse code in Haskell. </p><p>Like C Haskell is a strong static typed language but unlike C garbage collection is handled implictly so you dont have to worry about those lingering pointers.</p><p>So after you have downloaded the Haskell platform. Go ahead open up the GHCI by the following...</p><pre><code>ghci
-</code></pre><p>And type ...</p><pre><code>putStrLn &quot;My first line of code in Haskell!&quot;
-</code></pre><p>You have written a line of code in Haskell!</p>
+     <p>The way you identify a file to be haskell code is by adding a <i>.hs</i> tag at the end of the file. So make a file called ex1.hs and open up a <i>ghci</i>. </p><p>Before we go any further I want to distinguish when I am typing into the <i>ghci</i> which will be identified with the <code>Prelude></code> which means I am telling you to type into the <i>ghci</i>. If there is a <code>$</code> this means you are typing into your terminal. When there is no <code>Prelude></code> and <code>$</code> that means type into whatever text editor you happen to be using onto the ex1.hs file. </p><p>Making the ex1.hs using touch. Or however else you may prefer to make a file.</p><pre><code>$ touch ex1.hs 
+</code></pre><p>Open up a ghci. I suggest you get a little familiar with the ghci since you will be spending a bit of time on it and to do that you can type <code>:?</code> to view some options for the ghci.</p><pre><code>$ ghci 
+</code></pre><p>Now that you have a ghci up and running lets write some code into ex1.hs and later we can load it into the ghci using :load ex1.hs and afterwards we can use :reload every time we edit ex1.hs. Now lets start with a pythagorean theorem to start off things. If you go back to your middle school and remember that a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup> which is basically what we are going to be writing. In a lot of ways Haskell is very much just like math.</p><pre><code>{- ################################################
+        ex1.hs
+        defunSM, Sept 2016.
+        Haskell Part 1
+################################################## -}
+
+pythagorean :: Float -&gt; Float -&gt; Float   {-- Notice that there are two arguments pythagorean is taking a and b. --}
+pythagorean a b = sqrt &#40;a &#94; 2 + b &#94; 2&#41;  
+</code></pre><p>The first line is identifying the type that pythagorean will recieve. In this case it'll recieve two Floats and the out put will be a Float. We do this since Haskell is statically typed and that the function can know before hand what to expect and doing this allows us to reuse our function later on.</p><p>Also to have comments you can do curly brackets and a dash like so {- this is a comment -}.</p><p>So now we can load our function by heading to the ghci which hopefully you still have running if not you can just run ghci again in the same directory of your ex1.hs file and type in the following to load pythagorean into the ghci. Once you used <code>:load</code> you can now just use <code>:reload</code> and it'll just update the functions you have in your file.</p><pre><code>Prelude&gt; :load ex1.hs
+</code></pre><p>You should see Ok, Modules Loaded: Main. Meaning you're golden and no errors in your code. So now you can type the following to use pythagorean...</p><pre><code>Prelude&gt; pythagorean 3 4
+</code></pre><p>Now lets look at how to construct a factorial which is rather an easy one two liner in haskell.</p><pre><code>factorial :: Integer -&gt; Integer
+factorial n = if n &gt; 0 then n &#42; factorial &#40;n-1&#41; else 1
+</code></pre><p>factorial takes one argument than than checks if it is greater than 0 and if it is than it does n * factorial (n-1) otherwise its 1. This takes advantage of recursion calling itself. Now you can reload the file into ghci using <code>:reload</code>. </p><pre><code>Prelude&gt; :reload 
+</code></pre><p>And use factorial 5 to check that it works.</p><pre><code>Prelude&gt; factorial 5
+</code></pre><p>Now lets look at how to use guards in Haskell which are like conditionals. Lets look at this example of identifying if a quadradic has real roots. If you remember the quadradic equation you might remember that the discriminant is used to determine if a quadradic has real roots. So by using conditions and checking if the discriminant is positive, 0 or negative. Positive being two real numbers, zero being one real number and negative being no real numbers and only imginary roots. a will be the cofficient to the square term, b being the cofficent to the first power and c is the constant.</p><pre><code>numberOfRoots :: Integer-&gt; Integer-&gt; Integer -&gt; Int
+numberOfRoots a b c
+              | &#40;b &#94; 2 &gt; 4 &#42; b &#42; c&#41; = 2    
+              | &#40;b &#94; 2 == 4 &#42; b &#42; c&#41; = 1
+              | &#40;b &#94; 2 &lt; 4 &#42; b &#42; c&#41; = 0
+</code></pre><p>Notice that to use guards each case is started on a new line with the | which is how you state each condition. Guards are very important in Haskell and can allow you to systemically go through and do different manipulations based on the arguments. However sometimes it isn't possible to account for all of the conditions so there in that case you can use otherwise. So you could have written the numberOfRoots function like this. You can check this works out actually in the <i>ghci</i> by giving numberOfRoots three arguments.</p><pre><code>numberOfRoots :: Integer-&gt; Integer-&gt; Integer -&gt; Int
+numberOfRoots a b c
+              | &#40;b &#94; 2 &gt; 4 &#42; b &#42; c&#41; = 2    
+              | &#40;b &#94; 2 == 4 &#42; b &#42; c&#41; = 1
+              | otherwise = 0
+</code></pre><p>As you may begin to comprend now Haskell allows you to do computational math rather well and probably help you do your math homework I know it has for me.</p> 
 </div>
 
 <div id="post-tags">
@@ -123,19 +147,21 @@
     
     <a href="/tags-output/Code/">Code</a>
     
+    <a href="/tags-output/Guide/">Guide</a>
+    
 </div>
 
 
     
     <div id="comments">
-        <a href="/posts-output/intro-to-haskell/#disqus_thread">View Comments</a>
+        <a href="/posts-output/haskellpart1-ghci/#disqus_thread">View Comments</a>
     </div>
     
 
     <div id="prev-next">
         
         
-        <a class="right" href="/posts-output/basics-of-clojure5/">Basics of Clojure - Watching an Atom (Part 5) &raquo;</a>
+        <a class="right" href="/posts-output/intro-to-haskell/">Haskell - Introduction &raquo;</a>
         
     </div>
 </div>
