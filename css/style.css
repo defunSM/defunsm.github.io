@@ -140,9 +140,11 @@ h1, h2, h3, h4, h5, h6 {
 .container_small, .container_big {
 	width: 100%;
 	margin: 0 auto;
+        text-align: left;
 }
 
-.container_small {max-width: 900px;}
+.container_small {max-width: 900px;
+                  text-align: left;}
 .container_big {max-width: 1050px;}
 
 /* Fade-in Animation */
