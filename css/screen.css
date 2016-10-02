@@ -109,6 +109,7 @@ footer {
 
 .post-header {
     margin-bottom: 20px;
+    align: left;
 }
 .post-header h2 {
     font-size: 32px;
@@ -122,6 +123,7 @@ footer {
 #page-header {
     border-bottom: 1px solid #dbdbdb;
     margin-bottom: 20px;
+    text-align: left;
 }
 #page-header h2 {
     font-size: 32px;
