@@ -12,7 +12,7 @@ http://blogawesome.com/
 A place to share my knowledge
 </description>
 <lastBuildDate>
-Sun, 02 Oct 2016 19:26:13 -0400
+Sun, 02 Oct 2016 19:32:32 -0400
 </lastBuildDate>
 <generator>
 clj-rss
@@ -28,7 +28,7 @@ http://blogawesome.com/posts-output/smchat/
 SMChat
 </title>
 <description>
-&lt;p&gt;&lt;h3&gt;What is SMChat?&lt;/h3&gt; &lt;hr&gt;&lt;/hr&gt; SMChat is a clojure coded graphical user interface (GUI) using the SeeSaw Library.&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;https://camo.githubusercontent.com/5ade8e5c214c6b67ffb3897c22298b8f36f088e7/687474703a2f2f696d6775722e636f6d2f647831794534386c2e706e67&quot; alt=&quot;SeeSaw Clojure nrepl&quot; /&gt;&lt;/p&gt;&lt;p&gt;&lt;h3&gt;What features does SMChat have?&lt;/h3&gt; &lt;hr&gt;&lt;/hr&gt; SMChat is still largely unfinished and being worked on.&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Clearing Messages&lt;/li&gt;&lt;li&gt;Changing Prompt&lt;/li&gt;&lt;li&gt;Font Color&lt;/li&gt;&lt;li&gt;Theme&lt;/li&gt;&lt;li&gt;Login Feature&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;img src=&quot;https://camo.githubusercontent.com/4537f3c3d4faabe361146c9eeaa9281f177261f0/687474703a2f2f696d6775722e636f6d2f4c33305868364b6c2e706e67&quot; alt=&quot;clojure&quot; /&gt;&lt;/p&gt;&lt;p&gt;&lt;h3&gt;What lies in the future for SMChat?&lt;/h3&gt; &lt;hr&gt;&lt;/hr&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Implementing chatbots.&lt;/li&gt;&lt;li&gt;A clear registration.&lt;/li&gt;&lt;li&gt;Access to SMChat through a web browser.&lt;/li&gt;&lt;li&gt;Creating a SMChat version for Linux.&lt;/li&gt;&lt;li&gt;A ton more.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;h3&gt;Where can I go and download SMChat?&lt;/h3&gt; &lt;hr&gt;&lt;/hr&gt; You can find SMChat for Windows &lt;a href='https://github.com/defunSM/smchat/releases'&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;h3&gt;What is SMChat?&lt;/h3&gt; &lt;hr&gt;&lt;/hr&gt; SMChat is a clojure coded graphical user interface (GUI) using the SeeSaw Library.&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;https://defunsm.github.io/img/smchat1.jpeg&quot; alt=&quot;SeeSaw Clojure nrepl&quot; /&gt;&lt;/p&gt;&lt;p&gt;&lt;h3&gt;What features does SMChat have?&lt;/h3&gt; &lt;hr&gt;&lt;/hr&gt; SMChat is still largely unfinished and being worked on.&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Clearing Messages&lt;/li&gt;&lt;li&gt;Changing Prompt&lt;/li&gt;&lt;li&gt;Font Color&lt;/li&gt;&lt;li&gt;Theme&lt;/li&gt;&lt;li&gt;Login Feature&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;img src=&quot;https://defunsm.github.io/img/smchat2.jpeg&quot; alt=&quot;clojure&quot; /&gt;&lt;/p&gt;&lt;p&gt;&lt;h3&gt;What lies in the future for SMChat?&lt;/h3&gt; &lt;hr&gt;&lt;/hr&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Implementing chatbots.&lt;/li&gt;&lt;li&gt;A clear registration.&lt;/li&gt;&lt;li&gt;Access to SMChat through a web browser.&lt;/li&gt;&lt;li&gt;Creating a SMChat version for Linux.&lt;/li&gt;&lt;li&gt;A ton more.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;h3&gt;Where can I go and download SMChat?&lt;/h3&gt; &lt;hr&gt;&lt;/hr&gt; You can find SMChat for Windows &lt;a href='https://github.com/defunSM/smchat/releases'&gt;here&lt;/a&gt;.&lt;/p&gt;
 </description>
 <enclosure>
 
