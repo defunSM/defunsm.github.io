@@ -651,13 +651,12 @@ footer p {
 
 .left span {
 	font-family: 'Montserrat', sans-serif;
-	text-transform: uppercase;
 }
 
 .right {
 	float: right;
 	text-align: right;
-	text-transform: uppercase;
+
 }
 
 .right a { color: #999 }
