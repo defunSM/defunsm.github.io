@@ -146,6 +146,7 @@ pre {
     background: #002b36 url('https://defunsm.github.io/img/noise.png') top left;
     border-radius: 0.4em;
     padding: .8em 1em;
+    font-family: Monaco,"Andale Mono","lucida console","Courier New",monospace;
 }
 
 
