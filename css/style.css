@@ -86,7 +86,7 @@ table {
 
 body {
 	background: #fff;
-	font: 300 14px 'Open Sans', sans-serif;
+	font: 300 20px 'Open Sans', sans-serif;
 	text-align: center;
 	color: #999;
 }
@@ -122,14 +122,14 @@ h1, h2, h3, h4, h5, h6 {
 .section_title {
 	margin: 0 0 15px 0;
 	color: #a67d4a;
-	font-size: 24px;
+	font-size: 30px;
 	text-transform: uppercase;
 	letter-spacing: 6px;
 }
 
 .section_subtitle {
 	margin: 0 0 50px 0;
-	font: italic 18px 'Open Sans', sans-serif;
+	font: italic 24px 'Open Sans', sans-serif;
 	text-transform: none;
 }
 
@@ -213,14 +213,14 @@ h1, h2, h3, h4, h5, h6 {
 /* Header Titles */
 .header_title {
 	color: #fff;
-	font-size: 30px;
+	font-size: 36px;
 	letter-spacing: 6px;
 	margin: 0 0 20px 0;
 }
 
 .header_subtitle {
 	color: #FFFFFF;
-	font-size: 14px;
+	font-size: 20px;
 	letter-spacing: 6px;
 }
 
@@ -366,7 +366,7 @@ h1, h2, h3, h4, h5, h6 {
 .navigation ul li  a {
 	font-family: 'Montserrat', sans-serif;
 	text-transform: uppercase;
-	font-size: 24px;
+	font-size: 30px;
 	letter-spacing: 6px;
 }
 
@@ -539,7 +539,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Back text */
 .featherlight .featherlight-close-icon:after {
 	content:" back";
-	font-size: 12px;
+	font-size: 18px;
 	font-family: 'Montserrat', sans-serif;
 	text-transform: uppercase;
 }
@@ -577,7 +577,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .info .fa {
-	font-size: 36px;
+	font-size: 42px;
 	margin: 0 0 10px 0;
 }
 
@@ -606,7 +606,7 @@ h1, h2, h3, h4, h5, h6 {
 	border: 2px solid #a67d4a;
 	height: 30px;
 	line-height: 26px;
-	font-size: 16px;
+	font-size: 22px;
 	color: #a67d4a;
 	-webkit-transition: all 300ms linear;
 	-moz-transition: all 300ms linear;
