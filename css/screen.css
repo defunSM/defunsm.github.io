@@ -139,6 +139,7 @@ pre code {
 
 code {
     color: #93a1a1;
+    font-family: Menlo,Monaco,"Andale Mono","lucida console","Courier New",monospace;
 }
 
 
@@ -146,7 +147,7 @@ pre {
     background: #002b36 url('https://defunsm.github.io/img/noise.png') top left;
     border-radius: 0.4em;
     padding: 1em 1em;
-    font: Monaco;
+    font-family: Menlo,Monaco,"Andale Mono","lucida console","Courier New",monospace;
     margin: 20px 10px 30px 10px;
 }
 
