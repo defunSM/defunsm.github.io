@@ -141,8 +141,16 @@ code {
     color: #428bca;
 }
 
+.hljs {
+    border-radius: 0.4em;
+    font-size: 16px;
+    color: #93a1a1;
+    padding: .8em 1em;
+    overflow: auto;
+}
+
 pre, code, .hljs {
-    background-color: #f7f9fd;
+    background-color: #002b36;
 }
 
 @media (min-width: 768px) {
