@@ -147,10 +147,11 @@ code {
     color: #93a1a1;
     padding: .8em 1em;
     overflow: auto;
+    background-color: #002b36;
 }
 
 pre, code, .hljs {
-    background-color: #002b36;
+    background-color: #428bca;
 }
 
 @media (min-width: 768px) {
