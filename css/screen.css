@@ -141,17 +141,14 @@ code {
     color: #428bca;
 }
 
-.hljs {
-    border-radius: 0.4em;
-    font-size: 16px;
-    color: #93a1a1;
-    padding: .8em 1em;
-    overflow: auto;
-    background-color: #002b36;
+pre, code, .hljs {
+    background-color: #f7f9fd;
 }
 
-pre, code, .hljs {
-    background-color: #428bca;
+.hljs {
+    background-color: #002b36 url('https://defunsm.github.io/img/noise.png') top left;
+    border-radius: 0.4em;
+    padding: .8em 1em;
 }
 
 @media (min-width: 768px) {
