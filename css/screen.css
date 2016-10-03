@@ -138,12 +138,9 @@ pre code {
 }
 
 code {
-    color: #428bca;
+    color: #93a1a1;
 }
 
-code {
-    background-color: #f7f9fd;
-}
 
 pre {
     background: #002b36 url('https://defunsm.github.io/img/noise.png') top left;
