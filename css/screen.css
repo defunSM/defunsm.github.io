@@ -141,11 +141,11 @@ code {
     color: #428bca;
 }
 
-pre, code {
+code {
     background-color: #f7f9fd;
 }
 
-.hljs {
+pre {
     background: #002b36 url('https://defunsm.github.io/img/noise.png') top left;
     border-radius: 0.4em;
     padding: .8em 1em;
