@@ -151,6 +151,7 @@ pre, code {
     padding: .8em 1em;
 }
 
+
 @media (min-width: 768px) {
     .navbar {
         min-height: 70px;
