@@ -650,6 +650,10 @@ footer p {
 	font-family: 'Montserrat', sans-serif;
 }
 
+.redcolor {
+    color: red;
+}
+
 .right {
 	float: right;
 	text-align: right;
