@@ -654,6 +654,12 @@ footer p {
     color: red;
 }
 
+.warningdiv {
+    border: red;
+    border-style: solid;
+    border-width: 2px;
+}
+
 .right {
 	float: right;
 	text-align: right;
