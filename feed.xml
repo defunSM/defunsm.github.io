@@ -12,7 +12,7 @@ http://blogawesome.com/
 A place to share my knowledge
 </description>
 <lastBuildDate>
-Tue, 04 Oct 2016 20:37:43 -0400
+Wed, 05 Oct 2016 21:42:55 -0400
 </lastBuildDate>
 <generator>
 clj-rss
@@ -29,7 +29,7 @@ Python - Setup
 </title>
 <description>
 &lt;p&gt;Python is usally shipped with Linux but you can check if you have it from the command line. &lt;br/&gt;  To check you can type the following into the command line... &lt;br/&gt;&lt;br/&gt;&lt;/p&gt;&lt;pre&gt;&lt;code&gt;$ python
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;If there is an error than you'll have to install it. If you aren't so familiar with the terminal thats okay you don't have to be an expert just know basics. &lt;br/&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;If you don't yet have a prefered text editor and want to get to writing python code right away I suggest &lt;a href='http://www.jetbrains.com/pycharm/'&gt;pycharm&lt;/a&gt;. It is a really nice IDE specifically geared for python. Overtime though I suggest trying out other text editors such as Vim, Emacs, Sublime, or Atom.  &lt;br/&gt;&lt;br/&gt; However for the purposes of this pretty much any text editor will work as long as it can run python code. &lt;br/&gt;&lt;br/&gt; &lt;center&gt;&lt;i class=&quot;fa fa-exclamation-circle fa-2x&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/center&gt;&lt;/p&gt;&lt;p&gt;A bit of warning I suggest downloading the 3.x.x version of python just so there is no hiccups as you're following along with the guides I write. &lt;br/&gt;&lt;br/&gt; &lt;img src=&quot;https://defunsm.github.io/img/pythondownloadimg.png&quot; alt=&quot;image&quot; /&gt; &lt;br&gt;&lt;/br&gt; You can download python from &lt;a href='https://www.python.org/downloads/'&gt;here&lt;/a&gt; if it was not found in your system.&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;If there is an error than you'll have to install it. If you aren't so familiar with the terminal thats okay you don't have to be an expert just know basics. You can quickly read up on some basic terminal commands &lt;a href='https://defunsm.github.io/posts-output/terminalshell/'&gt;here&lt;/a&gt;. &lt;br/&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;If you don't yet have a prefered text editor and want to get to writing python code right away I suggest &lt;a href='http://www.jetbrains.com/pycharm/'&gt;pycharm&lt;/a&gt;. It is a really nice IDE specifically geared for python. Overtime though I suggest trying out other text editors such as Vim, Emacs, Sublime, or Atom.  &lt;br/&gt;&lt;br/&gt; However for the purposes of this pretty much any text editor will work as long as it can run python code. &lt;br/&gt;&lt;br/&gt; &lt;center&gt;&lt;i class=&quot;fa fa-exclamation-circle fa-2x&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/center&gt;&lt;/p&gt;&lt;p&gt;A bit of warning I suggest downloading the 3.x.x version of python just so there is no hiccups as you're following along with the guides I write. &lt;br/&gt;&lt;br/&gt; &lt;img src=&quot;https://defunsm.github.io/img/pythondownloadimg.png&quot; alt=&quot;image&quot; /&gt; &lt;br&gt;&lt;/br&gt; You can download python from &lt;a href='https://www.python.org/downloads/'&gt;here&lt;/a&gt; if it was not found in your system.&lt;/p&gt;
 </description>
 <enclosure>
 

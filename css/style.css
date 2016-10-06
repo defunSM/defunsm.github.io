@@ -196,6 +196,14 @@ h1, h2, h3, h4, h5, h6 {
 
 }
 
+#postwelcome {
+	background: url('../img/photo.jpg') no-repeat center;
+	background-size: cover;
+	width: 100%;
+	height: 50vh;
+	position: relative;
+}
+
 #welcome {
 	background: url('../img/photo.jpg') no-repeat center;
 	background-size: cover;
