@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-	<title>Python - Setup</title>
+	<title>Python - Printing</title>
 	<!-- Styles -->
 	<link rel="stylesheet" href="https://defunsm.github.io/css/style.css" />
 	<link rel="stylesheet" href="https://defunsm.github.io/css/font-awesome.min.css" />
@@ -58,7 +58,7 @@
 		<div class="fade child">
 			<div class="container_small">
 				<!-- Header Titles -->
-				<h1 class="header_title">Python - Setup</h1>
+				<h1 class="header_title">Python - Printing</h1>
 			</div>
 		</div>
 	</header>
@@ -74,15 +74,58 @@
                     
                     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">October 4, 2016</div>
+        <div class="col-lg-6">October 5, 2016</div>
         
     </div>
-    <h2>Python - Setup</h2>
+    <h2>Python - Printing</h2>
 </div>
 <div>
     
-    <p>Python is usally shipped with Linux but you can check if you have it from the command line. <br/>  To check you can type the following into the command line... <br/><br/></p><pre><code>$ python
-</code></pre><p>If there is an error than you'll have to install it. If you aren't so familiar with the terminal thats okay you don't have to be an expert just know basics. You can quickly read up on some basic terminal commands <a href='https://defunsm.github.io/posts-output/terminalshell/'>here</a>. <br/><br/></p><p>If you don't yet have a prefered text editor and want to get to writing python code right away I suggest <a href='http://www.jetbrains.com/pycharm/'>pycharm</a>. It is a really nice IDE specifically geared for python. Overtime though I suggest trying out other text editors such as Vim, Emacs, Sublime, or Atom.  <br/><br/> However for the purposes of this pretty much any text editor will work as long as it can run python code. <br/><br/> <center><i class="fa fa-exclamation-circle fa-2x" aria-hidden="true"></i></center></p><p>A bit of warning I suggest downloading the 3.x.x version of python just so there is no hiccups as you're following along with the guides I write. <br/><br/> <img src="https://defunsm.github.io/img/pythondownloadimg.png" alt="image" /> <br></br> You can download python from <a href='https://www.python.org/downloads/'>here</a> if it was not found in your system.</p>
+    <p>Open up the python interpreter on your command line by the following...</p><pre><code>python
+</code></pre> <p>Type the following one by one into the python interpreter. I'll explain each line one by one later but try to figure out what the result of each line is before typing it out and hitting enter.</p><pre><code>print&#40;&quot;A string&quot;&#41;
+
+print&#40;'This is a string too'&#41;
+
+print&#40;&quot;stuff&quot; + &quot;and more stuff&quot;&#41;
+
+print&#40;&quot;The char %c&quot;&#41; % 'a'
+
+print&#40;&quot;The string %s&quot;&#41; % &quot;stuff&quot;
+
+print&#40;&quot;The digit %d&quot;&#41; % 5
+
+print&#40;&quot;The float %f&quot; % 4.0&#41;
+
+print&#40;&quot;Printing multiple stuff: %c %s %d %f&quot;&#41; % &#40;'a', &quot;stuff&quot;, 5, 4.0&#41;
+
+print&#40;&quot;First Line \nSecond Line&quot;&#41;
+
+print&#40;&quot;\tI am a tabbed Line.&quot;&#41;
+
+# print&#40;&quot;I am a comment so I won't print. :&#40;&quot;&#41;
+
+print&#40;&quot;&quot;&quot;
+This is a bit weird.
+But acts as if I added newlines.
+&quot;&quot;&quot;&#41;
+</code></pre>The explanations are below make sure you ran all of them before checking the explanations.<pre><code>python ex1.py
+</code></pre><p>Explanations:</p><p>Line 1:</p><pre><code>print&#40;&quot;A string&quot;&#41;
+</code></pre>Using the print function you display "A string" which is a string to the console. You have to include the quotations otherwise it'll be treated as a variable which you'll learn later.<br/><br/>Line 3:<pre><code>print&#40;'This is a string too'&#41;
+</code></pre>This is also a string but using single quotes you can use either whatever you prefer. <br/><br/>Line 5:<pre><code>print&#40;&quot;stuff&quot; + &quot;and more stuff&quot;&#41;
+</code></pre>What you are doing here is called concatenation which is a fancy word for joining strings together. You are doing this by using the + symbol adding the two strings to form on string and displaying it onto the console.<br/><br/>Line 7:<pre><code>print&#40;&quot;The char %c&quot;&#41; % 'a'
+</code></pre>Using the % symbol is the format symbol in python which allows you to insert the character 'a' into the string. Also notice that is followed by the leter 'c' indicating that it is expecting a character.<br /><br/>You are printing a single character NOT a string. A string contains many characters but a character is a single letter. Notice that I used single quotes for this which if you come from c++ you may know that characters are in single quotes. However in Python you don't have to use single quotes on characters you could use double quotes and this line of code would have worked just fine.<br/><br/>Line 9:<pre><code>print&#40;&quot;The string %s&quot;&#41; % &quot;stuff&quot;
+</code></pre>This time you are using the string formator symbol but expecting a string.<br/><br/>Line 11:<pre><code>print&#40;&quot;The digit %d&quot;&#41; % 5
+</code></pre>Formating a digit instead of a string or character.<br/><br/>Line 13:<pre><code>print&#40;&quot;The float %f&quot; % 4.0&#41;
+</code></pre>Formatting a float. A float having digits after the decimal place.<br/><br/>Line 15:<pre><code>print&#40;&quot;Printing multiple stuff: %c %s %d %f&quot;&#41; % &#40;'a', &quot;stuff&quot;, 5, 4.0&#41;
+</code></pre>Now you are using multiple formators to print out a character, string, integer and a float.<br/><br/>Line 17:<pre><code>print&#40;&quot;First Line \nSecond Line&quot;&#41;
+</code></pre>The "\n" is an escape character and creates a new line thus showing you the string on two different lines on the console. There are many escape characters and if you want to see all of them you can see them in the <a href='https://docs.python.org/2.0/ref/strings.html'>python documentation</a>.<br/><br/>Line 19:<pre><code>print&#40;&quot;\tI am a tabbed Line.&quot;&#41;
+</code></pre>\t creates a tab and displays it onto the console.<br/><br/>Line 21:<pre><code># print&#40;&quot;I am a comment so I won't print. :&#40;&quot;&#41;
+</code></pre>This is a comment so it won't show up. This is how you write notes in your program without it being interpreted as code.<br/><br/>Line 23-26:<pre><code>print&#40;&quot;&quot;&quot;
+This is a bit weird.
+But acts as if I added newlines.
+&quot;&quot;&quot;&#41;
+</code></pre>Displays on two lines without the use of a \n escape character. Kinda weird but works.<br/><br/>Thats it for now. Finally to quit the python interpreter type the following ...<pre><code>exit&#40;&#41;
+</code></pre>
 </div>
 
 <div id="post-tags">
@@ -99,10 +142,8 @@
 
                           <div id="prev-next">
                             
-                            <a href="/posts-output/pythonpart1/">&laquo; Python - Printing</a>
                             
-                            
-                            <a class="right" href="/posts-output/introductiontopython/">Python - A short introduction &raquo;</a>
+                            <a class="right" href="/posts-output/pythonpart0/">Python - Setup &raquo;</a>
                             
                           </div>
 
