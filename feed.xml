@@ -12,11 +12,78 @@ http://blogawesome.com/
 A place to share my knowledge
 </description>
 <lastBuildDate>
-Thu, 06 Oct 2016 00:11:48 -0400
+Thu, 06 Oct 2016 10:19:44 -0400
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://blogawesome.com/posts-output/python2/
+</guid>
+<link>
+http://blogawesome.com/posts-output/python2/
+</link>
+<title>
+Python - Numbers
+</title>
+<description>
+&lt;p&gt;We'll learn about different numbers and doing math in python. So open up a python interpreter if you forgot how to just look at the previous post.  &lt;br/&gt;&lt;br/&gt; Just like before try out each line one by one into the python interpreter.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;5 + 2
+
+5 - 2
+
+5 &amp;#42; 2
+
+5 / 2
+
+5 % 2
+
+5 &amp;#42;&amp;#42; 3
+
+5 &amp;#42;&amp;#42; &amp;#40;1/2&amp;#41;
+
+5 &amp;#42;&amp;#42; &amp;#40;1/2.0&amp;#41;
+
+float&amp;#40;2&amp;#41;
+
+float&amp;#40;5/2&amp;#41;
+
+float&amp;#40;5&amp;#41; / 2
+
+5 / float&amp;#40;2&amp;#41;
+
+5 / 2.0
+
+5 - 2 &amp;#42; 5
+
+&amp;#40;5 - 2&amp;#41; &amp;#42; 5
+&lt;/code&gt;&lt;/pre&gt;&lt;br/&gt;&lt;br/&gt;&lt;p&gt;Explanations below:&lt;/p&gt;&lt;p&gt;Line 1-7:&lt;pre&gt;&lt;code&gt;5 + 2
+
+5 - 2
+
+5 &amp;#42; 2
+
+5 / 2
+ &lt;/code&gt;&lt;/pre&gt; Basic math that you should've learned in school. Nothing interesting per say. Expect you may notice that the 5/2 gives you 2 which is odd but I'll explain that in the explanation on line 13. &lt;br/&gt;&lt;br/&gt; Line 9:&lt;pre&gt;&lt;code&gt;5 % 2
+ &lt;/code&gt;&lt;/pre&gt; Ah we see the % symbol once again but this time it is not in a string. It is used as an operator just like +, -, *, or /. However this time it is not a string formator in this context and is called a modulo and returns the reminder of the division of 5 / 2. Which is what you get 1. This may be a little weird having not experienced such an operator before but it is quite useful for determining the divisbility of a number and etc. &lt;br/&gt;&lt;br/&gt; Line 11: &lt;pre&gt;&lt;code&gt;5 &amp;#42;&amp;#42; 3
+ &lt;/code&gt;&lt;/pre&gt; Using ** is how you raise an integer to an exponent. In this cause you are raising 5 to the third power. &lt;br/&gt;&lt;br/&gt; Line 13:&lt;pre&gt;&lt;code&gt;5 &amp;#42;&amp;#42; &amp;#40;1/2&amp;#41;
+ &lt;/code&gt;&lt;/pre&gt; Huh. Why did I get 1? That doesnt make sense. This is because the result of doing 1/2 is 0. So you are essentially doing 5 raised to the 0 power which is of course anything raised to the 0 power is 1. But why did 1/2 get evaluated to 0 and not 0.5? I'll talk about that in the explanation for line 15 in more depth. &lt;br/&gt;&lt;br/&gt; Line 15:&lt;pre&gt;&lt;code&gt;5 &amp;#42;&amp;#42; &amp;#40;1/2.0&amp;#41;
+ &lt;/code&gt;&lt;/pre&gt; This time the result is 2.23 which is the result I was hoping. So what gives by just adding a decimal point to the 2? Yes. Since you made 2 into a float there are more decimal points in the calculation so that 1/2.0 is evaluated to 0.5 however when doing 1/2 you don't have the significant figures and thus rounded down to 0. So when doing calculations involving precision use floats. &lt;br/&gt;&lt;br/&gt; Line 17:&lt;pre&gt;&lt;code&gt;float&amp;#40;2&amp;#41;
+ &lt;/code&gt;&lt;/pre&gt; Converts the integer 2 into a float 2.0 without actually adding to the decimal point yourself. &lt;br/&gt;&lt;br/&gt; Line 19:&lt;pre&gt;&lt;code&gt;float&amp;#40;5/2&amp;#41;
+ &lt;/code&gt;&lt;/pre&gt; This gives 2.0 which makes sense because 5 / 2 is 2 and than the 2 is converted to 2.0 as a float. &lt;br/&gt;&lt;br/&gt; Line 21:&lt;pre&gt;&lt;code&gt;float&amp;#40;5&amp;#41; / 2
+ &lt;/code&gt;&lt;/pre&gt; The 5 is turned into a float so it is 5.0 and than 5.0 / 2 will give you 2.5 which is what we expect. &lt;br/&gt;&lt;br/&gt; Line 23:&lt;pre&gt;&lt;code&gt;5 / float&amp;#40;2&amp;#41;
+ &lt;/code&gt;&lt;/pre&gt; Showing you that it can be done with the other digit and that only one has to be a float in order for the extra decimal point to appear in the final result. &lt;br/&gt;&lt;br/&gt; Line 25:&lt;pre&gt;&lt;code&gt;5 / 2.0
+ &lt;/code&gt;&lt;/pre&gt; This is equivilant to that of line 23. &lt;br/&gt;&lt;br/&gt; Line 27:&lt;pre&gt;&lt;code&gt;5 - 2 &amp;#42; 5
+ &lt;/code&gt;&lt;/pre&gt; The order of operations in python is done by PEMDAS. Thus multiplication is done first so 2 * 5 is 10 and than 5 - 10 is -5. Which is what you get. Line 29:&lt;pre&gt;&lt;code&gt;&amp;#40;5 - 2&amp;#41; &amp;#42; 5
+ &lt;/code&gt;&lt;/pre&gt; This time we had parantheses around 5 - 2 so that is the first thing done in the oder of operations. So 5 - 2 gives us 3 and than 3 * 5 is 15.  &lt;br/&gt;&lt;br/&gt; &lt;/p&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Thu, 06 Oct 2016 00:00:00 -0400
+</pubDate>
+</item>
 <item>
 <guid>
 http://blogawesome.com/posts-output/pythonpart1/
@@ -28,7 +95,7 @@ http://blogawesome.com/posts-output/pythonpart1/
 Python - Printing
 </title>
 <description>
-&lt;p&gt;Open up the python interpreter on your command line by the following...&lt;/p&gt;&lt;pre&gt;&lt;code&gt;python
+&lt;p&gt;Open up the python interpreter on your command line by the following...&lt;/p&gt;&lt;pre&gt;&lt;code&gt;$ python
 &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;Type the following one by one into the python interpreter. I'll explain each line one by one later but try to figure out what the result of each line is before typing it out and hitting enter.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;print&amp;#40;&amp;quot;A string&amp;quot;&amp;#41;
 
 print&amp;#40;'This is a string too'&amp;#41;
@@ -59,7 +126,7 @@ But acts as if I added newlines.
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Explanations:&lt;/p&gt;&lt;p&gt;Line 1:&lt;/p&gt;&lt;pre&gt;&lt;code&gt;print&amp;#40;&amp;quot;A string&amp;quot;&amp;#41;
 &lt;/code&gt;&lt;/pre&gt;Using the print function you display &quot;A string&quot; which is a string to the console. You have to include the quotations otherwise it'll be treated as a variable which you'll learn later.&lt;br/&gt;&lt;br/&gt;Line 3:&lt;pre&gt;&lt;code&gt;print&amp;#40;'This is a string too'&amp;#41;
 &lt;/code&gt;&lt;/pre&gt;This is also a string but using single quotes you can use either whatever you prefer. &lt;br/&gt;&lt;br/&gt;Line 5:&lt;pre&gt;&lt;code&gt;print&amp;#40;&amp;quot;stuff&amp;quot; + &amp;quot;and more stuff&amp;quot;&amp;#41;
-&lt;/code&gt;&lt;/pre&gt;What you are doing here is called concatenation which is a fancy word for joining strings together. You are doing this by using the + symbol adding the two strings to form on string and displaying it onto the console.&lt;br/&gt;&lt;br/&gt;Line 7:&lt;pre&gt;&lt;code&gt;print&amp;#40;&amp;quot;The char %c&amp;quot;&amp;#41; % 'a'
+&lt;/code&gt;&lt;/pre&gt;What you are doing here is called concatenation which is a fancy word for joining strings together. You are doing this by using the + symbol adding the two strings to form one string and displaying it onto the console.&lt;br/&gt;&lt;br/&gt;Line 7:&lt;pre&gt;&lt;code&gt;print&amp;#40;&amp;quot;The char %c&amp;quot;&amp;#41; % 'a'
 &lt;/code&gt;&lt;/pre&gt;Using the % symbol is the format symbol in python which allows you to insert the character 'a' into the string. Also notice that is followed by the leter 'c' indicating that it is expecting a character.&lt;br /&gt;&lt;br/&gt;You are printing a single character NOT a string. A string contains many characters but a character is a single letter. Notice that I used single quotes for this which if you come from c++ you may know that characters are in single quotes. However in Python you don't have to use single quotes on characters you could use double quotes and this line of code would have worked just fine.&lt;br/&gt;&lt;br/&gt;Line 9:&lt;pre&gt;&lt;code&gt;print&amp;#40;&amp;quot;The string %s&amp;quot;&amp;#41; % &amp;quot;stuff&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;This time you are using the string formator symbol but expecting a string.&lt;br/&gt;&lt;br/&gt;Line 11:&lt;pre&gt;&lt;code&gt;print&amp;#40;&amp;quot;The digit %d&amp;quot;&amp;#41; % 5
 &lt;/code&gt;&lt;/pre&gt;Formating a digit instead of a string or character.&lt;br/&gt;&lt;br/&gt;Line 13:&lt;pre&gt;&lt;code&gt;print&amp;#40;&amp;quot;The float %f&amp;quot; % 4.0&amp;#41;
