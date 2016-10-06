@@ -12,7 +12,7 @@ http://blogawesome.com/
 A place to share my knowledge
 </description>
 <lastBuildDate>
-Thu, 06 Oct 2016 10:19:44 -0400
+Thu, 06 Oct 2016 10:30:54 -0400
 </lastBuildDate>
 <generator>
 clj-rss
@@ -64,7 +64,7 @@ float&amp;#40;5&amp;#41; / 2
 5 &amp;#42; 2
 
 5 / 2
- &lt;/code&gt;&lt;/pre&gt; Basic math that you should've learned in school. Nothing interesting per say. Expect you may notice that the 5/2 gives you 2 which is odd but I'll explain that in the explanation on line 13. &lt;br/&gt;&lt;br/&gt; Line 9:&lt;pre&gt;&lt;code&gt;5 % 2
+ &lt;/code&gt;&lt;/pre&gt; Basic math that you should've learned in school. Nothing interesting per say. Expect you may notice that the 5/2 gives you 2 which is odd but I'll explain that in the explanation on line 13 and 15. &lt;br/&gt;&lt;br/&gt; Line 9:&lt;pre&gt;&lt;code&gt;5 % 2
  &lt;/code&gt;&lt;/pre&gt; Ah we see the % symbol once again but this time it is not in a string. It is used as an operator just like +, -, *, or /. However this time it is not a string formator in this context and is called a modulo and returns the reminder of the division of 5 / 2. Which is what you get 1. This may be a little weird having not experienced such an operator before but it is quite useful for determining the divisbility of a number and etc. &lt;br/&gt;&lt;br/&gt; Line 11: &lt;pre&gt;&lt;code&gt;5 &amp;#42;&amp;#42; 3
  &lt;/code&gt;&lt;/pre&gt; Using ** is how you raise an integer to an exponent. In this cause you are raising 5 to the third power. &lt;br/&gt;&lt;br/&gt; Line 13:&lt;pre&gt;&lt;code&gt;5 &amp;#42;&amp;#42; &amp;#40;1/2&amp;#41;
  &lt;/code&gt;&lt;/pre&gt; Huh. Why did I get 1? That doesnt make sense. This is because the result of doing 1/2 is 0. So you are essentially doing 5 raised to the 0 power which is of course anything raised to the 0 power is 1. But why did 1/2 get evaluated to 0 and not 0.5? I'll talk about that in the explanation for line 15 in more depth. &lt;br/&gt;&lt;br/&gt; Line 15:&lt;pre&gt;&lt;code&gt;5 &amp;#42;&amp;#42; &amp;#40;1/2.0&amp;#41;
@@ -75,7 +75,7 @@ float&amp;#40;5&amp;#41; / 2
  &lt;/code&gt;&lt;/pre&gt; Showing you that it can be done with the other digit and that only one has to be a float in order for the extra decimal point to appear in the final result. &lt;br/&gt;&lt;br/&gt; Line 25:&lt;pre&gt;&lt;code&gt;5 / 2.0
  &lt;/code&gt;&lt;/pre&gt; This is equivilant to that of line 23. &lt;br/&gt;&lt;br/&gt; Line 27:&lt;pre&gt;&lt;code&gt;5 - 2 &amp;#42; 5
  &lt;/code&gt;&lt;/pre&gt; The order of operations in python is done by PEMDAS. Thus multiplication is done first so 2 * 5 is 10 and than 5 - 10 is -5. Which is what you get. Line 29:&lt;pre&gt;&lt;code&gt;&amp;#40;5 - 2&amp;#41; &amp;#42; 5
- &lt;/code&gt;&lt;/pre&gt; This time we had parantheses around 5 - 2 so that is the first thing done in the oder of operations. So 5 - 2 gives us 3 and than 3 * 5 is 15.  &lt;br/&gt;&lt;br/&gt; &lt;/p&gt;
+ &lt;/code&gt;&lt;/pre&gt; This time we had parantheses around 5 - 2 so that is the first thing done in the oder of operations. So 5 - 2 gives us 3 and than 3 * 5 is 15.  &lt;br/&gt;&lt;br/&gt; &lt;/p&gt;&lt;p&gt;For those wanting all the numeric types and learn more about them here is a table from python's &lt;a href='https://docs.python.org/2.4/lib/typesnumeric.html'&gt;documentation&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;https://defunsm.github.io/img/numerictypes.png&quot; alt=&quot;numerictypes&quot; /&gt;&lt;/p&gt;
 </description>
 <enclosure>
 
