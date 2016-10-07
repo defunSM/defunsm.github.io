@@ -12,11 +12,70 @@ http://blogawesome.com/
 A place to share my knowledge
 </description>
 <lastBuildDate>
-Thu, 06 Oct 2016 10:30:54 -0400
+Fri, 07 Oct 2016 17:49:57 -0400
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://blogawesome.com/posts-output/pythonvariables/
+</guid>
+<link>
+http://blogawesome.com/posts-output/pythonvariables/
+</link>
+<title>
+Python - Variables
+</title>
+<description>
+ &lt;p&gt;Now we'll actually be using a text editor and no longer the python interpreter. However you should periodically use the python interpreter which is a good way to learn.  &lt;br/&gt;&lt;br/&gt; To write python code you need to create a file with the .py extension this will tell your computer that you are writing python code. There is a way to get around this but for now it isn't really necessarily to do that but know that there is. For now just create a file called &quot;pynumbers.py&quot; in your favorite text editor. &lt;br/&gt;&lt;br/&gt; Type out the following code into the file. Actually type it out to get that muscle memory into your fingers instead of pasting it onto your text editor and type out the entire code and I'll explain it through one line at a time. &lt;br/&gt;&lt;br/&gt;&lt;/p&gt;&lt;pre&gt;&lt;code&gt;import math
+
+def main&amp;#40;&amp;#41;:
+
+    circumference&amp;#95;of&amp;#95;earth&amp;#95;in&amp;#95;km = 40000
+    time&amp;#95;for&amp;#95;one&amp;#95;rotation&amp;#95;in&amp;#95;hours = 24
+    minutes&amp;#95;in&amp;#95;hour = 60
+    seconds&amp;#95;in&amp;#95;minute = 60
+
+    radius&amp;#95;of&amp;#95;earth = circumference&amp;#95;of&amp;#95;earth&amp;#95;in&amp;#95;km / &amp;#40;2 &amp;#42; math.pi&amp;#41;
+
+    print&amp;#40;&amp;quot;Radius of Earth: %d km&amp;quot; % radius&amp;#95;of&amp;#95;earth&amp;#41;
+
+    velocity&amp;#95;of&amp;#95;earths&amp;#95;rotation = &amp;#40;circumference&amp;#95;of&amp;#95;earth&amp;#95;in&amp;#95;km &amp;#42; 1000&amp;#41; / &amp;#40;time&amp;#95;for&amp;#95;one&amp;#95;rotation&amp;#95;in&amp;#95;hours &amp;#42; minutes&amp;#95;in&amp;#95;hour &amp;#42; seconds&amp;#95;in&amp;#95;minute&amp;#41;
+
+    print&amp;#40;&amp;quot;Velocity: %d m/s&amp;quot;&amp;#41; % velocity&amp;#95;of&amp;#95;earths&amp;#95;rotation
+
+    acceleration&amp;#95;of&amp;#95;earth = &amp;#40;velocity&amp;#95;of&amp;#95;earths&amp;#95;rotation &amp;#42;&amp;#42; 2&amp;#41; / &amp;#40;radius&amp;#95;of&amp;#95;earth &amp;#42; 1000&amp;#41;
+
+    print&amp;#40;&amp;quot;Acceleration: %f m/s&amp;#94;2&amp;quot;&amp;#41; % acceleration&amp;#95;of&amp;#95;earth
+
+main&amp;#40;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;br /&gt;&lt;p&gt;Now after you have done typing it out go ahead and open up a terminal and run the following command in the same directory that you have created the file in.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;$ python pynumbers.py
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Result:&lt;pre&gt;&lt;code&gt;Radius of Earth: 6366 km
+Velocity: 462 m/s
+Acceleration: 0.033528 m/s&amp;#94;2
+ &lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;If you get an error running it than make sure you have typed out everything exactly.&lt;/p&gt;&lt;p&gt;Below are the explanations: &lt;br/&gt;&lt;br/&gt; Line 1:&lt;pre&gt;&lt;code&gt;import math
+ &lt;/code&gt;&lt;/pre&gt; In the first line we are importing functions from the math &quot;module&quot; which will allow us to use the math.pi which you seen in line 10. Without the import we would get an error. Right now you don't have to know too much about what modules are but know that Python has a very convinent way of bringing in other libraries to use in your code in this case you are able to use all the math functions without actually having to type in the functions into the code hence importing them. If you have coded in C++ than this is basically equivilant to #include where you are bringing in other libraries into your file. &lt;br/&gt;&lt;br/&gt; Line 3: &lt;pre&gt;&lt;code&gt;def main&amp;#40;&amp;#41;:
+ &lt;/code&gt;&lt;/pre&gt; This is how you define a function in python. Every file has a main function which is where all the action happens. Main is the name of the function followed by parantheses which right now is empty but if our function took any arguments which we'll get to in a later in depth discussion about functions there would be variables inbetween the parantheses. For now just realize that this is the snytax for creating a function in python. Using def and than followed by the name of the function and parantheses finally double colon.  &lt;br/&gt;&lt;br/&gt; Also take note that everything in the main function is indented expect the final line which is not in the function. &lt;br/&gt;&lt;br/&gt; Line 5-8:&lt;pre&gt;&lt;code&gt;    circumference&amp;#95;of&amp;#95;earth&amp;#95;in&amp;#95;km = 40000
+    time&amp;#95;for&amp;#95;one&amp;#95;rotation&amp;#95;in&amp;#95;hours = 24
+    minutes&amp;#95;in&amp;#95;hour = 60
+    seconds&amp;#95;in&amp;#95;minute = 60
+ &lt;/code&gt;&lt;/pre&gt; So we have 4 variables listed above. Variables in python have specific naming conventions such as variables can not contain dashes, numbers or special characters in them and must be lowercase and if you need to use multiple words in a variable it is customary to use an underscore. Followed by the variable name is an equal sign which is the assignment operator in Python. It is assigning the number 40000 to the variable circumference of the earth variable and binding the number to it. We see that we have four variables recieving assignment. &lt;br/&gt;&lt;br/&gt; Line 10:&lt;pre&gt;&lt;code&gt;radius&amp;#95;of&amp;#95;earth = circumference&amp;#95;of&amp;#95;earth&amp;#95;in&amp;#95;km / &amp;#40;2 &amp;#42; math.pi&amp;#41;
+ &lt;/code&gt;&lt;/pre&gt; So we have another variable the radius of the earth which is being assigned whatever the result of circumference of the earth divided by (2 * math.pi). The math.pi is the value of pi and is imported from the math library from line 1. So we can do math with variables and set it to another variable. &lt;br/&gt;&lt;br/&gt; Line 12:&lt;pre&gt;&lt;code&gt;print&amp;#40;&amp;quot;Radius of Earth: %d km&amp;quot; % radius&amp;#95;of&amp;#95;earth&amp;#41;
+ &lt;/code&gt;&lt;/pre&gt; Then we have our good old friend print that will display the radius of the earth. Notice that instead of a number we are giving %d a variable that contains a number. This is essentially the same thing as giving it a number as we did in previous exercises. &lt;br/&gt;&lt;br/&gt; Line 14:&lt;pre&gt;&lt;code&gt;velocity&amp;#95;of&amp;#95;earths&amp;#95;rotation = &amp;#40;circumference&amp;#95;of&amp;#95;earth&amp;#95;in&amp;#95;km &amp;#42; 1000&amp;#41; / &amp;#40;time&amp;#95;for&amp;#95;one&amp;#95;rotation&amp;#95;in&amp;#95;hours &amp;#42; minutes&amp;#95;in&amp;#95;hour &amp;#42; seconds&amp;#95;in&amp;#95;minute&amp;#41;
+ &lt;/code&gt;&lt;/pre&gt; Calculating the velocity of the earth by converting the circumference into meters and the rotation of the earth into seconds so that you can get a velocity in terms of meters per second. Notice that instead of typing out the conversation which we could do we are using the variables we have already set. &lt;br/&gt;&lt;br/&gt; Line 16:&lt;pre&gt;&lt;code&gt;print&amp;#40;&amp;quot;Velocity: %d m/s&amp;quot;&amp;#41; % velocity&amp;#95;of&amp;#95;earths&amp;#95;rotation
+ &lt;/code&gt;&lt;/pre&gt; Prints the velocity of the earth's rotation for us. &lt;br/&gt;&lt;br/&gt; Line 18:&lt;pre&gt;&lt;code&gt;acceleration&amp;#95;of&amp;#95;earth = &amp;#40;velocity&amp;#95;of&amp;#95;earths&amp;#95;rotation &amp;#42;&amp;#42; 2&amp;#41; / &amp;#40;radius&amp;#95;of&amp;#95;earth &amp;#42; 1000&amp;#41;
+ &lt;/code&gt;&lt;/pre&gt; Sets the acceleration of the earth using the a = (v&lt;sup&gt;2)/r.&lt;/sup&gt; Nothing we haven't seen. ** to raise the value of the velocity of the earth to the second power. &lt;br/&gt;&lt;br/&gt; Line 20:&lt;pre&gt;&lt;code&gt;print&amp;#40;&amp;quot;Acceleration: %f m/s&amp;#94;2&amp;quot;&amp;#41; % acceleration&amp;#95;of&amp;#95;earth
+ &lt;/code&gt;&lt;/pre&gt; Nothing new. Prints the acceleration. &lt;br/&gt;&lt;br/&gt; Line 22:&lt;pre&gt;&lt;code&gt;main&amp;#40;&amp;#41;
+ &lt;/code&gt;&lt;/pre&gt; Notice that this is the name of the function and is outside of the function. This basically calls the function main. If you removed this last line and ran it nothing would happen because you didn't call it. &lt;/p&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Fri, 07 Oct 2016 00:00:00 -0400
+</pubDate>
+</item>
 <item>
 <guid>
 http://blogawesome.com/posts-output/python2/
