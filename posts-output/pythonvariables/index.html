@@ -63,6 +63,8 @@
 				<h1 class="header_title">Python - Variables</h1>
 
 
+                                <a href="/posts-output/python-if-else-statements/" class="button"><i class="fa fa-arrow-left" aria-hidden="true"></i> Python - Booleans</a>
+
 <br/>
                                 
                                 <a href="/posts-output/python2/" class="button">Python - Numbers <i class="fa fa-arrow-right" aria-hidden="true"></i>
@@ -91,7 +93,7 @@
 </div>
 <div>
     
-     <p>Now we'll actually be using a text editor and no longer the python interpreter. However you should periodically use the python interpreter which is a good way to learn.  <br/><br/> To write python code you need to create a file with the .py extension this will tell your computer that you are writing python code. There is a way to get around this but for now it isn't really necessarily to do that but know that there is. For now just create a file called "pynumbers.py" in your favorite text editor. <br/><br/> Type out the following code into the file. Actually type it out to get that muscle memory into your fingers instead of pasting it onto your text editor and type out the entire code and I'll explain it through one line at a time. <br/><br/></p><pre><code>import math
+     <p>Now we'll actually be using a text editor and no longer the python interpreter. However you should periodically use the python interpreter which is a good way to learn.  <br/><br/> To write python code you need to create a file with the .py extension this will tell your computer that you are writing python code. There is a way to get around this but for now it isn't really necessarily to do that but know that there is. For now just create a file called "pyvariables.py" in your favorite text editor. <br/><br/> Type out the following code into the file. Actually type it out to get that muscle memory into your fingers instead of pasting it onto your text editor and type out the entire code and I'll explain it through one line at a time. <br/><br/></p><pre><code>import math
 
 def main&#40;&#41;:
 
@@ -102,18 +104,18 @@ def main&#40;&#41;:
 
     radius&#95;of&#95;earth = circumference&#95;of&#95;earth&#95;in&#95;km / &#40;2 &#42; math.pi&#41;
 
-    print&#40;&quot;Radius of Earth: %d km&quot; % radius&#95;of&#95;earth&#41;
+    print&#40;&quot;Radius of Earth:&quot;, radius&#95;of&#95;earth , &quot; km&quot;&#41;
 
     velocity&#95;of&#95;earths&#95;rotation = &#40;circumference&#95;of&#95;earth&#95;in&#95;km &#42; 1000&#41; / &#40;time&#95;for&#95;one&#95;rotation&#95;in&#95;hours &#42; minutes&#95;in&#95;hour &#42; seconds&#95;in&#95;minute&#41;
 
-    print&#40;&quot;Velocity: %d m/s&quot;&#41; % velocity&#95;of&#95;earths&#95;rotation
+    print&#40;&quot;Velocity:&quot;, velocity&#95;of&#95;earths&#95;rotation , &quot;m/s&quot;&#41; 
 
     acceleration&#95;of&#95;earth = &#40;velocity&#95;of&#95;earths&#95;rotation &#42;&#42; 2&#41; / &#40;radius&#95;of&#95;earth &#42; 1000&#41;
 
-    print&#40;&quot;Acceleration: %f m/s&#94;2&quot;&#41; % acceleration&#95;of&#95;earth
+    print&#40;&quot;Acceleration:&quot;, acceleration&#95;of&#95;earth , &quot;m/s&#94;2&quot;&#41; 
 
 main&#40;&#41;
-</code></pre><br /><p>Now after you have done typing it out go ahead and open up a terminal and run the following command in the same directory that you have created the file in.</p><pre><code>$ python pynumbers.py
+</code></pre><br /><p>Now after you have done typing it out go ahead and open up a terminal and run the following command in the same directory that you have created the file in.</p><pre><code>$ python pyvariables.py
 </code></pre><p>Result:<pre><code>Radius of Earth: 6366 km
 Velocity: 462 m/s
 Acceleration: 0.033528 m/s&#94;2
@@ -124,11 +126,11 @@ Acceleration: 0.033528 m/s&#94;2
     minutes&#95;in&#95;hour = 60
     seconds&#95;in&#95;minute = 60
  </code></pre> So we have 4 variables listed above. Variables in python have specific naming conventions such as variables can not contain dashes, numbers or special characters in them and must be lowercase and if you need to use multiple words in a variable it is customary to use an underscore. Followed by the variable name is an equal sign which is the assignment operator in Python. It is assigning the number 40000 to the variable circumference of the earth variable and binding the number to it. We see that we have four variables recieving assignment. <br/><br/> Line 10:<pre><code>radius&#95;of&#95;earth = circumference&#95;of&#95;earth&#95;in&#95;km / &#40;2 &#42; math.pi&#41;
- </code></pre> So we have another variable the radius of the earth which is being assigned whatever the result of circumference of the earth divided by (2 * math.pi). The math.pi is the value of pi and is imported from the math library from line 1. So we can do math with variables and set it to another variable. <br/><br/> Line 12:<pre><code>print&#40;&quot;Radius of Earth: %d km&quot; % radius&#95;of&#95;earth&#41;
- </code></pre> Then we have our good old friend print that will display the radius of the earth. Notice that instead of a number we are giving %d a variable that contains a number. This is essentially the same thing as giving it a number as we did in previous exercises. <br/><br/> Line 14:<pre><code>velocity&#95;of&#95;earths&#95;rotation = &#40;circumference&#95;of&#95;earth&#95;in&#95;km &#42; 1000&#41; / &#40;time&#95;for&#95;one&#95;rotation&#95;in&#95;hours &#42; minutes&#95;in&#95;hour &#42; seconds&#95;in&#95;minute&#41;
- </code></pre> Calculating the velocity of the earth by converting the circumference into meters and the rotation of the earth into seconds so that you can get a velocity in terms of meters per second. Notice that instead of typing out the conversation which we could do we are using the variables we have already set. <br/><br/> Line 16:<pre><code>print&#40;&quot;Velocity: %d m/s&quot;&#41; % velocity&#95;of&#95;earths&#95;rotation
+ </code></pre> So we have another variable the radius of the earth which is being assigned whatever the result of circumference of the earth divided by (2 * math.pi). The math.pi is the value of pi and is imported from the math library from line 1. So we can do math with variables and set it to another variable. <br/><br/> Line 12:<pre><code>print&#40;&quot;Radius of Earth:&quot; , radius&#95;of&#95;earth , &quot; km&quot;&#41;
+ </code></pre> Then we have our good old friend print that will display the radius of the earth. Notice that instead of a number or string we are putting in a variable that contains a number. This is essentially the same thing as giving it a number as we did in previous exercises. <br/><br/> Line 14:<pre><code>velocity&#95;of&#95;earths&#95;rotation = &#40;circumference&#95;of&#95;earth&#95;in&#95;km &#42; 1000&#41; / &#40;time&#95;for&#95;one&#95;rotation&#95;in&#95;hours &#42; minutes&#95;in&#95;hour &#42; seconds&#95;in&#95;minute&#41;
+ </code></pre> Calculating the velocity of the earth by converting the circumference into meters and the rotation of the earth into seconds so that you can get a velocity in terms of meters per second. Notice that instead of typing out the conversation which we could do we are using the variables we have already set. <br/><br/> Line 16:<pre><code>print&#40;&quot;Velocity:&quot;, velocity&#95;of&#95;earths&#95;rotation , &quot; m/s&quot;&#41; 
  </code></pre> Prints the velocity of the earth's rotation for us. <br/><br/> Line 18:<pre><code>acceleration&#95;of&#95;earth = &#40;velocity&#95;of&#95;earths&#95;rotation &#42;&#42; 2&#41; / &#40;radius&#95;of&#95;earth &#42; 1000&#41;
- </code></pre> Sets the acceleration of the earth using the a = (v<sup>2)/r.</sup> Nothing we haven't seen. ** to raise the value of the velocity of the earth to the second power. <br/><br/> Line 20:<pre><code>print&#40;&quot;Acceleration: %f m/s&#94;2&quot;&#41; % acceleration&#95;of&#95;earth
+ </code></pre> Sets the acceleration of the earth using the a = (v<sup>2)/r.</sup> Nothing we haven't seen. ** to raise the value of the velocity of the earth to the second power. <br/><br/> Line 20:<pre><code>print&#40;&quot;Acceleration:&quot;,  acceleration&#95;of&#95;earth, &quot;m/s&#94;2&quot;&#41; 
  </code></pre> Nothing new. Prints the acceleration. <br/><br/> Line 22:<pre><code>main&#40;&#41;
  </code></pre> Notice that this is the name of the function and is outside of the function. This basically calls the function main. If you removed this last line and ran it nothing would happen because you didn't call it. </p>
 </div>
@@ -146,6 +148,8 @@ Acceleration: 0.033528 m/s&#94;2
 
 
                           <div id="prev-next">
+                            
+                            <a href="/posts-output/python-if-else-statements/">&laquo; Python - Booleans</a>
                             
                             
                             <a class="right" href="/posts-output/python2/">Python - Numbers &raquo;</a>

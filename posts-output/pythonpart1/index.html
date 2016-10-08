@@ -93,22 +93,22 @@
 </div>
 <div>
     
-    <p>Open up the python interpreter on your command line by the following...</p><pre><code>$ python
+    <p>Open up the python interpreter on your command line by the following...</p><pre><code>$ python3
 </code></pre> <p>Type the following one by one into the python interpreter. I'll explain each line one by one later but try to figure out what the result of each line is before typing it out and hitting enter.</p><pre><code>print&#40;&quot;A string&quot;&#41;
 
 print&#40;'This is a string too'&#41;
 
 print&#40;&quot;stuff&quot; + &quot;and more stuff&quot;&#41;
 
-print&#40;&quot;The char %c&quot;&#41; % 'a'
+print&#40;&quot;The char:&quot;, 'a'&#41;
 
-print&#40;&quot;The string %s&quot;&#41; % &quot;stuff&quot;
+print&#40;&quot;The string: &quot;, &quot;stuff&quot;&#41;
 
-print&#40;&quot;The digit %d&quot;&#41; % 5
+print&#40;&quot;The digit&quot;, 5&#41;
 
-print&#40;&quot;The float %f&quot; % 4.0&#41;
+print&#40;&quot;The float &quot;, 4.0&#41;
 
-print&#40;&quot;Printing multiple stuff: %c %s %d %f&quot;&#41; % &#40;'a', &quot;stuff&quot;, 5, 4.0&#41;
+print&#40;&quot;Printing multiple stuff:&quot;, 'a', &quot;stuff&quot;, 5, 4.0&#41;&#41;
 
 print&#40;&quot;First Line \nSecond Line&quot;&#41;
 
@@ -120,17 +120,17 @@ print&#40;&quot;&quot;&quot;
 This is a bit weird.
 But acts as if I added newlines.
 &quot;&quot;&quot;&#41;
-</code></pre>The explanations are below make sure you ran all of them before checking the explanations.<pre><code>python ex1.py
+</code></pre>The explanations are below make sure you ran all of them before checking the explanations.<pre><code>python3 ex1.py
 </code></pre><p>Explanations:</p><p>Line 1:</p><pre><code>print&#40;&quot;A string&quot;&#41;
 </code></pre>Using the print function you display "A string" which is a string to the console. You have to include the quotations otherwise it'll be treated as a variable which you'll learn later.<br/><br/>Line 3:<pre><code>print&#40;'This is a string too'&#41;
 </code></pre>This is also a string but using single quotes you can use either whatever you prefer. <br/><br/>Line 5:<pre><code>print&#40;&quot;stuff&quot; + &quot;and more stuff&quot;&#41;
-</code></pre>What you are doing here is called concatenation which is a fancy word for joining strings together. You are doing this by using the + symbol adding the two strings to form one string and displaying it onto the console.<br/><br/>Line 7:<pre><code>print&#40;&quot;The char %c&quot;&#41; % 'a'
-</code></pre>Using the % symbol is the format symbol in python which allows you to insert the character 'a' into the string. Also notice that is followed by the leter 'c' indicating that it is expecting a character.<br /><br/>You are printing a single character NOT a string. A string contains many characters but a character is a single letter. Notice that I used single quotes for this which if you come from c++ you may know that characters are in single quotes. However in Python you don't have to use single quotes on characters you could use double quotes and this line of code would have worked just fine.<br/><br/>Line 9:<pre><code>print&#40;&quot;The string %s&quot;&#41; % &quot;stuff&quot;
-</code></pre>This time you are using the string formator symbol but expecting a string.<br/><br/>Line 11:<pre><code>print&#40;&quot;The digit %d&quot;&#41; % 5
-</code></pre>Formating a digit instead of a string or character.<br/><br/>Line 13:<pre><code>print&#40;&quot;The float %f&quot; % 4.0&#41;
-</code></pre>Formatting a float. A float having digits after the decimal place.<br/><br/>Line 15:<pre><code>print&#40;&quot;Printing multiple stuff: %c %s %d %f&quot;&#41; % &#40;'a', &quot;stuff&quot;, 5, 4.0&#41;
-</code></pre>Now you are using multiple formators to print out a character, string, integer and a float.<br/><br/>Line 17:<pre><code>print&#40;&quot;First Line \nSecond Line&quot;&#41;
-</code></pre>The "\n" is an escape character and creates a new line thus showing you the string on two different lines on the console. There are many escape characters and if you want to see all of them you can see them in the <a href='https://docs.python.org/2.0/ref/strings.html'>python documentation</a>.<br/><br/>Line 19:<pre><code>print&#40;&quot;\tI am a tabbed Line.&quot;&#41;
+</code></pre>What you are doing here is called concatenation which is a fancy word for joining strings together. You are doing this by using the + symbol adding the two strings to form one string and displaying it onto the console.<br/><br/>Line 7:<pre><code>print&#40;&quot;The char&quot;, 'a'&#41;
+</code></pre>Using the , symbol is the format symbol in python which allows you to insert the character 'a' into the string. Also notice that is followed by the leter 'c' indicating that it is expecting a character.<br /><br/>You are printing a single character NOT a string. A string contains many characters but a character is a single letter. Notice that I used single quotes for this which if you come from c++ you may know that characters are in single quotes. However in Python you don't have to use single quotes on characters you could use double quotes and this line of code would have worked just fine.<br/><br/>Line 9:<pre><code>print&#40;&quot;The string&quot;, &quot;stuff&quot;&#41;
+</code></pre>This time you are using the string formator symbol but expecting a string.<br/><br/>Line 11:<pre><code>print&#40;&quot;The digit&quot;, 5&#41;
+</code></pre>Formating a digit instead of a string or character.<br/><br/>Line 13:<pre><code>print&#40;&quot;The float&quot;, 4.0&#41;
+</code></pre>Formatting a float. A float having digits after the decimal place.<br/><br/>Line 15:<pre><code>print&#40;&quot;Printing multiple stuff:&quot;, 'a', &quot;stuff&quot;, 5, 4.0&#41;&#41;
+</code></pre>Now you are using multiple commas to print out a character, string, integer and a float.<br/><br/>Line 17:<pre><code>print&#40;&quot;First Line \nSecond Line&quot;&#41;
+</code></pre>The "\n" is an escape character and creates a new line thus showing you the string on two different lines on the console. There are many escape characters and if you want to see all of them you can see them in the <a href='https://docs.python.org/2.0/ref/strings.html'>python documentation</a>.<br/><br/><img src="https://defunsm.github.io/img/escapes.png" alt="escapes" /><br/><br/>Line 19:<pre><code>print&#40;&quot;\tI am a tabbed Line.&quot;&#41;
 </code></pre>\t creates a tab and displays it onto the console.<br/><br/>Line 21:<pre><code># print&#40;&quot;I am a comment so I won't print. :&#40;&quot;&#41;
 </code></pre>This is a comment so it won't show up. This is how you write notes in your program without it being interpreted as code.<br/><br/>Line 23-26:<pre><code>print&#40;&quot;&quot;&quot;
 This is a bit weird.
