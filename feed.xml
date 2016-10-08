@@ -12,7 +12,7 @@ http://blogawesome.com/
 A place to share my knowledge
 </description>
 <lastBuildDate>
-Sat, 08 Oct 2016 12:50:34 -0400
+Sat, 08 Oct 2016 13:01:09 -0400
 </lastBuildDate>
 <generator>
 clj-rss
@@ -28,7 +28,7 @@ http://blogawesome.com/posts-output/python-booleans/
 Python - Booleans
 </title>
 <description>
-&lt;p&gt;We are now going to use booleans in this part of the exercise. A Boolean is either True or False. Using True or False we are going logic using operators such as &lt;, &gt;, &lt;=, &gt;=, !=, and, or, not. &lt;br/&gt;&lt;br/&gt; &lt;img src=&quot;https://defunsm.github.io/img/booleans.png&quot; alt=&quot;booleans&quot; /&gt; &lt;br/&gt;&lt;br/&gt; Note that the double equal sign is not the same as a single equal sign. This is a common mistake rather when using the == it tests for equality if or not the two things being compared are equal. If they are it returns true otherwise false. &lt;br/&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Open up a python file you can call it ifstatements.py and type out the following.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;def main&amp;#40;&amp;#41;:
+&lt;p&gt;A boolean is either True or False. In python 0 evaluates to False. While every other number is True. Boolean is also a data type which is used to do logical conditions. Such as is 2 greater than 5? Thus returns the boolean False.  &lt;br/&gt;&lt;br/&gt; &lt;img src=&quot;https://defunsm.github.io/img/booleans.png&quot; alt=&quot;booleans&quot; /&gt; &lt;br/&gt;&lt;br/&gt; Note that the double equal sign is not the same as a single equal sign. This is a common mistake rather when using the == it tests for equality if or not the two things being compared are equal. If they are it returns true otherwise false. &lt;br/&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Open up a python file you can call it ifstatements.py and type out the following.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;def main&amp;#40;&amp;#41;:
 
     print&amp;#40;&amp;quot;Is 2 less than 5?: &amp;quot;, &amp;#40;2 &amp;lt; 5&amp;#41;&amp;#41;
     print&amp;#40;&amp;quot;Is 2 greater than 5?:&amp;quot;, &amp;#40;2 &amp;gt; 5&amp;#41;&amp;#41;
