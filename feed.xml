@@ -12,11 +12,106 @@ http://blogawesome.com/
 A place to share my knowledge
 </description>
 <lastBuildDate>
-Sat, 08 Oct 2016 20:47:00 -0400
+Sun, 09 Oct 2016 10:47:27 -0400
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://blogawesome.com/posts-output/pythonifstatements/
+</guid>
+<link>
+http://blogawesome.com/posts-output/pythonifstatements/
+</link>
+<title>
+Python - If-else-statements
+</title>
+<description>
+ &lt;p&gt;Previously you learned about booleans and how to do logical statements. Now we'll learn how to use the booleans to do conditional statements in Python. Conditional statements like in many programming languages call them if-else-statements. If this is true then this is done else this other thing is done. You'll see soon enough what I mean. If-Else-Statements take a condition and if the condition is true will do the expression other it will do the other expression since it is false.  &lt;br/&gt;&lt;br/&gt; Enough of me just talking see for yourself how it works. Open up a text editor and type in the following if-else statements.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;def main&amp;#40;&amp;#41;:
+
+    if &amp;#40;True&amp;#41;:
+        print&amp;#40;&amp;quot;I am printing because I am True!&amp;quot;&amp;#41;
+
+    if &amp;#40;False&amp;#41;:
+        print&amp;#40;&amp;quot;I am not going to print because I am False!&amp;quot;&amp;#41;
+
+
+    age = 19
+
+    if &amp;#40;age &amp;gt; 10&amp;#41;:
+        print&amp;#40;&amp;quot;I am older than 10 years.&amp;quot;&amp;#41;
+
+    if &amp;#40;age &amp;gt; 20&amp;#41;:
+        print&amp;#40;&amp;quot;I am older than 20 years.&amp;quot;&amp;#41;
+    else:
+        print&amp;#40;&amp;quot;I am younger than 20 years.&amp;quot;&amp;#41;
+
+
+    grade = 81
+
+    if &amp;#40;grade &amp;gt; 90&amp;#41;:
+        print&amp;#40;&amp;quot;I got over 90.&amp;quot;&amp;#41;
+    elif &amp;#40;grade &amp;gt; 80&amp;#41;:
+        print&amp;#40;&amp;quot;I got over 80&amp;quot;&amp;#41;
+    elif &amp;#40;grade &amp;gt; 70&amp;#41;:
+        print&amp;#40;&amp;quot;I got over 70.&amp;quot;&amp;#41;
+    else:
+        print&amp;#40;&amp;quot;I got under 70.&amp;quot;&amp;#41;
+
+
+    if &amp;#40;grade &amp;gt; 90 and age &amp;gt; 20&amp;#41;:
+        print&amp;#40;&amp;quot;I got over a 90 and I am over 20 years old.&amp;quot;&amp;#41;
+    elif &amp;#40;grade &amp;gt; 70 and age &amp;gt; 20&amp;#41;:
+        print&amp;#40;&amp;quot;I got over a 70 and am over 20 years old.&amp;quot;&amp;#41;
+    else:
+        print&amp;#40;&amp;quot;I got a&amp;quot;, grade, &amp;quot;and am over&amp;quot;, age, &amp;quot;years old.&amp;quot;&amp;#41;
+
+main&amp;#40;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;br/&gt;&lt;br/&gt;Result:&lt;pre&gt;&lt;code&gt;I am printing because I am True!
+I am older than 10 years.
+I am younger than 20 years.
+I got over 80
+I got a 81 and am over 19  years old.
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;br/&gt;&lt;br/&gt; Explanation below: &lt;br/&gt;&lt;br/&gt; Line 3-7:&lt;pre&gt;&lt;code&gt;    if &amp;#40;True&amp;#41;:
+        print&amp;#40;&amp;quot;I am printing because I am True!&amp;quot;&amp;#41;
+
+    if &amp;#40;False&amp;#41;:
+        print&amp;#40;&amp;quot;I am not going to print because I am False!&amp;quot;&amp;#41;
+ &lt;/code&gt;&lt;/pre&gt; These are if statements. Just testing for if the condition which is in parantheses are TRUE. This is why the second if statement did not print in the result and only the one TRUE did. The basic format for writing a if statement is starting with the if keyword in python which starts the if statement. Followed by the parantheses which you put the condition you are testing in this case it's already a Boolean. Followed by a : to end the line. Than you indent the expression you want if that condition is met to be evaluated underneath. &lt;br/&gt;&lt;br/&gt; Line 9-17:&lt;pre&gt;&lt;code&gt;    age = 19
+
+    if &amp;#40;age &amp;gt; 10&amp;#41;:
+        print&amp;#40;&amp;quot;I am older than 10 years.&amp;quot;&amp;#41;
+
+    if &amp;#40;age &amp;gt; 20&amp;#41;:
+        print&amp;#40;&amp;quot;I am older than 20 years.&amp;quot;&amp;#41;
+    else:
+        print&amp;#40;&amp;quot;I am younger than 20 years.&amp;quot;&amp;#41;
+ &lt;/code&gt;&lt;/pre&gt; On line 10 we have our age as a variable set to 19. On line 11 we have a if statement checking if our age is greater than 10. It is so it prints. Line 14 we have a if-else statement which is similiar to an if statement expect it has a default value if none of the conditions hold true. In this cause age is not greater than 20 and so it prints what is under the else statement. The else: will come after the if when writing if-else statements. Else does not take any conditions if you do it would be an error. &lt;br/&gt;&lt;br/&gt; Line 19-28:&lt;pre&gt;&lt;code&gt;    grade = 81
+
+    if &amp;#40;grade &amp;gt; 90&amp;#41;:
+        print&amp;#40;&amp;quot;I got over 90.&amp;quot;&amp;#41;
+    elif &amp;#40;grade &amp;gt; 80&amp;#41;:
+        print&amp;#40;&amp;quot;I got over 80&amp;quot;&amp;#41;
+    elif &amp;#40;grade &amp;gt; 70&amp;#41;:
+        print&amp;#40;&amp;quot;I got over 70.&amp;quot;&amp;#41;
+    else:
+        print&amp;#40;&amp;quot;I got under 70.&amp;quot;&amp;#41;
+ &lt;/code&gt;&lt;/pre&gt; What if you wanted to test for multiple conditions? Well then you write a if-elif-else condition. Elif works in a similar way that if does that it takes a condition. However it elif follows after a if statement. One thing to notice is that none of the other prints under the elif (grade &gt; 80) are even printed or even checked for. Once one of the conditions are met to be true thats it it leaves the if statement and directly into the body of the elif and does whatever is in the body. &lt;br/&gt;&lt;br/&gt; Line 30-35:&lt;pre&gt;&lt;code&gt;    if &amp;#40;grade &amp;gt; 90 and age &amp;gt; 20&amp;#41;:
+        print&amp;#40;&amp;quot;I got over a 90 and I am over 20 years old.&amp;quot;&amp;#41;
+    elif &amp;#40;grade &amp;gt; 70 and age &amp;gt; 20&amp;#41;:
+        print&amp;#40;&amp;quot;I got over a 70 and am over 20 years old.&amp;quot;&amp;#41;
+    else:
+        print&amp;#40;&amp;quot;I got a&amp;quot;, grade, &amp;quot;and am over&amp;quot;, age, &amp;quot;years old.&amp;quot;&amp;#41;
+ &lt;/code&gt;&lt;/pre&gt; In this if-elif-else statement we are using and to test that both of the conditions are met so the first one is False and False which if you remember using and if one of them is False the entire condition is evaluated as False. So the if part of the statement is not met. Then the elif statement is True and False since the grade is higher than 70 but the age is not again this is evaluated as False and the elif part is not met. Thus it defaults to the else statement. &lt;br/&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Wrapping up: &lt;br/&gt;&lt;br/&gt; So we learned if statements, if-else statements and if-elif-else-statements. One thing I did leave out here is nested if-else and if-elif-else statements which are a bit more tricky but basically the same principle. One thing to keep in mind is that using if-statements you want to be careful what conditions you are checking since when the first condition is found that holds true that condition's body will be evaluated and nothing else will even be checked. If statements are widely used and are important tools to use in most programming languages as a part of decision making and making choices in programming. So making sure you understand them is critical.&lt;/p&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Sun, 09 Oct 2016 00:00:00 -0400
+</pubDate>
+</item>
 <item>
 <guid>
 http://blogawesome.com/posts-output/python-booleans/
@@ -28,7 +123,7 @@ http://blogawesome.com/posts-output/python-booleans/
 Python - Booleans
 </title>
 <description>
-&lt;p&gt;A boolean is either True or False. In python 0 evaluates to False. While every other number is True. Boolean is also a data type which is used to do logical conditions. Such as is 2 greater than 5? Thus returns the boolean False.  &lt;br/&gt;&lt;br/&gt; &lt;img src=&quot;https://defunsm.github.io/img/booleans.png&quot; alt=&quot;booleans&quot; /&gt; &lt;br/&gt;&lt;br/&gt; Note that the double equal sign is not the same as a single equal sign. This is a common mistake rather when using the == it tests for equality if or not the two things being compared are equal. If they are it returns true otherwise false. &lt;br/&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Open up a python file you can call it ifstatements.py and type out the following.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;def main&amp;#40;&amp;#41;:
+&lt;p&gt;A boolean is either True or False. In python 0 evaluates to False. While every other number is True. Boolean is also a data type which is used to do logical conditions. Such as is 2 greater than 5? Thus returns the boolean False.  &lt;br/&gt;&lt;br/&gt; &lt;img src=&quot;https://defunsm.github.io/img/booleans.png&quot; alt=&quot;booleans&quot; /&gt; &lt;br/&gt;&lt;br/&gt; Note that the double equal sign is not the same as a single equal sign. This is a common mistake rather when using the == it tests for equality if or not the two things being compared are equal. If they are it returns true otherwise false. &lt;br/&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Open up a python file you can call it pybooleans.py and type out the following.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;def main&amp;#40;&amp;#41;:
 
     print&amp;#40;&amp;quot;Is 2 less than 5?: &amp;quot;, &amp;#40;2 &amp;lt; 5&amp;#41;&amp;#41;
     print&amp;#40;&amp;quot;Is 2 greater than 5?:&amp;quot;, &amp;#40;2 &amp;gt; 5&amp;#41;&amp;#41;
