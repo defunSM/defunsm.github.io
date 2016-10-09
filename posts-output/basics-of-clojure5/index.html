@@ -93,7 +93,7 @@
 </div>
 <div>
     
-    <p>Watching an Atom is exactly what it sounds like. Adding a Watch on an Atom keeps track of your atom and monitors them and when a specific condition is met it will trigger some function and alert you to the change.</p><p>Lets say we have our player that starts off with 100 health and when he reaches zero health we want to be notified that the game is over. The way we would go about this is first by creating an atom for the player. We already learned this in part 4.</p><pre><code>&#40;def player &#40;atom {:hp 100}&#41;&#41; ;; creates the player health at 100.
+    <p>Watching an Atom is exactly what it sounds like. Adding a Watch on an Atom keeps track of your atom and monitors them and when a specific condition is met it will trigger some function and alert you to the change. <br/><br/> Lets say we have our player that starts off with 100 health and when he reaches zero health we want to be notified that the game is over. The way we would go about this is first by creating an atom for the player. We already learned this in part 4.</p><pre><code>&#40;def player &#40;atom {:hp 100}&#41;&#41; ;; creates the player health at 100.
 </code></pre><p>Now we need a function that will lower the health of the player. We'll call this player-damage.</p><pre><code>&#40;defn player-damage &#91;val&#93;
   &#40;swap! player update-in &#91;:hp&#93; - val&#41;&#41; ;; lowers the health of the player.
 </code></pre><p>Now that we have a way to lower the player's health we can now monitor the atom as we change the player's health. The new part where we create a watch for out atom. This is done by the add-watch function.</p><pre><code>&#40;defn watch-health &#91;key watch old new&#93;  ;; contains the old state and the new state.

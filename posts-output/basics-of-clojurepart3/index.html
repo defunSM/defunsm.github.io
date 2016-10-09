@@ -93,7 +93,7 @@
 </div>
 <div>
     
-      <p>If you're learning clojure chances are this isn't your first language. So you probably have some familiarity with what recursion is.</p><p>We will start off with making a simple factorial function to get us started with seeing recursion.</p><pre><code>&#40;defn factorial &#91;n&#93;  ;; our factorial function accepting one argument
+      <p>If you're learning clojure chances are this isn't your first language. So you probably have some familiarity with what recursion is. <br/><br/> We will start off with making a simple factorial function to get us started with seeing recursion.</p><pre><code>&#40;defn factorial &#91;n&#93;  ;; our factorial function accepting one argument
   &#40;if &#40;= n 1&#41;        ;; checks if n is equal to 1 and if so returns 1
     1
     &#40;&#42; n &#40;factorial &#40;dec n&#41;&#41;&#41;&#41;&#41;  ;; calls the factorial again after decreasing n by 1.

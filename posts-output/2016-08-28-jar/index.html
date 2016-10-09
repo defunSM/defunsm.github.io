@@ -93,7 +93,7 @@
 </div>
 <div>
     
-    <p>Clojure luckily relies on the JVM and thus it is easy to turn a .clj into a .jar with relative ease. Of course there are some things you have to watch out for such as making sure that the -main function contains everything and nothing is in the top level that's supposed to be in the -main function.</p><p>So start with the basics start a leiningen project running the following.</p><pre><code>$ lein new defunsmproject
+    <p>Clojure luckily relies on the JVM and thus it is easy to turn a .clj into a .jar with relative ease. Of course there are some things you have to watch out for such as making sure that the -main function contains everything and nothing is in the top level that's supposed to be in the -main function. <br/><br/> So start with the basics start a leiningen project running the following...</p><pre><code>$ lein new defunsmproject
 </code></pre><p>This will create a new leiningen project which now means you should have a project.clj file. That looks something like this.</p><pre><code>&#40;defproject defunsmproject &quot;0.1.0-SNAPSHOT&quot;
   :description &quot;FIXME: write description&quot;
   :url &quot;http://example.com/FIXME&quot;
@@ -106,7 +106,7 @@
   &quot;I don't do a whole lot.&quot;
   &#91;x&#93;
   &#40;println x &quot;Hello, World!&quot;&#41;&#41;
-</code></pre><p>Step 1: Edit project.clj so that leiningen knows which one is your -main function.  In this cause it would be defunsmproject.core.</p><p>As well as adding :profiles telling leiningen how to build the jar file.</p><pre><code>&#40;defproject defunsmproject &quot;0.1.0-SNAPSHOT&quot;
+</code></pre><p>Step 1: <br/><br/>  Edit project.clj so that leiningen knows which one is your -main function.  In this cause it would be defunsmproject.core.  <br/><br/> As well as adding :profiles telling leiningen how to build the jar file.</p><pre><code>&#40;defproject defunsmproject &quot;0.1.0-SNAPSHOT&quot;
   :description &quot;FIXME: write description&quot;
   :url &quot;http://example.com/FIXME&quot;
   :license {:name &quot;Eclipse Public License&quot;
@@ -116,14 +116,14 @@
   :jar-name &quot;defunsmproject.jar&quot; ;; add this
   :uberjar-name &quot;defunsmproject-uber.jar&quot; ;; add this
   :main defunsmproject.core&#41; ;; add this
-</code></pre><p>Step 2: Add :gen-class and -main function in the core.clj.</p><pre><code>&#40;ns defunsmproject.core
+</code></pre><p>Step 2:  <br/><br/> Add :gen-class and -main function in the core.clj.</p><pre><code>&#40;ns defunsmproject.core
   &#40;:gen-class&#41;&#41; ;; add this gen-class
 
 &#40;defn -main &#91;&amp; args&#93;  ;; add this -main function
   &#40;println &quot;Converting a clojure file to a standalone jar!&quot;&#41;&#41;
-</code></pre><p>Step 3: Now you can make a uberjar which is the standalone jar by running ...</p><pre><code>$ lein uberjar
-</code></pre><p>If that worked than your in good luck and should have a uber-jar and a jar. The standalone one that you probably want is the uber-jar one which will be in the the target directory that was generated.</p><p>To run the jar file do the following. And you should see the output as expected.</p><pre><code>$ java -jar defunsmproject-uber.jar
-</code></pre><p>If you run into problems make sure that your project.clj and core.clj is set up just like mine. Otherwise you now have a .jar file from a .clj file!</p>
+</code></pre><p>Step 3:  <br/><br/> Now you can make a uberjar which is the standalone jar by running ...</p><pre><code>$ lein uberjar
+</code></pre><p>If that worked than your in good luck and should have a uber-jar and a jar. The standalone one that you probably want is the uber-jar one which will be in the the target directory that was generated. <br/><br/> To run the jar file do the following. And you should see the output as expected. <br/><br/><pre><code>$ java -jar defunsmproject-uber.jar
+ </code></pre></p><p>If you run into problems make sure that your project.clj and core.clj is set up just like mine. Otherwise you now have a .jar file from a .clj file!</p>
 </div>
 
 <div id="post-tags">
