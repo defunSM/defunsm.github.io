@@ -12,7 +12,7 @@ http://blogawesome.com/
 A place to share my knowledge
 </description>
 <lastBuildDate>
-Sun, 09 Oct 2016 10:47:27 -0400
+Sun, 09 Oct 2016 10:52:27 -0400
 </lastBuildDate>
 <generator>
 clj-rss
@@ -28,7 +28,7 @@ http://blogawesome.com/posts-output/pythonifstatements/
 Python - If-else-statements
 </title>
 <description>
- &lt;p&gt;Previously you learned about booleans and how to do logical statements. Now we'll learn how to use the booleans to do conditional statements in Python. Conditional statements like in many programming languages call them if-else-statements. If this is true then this is done else this other thing is done. You'll see soon enough what I mean. If-Else-Statements take a condition and if the condition is true will do the expression other it will do the other expression since it is false.  &lt;br/&gt;&lt;br/&gt; Enough of me just talking see for yourself how it works. Open up a text editor and type in the following if-else statements.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;def main&amp;#40;&amp;#41;:
+ &lt;p&gt;Previously you learned about booleans and how to do logical statements. Now we'll learn how to use the booleans to do conditional statements in Python. Conditional statements like in many programming languages call them if-else-statements. If this is true then this is done else this other thing is done. You'll see soon enough what I mean. If-Else-Statements take a condition and if the condition is true will do the expression otherwise it will do the other expression since it is false.  &lt;br/&gt;&lt;br/&gt; Enough of me just talking see for yourself how it works. Open up a text editor and type in the following if-else statements.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;def main&amp;#40;&amp;#41;:
 
     if &amp;#40;True&amp;#41;:
         print&amp;#40;&amp;quot;I am printing because I am True!&amp;quot;&amp;#41;
