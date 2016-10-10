@@ -9,3 +9,10 @@ $('.menu').click(function() {
    $( "#toggle" ).removeClass( "active" )
    $('#navigation').removeClass('open');
   });
+
+function draw() {
+  var ctx = (a canvas context);
+  ctx.canvas.width  = window.innerWidth;
+  ctx.canvas.height = window.innerHeight;
+  //...drawing code...
+}
