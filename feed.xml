@@ -12,11 +12,82 @@ http://blogawesome.com/
 A place to share my knowledge
 </description>
 <lastBuildDate>
-Sun, 09 Oct 2016 14:25:45 -0400
+Mon, 10 Oct 2016 11:33:15 -0400
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://blogawesome.com/posts-output/pythonuserinput/
+</guid>
+<link>
+http://blogawesome.com/posts-output/pythonuserinput/
+</link>
+<title>
+Python - User input
+</title>
+<description>
+ &lt;p&gt;In this section we'll learn all about user input. How we can get our code to prompt the user for some information and than do something with that information. This is a pretty useful thing to do since usually we want to collect some kind of user day and manipulate it in some way. So lets say we want to do some math and return the sin of whatever the user inputs. We would first need to import math into our code since we need to use math.sin() and also using input() which is how you ask for user input from the user.&lt;pre&gt;&lt;code&gt;import math
+
+def main&amp;#40;&amp;#41;:
+
+    user&amp;#95;input = input&amp;#40;&amp;quot;&amp;gt; &amp;quot;&amp;#41;
+    answer = math.sin&amp;#40;user&amp;#95;input&amp;#41;
+    print&amp;#40;answer&amp;#41;
+
+main&amp;#40;&amp;#41;
+ &lt;/code&gt;&lt;/pre&gt; Once you run that you'll quickly realize that something went wrong. Oh no. You get an error TypeError that a float is required on line 6. So what is going on here? Well math.sin needs a float as an argument. Otherwise it can't do its operations. We'll learn more about functions and how they take arguments soon enough but note that when we use input() the variable user_input stores the input that the user writes as a STRING and NOT a INTEGER. Thus we need to convert the user input to a float. Luckily Python is rather convinent and has a function to do just that that you have seen before float(). You can use float() on a string to convert it into a float and there is another function called int() that will convert your string or number to a integer.&lt;pre&gt;&lt;code&gt;float&amp;#40;&amp;quot;5&amp;quot;&amp;#41; =&amp;gt; 5.0
+
+int&amp;#40;&amp;quot;5&amp;quot;&amp;#41; =&amp;gt; 5
+ &lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;So add the user_input as an argument of float like so.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;import math
+
+def main&amp;#40;&amp;#41;:
+
+    user&amp;#95;input = input&amp;#40;&amp;quot;&amp;gt; &amp;quot;&amp;#41;
+    answer = math.sin&amp;#40;float&amp;#40;user&amp;#95;input&amp;#41;&amp;#41;
+    print&amp;#40;answer&amp;#41;
+
+main&amp;#40;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;Notice that to give a function an argument you place a variable, string, number or anything else into the parantheses that come after it. You may wonder about why you need to use a period to call the function sin because it imported from the math library and using the function from there and hence you use the period to indicate that and otherwise you would get an error without including the math part and wouldn't know where the function sin is coming from thinking you have written your own sin function. Now run the code and you shouldn't get an error this time.&lt;br/&gt;&lt;br/&gt;The result is that you get a prompt like the following below:&lt;pre&gt;&lt;code&gt;&amp;gt; 
+&lt;/code&gt;&lt;/pre&gt;Which you can enter a number which math.sin and thus pops out a decimal. However you may notice that it does radians instead of degrees. If that annoys you than theres an easy fix to convert the answer into degrees using math.radians(). Just give the answer produced by float(user_input) to math.radians() and it will do the conversation for you so you can type in degrees.&lt;pre&gt;&lt;code&gt;answer = math.sin&amp;#40;math.radians&amp;#40;float&amp;#40;user&amp;#95;input&amp;#41;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;We could also get userinput stright from the command line by rewriting out code a little bit and importing sys. Which allows you to take in arguments from the command and do a whole lot of more system related stuff. We can also get rid of our userinput and clean it up to be the following ...&lt;pre&gt;&lt;code&gt;import sys
+import math
+
+def main&amp;#40;&amp;#41;:
+
+    answer = math.sin&amp;#40;math.radians&amp;#40;float&amp;#40;sys.argv&amp;#91;1&amp;#93;&amp;#41;&amp;#41;&amp;#41;
+    print&amp;#40;answer&amp;#41;
+
+main&amp;#40;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;If you run that with the following...&lt;pre&gt;&lt;code&gt;$ python3 yourfile.py 
+&lt;/code&gt;&lt;/pre&gt;You will get an IndexError and says that list index is out of range? Well this is because now that you have used sys.argv[1] but you didnt give an argument when running the file. sys.argv takes arguments from your command line so when it doesn't recieve one it'll throw you an error. We'll learn more about catching these errors and managing them with try and except. As well as other things about error handling. So the right way to run the file now is to add the number you want the sin of in your command line as an argument to python3 like so ...&lt;pre&gt;&lt;code&gt;$ python3 yourfile.py 90
+&lt;/code&gt;&lt;/pre&gt;The result of this is the following...&lt;pre&gt;&lt;code&gt;1.0
+&lt;/code&gt;&lt;/pre&gt;As expected the sin of 90 is 1 and you have your expected result. Now you have a python file that does sin which is rather since but what if you want both sin and cos? How would you do that? Well there is a few ways we could use if-statements which is the way we are going to do it or we could just show both results. But we are going to do the if-statement way and make a nice little way that the user can enter either cos or sin followed by the number they want to find the sin or cos of. This can easily be done using if-statements which you learned about and changing your code to the following...&lt;pre&gt;&lt;code&gt;import sys
+import math
+
+def main&amp;#40;&amp;#41;:
+
+    if &amp;#40;sys.argv&amp;#91;1&amp;#93; == &amp;quot;sin&amp;quot;&amp;#41;:
+        answer = math.sin&amp;#40;math.radians&amp;#40;float&amp;#40;sys.argv&amp;#91;2&amp;#93;&amp;#41;&amp;#41;&amp;#41;
+        print&amp;#40;answer&amp;#41;
+    elif &amp;#40;sys.argv&amp;#91;1&amp;#93; == &amp;quot;cos&amp;quot;&amp;#41;:
+        answer = math.cos&amp;#40;math.radians&amp;#40;float&amp;#40;sys.argv&amp;#91;2&amp;#93;&amp;#41;&amp;#41;&amp;#41;
+        print&amp;#40;answer&amp;#41;
+    else:
+        print&amp;#40;&amp;quot;Don't know what to do with &amp;quot;, sys.argv&amp;#91;1&amp;#93;&amp;#41;
+
+main&amp;#40;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;Now that you added sys.argv[2] pyton will be expecting another argument. So to run the program now you have to do something like this ...&lt;pre&gt;&lt;code&gt;$ python3 yourfile.py cos 0
+&lt;/code&gt;&lt;/pre&gt;The result should be 1.0 just like you expect.&lt;br/&gt;&lt;br/&gt;Wraping up:&lt;br/&gt;&lt;br/&gt;You can keep adding more and more arguments as your heart desires. Now you have a python file that does both sin and cos and you can keep adding to its functionally and maybe make raising numbers to an exponent or whatever really. You may be wondering what the brackets are on sys.argv are. Sys.argv itself is something called a list. A list can contain things such as strings which is how we are getting the arguments from the terminal. As you saw changing the number in the bracket will give you access to a different argument provided from the command line. However without going too much indepth about what exactly a list is because thats for another time just know that lists are just one way to index through and store things in this case the user agruments that he or she types from the command line. This is the very reason that you get and index error when you try to access a sys.argv index that hasn't been given yet. Now that you have learned how to get user input you could radically change your code and make some more interesting functionality with your python code. Maybe even recreate a mini &lt;a href='https://en.wikipedia.org/wiki/Zork'&gt;Zork&lt;/a&gt;.
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Mon, 10 Oct 2016 00:00:00 -0400
+</pubDate>
+</item>
 <item>
 <guid>
 http://blogawesome.com/posts-output/pythonifstatements/
