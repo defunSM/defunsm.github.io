@@ -74,10 +74,9 @@ table {
 .canvas-container {
     background-position: center;
     background-repeat: no-repeat;
-    opacity: 0.5;
+    opacity: 1;
     width: 200px;
     height: 200px;
-    position: absolute;
 }
 
 /* 03 GENERAL SETTINGS
@@ -113,7 +112,8 @@ a {
 	-moz-transition: all 300ms linear;
 	-o-transition: all 300ms linear;
 	-ms-transition: all 300ms linear;
-	transition: all 300ms linear
+	transition: all 300ms linear;
+        cursor: pointer;
 }
 
 a:hover { color: #999; }
