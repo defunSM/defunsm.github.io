@@ -73,8 +73,7 @@ table {
 
 .canvas-container {
     background-position: center;
-    background-repeat: no-repeat;
-    opacity: 1;
+    opacity: 0;
     width: 200px;
     height: 200px;
 }
