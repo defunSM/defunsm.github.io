@@ -94,7 +94,7 @@ body {
 .body_hidden { overflow: hidden; }
 
 p {
-	line-height: 2;
+	line-height: 30px;
 }
 
 a {
