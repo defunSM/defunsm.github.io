@@ -12,11 +12,50 @@ http://blogawesome.com/
 A place to share my knowledge
 </description>
 <lastBuildDate>
-Mon, 10 Oct 2016 11:33:15 -0400
+Tue, 11 Oct 2016 09:37:59 -0400
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://blogawesome.com/posts-output/pythonfunctions/
+</guid>
+<link>
+http://blogawesome.com/posts-output/pythonfunctions/
+</link>
+<title>
+Python - Functions
+</title>
+<description>
+ &lt;p&gt;So as you been writing python code you may see me typing things such as this every time at the beginning of any file.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;def main&amp;#40;&amp;#41;:
+      
+      # some kind of code here in the body.
+        
+main&amp;#40;&amp;#41;        
+&lt;/code&gt;&lt;/pre&gt;In python &quot;def&quot; is the keyword that is used to create a function defination. Following after the keyword is of course the function name. So the syntax for creating a general function is such.&lt;pre&gt;&lt;code&gt;def functionName&amp;#40;arg1, arg2&amp;#41;:
+&lt;/code&gt;&lt;/pre&gt;arg1 and arg2 are the arguments passed to the function. These arguments can be variables from other functions, strings, values, later on you'll see lists and hashes. To demonstrate a function lets write a function that'll help us do some math. Lets say we want to find the hypothenuse given the legs of the triangle. We could define a function called &quot;hypothenuse&quot; than pass the arguments to the function.&lt;pre&gt;&lt;code&gt;import sys, math
+
+def hypothenuse&amp;#40;a, b&amp;#41;:
+
+    return math.sqrt&amp;#40;float&amp;#40;a&amp;#41; &amp;#42;&amp;#42; 2 + float&amp;#40;b&amp;#41; &amp;#42;&amp;#42; 2&amp;#41;
+
+def main&amp;#40;&amp;#41;:
+
+    print&amp;#40;hypothenuse&amp;#40;sys.argv&amp;#91;1&amp;#93;, sys.argv&amp;#91;2&amp;#93;&amp;#41;&amp;#41;
+
+main&amp;#40;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;First we are importing sys and math which we will both need their libraries to write the hypothenuse function. Since from the pythagorean theorem we know that a ^ 2 + b ^ 2 = c ^ 2 so c = sqrt(a ^ 2 + b ^ 2). So our function hypothenuse will do something like that in it's body.&lt;br/&gt;&lt;br/&gt;Something new that you are seeing is the return and as the name suggests it is returning the value calculated by the hypothenuse function.&lt;br/&gt;&lt;br/&gt;If you are coming from C++ you know that every function has a return but in python that is not the case. In the main function we have the hypothenuse function given the sys.argv[1] as an argument for a and sys.argv[2] as the argument for b. The Hypothenuse function will then use the arguments recieved from the terminal and than preform the pythagorean theorem and boom returns a value which then print will print it to the standard output to your terminal.&lt;br/&gt;&lt;br/&gt;So to check that works this is what you should type into your terminal in my case I called my file hypothenuse.py but you use whatever you called your file.&lt;pre&gt;&lt;code&gt;$ python3 hypothenuse.py 3 4
+&lt;/code&gt;&lt;/pre&gt;The result is ...&lt;pre&gt;&lt;code&gt;5.0
+&lt;/code&gt;&lt;/pre&gt;So we could see that the hypothenuse function is returning back it's value and then print is printing it out to display to us the value.&lt;br/&gt;&lt;br/&gt;Wraping up:&lt;br/&gt;&lt;br/&gt;Thats all there is too it not too complicated. Just make sure to give your function name reasonable names and have meaning to them otherwise when you begin to write a lot of code and need to know what a function does you don't want go through reading the code in that function so having the function name relatable to what it's doing is important. As well as making sure your passing it the right kind of arguments. Make sure that if it wants a string to pass it a string and if the function wants a number pass it a number. In this case we don't have to worry about that since float will just convert it but in other cases you may need to consider it. As well as passing it the right number of arguments. If you passed hypothenuse three arguments instead of two it would give you a typeError that hypothenuse only takes 2 positional arguments but 3 were given. This is because the function will not know what to do with the extra function so you need to keep in mind when writing a function and than using that function how many arguments it will take. There are also ways to write functions take take any number of arguments which I'll show you later on.
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Tue, 11 Oct 2016 00:00:00 -0400
+</pubDate>
+</item>
 <item>
 <guid>
 http://blogawesome.com/posts-output/pythonuserinput/
@@ -28,7 +67,7 @@ http://blogawesome.com/posts-output/pythonuserinput/
 Python - User input
 </title>
 <description>
- &lt;p&gt;In this section we'll learn all about user input. How we can get our code to prompt the user for some information and than do something with that information. This is a pretty useful thing to do since usually we want to collect some kind of user day and manipulate it in some way. So lets say we want to do some math and return the sin of whatever the user inputs. We would first need to import math into our code since we need to use math.sin() and also using input() which is how you ask for user input from the user.&lt;pre&gt;&lt;code&gt;import math
+ &lt;p&gt;In this section we'll learn all about user input. How we can get our code to prompt the user for some information and than do something with that information. This is a pretty useful thing to do since usually we want to collect some kind of user data and manipulate it in some way. So lets say we want to do some math and return the sin of whatever the user inputs. We would first need to import math into our code since we need to use math.sin() and also using input() which is how you ask for user input from the user.&lt;pre&gt;&lt;code&gt;import math
 
 def main&amp;#40;&amp;#41;:
 
