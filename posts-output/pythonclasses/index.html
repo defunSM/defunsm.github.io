@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-	<title>Python - Functions</title>
+	<title>Python - Classes</title>
 	<!-- Styles -->
 	<link rel="stylesheet" href="https://defunsm.github.io/css/style.css" />
 	<link rel="stylesheet" href="https://defunsm.github.io/css/font-awesome.min.css" />
@@ -60,14 +60,12 @@
 		<div class="fade child">
 			<div class="container_small">
 				<!-- Header Titles -->
-				<h1 class="header_title">Python - Functions</h1>
+				<h1 class="header_title">Python - Classes</h1>
 
-
-                                <a href="/posts-output/pythonclasses/" class="button"><i class="fa fa-arrow-left" aria-hidden="true"></i> Python - Classes</a>
 
 <br/>
                                 
-                                <a href="/posts-output/pythonuserinput/" class="button">Python - User input <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                                <a href="/posts-output/pythonfunctions/" class="button">Python - Functions <i class="fa fa-arrow-right" aria-hidden="true"></i>
 </i></a>
 
 
@@ -86,33 +84,34 @@
                     
                     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">October 11, 2016</div>
+        <div class="col-lg-6">October 12, 2016</div>
         
     </div>
-    <h2>Python - Functions</h2>
+    <h2>Python - Classes</h2>
 </div>
 <div>
     
-     <p>So as you been writing python code you may see me typing things such as this every time at the beginning of any file.</p><pre><code>def main&#40;&#41;:
-      
-      # some kind of code here in the body.
-        
-main&#40;&#41;        
-</code></pre>In python "def" is the keyword that is used to create a function defination. Following after the keyword is of course the function name. So the syntax for creating a general function is such.<pre><code>def functionName&#40;arg1, arg2&#41;:
-</code></pre>arg1 and arg2 are the arguments passed to the function. These arguments can be variables from other functions, strings, values, later on you'll see lists and hashes. To demonstrate a function lets write a function that'll help us do some math. Lets say we want to find the hypothenuse given the legs of the triangle. We could define a function called "hypothenuse" than pass the arguments to the function.<pre><code>import sys, math
+    <p>Creating classes is the bread and butter of object oriented programming. Before diving stright into the good stuff lets review and cover some more conceptual ideas before going into programming. The Python syntax for creating classes is pretty stright forward. Specially since creating a class in python has very little syntax then some of the other programming languages. <br/><br/> Scoping and Namespaces. Scoping is the idea that certain variables are defined in certain contexts. In python objects have attributes that are specific to that object. Objects from the same class can also sharewhat is called the class variable shared between all instances of a particular class. Instances are the objects defined by that particular class. </p><pre><code>class Person:
 
-def hypothenuse&#40;a, b&#41;:
+    population = 0
 
-    return math.sqrt&#40;float&#40;a&#41; &#42;&#42; 2 + float&#40;b&#41; &#42;&#42; 2&#41;
+    def &#95;&#95;init&#95;&#95;&#40;self, name, money&#41;:
+        self.name = name
+        self.money = money
+
+
 
 def main&#40;&#41;:
 
-    print&#40;hypothenuse&#40;sys.argv&#91;1&#93;, sys.argv&#91;2&#93;&#41;&#41;
+    a = Person&#40;&quot;Batman&quot;, 999999999&#41;
+
+    print&#40;a.name&#41;
+    print&#40;a.money&#41;
+
+
 
 main&#40;&#41;
-</code></pre>First we are importing sys and math which we will both need their libraries to write the hypothenuse function. Since from the pythagorean theorem we know that a ^ 2 + b ^ 2 = c ^ 2 so c = sqrt(a ^ 2 + b ^ 2). So our function hypothenuse will do something like that in it's body.<br/><br/>Something new that you are seeing is the return and as the name suggests it is returning the value calculated by the hypothenuse function.<br/><br/>If you are coming from C++ you know that every function has a return but in python that is not the case. In the main function we have the hypothenuse function given the sys.argv[1] as an argument for a and sys.argv[2] as the argument for b. The Hypothenuse function will then use the arguments recieved from the terminal and than preform the pythagorean theorem and boom returns a value which then print will print it to the standard output to your terminal.<br/><br/>So to check that works this is what you should type into your terminal in my case I called my file hypothenuse.py but you use whatever you called your file.<pre><code>$ python3 hypothenuse.py 3 4
-</code></pre>The result is ...<pre><code>5.0
-</code></pre>So we could see that the hypothenuse function is returning back it's value and then print is printing it out to display to us the value.<br/><br/>Wraping up:<br/><br/>Thats all there is too it not too complicated. Just make sure to give your function name reasonable names and have meaning to them otherwise when you begin to write a lot of code and need to know what a function does you don't want go through reading the code in that function so having the function name relatable to what it's doing is important. As well as making sure your passing it the right kind of arguments. Make sure that if it wants a string to pass it a string and if the function wants a number pass it a number. In this case we don't have to worry about that since float will just convert it but in other cases you may need to consider it. As well as passing it the right number of arguments. If you passed hypothenuse three arguments instead of two it would give you a typeError that hypothenuse only takes 2 positional arguments but 3 were given. This is because the function will not know what to do with the extra function so you need to keep in mind when writing a function and than using that function how many arguments it will take. There are also ways to write functions take take any number of arguments which I'll show you later on.
+</code></pre>So the syntax for creating a class is by using "class" all lower case. Followed by what you want to call the class in this case the class is called Person. The first letter is capitalized when giving the name of a class and ending with the double colon :. Then you have population which right now aren't doing anything with this is just a class variable that is shared by all instances.<p>DRAFT Rest to be written later.</p>
 </div>
 
 <div id="post-tags">
@@ -129,10 +128,8 @@ main&#40;&#41;
 
                           <div id="prev-next">
                             
-                            <a href="/posts-output/pythonclasses/">&laquo; Python - Classes</a>
                             
-                            
-                            <a class="right" href="/posts-output/pythonuserinput/">Python - User input &raquo;</a>
+                            <a class="right" href="/posts-output/pythonfunctions/">Python - Functions &raquo;</a>
                             
                           </div>
 

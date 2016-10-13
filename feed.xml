@@ -12,11 +12,51 @@ http://blogawesome.com/
 A place to share my knowledge
 </description>
 <lastBuildDate>
-Tue, 11 Oct 2016 10:03:32 -0400
+Wed, 12 Oct 2016 23:28:59 -0400
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://blogawesome.com/posts-output/pythonclasses/
+</guid>
+<link>
+http://blogawesome.com/posts-output/pythonclasses/
+</link>
+<title>
+Python - Classes
+</title>
+<description>
+&lt;p&gt;Creating classes is the bread and butter of object oriented programming. Before diving stright into the good stuff lets review and cover some more conceptual ideas before going into programming. The Python syntax for creating classes is pretty stright forward. Specially since creating a class in python has very little syntax then some of the other programming languages. &lt;br/&gt;&lt;br/&gt; Scoping and Namespaces. Scoping is the idea that certain variables are defined in certain contexts. In python objects have attributes that are specific to that object. Objects from the same class can also sharewhat is called the class variable shared between all instances of a particular class. Instances are the objects defined by that particular class. &lt;/p&gt;&lt;pre&gt;&lt;code&gt;class Person:
+
+    population = 0
+
+    def &amp;#95;&amp;#95;init&amp;#95;&amp;#95;&amp;#40;self, name, money&amp;#41;:
+        self.name = name
+        self.money = money
+
+
+
+def main&amp;#40;&amp;#41;:
+
+    a = Person&amp;#40;&amp;quot;Batman&amp;quot;, 999999999&amp;#41;
+
+    print&amp;#40;a.name&amp;#41;
+    print&amp;#40;a.money&amp;#41;
+
+
+
+main&amp;#40;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;So the syntax for creating a class is by using &quot;class&quot; all lower case. Followed by what you want to call the class in this case the class is called Person. The first letter is capitalized when giving the name of a class and ending with the double colon :. Then you have population which right now aren't doing anything with this is just a class variable that is shared by all instances.&lt;p&gt;DRAFT Rest to be written later.&lt;/p&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Wed, 12 Oct 2016 00:00:00 -0400
+</pubDate>
+</item>
 <item>
 <guid>
 http://blogawesome.com/posts-output/pythonfunctions/
