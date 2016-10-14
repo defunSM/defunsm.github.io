@@ -12,7 +12,7 @@ http://blogawesome.com/
 A place to share my knowledge
 </description>
 <lastBuildDate>
-Wed, 12 Oct 2016 23:28:59 -0400
+Thu, 13 Oct 2016 23:08:43 -0400
 </lastBuildDate>
 <generator>
 clj-rss
@@ -48,7 +48,7 @@ def main&amp;#40;&amp;#41;:
 
 
 main&amp;#40;&amp;#41;
-&lt;/code&gt;&lt;/pre&gt;So the syntax for creating a class is by using &quot;class&quot; all lower case. Followed by what you want to call the class in this case the class is called Person. The first letter is capitalized when giving the name of a class and ending with the double colon :. Then you have population which right now aren't doing anything with this is just a class variable that is shared by all instances.&lt;p&gt;DRAFT Rest to be written later.&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;So the syntax for creating a class is by using &quot;class&quot; all lower case. Followed by what you want to call the class in this case the class is called Person. The first letter is capitalized when giving the name of a class and ending with the double colon :. Then you have population which right now aren't doing anything with this is just a class variable that is shared by all instances.&lt;p&gt;DRAFT Rest to be written later. Since I have a bunch of exams.&lt;/p&gt;
 </description>
 <enclosure>
 
