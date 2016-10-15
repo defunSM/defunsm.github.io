@@ -12,7 +12,7 @@ http://blogawesome.com/
 A place to share my knowledge
 </description>
 <lastBuildDate>
-Sat, 15 Oct 2016 11:39:46 -0400
+Sat, 15 Oct 2016 17:05:49 -0400
 </lastBuildDate>
 <generator>
 clj-rss
@@ -761,6 +761,26 @@ WordCal - A Python Script
 </enclosure>
 <pubDate>
 Sun, 02 Oct 2016 00:00:00 -0400
+</pubDate>
+</item>
+<item>
+<guid>
+http://blogawesome.com/posts-output/partitioningandmounting/
+</guid>
+<link>
+http://blogawesome.com/posts-output/partitioningandmounting/
+</link>
+<title>
+Partitoning and Mounting (Linux)
+</title>
+<description>
+&lt;p&gt;&lt;h1&gt;Partitioning&lt;/h1&gt; &lt;br/&gt;&lt;br/&gt; Think of it as creating a room (partition) in a house (The actual harddrive) for where data can stay. &lt;br/&gt;&lt;br/&gt; &lt;h3&gt;Creating a Partition on Linux&lt;/h3&gt; &lt;br/&gt;&lt;br/&gt; &lt;img src=&quot;https://defunsm.github.io/img/par1.png&quot; alt=&quot;partitioning&quot; /&gt; &lt;br/&gt;&lt;br/&gt; Typing &lt;code&gt;lsblk&lt;/code&gt; will show a quick result of your avaliable devices on your computer. &lt;br/&gt;&lt;br/&gt; It'll display two types disks and parts. &lt;br/&gt;&lt;br/&gt; A quick difference you can see between disks and parts is that disks don't have a number at the end. &lt;strong&gt;Note:&lt;/strong&gt; There are expections but for the most part USBs don't have numbers at the end. &lt;br/&gt;&lt;br/&gt; Parts on the other hand do have numbers that correspond with the disk it is in. Such as &lt;em&gt;sda1&lt;/em&gt; is within the disk sda and thus if there is a &lt;em&gt;sda5&lt;/em&gt; most likely there are four other partitions. &lt;br/&gt;&lt;br/&gt; &lt;h4&gt;Using a disk management program: Gparted&lt;/h4&gt; There are various disk management programs but &lt;em&gt;gparted&lt;/em&gt; is most common in linux. There is &lt;em&gt;fdisk&lt;/em&gt; and &lt;em&gt;parted&lt;/em&gt; but without a gui that can acomplish the same feats as gparted. &lt;br/&gt;&lt;br/&gt; &lt;img src=&quot;https://defunsm.github.io/img/par2.png&quot; alt=&quot;gparted&quot; /&gt; &lt;br/&gt;&lt;br/&gt; Im going to be changing the &lt;em&gt;sdb&lt;/em&gt; disk so make sure to select that. &lt;strong&gt;Note:&lt;/strong&gt; All paths to devices avaliable on the computer start with /dev/... &lt;br/&gt;&lt;br/&gt; Now we already have one partition on the &lt;em&gt;sdb&lt;/em&gt; disk called &lt;em&gt;sdb1&lt;/em&gt;. If we did have more unallocated memory we could create another partition from the unallocated memory. However we don't so lets delete the partition &lt;em&gt;sdb1&lt;/em&gt; and create 2 partitions splitting the memory. &lt;br/&gt;&lt;br/&gt; Deleting the partition by right clicking on the partition you want deleted and selecting &quot;Delete&quot;. Now all of the partition memory is turned to unallocated as seen below. &lt;br/&gt;&lt;br/&gt; &lt;img src=&quot;https://defunsm.github.io/img/par3.png&quot; alt=&quot;gparted unallocated&quot; /&gt; &lt;br/&gt;&lt;br/&gt; &lt;strong&gt;Note:&lt;/strong&gt; No changes actually occur till the green check mark is clicked. &lt;br/&gt;&lt;br/&gt; Now if you check your devices with &lt;code&gt;lsblk&lt;/code&gt; you'll notice that &lt;em&gt;sdb&lt;/em&gt; is all alone without &lt;em&gt;sdb1&lt;/em&gt; or any partitions. This is because all of sdb is unallocated memory at the moment. &lt;br/&gt;&lt;br/&gt; &lt;img src=&quot;https://defunsm.github.io/img/par4.png&quot; alt=&quot;gparted nodisk&quot; /&gt; &lt;br/&gt;&lt;br/&gt; Now you can select the unallocated memory and create a partition with it. However since you want to make two partitions leave some memory left for the second one depending on how much you want. This is done by right clicking on the unallocated memory and clicking &quot;New&quot;. &lt;br/&gt;&lt;br/&gt; This should bring you to a menu such as this below ... &lt;br/&gt;&lt;br/&gt; &lt;img src=&quot;https://defunsm.github.io/img/par5.png&quot; alt=&quot;gparted filesystem&quot; /&gt; &lt;br/&gt;&lt;br/&gt; If you want to make a 60 &lt;em&gt;GiB&lt;/em&gt; partition make the new size 60*1024 = 61440 &lt;em&gt;MiB&lt;/em&gt;. (1024 &lt;em&gt;MiB&lt;/em&gt; in 1 &lt;em&gt;GiB&lt;/em&gt;) Keep the everything else the same since ext4 is readiable by linux. &lt;br/&gt;&lt;br/&gt; Then click on the rest of the unallocated memory and click add to create the rest of the memory into a partition. If that went smoothly you should have two partitions now and you can verify this by &lt;code&gt;lsblk&lt;/code&gt;. &lt;br/&gt;&lt;br/&gt; &lt;img src=&quot;https://defunsm.github.io/img/par6.png&quot; alt=&quot;gparted two partitions&quot; /&gt; &lt;br/&gt;&lt;br/&gt; The result is two partitions on the sdb disk detected by your computer. Thats it now you have two partitions. &lt;br/&gt;&lt;br/&gt; &lt;h3&gt;Mounting the Partitions / Placing files in the Partitions&lt;/h3&gt; &lt;br/&gt;&lt;br/&gt; &lt;strong&gt;Note:&lt;/strong&gt; If you aren't too familiar with using a terminal please read up on how to use a terminal. &lt;br/&gt;&lt;br/&gt; &lt;code&gt;mount&lt;/code&gt; is a command that will allow you to attach the filesystem (partition) to the computer. &lt;br/&gt;&lt;br/&gt; In this case we are going to mount the two partitions onto our computer. Begin by opening up your favorite terminal and entering the following command. Ignore the dollar sign it just stands for the prompt. &lt;br/&gt;&lt;br/&gt; &lt;code&gt;$ mount /dev/sdb1 /mnt&lt;/code&gt; - What this does is attach the first partition to the /mnt directory. &lt;br/&gt;&lt;br/&gt; You can check this by doing &lt;code&gt;lsblk&lt;/code&gt; &lt;br/&gt;&lt;br/&gt; &lt;img src=&quot;https://defunsm.github.io/img/par7.png&quot; alt=&quot;gparted mount&quot; /&gt; &lt;br/&gt;&lt;br/&gt; As you can see the mount point of &lt;em&gt;sdb1&lt;/em&gt; is now /mnt &lt;br/&gt;&lt;br/&gt; You can now copy files into the /mnt directory using &lt;code&gt;cp&lt;/code&gt; or make files using &lt;code&gt;echo&lt;/code&gt; Whatever is placed into the /mnt directory will now be in the partition. &lt;br/&gt;&lt;br/&gt; Example: &lt;br/&gt;&lt;br/&gt; &lt;code&gt;$ echo &quot;hello&quot; &gt;&gt; /mnt/file.txt&lt;/code&gt; &lt;br/&gt;&lt;br/&gt; Now you should see a file called file.txt in the /mnt directory using &lt;code&gt;ls /mnt&lt;/code&gt; &lt;br/&gt;&lt;br/&gt; Using &lt;code&gt;umount&lt;/code&gt; you can remove a mount point from the partition unmounting it. &lt;br/&gt;&lt;br/&gt; Example: &lt;br/&gt;&lt;br/&gt; &lt;code&gt;$ umount /dev/sdb1&lt;/code&gt; - You can examine through &lt;code&gt;lsblk&lt;/code&gt;&lt;code&gt;ls /mnt&lt;/code&gt; that it is no longer there. &lt;br/&gt;&lt;br/&gt; You can mount using &lt;code&gt;mount /dev/sdb1 /mnt&lt;/code&gt; and again see that the file.txt is now back again which shows that the file indeed is in the partition.&lt;/p&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Sat, 01 Oct 2016 00:00:00 -0400
 </pubDate>
 </item>
 <item>
