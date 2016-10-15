@@ -91,9 +91,9 @@
 </div>
 <div>
     
-    <p>Creating classes is the bread and butter of object oriented programming. Before diving stright into the good stuff lets review and cover some more conceptual ideas before going into programming. The Python syntax for creating classes is pretty stright forward. Specially since creating a class in python has very little syntax then some of the other programming languages. <br/><br/> Scoping and Namespaces. Scoping is the idea that certain variables are defined in certain contexts. In python objects have attributes that are specific to that object. Objects from the same class can also sharewhat is called the class variable shared between all instances of a particular class. Instances are the objects defined by that particular class. </p><pre><code>class Person:
+    <p>Creating classes is the bread and butter of object oriented programming. Before diving stright into the good stuff lets review and cover some more conceptual ideas before going into programming. The Python syntax for creating classes is pretty stright forward. Specially since creating a class in python has very little syntax then some of the other programming languages. <br/><br/> Scoping and Namespaces. Scoping is the idea that certain variables are defined in certain contexts. In python objects have attributes that are specific to that object. Instances which is what is created from a class share class variable shared between all instances of a particular class. </p><pre><code>class Person:
 
-    population = 0
+
 
     def &#95;&#95;init&#95;&#95;&#40;self, name, money&#41;:
         self.name = name
@@ -111,7 +111,7 @@ def main&#40;&#41;:
 
 
 main&#40;&#41;
-</code></pre>So the syntax for creating a class is by using "class" all lower case. Followed by what you want to call the class in this case the class is called Person. The first letter is capitalized when giving the name of a class and ending with the double colon :. Then you have population which right now aren't doing anything with this is just a class variable that is shared by all instances. Also the init has two underscores infront of it and than followed by two underscores.<br/><br/>When you run this this is the result you get.<pre><code>Batman
+</code></pre>So the syntax for creating a class is by using "class" all lower case. Followed by what you want to call the class in this case the class is called Person. The first letter is capitalized when giving the name of a class and ending with the double colon :. Also the init has two underscores infront of it and than followed by two underscores.<br/><br/>When you run this this is the result you get.<pre><code>Batman
 999999999
 0
 </code></pre>Explanations below<br/><br/> Line 1:<pre><code>class Person: 
@@ -128,17 +128,10 @@ print&#40;a.population&#41;
     print&#40;k.name&#41;
     print&#40;k.money&#41;
     print&#40;k.population&#41;
-</code></pre>Now running this you can see that k as the attribute population as well. This attribute is the same attribute as the attribute from a. This is shared between both superman instance and batman instance. However to you it may not seem like it really is shared. So to prove to you that this attribute is truly shared make your file so that it looks like this.<pre><code>class Person:
-
-    population = 0
-
-    def &#95;&#95;init&#95;&#95;&#40;self, name, money&#41;:
-        self.name = name
-        self.money = money
-        population = population + 1
-
-
-def main&#40;&#41;:
+</code></pre>Now running this you can see that k as the attribute population as well. This attribute is the same attribute as the attribute from a. This is shared between both superman instance and batman instance.<br/><br/>You can change the attribute and it won't be updated for the other like the following. Add the following in the body of your def main. Keeping the rest the same.<pre><code>a.population = 3
+print&#40;a.population&#41;
+print&#40;k.population&#41;
+</code></pre><p>So your main function should look like this now.<pre><code>def main&#40;&#41;:
 
     a = Person&#40;&quot;Batman&quot;, 999999999&#41;
 
@@ -146,15 +139,16 @@ def main&#40;&#41;:
     print&#40;a.money&#41;
     print&#40;a.population&#41;
 
-#    k = Person&#40;&quot;Superman&quot;, 100000&#41;
+    k = Person&#40;&quot;Superman&quot;, 100000&#41;
 
-#    print&#40;k.name&#41;
-#    print&#40;k.money&#41;
-#    print&#40;k.population&#41;
-
-
-main&#40;&#41;
-</code></pre><p>Superman has been commented out for now. But now running this realize that the population is 1? Why is that well because in our init we have made it so that our population is increased by 1 every time the constructor is added. So since the batman instance was created the population was increased by 1.  <br/><br/> Now uncomment the the Superman part and add another print at the end printing the a.population. <br/><br/> DRAFT Rest to be written later. Since I have a bunch of exams. This isn't fully completed.</p>
+    print&#40;k.name&#41;
+    print&#40;k.money&#41;
+    print&#40;k.population&#41;
+    
+    a.population = 3
+    print&#40;a.population&#41;
+    print&#40;k.population&#41;
+ </code></pre> Now running this will result in seeing that the a.population results in 3 while the k.population is still 1. So you can change an attribute using the dot syntax and the attribute name of the instance followed by the assignment operator to set the attribute for that specific instance to a different value just like you do for other variables expect it will be specific for that instance alone.  <br/><br/> Wrapping up: <br/><br/></p>
 </div>
 
 <div id="post-tags">

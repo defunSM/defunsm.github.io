@@ -12,7 +12,7 @@ http://blogawesome.com/
 A place to share my knowledge
 </description>
 <lastBuildDate>
-Fri, 14 Oct 2016 23:54:42 -0400
+Sat, 15 Oct 2016 09:36:32 -0400
 </lastBuildDate>
 <generator>
 clj-rss
@@ -28,9 +28,9 @@ http://blogawesome.com/posts-output/pythonclasses/
 Python - Classes
 </title>
 <description>
-&lt;p&gt;Creating classes is the bread and butter of object oriented programming. Before diving stright into the good stuff lets review and cover some more conceptual ideas before going into programming. The Python syntax for creating classes is pretty stright forward. Specially since creating a class in python has very little syntax then some of the other programming languages. &lt;br/&gt;&lt;br/&gt; Scoping and Namespaces. Scoping is the idea that certain variables are defined in certain contexts. In python objects have attributes that are specific to that object. Objects from the same class can also sharewhat is called the class variable shared between all instances of a particular class. Instances are the objects defined by that particular class. &lt;/p&gt;&lt;pre&gt;&lt;code&gt;class Person:
+&lt;p&gt;Creating classes is the bread and butter of object oriented programming. Before diving stright into the good stuff lets review and cover some more conceptual ideas before going into programming. The Python syntax for creating classes is pretty stright forward. Specially since creating a class in python has very little syntax then some of the other programming languages. &lt;br/&gt;&lt;br/&gt; Scoping and Namespaces. Scoping is the idea that certain variables are defined in certain contexts. In python objects have attributes that are specific to that object. Instances which is what is created from a class share class variable shared between all instances of a particular class. &lt;/p&gt;&lt;pre&gt;&lt;code&gt;class Person:
 
-    population = 0
+
 
     def &amp;#95;&amp;#95;init&amp;#95;&amp;#95;&amp;#40;self, name, money&amp;#41;:
         self.name = name
@@ -48,7 +48,7 @@ def main&amp;#40;&amp;#41;:
 
 
 main&amp;#40;&amp;#41;
-&lt;/code&gt;&lt;/pre&gt;So the syntax for creating a class is by using &quot;class&quot; all lower case. Followed by what you want to call the class in this case the class is called Person. The first letter is capitalized when giving the name of a class and ending with the double colon :. Then you have population which right now aren't doing anything with this is just a class variable that is shared by all instances. Also the init has two underscores infront of it and than followed by two underscores.&lt;br/&gt;&lt;br/&gt;When you run this this is the result you get.&lt;pre&gt;&lt;code&gt;Batman
+&lt;/code&gt;&lt;/pre&gt;So the syntax for creating a class is by using &quot;class&quot; all lower case. Followed by what you want to call the class in this case the class is called Person. The first letter is capitalized when giving the name of a class and ending with the double colon :. Also the init has two underscores infront of it and than followed by two underscores.&lt;br/&gt;&lt;br/&gt;When you run this this is the result you get.&lt;pre&gt;&lt;code&gt;Batman
 999999999
 0
 &lt;/code&gt;&lt;/pre&gt;Explanations below&lt;br/&gt;&lt;br/&gt; Line 1:&lt;pre&gt;&lt;code&gt;class Person: 
@@ -65,17 +65,10 @@ print&amp;#40;a.population&amp;#41;
     print&amp;#40;k.name&amp;#41;
     print&amp;#40;k.money&amp;#41;
     print&amp;#40;k.population&amp;#41;
-&lt;/code&gt;&lt;/pre&gt;Now running this you can see that k as the attribute population as well. This attribute is the same attribute as the attribute from a. This is shared between both superman instance and batman instance. However to you it may not seem like it really is shared. So to prove to you that this attribute is truly shared make your file so that it looks like this.&lt;pre&gt;&lt;code&gt;class Person:
-
-    population = 0
-
-    def &amp;#95;&amp;#95;init&amp;#95;&amp;#95;&amp;#40;self, name, money&amp;#41;:
-        self.name = name
-        self.money = money
-        population = population + 1
-
-
-def main&amp;#40;&amp;#41;:
+&lt;/code&gt;&lt;/pre&gt;Now running this you can see that k as the attribute population as well. This attribute is the same attribute as the attribute from a. This is shared between both superman instance and batman instance.&lt;br/&gt;&lt;br/&gt;You can change the attribute and it won't be updated for the other like the following. Add the following in the body of your def main. Keeping the rest the same.&lt;pre&gt;&lt;code&gt;a.population = 3
+print&amp;#40;a.population&amp;#41;
+print&amp;#40;k.population&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;So your main function should look like this now.&lt;pre&gt;&lt;code&gt;def main&amp;#40;&amp;#41;:
 
     a = Person&amp;#40;&amp;quot;Batman&amp;quot;, 999999999&amp;#41;
 
@@ -83,15 +76,16 @@ def main&amp;#40;&amp;#41;:
     print&amp;#40;a.money&amp;#41;
     print&amp;#40;a.population&amp;#41;
 
-#    k = Person&amp;#40;&amp;quot;Superman&amp;quot;, 100000&amp;#41;
+    k = Person&amp;#40;&amp;quot;Superman&amp;quot;, 100000&amp;#41;
 
-#    print&amp;#40;k.name&amp;#41;
-#    print&amp;#40;k.money&amp;#41;
-#    print&amp;#40;k.population&amp;#41;
-
-
-main&amp;#40;&amp;#41;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Superman has been commented out for now. But now running this realize that the population is 1? Why is that well because in our init we have made it so that our population is increased by 1 every time the constructor is added. So since the batman instance was created the population was increased by 1.  &lt;br/&gt;&lt;br/&gt; Now uncomment the the Superman part and add another print at the end printing the a.population. &lt;br/&gt;&lt;br/&gt; DRAFT Rest to be written later. Since I have a bunch of exams. This isn't fully completed.&lt;/p&gt;
+    print&amp;#40;k.name&amp;#41;
+    print&amp;#40;k.money&amp;#41;
+    print&amp;#40;k.population&amp;#41;
+    
+    a.population = 3
+    print&amp;#40;a.population&amp;#41;
+    print&amp;#40;k.population&amp;#41;
+ &lt;/code&gt;&lt;/pre&gt; Now running this will result in seeing that the a.population results in 3 while the k.population is still 1. So you can change an attribute using the dot syntax and the attribute name of the instance followed by the assignment operator to set the attribute for that specific instance to a different value just like you do for other variables expect it will be specific for that instance alone.  &lt;br/&gt;&lt;br/&gt; Wrapping up: &lt;br/&gt;&lt;br/&gt;&lt;/p&gt;
 </description>
 <enclosure>
 
