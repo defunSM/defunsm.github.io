@@ -12,7 +12,7 @@ http://blogawesome.com/
 A place to share my knowledge
 </description>
 <lastBuildDate>
-Sat, 15 Oct 2016 11:30:28 -0400
+Sat, 15 Oct 2016 11:39:46 -0400
 </lastBuildDate>
 <generator>
 clj-rss
@@ -166,7 +166,7 @@ http://blogawesome.com/posts-output/pythonloops/
 Python - Recursion
 </title>
 <description>
- &lt;p&gt; Recursion is a important concept in computer science and a useful technique to use in programming. It cuts down time and saves you unnessary typing which is always good. Most programming languages allow recursion and it is a very useful way to reach a solution to a problem that requires the result of the previous solution.  &lt;br/&gt;&lt;br/&gt;  There are a couple of ways to implement recursion in your programs. Once you learn how to do recursion you'll be able to greatly type less and deploy more interesting behavior in your program.  &lt;/p&gt;&lt;p&gt; One of the ways to implement recursion in python is using a for loop. This is typically the way loops are done in python and is tend to be safer than the other ways. Since using a for loop you set the condition for which is looping.  &lt;/p&gt;&lt;p&gt; &lt;br/&gt;&lt;br/&gt;  For loops are rather nice that they usually loop the elements of a list. So you can hand for a bunch of elements and do something to each one of them. Lets look at an example.  &lt;/p&gt;&lt;pre&gt;&lt;code&gt; def main&amp;#40;&amp;#41;:
+ &lt;p&gt; Recursion is a important concept in computer science and a useful technique to use in programming. It cuts down time and saves you unnessary typing which is always good. Most programming languages allow recursion and it is a very useful way to reach a solution to a problem that requires the result of the previous solution.  &lt;br/&gt;&lt;br/&gt;  There are a couple of ways to implement recursion in your programs. Once you learn how to do recursion you'll be able to greatly type less and deploy more interesting behavior in your program.  &lt;br/&gt;&lt;br/&gt;  One of the ways to implement recursion in python is using a for loop. This is typically the way loops are done in python and is tend to be safer than the other ways. Since using a for loop you set the condition for which is looping.  &lt;/p&gt;&lt;p&gt; &lt;br/&gt;&lt;br/&gt;  For loops are rather nice that they usually loop the elements of a list. So you can hand a bunch of elements and the for loop will do something to each one of them. Lets look at an example.  &lt;/p&gt;&lt;pre&gt;&lt;code&gt; def main&amp;#40;&amp;#41;:
 
     sum = 0
     for i in range&amp;#40;5&amp;#41;:
