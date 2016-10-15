@@ -12,7 +12,7 @@ http://blogawesome.com/
 A place to share my knowledge
 </description>
 <lastBuildDate>
-Sat, 15 Oct 2016 10:48:31 -0400
+Sat, 15 Oct 2016 10:54:14 -0400
 </lastBuildDate>
 <generator>
 clj-rss
@@ -30,7 +30,7 @@ Python - Classes
 <description>
 &lt;p&gt;Creating classes is the bread and butter of object oriented programming. Before diving stright into the good stuff lets review and cover some more conceptual ideas before going into programming. The Python syntax for creating classes is pretty stright forward. Specially since creating a class in python has very little syntax then some of the other programming languages. &lt;br/&gt;&lt;br/&gt; We have seen different types so far in Python such as Strings/Integers/Floats. However what if you wanted to make a type? Thats what classes are actually. In a way they are user defined types. &lt;br/&gt;&lt;br/&gt; Scoping and Namespaces. Scoping is the idea that certain variables are defined in certain contexts. In python objects have attributes that are specific to that object. Instances which is what is created from a class share class variable shared between all instances of a particular class. &lt;/p&gt;&lt;pre&gt;&lt;code&gt;class Person:
 
-
+    population = 0
 
     def &amp;#95;&amp;#95;init&amp;#95;&amp;#95;&amp;#40;self, name, money&amp;#41;:
         self.name = name
