@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-	<title>Python - Functions</title>
+	<title>Python - Recursion</title>
 	<!-- Styles -->
 	<link rel="stylesheet" href="https://defunsm.github.io/css/style.css" />
 	<link rel="stylesheet" href="https://defunsm.github.io/css/font-awesome.min.css" />
@@ -60,14 +60,14 @@
 		<div class="fade child">
 			<div class="container_small">
 				<!-- Header Titles -->
-				<h1 class="header_title">Python - Functions</h1>
+				<h1 class="header_title">Python - Recursion</h1>
 
 
-                                <a href="/posts-output/pythonloops/" class="button"><i class="fa fa-arrow-left" aria-hidden="true"></i> Python - Recursion</a>
+                                <a href="/posts-output/pythonclasses/" class="button"><i class="fa fa-arrow-left" aria-hidden="true"></i> Python - Classes</a>
 
 <br/>
                                 
-                                <a href="/posts-output/pythonuserinput/" class="button">Python - User input <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                                <a href="/posts-output/pythonfunctions/" class="button">Python - Functions <i class="fa fa-arrow-right" aria-hidden="true"></i>
 </i></a>
 
 
@@ -86,33 +86,50 @@
                     
                     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">October 11, 2016</div>
+        <div class="col-lg-6">October 12, 2016</div>
         
     </div>
-    <h2>Python - Functions</h2>
+    <h2>Python - Recursion</h2>
 </div>
 <div>
     
-     <p>So as you been writing python code you may see me typing things such as this every time at the beginning of any file.</p><pre><code>def main&#40;&#41;:
-      
-      # some kind of code here in the body.
-        
-main&#40;&#41;        
-</code></pre>In python "def" is the keyword that is used to create a function defination. Following after the keyword is of course the function name. So the syntax for creating a general function is such.<pre><code>def functionName&#40;arg1, arg2&#41;:
-</code></pre>arg1 and arg2 are the arguments passed to the function. These arguments can be variables from other functions, strings, values, later on you'll see lists and hashes. To demonstrate a function lets write a function that'll help us do some math. Lets say we want to find the hypothenuse given the legs of the triangle. We could define a function called "hypothenuse" than pass the arguments to the function.<pre><code>import sys, math
+     <p> Recursion is a important concept in computer science and a useful technique to use in programming. It cuts down time and saves you unnessary typing which is always good. Most programming languages allow recursion and it is a very useful way to reach a solution to a problem that requires the result of the previous solution.  <br/><br/>  There are a couple of ways to implement recursion in your programs. Once you learn how to do recursion you'll be able to greatly type less and deploy more interesting behavior in your program.  </p><p> One of the ways to implement recursion in python is using a for loop. This is typically the way loops are done in python and is tend to be safer than the other ways. Since using a for loop you set the condition for which is looping.  </p><p> <br/><br/>  For loops are rather nice that they usually loop the elements of a list. So you can hand for a bunch of elements and do something to each one of them. Lets look at an example.  </p><pre><code> def main&#40;&#41;:
 
-def hypothenuse&#40;a, b&#41;:
+    sum = 0
+    for i in range&#40;5&#41;:
+        print&#40;i&#41;
+        sum += i
 
-    return math.sqrt&#40;float&#40;a&#41; &#42;&#42; 2 + float&#40;b&#41; &#42;&#42; 2&#41;
+    print&#40;sum&#41;
 
-def main&#40;&#41;:
-
-    print&#40;hypothenuse&#40;sys.argv&#91;1&#93;, sys.argv&#91;2&#93;&#41;&#41;
 
 main&#40;&#41;
-</code></pre>First we are importing sys and math which we will both need their libraries to write the hypothenuse function. Since from the pythagorean theorem we know that a ^ 2 + b ^ 2 = c ^ 2 so c = sqrt(a ^ 2 + b ^ 2). So our function hypothenuse will do something like that in it's body.<br/><br/>Something new that you are seeing is the return and as the name suggests it is returning the value calculated by the hypothenuse function.<br/><br/>If you are coming from C++ you know that every function has a return but in python that is not the case. In the main function we have the hypothenuse function given the sys.argv[1] as an argument for a and sys.argv[2] as the argument for b. The Hypothenuse function will then use the arguments recieved from the terminal and than preform the pythagorean theorem and boom returns a value which then print will print it to the standard output to your terminal.<br/><br/>So to check that works this is what you should type into your terminal in my case I called my file hypothenuse.py but you use whatever you called your file.<pre><code>$ python3 hypothenuse.py 3 4
-</code></pre>The result is ...<pre><code>5.0
-</code></pre>So we could see that the hypothenuse function is returning back it's value and then print is printing it out to display to us the value.<br/><br/>Wraping up:<br/><br/>Thats all there is too it not too complicated. Just make sure to give your function name reasonable names and have meaning to them otherwise when you begin to write a lot of code and need to know what a function does you don't want go through reading the code in that function so having the function name relatable to what it's doing is important. As well as making sure your passing it the right kind of arguments. Make sure that if it wants a string to pass it a string and if the function wants a number pass it a number. In this case we don't have to worry about that since float will just convert it but in other cases you may need to consider it. As well as passing it the right number of arguments. If you passed hypothenuse three arguments instead of two it would give you a typeError that hypothenuse only takes 2 positional arguments but 3 were given. This is because the function will not know what to do with the extra function so you need to keep in mind when writing a function and than using that function how many arguments it will take. There are also ways to write functions take take any number of arguments which I'll show you later on.
+</code></pre>Results:<pre><code>0
+1
+2
+3
+4
+10
+</code></pre>Notice that a variable is being set before the for part is started. The sum is set to 0 before the for loop begins on line 4. Line 4 is where the for loop begins and everything in the loop is indented. This is the syntax for for loops. Notice that following the for keyword is a variable "i" which is arbitary but you could call it whatever really just make sure your using the same variable in the body of the loop. After the variable you use "in" which is followed by the list which is created by range(5). Range is a really nice function that creates a list of numbers in this case it creates numbers from 0 to 4. This is evident since you see the numbers being printed. Also note that at the end when we print sum all of the numbers printed added up is indeed 10 so the numbers in the list created by range(5) was added to the sum variable one at a time. If the sum += 1 is a bit weird to you it is really the same thing as doing sum = sum + 1. The way I have written it is more cleaner since it removes writing sum again and if you coded in c++ before you mightve seen the same kind of style before. <br/><br/>Now lets take another look at a way to do the same thing but using a while loop.<pre><code>def main&#40;&#41;:
+
+    sum = 0
+    i = 0
+    while i &lt; 5:
+        print&#40;i&#41;
+        sum += i
+        i += 1
+
+    print&#40;sum&#41;
+
+
+main&#40;&#41;
+</code></pre>Result:<pre><code>0
+1
+2
+3
+4
+10
+</code></pre>The result is the same with using a while loop. However notice that we had to implicitly create the sum and i variable this time and set both to 0. Also make a condition for the while loop so that it knows when to stop. If we wrote while True: instead of putting the condition after the while it would essentially run forever so don't do this. Also if you didn't increment the i variable by 1 every time in the loop then also the while loop will run forever. This is why writing while loops are not as safe as writing a for loop since there is a potentional for while loops to run forever.<br/><br/>
 </div>
 
 <div id="post-tags">
@@ -129,10 +146,10 @@ main&#40;&#41;
 
                           <div id="prev-next">
                             
-                            <a href="/posts-output/pythonloops/">&laquo; Python - Recursion</a>
+                            <a href="/posts-output/pythonclasses/">&laquo; Python - Classes</a>
                             
                             
-                            <a class="right" href="/posts-output/pythonuserinput/">Python - User input &raquo;</a>
+                            <a class="right" href="/posts-output/pythonfunctions/">Python - Functions &raquo;</a>
                             
                           </div>
 
