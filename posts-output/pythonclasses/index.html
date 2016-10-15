@@ -104,14 +104,57 @@
 def main&#40;&#41;:
 
     a = Person&#40;&quot;Batman&quot;, 999999999&#41;
-
+    
     print&#40;a.name&#41;
     print&#40;a.money&#41;
-
+    print&#40;a.population&#41;
 
 
 main&#40;&#41;
-</code></pre>So the syntax for creating a class is by using "class" all lower case. Followed by what you want to call the class in this case the class is called Person. The first letter is capitalized when giving the name of a class and ending with the double colon :. Then you have population which right now aren't doing anything with this is just a class variable that is shared by all instances.<p>DRAFT Rest to be written later. Since I have a bunch of exams.</p>
+</code></pre>So the syntax for creating a class is by using "class" all lower case. Followed by what you want to call the class in this case the class is called Person. The first letter is capitalized when giving the name of a class and ending with the double colon :. Then you have population which right now aren't doing anything with this is just a class variable that is shared by all instances. Also the init has two underscores infront of it and than followed by two underscores.<br/><br/>When you run this this is the result you get.<pre><code>Batman
+999999999
+0
+</code></pre>Explanations below<br/><br/> Line 1:<pre><code>class Person: 
+</code></pre>This is the syntax in which you begin when defining a class. In this case our class is called Person. As I said before the name of the class must be capitalized. It is similiar to defining a function as everything under it is indented by a tab or spaces but just stick to one. There is a whole debate regarding tabs vs spaces but just stick to one and don't intermix spaces and tabs and you should be fine.<br/><br/>Line 3:<pre><code>population = 0
+</code></pre>This in python is known as a class variable. This is shared with all other "instances" that you create that is related to the class Person. Instances which you'll see are created using a similar syntax as a function but binding it to a symbol or variable which you saw in the main function.Line 4-7:<pre><code>def &#95;&#95;init&#95;&#95;&#40;self, name, money&#41;:
+        self.name = name
+        self.money = money
+</code></pre>This may be a little frightening to see. But this is not too different from making a function.<code> &#95;<i>init&#95;</i></code> is special that it is called whenever a class instance is created using a constructor. Here you are telling python that the constructor function must take 2 arguments. But wait what is this self argument that the constructor is taking? <code>__init&#95;_</code> always takes self as the first argument and the rest of the arguments can be applied as attributes like we are doing here. Attributes are called using the . syntax on the variable that is holding the instance. <br/><br/>Line 14:<pre><code>a = Person&#40;&quot;Batman&quot;, 999999999&#41;
+</code></pre>There is a lot packed into here that doesn't meet the eye. So I will try my best to not leave anything out and explain it the best I can so that this makes sense and there is no confusion since it is very easy to get confused here. <br/><br/>You can consider Person("Batman", 999999999) as "making" the instance of the class Person. This is what is known as a constructor. It is creating an instance of the class Person based on the specifications that you set in the def <code>init</code>. The constructor will take two arguments a name and the money that the person has. Note that you don't pass three arguments but only two this is because self is a special argument that gets passed onto itself already that you don't have to worry about hence self.<br/><br/>Line 15-17:<pre><code>print&#40;a.name&#41;
+print&#40;a.money&#41;
+print&#40;a.population&#41;
+</code></pre>So to get the class variables and attributes you use the variable you attached to it and use the . syntax to get the attribute of the class. name and money are attributes that are specific to the instance created. However population is a class variable that is shared with all instances. To demonstrate this point add the following to your main function below all the prints.<pre><code>    k = Person&#40;&quot;Superman&quot;, 100000&#41;
+
+    print&#40;k.name&#41;
+    print&#40;k.money&#41;
+    print&#40;k.population&#41;
+</code></pre>Now running this you can see that k as the attribute population as well. This attribute is the same attribute as the attribute from a. This is shared between both superman instance and batman instance. However to you it may not seem like it really is shared. So to prove to you that this attribute is truly shared make your file so that it looks like this.<pre><code>class Person:
+
+    population = 0
+
+    def &#95;&#95;init&#95;&#95;&#40;self, name, money&#41;:
+        self.name = name
+        self.money = money
+        self.population = self.population + 1
+
+
+def main&#40;&#41;:
+
+    a = Person&#40;&quot;Batman&quot;, 999999999&#41;
+
+    print&#40;a.name&#41;
+    print&#40;a.money&#41;
+    print&#40;a.population&#41;
+
+#    k = Person&#40;&quot;Superman&quot;, 100000&#41;
+
+#    print&#40;k.name&#41;
+#    print&#40;k.money&#41;
+#    print&#40;k.population&#41;
+
+
+main&#40;&#41;
+</code></pre><p>Superman has been commented out for now. But now running this realize that the population is 1? Why is that well because in our init we have made it so that our population is increased by 1 every time the constructor is added. So since the batman instance was created the population was increased by 1.  <br/><br/> Now uncomment the the Superman part and add another print at the end printing the a.population.<pre><code> </code></pre> DRAFT Rest to be written later. Since I have a bunch of exams.</p>
 </div>
 
 <div id="post-tags">
