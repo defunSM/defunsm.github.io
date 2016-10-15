@@ -12,7 +12,7 @@ http://blogawesome.com/
 A place to share my knowledge
 </description>
 <lastBuildDate>
-Fri, 14 Oct 2016 23:43:48 -0400
+Fri, 14 Oct 2016 23:54:42 -0400
 </lastBuildDate>
 <generator>
 clj-rss
@@ -72,7 +72,7 @@ print&amp;#40;a.population&amp;#41;
     def &amp;#95;&amp;#95;init&amp;#95;&amp;#95;&amp;#40;self, name, money&amp;#41;:
         self.name = name
         self.money = money
-        self.population = self.population + 1
+        population = population + 1
 
 
 def main&amp;#40;&amp;#41;:
@@ -91,7 +91,7 @@ def main&amp;#40;&amp;#41;:
 
 
 main&amp;#40;&amp;#41;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Superman has been commented out for now. But now running this realize that the population is 1? Why is that well because in our init we have made it so that our population is increased by 1 every time the constructor is added. So since the batman instance was created the population was increased by 1.  &lt;br/&gt;&lt;br/&gt; Now uncomment the the Superman part and add another print at the end printing the a.population.&lt;pre&gt;&lt;code&gt; &lt;/code&gt;&lt;/pre&gt; DRAFT Rest to be written later. Since I have a bunch of exams.&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Superman has been commented out for now. But now running this realize that the population is 1? Why is that well because in our init we have made it so that our population is increased by 1 every time the constructor is added. So since the batman instance was created the population was increased by 1.  &lt;br/&gt;&lt;br/&gt; Now uncomment the the Superman part and add another print at the end printing the a.population. &lt;br/&gt;&lt;br/&gt; DRAFT Rest to be written later. Since I have a bunch of exams. This isn't fully completed.&lt;/p&gt;
 </description>
 <enclosure>
 
