@@ -12,7 +12,7 @@ http://blogawesome.com/
 A place to share my knowledge
 </description>
 <lastBuildDate>
-Sat, 15 Oct 2016 09:36:32 -0400
+Sat, 15 Oct 2016 10:44:47 -0400
 </lastBuildDate>
 <generator>
 clj-rss
@@ -28,7 +28,7 @@ http://blogawesome.com/posts-output/pythonclasses/
 Python - Classes
 </title>
 <description>
-&lt;p&gt;Creating classes is the bread and butter of object oriented programming. Before diving stright into the good stuff lets review and cover some more conceptual ideas before going into programming. The Python syntax for creating classes is pretty stright forward. Specially since creating a class in python has very little syntax then some of the other programming languages. &lt;br/&gt;&lt;br/&gt; Scoping and Namespaces. Scoping is the idea that certain variables are defined in certain contexts. In python objects have attributes that are specific to that object. Instances which is what is created from a class share class variable shared between all instances of a particular class. &lt;/p&gt;&lt;pre&gt;&lt;code&gt;class Person:
+&lt;p&gt;Creating classes is the bread and butter of object oriented programming. Before diving stright into the good stuff lets review and cover some more conceptual ideas before going into programming. The Python syntax for creating classes is pretty stright forward. Specially since creating a class in python has very little syntax then some of the other programming languages. &lt;br/&gt;&lt;br/&gt; We have seen different types so far in Python such as Strings/Integers/Floats. However what if you wanted to make a type? Thats what classes are actually. In a way they are user defined types. &lt;br/&gt;&lt;br/&gt; Scoping and Namespaces. Scoping is the idea that certain variables are defined in certain contexts. In python objects have attributes that are specific to that object. Instances which is what is created from a class share class variable shared between all instances of a particular class. &lt;/p&gt;&lt;pre&gt;&lt;code&gt;class Person:
 
 
 
@@ -53,7 +53,7 @@ main&amp;#40;&amp;#41;
 0
 &lt;/code&gt;&lt;/pre&gt;Explanations below&lt;br/&gt;&lt;br/&gt; Line 1:&lt;pre&gt;&lt;code&gt;class Person: 
 &lt;/code&gt;&lt;/pre&gt;This is the syntax in which you begin when defining a class. In this case our class is called Person. As I said before the name of the class must be capitalized. It is similiar to defining a function as everything under it is indented by a tab or spaces but just stick to one. There is a whole debate regarding tabs vs spaces but just stick to one and don't intermix spaces and tabs and you should be fine.&lt;br/&gt;&lt;br/&gt;Line 3:&lt;pre&gt;&lt;code&gt;population = 0
-&lt;/code&gt;&lt;/pre&gt;This in python is known as a class variable. This is shared with all other &quot;instances&quot; that you create that is related to the class Person. Instances which you'll see are created using a similar syntax as a function but binding it to a symbol or variable which you saw in the main function.Line 4-7:&lt;pre&gt;&lt;code&gt;def &amp;#95;&amp;#95;init&amp;#95;&amp;#95;&amp;#40;self, name, money&amp;#41;:
+&lt;/code&gt;&lt;/pre&gt;This in python is known as a class variable. This is shared with all other &quot;instances&quot; that you create that is related to the class Person. Instances which you'll see are created using a similar syntax as a function but binding it to a symbol or variable which you saw in the main function.&lt;br/&gt;&lt;br/&gt;Line 4-7:&lt;pre&gt;&lt;code&gt;def &amp;#95;&amp;#95;init&amp;#95;&amp;#95;&amp;#40;self, name, money&amp;#41;:
         self.name = name
         self.money = money
 &lt;/code&gt;&lt;/pre&gt;This may be a little frightening to see. But this is not too different from making a function.&lt;code&gt; &amp;#95;&lt;i&gt;init&amp;#95;&lt;/i&gt;&lt;/code&gt; is special that it is called whenever a class instance is created using a constructor. Here you are telling python that the constructor function must take 2 arguments. But wait what is this self argument that the constructor is taking? &lt;code&gt;__init&amp;#95;_&lt;/code&gt; always takes self as the first argument and the rest of the arguments can be applied as attributes like we are doing here. Attributes are called using the . syntax on the variable that is holding the instance. &lt;br/&gt;&lt;br/&gt;Line 14:&lt;pre&gt;&lt;code&gt;a = Person&amp;#40;&amp;quot;Batman&amp;quot;, 999999999&amp;#41;
@@ -85,13 +85,74 @@ print&amp;#40;k.population&amp;#41;
     a.population = 3
     print&amp;#40;a.population&amp;#41;
     print&amp;#40;k.population&amp;#41;
- &lt;/code&gt;&lt;/pre&gt; Now running this will result in seeing that the a.population results in 3 while the k.population is still 1. So you can change an attribute using the dot syntax and the attribute name of the instance followed by the assignment operator to set the attribute for that specific instance to a different value just like you do for other variables expect it will be specific for that instance alone.  &lt;br/&gt;&lt;br/&gt; Wrapping up: &lt;br/&gt;&lt;br/&gt;&lt;/p&gt;
+ &lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;This is the result:&lt;pre&gt;&lt;code&gt;Batman
+999999999
+1
+Superman
+100000
+1
+3
+1
+ &lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;Now running this will result seeing that the a.population results in 3 while the k.population is still 1. So you can change an attribute using the dot syntax and the attribute name of the instance followed by the assignment operator to set the attribute for that specific instance to a different value just like you do for other variables expect it will be specific for that instance alone.  &lt;br/&gt;&lt;br/&gt; Lets look at another feature of classes. So lets change our entire python file to this.&lt;pre&gt;&lt;code&gt;class Person:
+
+    population = 0
+
+    def &amp;#95;&amp;#95;init&amp;#95;&amp;#95;&amp;#40;self, name, money&amp;#41;:
+        self.name = name
+        self.money = money
+
+    def getname&amp;#40;self&amp;#41;:
+        print&amp;#40;self.name&amp;#41;
+
+    def getmoney&amp;#40;self&amp;#41;:
+        print&amp;#40;self.money&amp;#41;
+
+    def getpopulation&amp;#40;self&amp;#41;:
+        print&amp;#40;self.population&amp;#41;
+
+
+def main&amp;#40;&amp;#41;:
+
+    a = Person&amp;#40;&amp;quot;Batman&amp;quot;, 999999999&amp;#41;
+    k = Person&amp;#40;&amp;quot;Superman&amp;quot;, 100000&amp;#41;
+
+    print&amp;#40;&amp;quot;Batman info:&amp;quot;&amp;#41;
+    a.getname&amp;#40;&amp;#41;
+    a.getmoney&amp;#40;&amp;#41;
+    a.getpopulation&amp;#40;&amp;#41;
+
+    print&amp;#40;&amp;quot;Superman info:&amp;quot;&amp;#41;
+    k.getname&amp;#40;&amp;#41;
+    k.getmoney&amp;#40;&amp;#41;
+    k.getpopulation&amp;#40;&amp;#41;
+
+main&amp;#40;&amp;#41;
+ &lt;/code&gt;&lt;/pre&gt; Results:&lt;pre&gt;&lt;code&gt;Batman info:
+Batman
+999999999
+0
+Superman info:
+Superman
+100000
+0
+ &lt;/code&gt;&lt;/pre&gt; Notice that we have more defs within our class now. We have getname, getmoney and getpopulation. These are functions specific to the class Person. So that means that these functions will only work on instances that are from the class Person. now you see something you might have remembered doing previously when working with numbers. &lt;pre&gt;&lt;code&gt;print&amp;#40;&amp;quot;Batman info:&amp;quot;&amp;#41;
+a.getname&amp;#40;&amp;#41;
+a.getmoney&amp;#40;&amp;#41;
+a.getpopulation&amp;#40;&amp;#41;
+
+print&amp;#40;&amp;quot;Superman info:&amp;quot;&amp;#41;
+k.getname&amp;#40;&amp;#41;
+k.getmoney&amp;#40;&amp;#41;
+k.getpopulation&amp;#40;&amp;#41;
+ &lt;/code&gt;&lt;/pre&gt; Now you notice we have parantheses at the end to call the functions for that instance. This is the syntax to call a function from a particular instance of a class. However if you use just getname() it won't work because it is specific to the class Person and so you have to use it with an instance of class Person. &lt;br/&gt;&lt;br/&gt; This is very much like doing Math.cos() expect instead of calling the function from a specific module that is avaliable you are calling a function from a class. More specifically an instance that has the functions from the class.  &lt;br/&gt;&lt;br/&gt; Wrapping up:&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;br/&gt; Lets review because there is quite a bit that was talked about here but maybe not fully discussed about. First we have the whole concept of classes. For now classes can be thought of has a seperate namespace that you have with variables in that namespace.  &lt;br/&gt;&lt;br/&gt; Attributes are very much like variables that are specific to the instance. Instances being what is created when using a constructor which is how we created the Batman and Superman instances from the class Person. The constructor looks for a template on how to make the instance and then creates it using the &quot;&lt;b&gt;init&lt;/b&gt;&quot; function that is called when an instance is made. The init function should not be treated like a normal function within the class. It is ONLY called when you create an instance such as when batman and superman was first created by calling the constructor. The constructor calls &lt;b&gt;init&lt;/b&gt; if there is one and that is the only that that function gets called. Until you make another instance that is then it is called again for that instance. &lt;br/&gt;&lt;br/&gt; I threw around a lot of words and it may still not click much for you what exactly instances, classes, constructors are exactly. However it just takes time to get used to seeing them and practice making your own classes and playing around with them to figure what what they can be or can't be.  &lt;br/&gt;&lt;br/&gt; I didnt go over too well what exactly the a and k are doing but they are essentially objects holding the instance. You can check this using type on both a and k by adding the following lines at the end of the main function.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;print&amp;#40;type&amp;#40;a&amp;#41;&amp;#41;
+print&amp;#40;type&amp;#40;k&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;You'll see from the result that both a and k are of class Person. &lt;br/&gt;&lt;br/&gt; Now that you have created classes you can greatly abstract your programs with all kinds of self created classes. However be weary that not all cases call for classes. You can sometimes just write a function instead of actually make an entire class for it. Knowing the difference between when to create a function or a class can sometimes be tricky but generally you should try to create functions. The only time you need to create a class if you need to create objects that require specific individual attributes and need to be manipulated in a special way that a function would constrict you from doing. &lt;/p&gt;
 </description>
 <enclosure>
 
 </enclosure>
 <pubDate>
-Wed, 12 Oct 2016 00:00:00 -0400
+Sat, 15 Oct 2016 00:00:00 -0400
 </pubDate>
 </item>
 <item>
