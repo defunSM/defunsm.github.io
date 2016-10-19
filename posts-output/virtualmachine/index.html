@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+	<title>Virtual Machine</title>
+	<!-- Styles -->
+	<link rel="stylesheet" href="https://defunsm.github.io/css/style.css" />
+	<link rel="stylesheet" href="https://defunsm.github.io/css/font-awesome.min.css" />
+	<link type="text/css" rel="stylesheet" href="https://defunsm.github.io/featherlight.css" />
+        <link rel="stylesheet" href="https://defunsm.github.io/css/screen.css" />
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css">
+
+	<style type="text/css">
+		@media all {
+			.lightbox { display: none; }
+		}
+	</style>
+	<!-- jQuery -->
+	<script src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js'></script>
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="images/favicon.png">
+</head>
+<body class="fade-in cmon body">
+
+
+	<!-- HEADER /////////////////////////////////////////////////////////////////////////// -->
+	<header id="postwelcome" class="parent module parallax parallax-1">
+		<div class="burger" id="toggle">
+			<span class="top"></span>
+			<span class="middle"></span>
+			<span class="bottom"></span>
+
+		</div>
+
+		<div class="navigation" id="navigation">
+			<nav class="overlay-menu">
+			  <ul>
+                                          <li>
+                              <a href="https://defunsm.github.io/#Welcome" class="menu">Home <i class="fa fa-home" aria-hidden="true"></i>
+</a>
+			      <span class="simple_line"></span>
+                              </li>
+					<li >
+						<a href="https://defunsm.github.io/#about" class="menu">About <i class="fa fa-heart" aria-hidden="true"></i></a>
+						<span class="simple_line"></span>
+					</li>
+					<li>
+						<a href="https://defunsm.github.io/#portfolio" class="menu">Github <i class="fa fa-github" aria-hidden="true"></i></a>
+						<span class="simple_line"></span>
+					</li>
+					<li>
+						<a href="https://defunsm.github.io/#contact" class="menu">Blog <i class="fa fa-book" aria-hidden="true"></i></a>
+					</li>
+
+			  </ul>
+			</nav>
+		</div>
+		<div class="scroll_down"></div>
+		<div class="fade child">
+			<div class="container_small">
+				<!-- Header Titles -->
+				<h1 class="header_title">Virtual Machine</h1>
+
+
+<br/>
+                                
+                                <a href="/posts-output/pythonclasses/" class="button">Python - Classes <i class="fa fa-arrow-right" aria-hidden="true"></i>
+</i></a>
+
+
+			</div>
+		</div>
+	</header>
+	<!-- END HEADER /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- ABOUT SECTION /////////////////////////////////////////////////////////////////////////// -->
+	<section id="about" class="module">
+
+
+          <div class="anotherclass">
+
+
+                    
+                    <div class="post-header">
+    <div id="post-meta" class="row">
+        <div class="col-lg-6">October 18, 2016</div>
+        
+    </div>
+    <h2>Virtual Machine</h2>
+</div>
+<div>
+    
+    <p><h2>Run an operating system on a Virtual Machine</h2> <br/><br/> <h3>FAQ:</h3> <h4>What is a virtual machine?</h4> A virtual machine is an application that emulates a computer. <br/><br/> <h4>Can the virtual machine effect my host machine?</h4> No and Yes. Unless you are sharing a network or have shared folders you should have no problem. <br/><br/> <h4>How do I run a virtual machine?</h4> Downloading <a href="https://www.virtualbox.org/" target="<i>blank">virtual box</a> or <a href="http://www.vmware.com/" target="</i>blank">vmware</a>. <br/><br/> <h4>Which is better Vmware or Virtual Box?</h4> Personally I use Virtual Box and this guide will show you how to use virtual box. <br/><br/> <h2>Requirements for Virtual Machine</h2> 1 ISO file 1 Computer / Laptop <a href="https://www.virtualbox.org/" target="_blank">Virtual Box</a> <br/><br/> <h2>General Steps</h2> <br/><br/> Download ISO file (<a href="http://www.ubuntu.com/desktop" target="_blank">Ubuntu</a>) Download <a href="https://www.virtualbox.org/" target="_blank">Virtual Box</a> Create a virtual machine Set up Virtual Box Run the ISO file <br/><br/> <h2>Specific Steps</h2> <br/><br/> <h4>Step 1: Download ISO File</h4> <br/><br/> <em><a href="http://www.ubuntu.com/desktop" target="_blank">You can download Ubuntu from their website.</a></em> <br/><br/> <h4>Step 2: Download Virtual Box</h4> <br/><br/> <em><a href="https://www.virtualbox.org/" target="_blank">You can download Virtual Box from their website.</a></em> <br/><br/> <h4>Step 3: Create a virtual machine</h4> <br/><br/> To do this open up Virtual Box. <em>Click on the new button.</em> <br/><br/> <img src="http://i.imgur.com/ijdPTiC.png" alt="virtual machine" /> <br/><br/> <em>Type in the name of the operating system in this case ubuntu and it should automatically fill in the other fields. </em> <img src="http://i.imgur.com/ndrmzQM.png" alt="virtual box" /> <strong>Note:</strong> If it doesnt automatically detect fill in the fields according to what operating system you want to run. <br/><br/> <em>Next is to select the RAM.</em> Usually it is fine to just use the recommended amount unless you plan on running an extensive program.  In which case you may wish to increase the RAM. <br/><br/> <img src="http://i.imgur.com/UQfqGU5.png" alt="RAM Virtual Box" /> <br/><br/> <em>It should by default be on virtual hard disk.</em> Unless you want to specifically store it on another physical hard disk pick virtual. <br/><br/> <img src="http://i.imgur.com/e8HnUnF.png" alt="virtual memory on disk" /> <br/><br/> <em>Go with the default VDI which is the file type that the virtual disk image will be saved as.</em> <br/><br/> <img src="http://i.imgur.com/V0llkk2.png" alt="VDI disk image" /> <br/><br/> <em>Select the dynamically allocated otherwise it'll store it on your physical drive.</em> <br/><br/> <img src="http://i.imgur.com/BwS7y0b.png" alt="dynamically allocated virtual box" /> <br/><br/> <em>Select the total amount of space the virtual disk can take up on your computer</em> Normally this should just be set to the default unless you will be downloading a lot of things. <br/><br/> <img src="http://i.imgur.com/ZbCo4nP.png" alt="Amount of space the virtual disk will take up" /> <br/><br/> <em>Now you should have the virtual machine set up.</em> Now to select the ISO image you want to run on the virtual machine click settings. <br/><br/> <img src="http://i.imgur.com/MD4vgg4.png" alt="Setting the ISO image" /> <br/><br/> <em>To select the ISO image you want to run do the following ... Go to Storage->Empty->CD Icon (Boxed in Green)</em> <br/><br/> <img src="http://i.imgur.com/wu9HAKa.png" alt="ISO IMAGE" /> <br/><br/> <em>Select the ISO image you want to run. In this case it is the Ubuntu ISO file.</em> <br/><br/> <img src="http://i.imgur.com/VKLC8Iu.png" alt="Select ISO image" /> <br/><br/> <em>Now you are selecting the ISO image and can click ok to exit.</em> <br/><br/> <img src="http://i.imgur.com/lPcyhrR.png" alt="Done with set up for virtual machine" /> <br/><br/> <em>You have everything set up and now can click start and can now run the operating system.</em> <br/><br/> <img src="http://i.imgur.com/SE9iFwI.png" alt="Running virtual machine" /> <br/><br/> Links: <a href="https://www.virtualbox.org/" target="<i>blank">Virtual Box</a>, <a href="http://www.vmware.com/" target="</i>blank">VmWare</a>, <a href="http://www.ubuntu.com/desktop" target="_blank">Ubuntu</a></p>
+</div>
+
+<div id="post-tags">
+    <b>Tags: </b>
+    
+    <a href="/tags-output/Computers/">Computers</a>
+    
+    <a href="/tags-output/Guide/">Guide</a>
+    
+</div>
+
+
+                          <div id="prev-next">
+                            
+                            
+                            <a class="right" href="/posts-output/pythonclasses/">Python - Classes &raquo;</a>
+                            
+                          </div>
+
+                          
+                          <div id="disqus_thread"></div>
+                          <script type="text/javascript">
+                            (function() {
+                            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                            dsq.src = '//defunsm-github-io.disqus.com/embed.js';
+                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                            })();
+                          </script>
+                          
+
+
+
+                        
+          </div>
+
+
+
+	</section>
+
+        <!-- END ABOUT SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- PORTFOLIO SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- END CONTACT SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- FOOTER /////////////////////////////////////////////////////////////////////////// -->
+	<footer>
+		<div class="container_footer">
+			<div class="left">
+				<p>© 2016 <span>Salman Hossain</span></p>
+			</div>
+			<div class="right">
+				<a href="#postwelcome">Top <i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+			</div>
+		</div>
+	</footer>
+	<!-- END FOOTER /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- Scripts -->
+	<script src="https://defunsm.github.io/js/parallax.js"></script>
+	<script src="https://defunsm.github.io/js/menu.js"></script>
+	<script src="https://defunsm.github.io/js/featherlight.js" type="text/javascript" charset="utf-8"></script>
+	<script src="https://defunsm.github.io/js/scroll.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+        <script src="/js/highlight.pack.js" type="text/javascript"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
