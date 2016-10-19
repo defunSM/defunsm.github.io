@@ -71,8 +71,8 @@ table {
 	border-spacing: 0;
 }
 
-pre:hover {
-    transform: scale(1, 2);
+pre:active {
+
     height: 100%;
     width: 100%;
 }
