@@ -72,7 +72,7 @@ table {
 }
 
 pre:hover {
-    transform: scale(1.3);
+    transform: scale(1, 1.3);
 }
 
 /* 03 GENERAL SETTINGS
