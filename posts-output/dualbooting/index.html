@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+	<title>Dual Booting (Linux + Windows)</title>
+	<!-- Styles -->
+	<link rel="stylesheet" href="https://defunsm.github.io/css/style.css" />
+	<link rel="stylesheet" href="https://defunsm.github.io/css/font-awesome.min.css" />
+	<link type="text/css" rel="stylesheet" href="https://defunsm.github.io/featherlight.css" />
+        <link rel="stylesheet" href="https://defunsm.github.io/css/screen.css" />
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css">
+
+	<style type="text/css">
+		@media all {
+			.lightbox { display: none; }
+		}
+	</style>
+	<!-- jQuery -->
+	<script src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js'></script>
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="images/favicon.png">
+</head>
+<body class="fade-in cmon body">
+
+
+	<!-- HEADER /////////////////////////////////////////////////////////////////////////// -->
+	<header id="postwelcome" class="parent module parallax parallax-1">
+		<div class="burger" id="toggle">
+			<span class="top"></span>
+			<span class="middle"></span>
+			<span class="bottom"></span>
+
+		</div>
+
+		<div class="navigation" id="navigation">
+			<nav class="overlay-menu">
+			  <ul>
+                                          <li>
+                              <a href="https://defunsm.github.io/#Welcome" class="menu">Home <i class="fa fa-home" aria-hidden="true"></i>
+</a>
+			      <span class="simple_line"></span>
+                              </li>
+					<li >
+						<a href="https://defunsm.github.io/#about" class="menu">About <i class="fa fa-heart" aria-hidden="true"></i></a>
+						<span class="simple_line"></span>
+					</li>
+					<li>
+						<a href="https://defunsm.github.io/#portfolio" class="menu">Github <i class="fa fa-github" aria-hidden="true"></i></a>
+						<span class="simple_line"></span>
+					</li>
+					<li>
+						<a href="https://defunsm.github.io/#contact" class="menu">Blog <i class="fa fa-book" aria-hidden="true"></i></a>
+					</li>
+
+			  </ul>
+			</nav>
+		</div>
+		<div class="scroll_down"></div>
+		<div class="fade child">
+			<div class="container_small">
+				<!-- Header Titles -->
+				<h1 class="header_title">Dual Booting (Linux + Windows)</h1>
+
+
+<br/>
+                                
+                                <a href="/posts-output/virtualmachine/" class="button">Virtual Machine <i class="fa fa-arrow-right" aria-hidden="true"></i>
+</i></a>
+
+
+			</div>
+		</div>
+	</header>
+	<!-- END HEADER /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- ABOUT SECTION /////////////////////////////////////////////////////////////////////////// -->
+	<section id="about" class="module">
+
+
+          <div class="anotherclass">
+
+
+                    
+                    <div class="post-header">
+    <div id="post-meta" class="row">
+        <div class="col-lg-6">October 19, 2016</div>
+        
+    </div>
+    <h2>Dual Booting (Linux + Windows)</h2>
+</div>
+<div>
+    
+    <p><h2>Dual booting using a Live USB</h2><br/><br/> Dual booting is having two different operating systems on your computer / laptop. Usually you can determine which one you want to go into using a bootloader. <br/><br/> <h3>FAQ:</h3> <h4>What is a Live USB?</h4> A live USB is a bootable operating system on a USB.  You can use a Live USB to install operating systems onto your computer. <h4>How do I create a Live USB?</h4> I happen to already have another guide which you can follow on how to create a <a href="https://defunsm.github.io/posts-output/livebooting/" target="_blank">Live USB</a>. <h4>What is a bootloader?</h4> The below is an example of the ubuntu grub bootloader.  Which determines what operating system you want to boot into. <br/><br/> <img src="https://defunsm.github.io/img/db1.png" alt="grub bootloader" /> <br/><br/> <h4>Can you do more than dual boot? Like triple boot? Quadra boot?</h4> If you have the space for it. Yes. <br/><br/> <h2>Requirements</h2> 1 Live USB Free Hard Drive Disk Space Computer / Laptop <br/><br/> <h2>General Steps</h2> Create space for the OS Create a <a href="https://defunsm.github.io/posts-output/partitioningandmounting/" target="_blank">Live USB</a> Enter BIOS with the Live USB inserted Select the Live USB to boot into the OS Follow specific steps to install the OS onto your Hard Disk Drive <br/><br/> <h2>Specific Steps</h2> <br/><br/> <h4>Creating a Partition for the OS:</h4> Linux:  <a href="http://smsalman.com/wiki/partitioning-mounting-linux/" target="_blank">Partitioning Guide for Linux Distributions</a> Windows: <br/><br/> <h4>Create a Live USB:</h4> As a reference you should look at a previously made guide ... <a href="https://defunsm.github.io/posts-output/livebooting/">Live USB Guide</a> <br/><br/> <h4>Enter BIOS:</h4> <br/><br/> <h4>Install Ubuntu:</h4> <br/><br/> <em>Now that you are booted into ubuntu click on the <strong>Install Ubuntu Icon</strong>. </em> <br/><br/> <img src="https://defunsm.github.io/img/db2.png" alt="Dual Boot" /> <br/><br/> <em>Select the language and click continue.</em> <br/><br/> <img src="https://defunsm.github.io/img/db3.png" alt="Dual booting Ubuntu" /> <br/><br/> <em>Now make sure you choose the "<strong>Something else</strong>" option or else you might risk losing data on other partitions.</em> <br/><br/> That should bring you to the installation type place where you select the partitions you made. Make sure you are selecting the right ones for them. <br/><br/> The ext4 partition should contain the <strong>/</strong> directory which is the root directory make sure to indicate that in the mount place. <br/><br/> <img src="https://defunsm.github.io/img/db4.png" alt="Ubuntu selecting Partition" /> <br/><br/> <em>Now it should install and when you reboot it'll be a persistant operating system on your hard drive disk.</em></p>
+</div>
+
+<div id="post-tags">
+    <b>Tags: </b>
+    
+    <a href="/tags-output/Computers/">Computers</a>
+    
+    <a href="/tags-output/Guide/">Guide</a>
+    
+</div>
+
+
+                          <div id="prev-next">
+                            
+                            
+                            <a class="right" href="/posts-output/virtualmachine/">Virtual Machine &raquo;</a>
+                            
+                          </div>
+
+                          
+                          <div id="disqus_thread"></div>
+                          <script type="text/javascript">
+                            (function() {
+                            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                            dsq.src = '//defunsm-github-io.disqus.com/embed.js';
+                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                            })();
+                          </script>
+                          
+
+
+
+                        
+          </div>
+
+
+
+	</section>
+
+        <!-- END ABOUT SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- PORTFOLIO SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- END CONTACT SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- FOOTER /////////////////////////////////////////////////////////////////////////// -->
+	<footer>
+		<div class="container_footer">
+			<div class="left">
+				<p>© 2016 <span>Salman Hossain</span></p>
+			</div>
+			<div class="right">
+				<a href="#postwelcome">Top <i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+			</div>
+		</div>
+	</footer>
+	<!-- END FOOTER /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- Scripts -->
+	<script src="https://defunsm.github.io/js/parallax.js"></script>
+	<script src="https://defunsm.github.io/js/menu.js"></script>
+	<script src="https://defunsm.github.io/js/featherlight.js" type="text/javascript" charset="utf-8"></script>
+	<script src="https://defunsm.github.io/js/scroll.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+        <script src="/js/highlight.pack.js" type="text/javascript"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
