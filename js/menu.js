@@ -11,11 +11,11 @@ $('.menu').click(function() {
   });
 
 $(window).scroll(function(){
-    if  ($(window).scrollTop() >= 1800){
-      	$('#userNav').hide("slide", {direction: "left" }, 1000);
+    if  ($(window).scrollTop() >= 1900){
+        $('#userNav').show("slide", { direction: "right" }, 1000);
 
     }
     else{
-        $('#userNav').show("slide", { direction: "right" }, 1000);
+        $('#userNav').hide("slide", {direction: "left" }, 1000);
     }
 });
