@@ -12,9 +12,10 @@ $('.menu').click(function() {
 
 $(window).scroll(function(){
     if  ($(window).scrollTop() >= 1900){
-      	$(".fadeInBlock").slideToggle();
+      	$('#userNav').hide("slide", {direction: "left" }, 1000);
+
     }
     else{
-        $(".fadeInBlock").slideToggle();
+        $('#userNav').show("slide", { direction: "right" }, 1000);
     }
 });
