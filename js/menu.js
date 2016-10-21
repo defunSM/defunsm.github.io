@@ -10,12 +10,12 @@ $('.menu').click(function() {
    $('#navigation').removeClass('open');
   });
 
-$(window).scroll(function(){
-    if  ($(window).scrollTop() >= 1800){
-        $('#fadeInBlock').show();
+// $(window).scroll(function(){
+//     if  ($(window).scrollTop() >= 1800){
+//         $('#fadeInBlock').show();
 
-    }
-    else{
-        $('.fadeInBlock').hide();
-    }
-});
+//     }
+//     else{
+//         $('.fadeInBlock').hide();
+//     }
+// });
