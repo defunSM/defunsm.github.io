@@ -22,7 +22,7 @@ $(function() {
     /* Adjust the "200" to either have a delay or that the content starts fading a bit before you reach it  */
 
 
-    if( bottom_of_object > bottom_of_window ){
+    if( bottom_of_window > bottom_of_object ){
 
         $(this).slideToggle(done);
 
