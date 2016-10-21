@@ -10,27 +10,11 @@ $('.menu').click(function() {
    $('#navigation').removeClass('open');
   });
 
-$(function() {
-  $(window).scroll( function(){
-
-
-   $('.fadeInBlock').each( function(i){
-
-    var bottom_of_object = $(this).position().top + $(this).outerHeight();
-    var bottom_of_window = $(window).scrollTop() + $(window).height();
-
-    /* Adjust the "200" to either have a delay or that the content starts fading a bit before you reach it  */
-
-    console.log(bottom_of_object);
-    if( bottom_of_window > bottom_of_object ){
-
-        $(this).slideToggle(done);
-
-            }
-            else{
-              $(this).animate({'opacity':'0'},200);
-            }
-        });
-
-    });
+$(window).scroll(function(){
+    if  ($(window).scrollTop() >= 100){
+      	$(".fadeInBlock").fadeIn(100);
+    }
+    else{
+        $(".fadeInBlock").fadeOut(100);
+    }
 });
