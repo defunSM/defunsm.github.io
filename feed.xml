@@ -12,11 +12,31 @@ http://blogawesome.com/
 A place to share my knowledge
 </description>
 <lastBuildDate>
-Thu, 20 Oct 2016 21:46:23 -0400
+Thu, 20 Oct 2016 23:31:15 -0400
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://blogawesome.com/posts-output/haskell-probabilities/
+</guid>
+<link>
+http://blogawesome.com/posts-output/haskell-probabilities/
+</link>
+<title>
+Haskell - Probabilities
+</title>
+<description>
+ &lt;p&gt;To be written at a later date. &lt;/p&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Fri, 21 Oct 2016 00:00:00 -0400
+</pubDate>
+</item>
 <item>
 <guid>
 http://blogawesome.com/posts-output/Zshvsbash/
