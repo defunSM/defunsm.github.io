@@ -24,7 +24,7 @@ $(function() {
 
     if( bottom_of_window > bottom_of_object ){
 
-        $(this).slideToggle()
+        $(this).slideToggle(done);
 
             }
             else{
