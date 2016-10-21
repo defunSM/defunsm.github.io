@@ -11,7 +11,7 @@ $('.menu').click(function() {
   });
 
 $(window).scroll(function(){
-    if  ($(window).scrollTop() >= 1900){
+    if  ($(window).scrollTop() >= 1800){
         $('#fadeInBlock').show();
 
     }
