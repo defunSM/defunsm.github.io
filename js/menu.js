@@ -24,11 +24,11 @@ $(function() {
 
     if( bottom_of_window > bottom_of_object ){
 
-        $(this).animate({'opacity':'1'},100);
+        $(this).animate({'opacity':'1'},10);
 
             }
             else{
-              $(this).animate({'opacity':'0'},100);
+              $(this).animate({'opacity':'0'},10);
             }
         });
 
