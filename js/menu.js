@@ -11,10 +11,10 @@ $('.menu').click(function() {
   });
 
 $(window).scroll(function(){
-    if  ($(window).scrollTop() >= 1850){
-      	$(".fadeInBlock").fadeIn(100);
+    if  ($(window).scrollTop() >= 1900){
+      	$(".fadeInBlock").slideToggle();
     }
     else{
-        $(".fadeInBlock").fadeOut(100);
+        $(".fadeInBlock").slideToggle();
     }
 });
