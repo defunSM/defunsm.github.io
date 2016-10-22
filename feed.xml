@@ -12,11 +12,64 @@ http://blogawesome.com/
 A place to share my knowledge
 </description>
 <lastBuildDate>
-Fri, 21 Oct 2016 21:44:01 -0400
+Sat, 22 Oct 2016 12:04:06 -0400
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://blogawesome.com/posts-output/clojure-probabilities/
+</guid>
+<link>
+http://blogawesome.com/posts-output/clojure-probabilities/
+</link>
+<title>
+Clojure - Probabilities
+</title>
+<description>
+ &lt;p&gt;So I wrote a Python program that allows you to roll two dice and it will tell you the probabilitiy of obtaining a specific sum with those two dice. I found that writing it in clojure was so much more concise than in Python. Prehaps it is because I already wrote it in Python but the code itself in Clojure is shorter and it could even be shorter with some adjustments. When writing it in Python pretty much worked like a charm and there was functions to do everything already so considering that Clojure still ended up shorter with 30 lines of code while the Python code is 48 lines. I do think that the Python code could be adjusted to be shorter as well but it is pretty amazing that Clojure code can be written to do the same thing as Python which is extremely idiomatic. &lt;br/&gt;&lt;br/&gt; This is the Clojure code below:  &lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;ns dice.core&amp;#41;
+
+&amp;#40;defn create-dice &amp;#91;low high&amp;#93;
+  &amp;#40;for &amp;#91;i &amp;#40;range low high&amp;#41;&amp;#93;
+    &amp;#40;map &amp;#40;fn &amp;#91;b&amp;#93; &amp;#40;+ i b&amp;#41;&amp;#41; &amp;#40;range low high&amp;#41;&amp;#41;&amp;#41;&amp;#41;
+
+&amp;#40;defn outcome &amp;#91;arg&amp;#93;
+  &amp;#40;reduce + &amp;#40;for &amp;#91;i arg&amp;#93;
+              &amp;#40;count i&amp;#41;&amp;#41;&amp;#41;&amp;#41;
+
+&amp;#40;defn count-occurrences &amp;#91;s list&amp;#93;
+  &amp;#40;count &amp;#40;filter #{s} &amp;#40;flatten list&amp;#41;&amp;#41;&amp;#41;&amp;#41;
+
+&amp;#40;defn percentage &amp;#91;min max dice outcome&amp;#93;
+  &amp;#40;for &amp;#91;x &amp;#40;range min &amp;#40;+ max 1&amp;#41;&amp;#41;&amp;#93;
+    &amp;#40;println x &amp;quot;           &amp;quot; &amp;#40;count-occurrences x dice&amp;#41; &amp;quot;               &amp;quot; &amp;#40;format &amp;quot;%.4f&amp;quot; &amp;#40;&amp;#42; 100 &amp;#40;float &amp;#40;/ &amp;#40;count-occurrences x dice&amp;#41; outcome&amp;#41;&amp;#41;&amp;#41;&amp;#41; &amp;quot;%&amp;quot;&amp;#41;&amp;#41;&amp;#41;
+
+&amp;#40;defn stats &amp;#91;low high&amp;#93;
+  &amp;#40;let &amp;#91;dice-pos &amp;#40;create-dice low high&amp;#41;
+        outcome &amp;#40;outcome dice-pos&amp;#41;
+        max &amp;#40;apply max &amp;#40;flatten dice-pos&amp;#41;&amp;#41;
+        min &amp;#40;apply min &amp;#40;flatten dice-pos&amp;#41;&amp;#41;&amp;#93;
+      &amp;#40;println &amp;quot;\n\nDice Possibilities: &amp;quot; dice-pos &amp;quot;\n\n&amp;quot;&amp;#41;
+      &amp;#40;println &amp;quot;Total Number of Possibilities: &amp;quot; outcome&amp;#41;
+      &amp;#40;println &amp;quot;The Max Sum: &amp;quot; max&amp;#41;
+      &amp;#40;println &amp;quot;The Min Sum: &amp;quot; min &amp;quot;\n\n&amp;quot;&amp;#41;
+      &amp;#40;println &amp;quot;Sum:    #ofPossibilities:    Percentage %:&amp;quot;&amp;#41;
+      &amp;#40;percentage min max &amp;#40;flatten dice-pos&amp;#41; outcome&amp;#41;&amp;#41;&amp;#41;
+
+&amp;#40;stats 1 7&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;One of the great things about Clojure is that performing mathmatical calculations feels so natural which is probably because of drawing from haskell. Its range, max, min functions go so well with apply along with using map to display all the sums in three lines.&lt;br/&gt;&lt;br/&gt;Creating all the sum possibilities is rather easy using the range which creates the original list of (1 2 3 4 5 6) and than the map adds each element to all of the elements in the second list which is the same as the first list created in the for binding loop. &lt;pre&gt;&lt;code&gt;&amp;#40;defn create-dice &amp;#91;low high&amp;#93;
+  &amp;#40;for &amp;#91;i &amp;#40;range low high&amp;#41;&amp;#93;
+    &amp;#40;map &amp;#40;fn &amp;#91;b&amp;#93; &amp;#40;+ i b&amp;#41;&amp;#41; &amp;#40;range low high&amp;#41;&amp;#41;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;To demonstrate this a little more graphically on what exactly is going on in this you can think of it like this where each element of the first list is being added to all of the elements in the second list and than moving on to the second element in the first list and than adding it to all the elements in the second list until all the elements in the first list are used up.&lt;img src=&quot;https://defunsm.github.io/img/prob1.png&quot; alt=&quot;mapping in clojure&quot; /&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Sat, 22 Oct 2016 00:00:00 -0400
+</pubDate>
+</item>
 <item>
 <guid>
 http://blogawesome.com/posts-output/pythonlists/

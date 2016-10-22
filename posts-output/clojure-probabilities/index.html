@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+	<title>Clojure - Probabilities</title>
+	<!-- Styles -->
+	<link rel="stylesheet" href="https://defunsm.github.io/css/style.css" />
+	<link rel="stylesheet" href="https://defunsm.github.io/css/font-awesome.min.css" />
+	<link type="text/css" rel="stylesheet" href="https://defunsm.github.io/featherlight.css" />
+        <link rel="stylesheet" href="https://defunsm.github.io/css/screen.css" />
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css">
+
+	<style type="text/css">
+		@media all {
+			.lightbox { display: none; }
+		}
+	</style>
+	<!-- jQuery -->
+	<script src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js'></script>
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="images/favicon.png">
+</head>
+<body class="fade-in cmon body">
+
+
+	<!-- HEADER /////////////////////////////////////////////////////////////////////////// -->
+	<header id="postwelcome" class="parent module parallax parallax-1">
+		<div class="burger" id="toggle">
+			<span class="top"></span>
+			<span class="middle"></span>
+			<span class="bottom"></span>
+
+		</div>
+
+		<div class="navigation" id="navigation">
+			<nav class="overlay-menu">
+			  <ul>
+                                          <li>
+                              <a href="https://defunsm.github.io/#Welcome" class="menu">Home <i class="fa fa-home" aria-hidden="true"></i>
+</a>
+			      <span class="simple_line"></span>
+                              </li>
+					<li >
+						<a href="https://defunsm.github.io/#about" class="menu">About <i class="fa fa-heart" aria-hidden="true"></i></a>
+						<span class="simple_line"></span>
+					</li>
+					<li>
+						<a href="https://defunsm.github.io/#portfolio" class="menu">Github <i class="fa fa-github" aria-hidden="true"></i></a>
+						<span class="simple_line"></span>
+					</li>
+					<li>
+						<a href="https://defunsm.github.io/#contact" class="menu">Blog <i class="fa fa-book" aria-hidden="true"></i></a>
+					</li>
+
+			  </ul>
+			</nav>
+		</div>
+		<div class="scroll_down"></div>
+		<div class="fade child">
+			<div class="container_small">
+				<!-- Header Titles -->
+				<h1 class="header_title">Clojure - Probabilities</h1>
+
+
+<br/>
+                                
+                                <a href="/posts-output/pythonlists/" class="button">Python - Lists <i class="fa fa-arrow-right" aria-hidden="true"></i>
+</i></a>
+
+
+			</div>
+		</div>
+	</header>
+	<!-- END HEADER /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- ABOUT SECTION /////////////////////////////////////////////////////////////////////////// -->
+	<section id="about" class="module">
+
+
+          <div class="anotherclass">
+
+
+                    
+                    <div class="post-header">
+    <div id="post-meta" class="row">
+        <div class="col-lg-6">October 22, 2016</div>
+        
+    </div>
+    <h2>Clojure - Probabilities</h2>
+</div>
+<div>
+    
+     <p>So I wrote a Python program that allows you to roll two dice and it will tell you the probabilitiy of obtaining a specific sum with those two dice. I found that writing it in clojure was so much more concise than in Python. Prehaps it is because I already wrote it in Python but the code itself in Clojure is shorter and it could even be shorter with some adjustments. When writing it in Python pretty much worked like a charm and there was functions to do everything already so considering that Clojure still ended up shorter with 30 lines of code while the Python code is 48 lines. I do think that the Python code could be adjusted to be shorter as well but it is pretty amazing that Clojure code can be written to do the same thing as Python which is extremely idiomatic. <br/><br/> This is the Clojure code below:  </p><pre><code>&#40;ns dice.core&#41;
+
+&#40;defn create-dice &#91;low high&#93;
+  &#40;for &#91;i &#40;range low high&#41;&#93;
+    &#40;map &#40;fn &#91;b&#93; &#40;+ i b&#41;&#41; &#40;range low high&#41;&#41;&#41;&#41;
+
+&#40;defn outcome &#91;arg&#93;
+  &#40;reduce + &#40;for &#91;i arg&#93;
+              &#40;count i&#41;&#41;&#41;&#41;
+
+&#40;defn count-occurrences &#91;s list&#93;
+  &#40;count &#40;filter #{s} &#40;flatten list&#41;&#41;&#41;&#41;
+
+&#40;defn percentage &#91;min max dice outcome&#93;
+  &#40;for &#91;x &#40;range min &#40;+ max 1&#41;&#41;&#93;
+    &#40;println x &quot;           &quot; &#40;count-occurrences x dice&#41; &quot;               &quot; &#40;format &quot;%.4f&quot; &#40;&#42; 100 &#40;float &#40;/ &#40;count-occurrences x dice&#41; outcome&#41;&#41;&#41;&#41; &quot;%&quot;&#41;&#41;&#41;
+
+&#40;defn stats &#91;low high&#93;
+  &#40;let &#91;dice-pos &#40;create-dice low high&#41;
+        outcome &#40;outcome dice-pos&#41;
+        max &#40;apply max &#40;flatten dice-pos&#41;&#41;
+        min &#40;apply min &#40;flatten dice-pos&#41;&#41;&#93;
+      &#40;println &quot;\n\nDice Possibilities: &quot; dice-pos &quot;\n\n&quot;&#41;
+      &#40;println &quot;Total Number of Possibilities: &quot; outcome&#41;
+      &#40;println &quot;The Max Sum: &quot; max&#41;
+      &#40;println &quot;The Min Sum: &quot; min &quot;\n\n&quot;&#41;
+      &#40;println &quot;Sum:    #ofPossibilities:    Percentage %:&quot;&#41;
+      &#40;percentage min max &#40;flatten dice-pos&#41; outcome&#41;&#41;&#41;
+
+&#40;stats 1 7&#41;
+</code></pre>One of the great things about Clojure is that performing mathmatical calculations feels so natural which is probably because of drawing from haskell. Its range, max, min functions go so well with apply along with using map to display all the sums in three lines.<br/><br/>Creating all the sum possibilities is rather easy using the range which creates the original list of (1 2 3 4 5 6) and than the map adds each element to all of the elements in the second list which is the same as the first list created in the for binding loop. <pre><code>&#40;defn create-dice &#91;low high&#93;
+  &#40;for &#91;i &#40;range low high&#41;&#93;
+    &#40;map &#40;fn &#91;b&#93; &#40;+ i b&#41;&#41; &#40;range low high&#41;&#41;&#41;&#41;
+</code></pre>To demonstrate this a little more graphically on what exactly is going on in this you can think of it like this where each element of the first list is being added to all of the elements in the second list and than moving on to the second element in the first list and than adding it to all the elements in the second list until all the elements in the first list are used up.<img src="https://defunsm.github.io/img/prob1.png" alt="mapping in clojure" />
+</div>
+
+<div id="post-tags">
+    <b>Tags: </b>
+    
+    <a href="/tags-output/Clojure/">Clojure</a>
+    
+    <a href="/tags-output/Code/">Code</a>
+    
+    <a href="/tags-output/Guide/">Guide</a>
+    
+</div>
+
+
+                          <div id="prev-next">
+                            
+                            
+                            <a class="right" href="/posts-output/pythonlists/">Python - Lists &raquo;</a>
+                            
+                          </div>
+
+                          
+                          <div id="disqus_thread"></div>
+                          <script type="text/javascript">
+                            (function() {
+                            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                            dsq.src = '//defunsm-github-io.disqus.com/embed.js';
+                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                            })();
+                          </script>
+                          
+
+
+
+                        
+          </div>
+
+
+
+	</section>
+
+        <!-- END ABOUT SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- PORTFOLIO SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- END CONTACT SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- FOOTER /////////////////////////////////////////////////////////////////////////// -->
+	<footer>
+		<div class="container_footer">
+			<div class="left">
+				<p>© 2016 <span>Salman Hossain</span></p>
+			</div>
+			<div class="right">
+				<a href="#postwelcome">Top <i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+			</div>
+		</div>
+	</footer>
+	<!-- END FOOTER /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- Scripts -->
+	<script src="https://defunsm.github.io/js/parallax.js"></script>
+	<script src="https://defunsm.github.io/js/menu.js"></script>
+	<script src="https://defunsm.github.io/js/featherlight.js" type="text/javascript" charset="utf-8"></script>
+	<script src="https://defunsm.github.io/js/scroll.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+        <script src="/js/highlight.pack.js" type="text/javascript"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
