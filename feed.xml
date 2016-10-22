@@ -12,7 +12,7 @@ http://blogawesome.com/
 A place to share my knowledge
 </description>
 <lastBuildDate>
-Fri, 21 Oct 2016 21:36:50 -0400
+Fri, 21 Oct 2016 21:44:01 -0400
 </lastBuildDate>
 <generator>
 clj-rss
@@ -29,7 +29,7 @@ Python - Lists
 </title>
 <description>
 &lt;p&gt;Python has a data structure called lists. They are extremely useful for manipulating data and the data type comes with methods that make it easy for you to do complex operations. The syntax used to represent lists in python are brackets. The example below would represent a list containing 3 elements of 1, 2 and 3.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#91;1, 2, 3&amp;#93;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;So lets dive into the actual code where we make a very useful program which will tell us the probability of obtaining a sum given two dices. So lets say we want to know the probability of getting a sum of 8 with 2 dices well we can do that in python using lists. &lt;br/&gt;&lt;br/&gt; &lt;img src=&quot;https://defunsm.github.io/img/newlist1.png&quot; alt=&quot;list&quot; /&gt; &lt;br/&gt;&lt;br/&gt; Some of the methods we are going to use include sorted, append, reverse, values and Counter which is being imported from collections. The way to think of lists in Python as one of my computer science friend nicely put it is putting stuff into a container.   &lt;/p&gt;&lt;pre&gt;&lt;code&gt;#!/usr/bin/env python
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;So lets dive into the actual code where we make a very useful program which will tell us the probability of obtaining a sum given two dice. So lets say we want to know the probability of getting a sum of 8 with 2 dice well we can do that in python using lists. &lt;br/&gt;&lt;br/&gt; &lt;img src=&quot;https://defunsm.github.io/img/newlist1.png&quot; alt=&quot;list&quot; /&gt; &lt;br/&gt;&lt;br/&gt; Some of the methods we are going to use include sorted, append, reverse, values and Counter which is being imported from collections. The way to think of lists in Python as one of my computer science friend nicely put it is putting stuff into a container.   &lt;/p&gt;&lt;pre&gt;&lt;code&gt;#!/usr/bin/env python
 import sys, os, math
 from collections import Counter
 
