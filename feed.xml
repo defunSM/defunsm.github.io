@@ -12,7 +12,7 @@ http://blogawesome.com/
 A place to share my knowledge
 </description>
 <lastBuildDate>
-Fri, 21 Oct 2016 21:32:05 -0400
+Fri, 21 Oct 2016 21:36:50 -0400
 </lastBuildDate>
 <generator>
 clj-rss
@@ -104,7 +104,7 @@ total&amp;#95;outcomes = 0               # This will become 36 once all of the o
     total&amp;#95;outcomes += i
 &lt;/code&gt;&lt;/pre&gt;The method .values() works on taking out the values only and then the for loop we add all the values up so we can find the total number of possible outcomes.&lt;pre&gt;&lt;code&gt;for i in sorted&amp;#40;Counter&amp;#40;outcomes&amp;#41;&amp;#41;:
     print&amp;#40;i, &amp;quot;      &amp;quot;, round&amp;#40;&amp;#40;&amp;#40;possibility&amp;#91;i&amp;#93;/float&amp;#40;total&amp;#95;outcomes&amp;#41;&amp;#41; &amp;#42; 100&amp;#41;, 3&amp;#41;, &amp;quot;%         &amp;quot;, possibility&amp;#91;i&amp;#93;&amp;#41;
-&lt;/code&gt;&lt;/pre&gt;Finally this prints all of the information out formated in a nice way. The round function that is being used here allows me to select the amount of significant figures I want after the decimal point. The round function takes two arguments one being the number and the other being the number of significant figures. In this case I wanted 3 significant figures after the decimal point and so I put in 3 as the second argument and the first argument is the possibility divided by the total outcome. Notice that I made the total outcome a float in order to get a float answer.&lt;br/&gt;&lt;br/&gt;Wrapping up:
+&lt;/code&gt;&lt;/pre&gt;Finally this prints all of the information out formated in a nice way. The round function that is being used here allows me to select the amount of significant figures I want after the decimal point. The round function takes two arguments one being the number and the other being the number of significant figures. In this case I wanted 3 significant figures after the decimal point and so I put in 3 as the second argument and the first argument is the possibility divided by the total outcome. Notice that I made the total outcome a float in order to get a float answer.&lt;br/&gt;&lt;br/&gt;Thats about it and now you can make lists and make all kinds of dice rolling games and statistics.
 </description>
 <enclosure>
 
