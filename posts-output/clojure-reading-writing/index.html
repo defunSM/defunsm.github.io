@@ -93,12 +93,12 @@
     
     <p>Sometimes it is nice to be able to do shell commands right from the program. This can be done with clojure.java.shell. So go ahead and require or use that in the file your going to be using.</p><pre><code>&#40;use 'clojure.java.shell&#41;
 </code></pre><p>Now that you have that go ahead and try the following...</p><pre><code>&#40;sh &quot;ls&quot;&#41;
-</code></pre>You'll notice that you should get a persistant Array Map. The contents of this array map include <code>:exit</code>, <code>:out</code>, and <code>:err</code>. You will probably be most interested with the <code>:out</code> since that is the standard output of the command issued. However you do also have <code>:exit</code> and <code>:err</code> which can come in handly if anything happens that wasn't expected.<br/><br/>Notice that if you try to do two commands like the following.<pre><code>&#40;sh &quot;ls -l&quot;&#41;
+</code></pre>You'll notice that you should get a persistant Array Map. The contents of this array map include <newcode>:exit</newcode>, <newcode>:out</newcode>, and <newcode>:err</newcode>. You will probably be most interested with the <newcode>:out</newcode> since that is the standard output of the command issued. However you do also have <newcode>:exit</newcode> and <newcode>:err</newcode> which can come in handly if anything happens that wasn't expected.<br/><br/>Notice that if you try to do two commands like the following.<pre><code>&#40;sh &quot;ls -l&quot;&#41;
 </code></pre>You will get an error this is because sh takes multiple arguments and so you have seperate the spaces and do something like this.<pre><code>&#40;sh &quot;ls&quot; &quot;-l&quot;&#41;
 </code></pre>So now we get the result we want but I dont want to get the :exit or :err so we can build a small framework to make it easier for us to just see the standard output. So we can do this for just the output.<pre><code>&#40;:out &#40;sh &quot;ls&quot; &quot;-l&quot;&#41;&#41;
 </code></pre>However that doesnt' look that great so lets get a few more things such as pprint and split from clojure.pprint and clojure.string.<pre><code>&#40;use 'clojure.pprint&#41;
 &#40;use 'clojure.string&#41;
-</code></pre>This will allow us now to split the string that is handed to us from the <code>:out</code> of the sh function based on regex. As well as the pprint which will pprint out it out nicely. <pre><code>&#40;pprint &#40;split &#40;:out &#40;sh &quot;ls&quot; &quot;-l&quot;&#41;&#41; #&quot;\n&quot;&#41;&#41;
+</code></pre>This will allow us now to split the string that is handed to us from the <newcode>:out</newcode> of the sh function based on regex. As well as the pprint which will pprint out it out nicely. <pre><code>&#40;pprint &#40;split &#40;:out &#40;sh &quot;ls&quot; &quot;-l&quot;&#41;&#41; #&quot;\n&quot;&#41;&#41;
 </code></pre><p>Now you have a much nicer string to look at and looks a lot like you did ls -l on a terminal if you ignore the two brackets.</p>
 </div>
 
