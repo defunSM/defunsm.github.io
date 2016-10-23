@@ -12,7 +12,7 @@ $('.menu').click(function() {
 
 $(window).scroll(function(){
     if  ($(window).scrollTop() >= 200){
-        $(".burger").css({"color":"#A67D4A"});
+        $(".burger").css({"color":"red"});
 
     }
     else{
