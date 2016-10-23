@@ -50,6 +50,7 @@ time, mark, audio, video {
 
 newcode {
     color: red;
+    padding: 0px 5px 0px 5px;
 }
 
 /* HTML5 display-role reset for older browsers */
