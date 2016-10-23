@@ -10,12 +10,12 @@ $('.menu').click(function() {
    $('#navigation').removeClass('open');
   });
 
-// $(window).scroll(function(){
-//     if  ($(window).scrollTop() >= 1800){
-//         $('#fadeInBlock').show();
+$(window).scroll(function(){
+    if  ($(window).scrollTop() >= 200){
+        $(".burger").css({"backgroundColor":"red","color":"red"});
 
-//     }
-//     else{
-//         $('.fadeInBlock').hide();
-//     }
-// });
+    }
+    else{
+        $(".burger").css({"backgroundColor":"white","color":"white"});
+    }
+});
