@@ -11,11 +11,11 @@ $('.menu').click(function() {
   });
 
 $(window).scroll(function(){
-    if  ($(window).scrollTop() >= 200){
-        $(".burger").css({"color":"red"});
+    if  ($(window).scrollTop() >= 400){
+        $(".burger").hide();
 
     }
     else{
-        $(".burger").css({"color":"white"});
+        $(".burger").show();
     }
 });
