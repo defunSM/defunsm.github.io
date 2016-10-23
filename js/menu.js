@@ -12,10 +12,10 @@ $('.menu').click(function() {
 
 $(window).scroll(function(){
     if  ($(window).scrollTop() >= 200){
-        $(".burger").css({"backgroundColor":"red","color":"red"});
+        $(".burger").css({"color":"#A67D4A"});
 
     }
     else{
-        $(".burger").css({"backgroundColor":"white","color":"white"});
+        $(".burger").css({"color":"white"});
     }
 });
