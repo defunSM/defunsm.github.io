@@ -12,11 +12,39 @@ http://blogawesome.com/
 A place to share my knowledge
 </description>
 <lastBuildDate>
-Sat, 22 Oct 2016 23:34:58 -0400
+Sun, 23 Oct 2016 19:29:44 -0400
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://blogawesome.com/posts-output/clojure-reading-writing/
+</guid>
+<link>
+http://blogawesome.com/posts-output/clojure-reading-writing/
+</link>
+<title>
+Clojure - Shell Commands
+</title>
+<description>
+&lt;p&gt;Sometimes it is nice to be able to do shell commands right from the program. This can be done with clojure.java.shell. So go ahead and require or use that in the file your going to be using.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;use 'clojure.java.shell&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now that you have that go ahead and try the following...&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;sh &amp;quot;ls&amp;quot;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;You'll notice that you should get a persistant Array Map. The contents of this array map include &lt;code&gt;:exit&lt;/code&gt;, &lt;code&gt;:out&lt;/code&gt;, and &lt;code&gt;:err&lt;/code&gt;. You will probably be most interested with the &lt;code&gt;:out&lt;/code&gt; since that is the standard output of the command issued. However you do also have &lt;code&gt;:exit&lt;/code&gt; and &lt;code&gt;:err&lt;/code&gt; which can come in handly if anything happens that wasn't expected.&lt;br/&gt;&lt;br/&gt;Notice that if you try to do two commands like the following.&lt;pre&gt;&lt;code&gt;&amp;#40;sh &amp;quot;ls -l&amp;quot;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;You will get an error this is because sh takes multiple arguments and so you have seperate the spaces and do something like this.&lt;pre&gt;&lt;code&gt;&amp;#40;sh &amp;quot;ls&amp;quot; &amp;quot;-l&amp;quot;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;So now we get the result we want but I dont want to get the :exit or :err so we can build a small framework to make it easier for us to just see the standard output. So we can do this for just the output.&lt;pre&gt;&lt;code&gt;&amp;#40;:out &amp;#40;sh &amp;quot;ls&amp;quot; &amp;quot;-l&amp;quot;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;However that doesnt' look that great so lets get a few more things such as pprint and split from clojure.pprint and clojure.string.&lt;pre&gt;&lt;code&gt;&amp;#40;use 'clojure.pprint&amp;#41;
+&amp;#40;use 'clojure.string&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;This will allow us now to split the string that is handed to us from the &lt;code&gt;:out&lt;/code&gt; of the sh function based on regex. As well as the pprint which will pprint out it out nicely. &lt;pre&gt;&lt;code&gt;&amp;#40;pprint &amp;#40;split &amp;#40;:out &amp;#40;sh &amp;quot;ls&amp;quot; &amp;quot;-l&amp;quot;&amp;#41;&amp;#41; #&amp;quot;\n&amp;quot;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now you have a much nicer string to look at and looks a lot like you did ls -l on a terminal if you ignore the two brackets.&lt;/p&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Sun, 23 Oct 2016 00:00:00 -0400
+</pubDate>
+</item>
 <item>
 <guid>
 http://blogawesome.com/posts-output/clojure-probabilities/
