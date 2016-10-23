@@ -10,12 +10,12 @@ $('.menu').click(function() {
    $('#navigation').removeClass('open');
   });
 
-$(window).scroll(function(){
-    if  ($(window).scrollTop() >= 400){
-        $(".burger").hide();
+// $(window).scroll(function(){
+//     if  ($(window).scrollTop() >= 300){
+//         $(".burger").hide();
 
-    }
-    else{
-        $(".burger").show();
-    }
-});
+//     }
+//     else{
+//         $(".burger").show();
+//     }
+// });
