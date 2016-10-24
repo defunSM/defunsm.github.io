@@ -12,11 +12,63 @@ http://blogawesome.com/
 A place to share my knowledge
 </description>
 <lastBuildDate>
-Sun, 23 Oct 2016 19:45:09 -0400
+Mon, 24 Oct 2016 10:00:56 -0400
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://blogawesome.com/posts-output/clojure-leiningen/
+</guid>
+<link>
+http://blogawesome.com/posts-output/clojure-leiningen/
+</link>
+<title>
+Clojure - Leiningen
+</title>
+<description>
+&lt;p&gt;So if you been writing clojure code for a while you may have heard of Leiningen or probably already are using it. Leiningen is great for projects and sometimes it might be confusing at first with all of the options and freedom to customize your project layout. I kind of want to go through some of the options and how they work in your project.clj. Sort of showing you the bare minimum of what you need to know of Leiningen to get started. &lt;br/&gt;&lt;br/&gt; If you haven't yet installed &lt;a href='http://leiningen.org/'&gt;Leiningen&lt;/a&gt; I suggest you do that first as it is currently the de facto standard in project management in clojure. There is a few other ones out there as well which you can look into if Leiningen doesn't find your tastes. &lt;br/&gt;&lt;br/&gt; In this post I won't really cover everything but if you want an indepth explanation on everything I think the best place would be the &lt;a href='https://github.com/technomancy/leiningen/blob/stable/doc/TUTORIAL.md'&gt;github repo&lt;/a&gt; of Leiningen. &lt;br/&gt;&lt;br/&gt; So usually you'll start a fresh project with something like this from the command line.&lt;pre&gt;&lt;code&gt;$ lein new myproject
+ &lt;/code&gt;&lt;/pre&gt; Than you'll notice the Leiningen creates a directory called myproject in the directory that you ran the command from. You can now cd to that project and see you have a couple of things. Most importantly a src directory and also a project.clj file.  &lt;br/&gt;&lt;br/&gt; Lets take a look at the project.clj and you'll notice something like this.&lt;pre&gt;&lt;code&gt;&amp;#40;defproject myproject &amp;quot;0.1.0-SNAPSHOT&amp;quot;
+  :description &amp;quot;FIXME: write description&amp;quot;
+  :url &amp;quot;http://example.com/FIXME&amp;quot;
+  :license {:name &amp;quot;Eclipse Public License&amp;quot;
+            :url &amp;quot;http://www.eclipse.org/legal/epl-v10.html&amp;quot;}
+  :dependencies &amp;#91;&amp;#91;org.clojure/clojure &amp;quot;1.8.0&amp;quot;&amp;#93;&amp;#93;&amp;#41;
+ &lt;/code&gt;&lt;/pre&gt; The description and url is for when you deploy your project on clojars which helps people find it. The dependencies you may notice is the clojure language itself. So if you want to add dependencies you would do something like this.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;:dependencies &amp;#91;&amp;#91;org.clojure/clojure &amp;quot;1.8.0&amp;quot;&amp;#93;
+               &amp;#91;quil &amp;quot;2.4.0&amp;quot;&amp;#93;&amp;#93;
+&lt;/code&gt;&lt;/pre&gt;Go ahead and save that and now you can go back to the terminal and run lein deps which will install the dependencies for you which is nice. Even though we aren't going to be using quil in this post just showing you that Leiningen will go fetch it for you. Now lets go ahead and look at our src which you can do by &lt;newcode&gt;cd&lt;/newcode&gt;. Once into the src directory you'll need to cd once more to find the core.clj which is where the heart of your project is located.&lt;br/&gt;&lt;br/&gt;This is what your project.clj should look like when you first open it.&lt;pre&gt;&lt;code&gt;&amp;#40;ns myproject.core&amp;#41;
+
+&amp;#40;defn foo
+  &amp;quot;I don't do a whole lot.&amp;quot;
+  &amp;#91;x&amp;#93;
+  &amp;#40;println x &amp;quot;Hello, World!&amp;quot;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;So this is what our core.clj is doing which isn't too interesting but for the purposes of demonstrating how Leiningen runs the main clj file go ahead and change foo to -main which is important because when you run &lt;newcode&gt;lein run&lt;/newcode&gt; it will search for a -main otherwise it will yell at you.&lt;br/&gt;&lt;br/&gt;So now it should look like this!&lt;pre&gt;&lt;code&gt;&amp;#40;ns myproject.core&amp;#41;
+
+&amp;#40;defn -main
+  &amp;quot;I don't do a whole lot.&amp;quot;
+  &amp;#91;x&amp;#93;
+  &amp;#40;println x &amp;quot;Hello, World!&amp;quot;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;Now lets run this bad boy by going to the terminal and typing &lt;newcode&gt;lein run&lt;/newcode&gt;.&lt;pre&gt;&lt;code&gt;$ lein run
+&lt;/code&gt;&lt;/pre&gt;Wait what happened? Its not enough to have a -main function in your clojure file you need to let Leiningen known where it is. So you have to specify that it is in the myproject.core namespace in the project.clj.&lt;br/&gt;&lt;br/&gt;So &lt;newcode&gt;cd&lt;/newcode&gt; back to where you have your project.clj and add in the main like so.&lt;pre&gt;&lt;code&gt;&amp;#40;defproject myproject &amp;quot;0.1.0-SNAPSHOT&amp;quot;
+  :description &amp;quot;FIXME: write description&amp;quot;
+  :url &amp;quot;http://example.com/FIXME&amp;quot;
+  :license {:name &amp;quot;Eclipse Public License&amp;quot;
+            :url &amp;quot;http://www.eclipse.org/legal/epl-v10.html&amp;quot;}
+  :dependencies &amp;#91;&amp;#91;org.clojure/clojure &amp;quot;1.8.0&amp;quot;&amp;#93;
+                 &amp;#91;quil &amp;quot;2.4.0&amp;quot;&amp;#93;&amp;#93;
+  :main myproject.core&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;Now we can run &lt;newcode&gt;lein run&lt;/newcode&gt; since we told Leiningen where our -main function is. So hopefully this time it'll work and Leiningen won't yell at us.&lt;pre&gt;&lt;code&gt;$ lein run
+&lt;/code&gt;&lt;/pre&gt;And the result which is what you expected.&lt;pre&gt;&lt;code&gt;Hello, World!
+&lt;/code&gt;&lt;/pre&gt;Thats about it if you want to know more about how you can make your project a &lt;a href='https://defunsm.github.io/posts-output/2016-08-28-jar/'&gt;standalone jar&lt;/a&gt; I have a seperate guide for that.
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Mon, 24 Oct 2016 00:00:00 -0400
+</pubDate>
+</item>
 <item>
 <guid>
 http://blogawesome.com/posts-output/clojure-reading-writing/
