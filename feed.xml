@@ -12,11 +12,31 @@ http://blogawesome.com/
 A place to share my knowledge
 </description>
 <lastBuildDate>
-Tue, 25 Oct 2016 10:33:53 -0400
+Wed, 26 Oct 2016 10:25:29 -0400
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://blogawesome.com/posts-output/quantum-common-sense/
+</guid>
+<link>
+http://blogawesome.com/posts-output/quantum-common-sense/
+</link>
+<title>
+Quantum Mechanics - Common Sense
+</title>
+<description>
+ &lt;p&gt;Quantum Mechanics is the most accurate theory to describe the microscopic world. It is also a relatively new field in physics a less than 100 years starting around 1928. Often people find the concepts presented in quantum mechanics to be bizzare but really they are not as bizzare as they may seem. In fact quantum mechanics is very much sensiable just not your every day &quot;common sense&quot;. Since we are so adepted to the macroscopic world and we have evolved our senses to the macroscopic world we have been led to believe certain things which actually don't apply in the microscopic world. The idea of &lt;newcode&gt;locality&lt;/newcode&gt; for example, it would be nonsensical in our everyday lifes to be wondering what our position is and we just assume that we have a definite position in which we actually do have a definite position. However locality is much harder to define in microscopic terms and what does it mean for something to have definite position? Now it may seem blantly obvious but it isn't so crystal clear in the following experiment examples I will show you.  &lt;br/&gt;&lt;br/&gt; &lt;img src=&quot;https://defunsm.github.io/img/quantum1.png&quot; alt=&quot;quantum&quot; /&gt; Lets consider the following we have two different boxes. One detects the color of the particle sent and if it is black it'll be thrown upwards if not it'll continue to the right. Same thing with the other box expect it detects if the particle is soft or hard. While these aren't really properties of an actual particle you can pertend that color represents the x axis momentum or the hardness is the y axis momentum but either way its just easier to use colors and hardness since those are what people are familiar with. So the following detectors will look something like below.&lt;/p&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Wed, 26 Oct 2016 00:00:00 -0400
+</pubDate>
+</item>
 <item>
 <guid>
 http://blogawesome.com/posts-output/clojure-figwheel/
