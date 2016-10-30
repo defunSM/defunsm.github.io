@@ -12,11 +12,94 @@ http://blogawesome.com/
 A place to share my knowledge
 </description>
 <lastBuildDate>
-Wed, 26 Oct 2016 19:23:57 -0400
+Sun, 30 Oct 2016 12:07:56 -0400
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://blogawesome.com/posts-output/clojurescript-reagent/
+</guid>
+<link>
+http://blogawesome.com/posts-output/clojurescript-reagent/
+</link>
+<title>
+ClojureScript - Reagent
+</title>
+<description>
+ &lt;p&gt;&lt;a href='https://github.com/Reagent-project/Reagent'&gt;Reagent&lt;/a&gt; is a pretty amazing library based off of the facebook library &lt;a href='https://facebook.github.io/react/'&gt;React.js&lt;/a&gt; and is a game changer for ClojureScript. If you haven't done much ClojureScript before you might want to check that out first. ClojureScript uses pretty much the same syntax as Clojure expect using the &lt;newcode&gt;Google Closure Compiler&lt;/newcode&gt; to compile ClojureScript code into JavaScript which is pretty neat. Which means you can write ClojureScript code and the people on your site won't even know it was originally written in ClojureScript. &lt;br/&gt;&lt;br/&gt; The best way to get into ClojureScript is taking a look at the &lt;a href='http://clojurescript.org/guides/quick-start'&gt;getting started&lt;/a&gt; in the ClojureScript website. You probably don't want to dive stright into Reagent without knowing a bit of ClojureScript since while it is pretty much the same as Clojure there are slight differences that can trick you up if your not careful and going through the tutorial is pretty helpful. &lt;br/&gt;&lt;br/&gt; Don't get confused between React and Reagent. I know I did at first but Reagent is the ClojureScript library that is based of the Facebook's JavaScript library for building user interfaces. Also there are other libraries that do the similiar things of Reagent such as Om and there is a few others. However Reagent is said to be pretty good compared to those other ones which are a bit more complicated. Just knowing one will definitely help no need to learn all of them but the idea between all of them is the same. Allowing you to build a dom which allows you to keep state while doing manipulations with state in a container which is the dom. &lt;br/&gt;&lt;br/&gt; Reagent shows off a really nice example of UI's you can build right on your browser on their &lt;a href='http://Reagent-project.github.io/'&gt;site&lt;/a&gt;. Looking at them will help you definitely learn Reagent. I'll also go over certain things that I think is most useful like having timed updates and creating a Reagent atom which is pretty much the same as a Clojure atom in its usage. &lt;br/&gt;&lt;br/&gt; To create a new Reagent template which includes &lt;a href='https://defunsm.github.io/posts-output/clojure-figwheel/'&gt;figwheel&lt;/a&gt;, Reagent, and you can stright off the back push it to your heroku app site.&lt;pre&gt;&lt;code&gt;$ lein new reagent newreagentproject
+ &lt;/code&gt;&lt;/pre&gt; Now go ahead and &lt;newcode&gt;cd&lt;/newcode&gt; into newreagentproject/src. &lt;pre&gt;&lt;code&gt;$ cd &amp;#126;/newreagentproject/src
+ &lt;/code&gt;&lt;/pre&gt; Unlike other typical lein templates now that we have ClojureScript we have three directories in our src directory. The clj is for clojure files, the cljc is for cljc files which can handle both ClojureScript and Clojure files and the cljs is for ClojureScript files.  &lt;br/&gt;&lt;br/&gt; For now we aren't really interested in the clj and cljc files but you can fiddle with them if you want but we are really interested in the cljs files. So go ahead and &lt;newcode&gt;cd&lt;/newcode&gt; into cljs/newreagentproject. &lt;br/&gt;&lt;br/&gt;&lt;pre&gt;&lt;code&gt;$ cd cljs/newreagentproject
+ &lt;/code&gt;&lt;/pre&gt; Now go ahead and open up the core.cljs file in your favorite text editor. Once you open it up you should see the following in the core.cljs&lt;pre&gt;&lt;code&gt;&amp;#40;ns newreagentproject.core
+    &amp;#40;:require &amp;#91;Reagent.core :as reagent :refer &amp;#91;atom&amp;#93;&amp;#93;
+              &amp;#91;Reagent.session :as session&amp;#93;
+              &amp;#91;secretary.core :as secretary :include-macros true&amp;#93;
+              &amp;#91;accountant.core :as accountant&amp;#93;&amp;#41;&amp;#41;
+
+;; -------------------------
+;; Views
+
+&amp;#40;defn home-page &amp;#91;&amp;#93;
+  &amp;#91;:div &amp;#91;:h2 &amp;quot;Welcome to newreagentproject&amp;quot;&amp;#93;
+   &amp;#91;:div &amp;#91;:a {:href &amp;quot;/about&amp;quot;} &amp;quot;go to about page&amp;quot;&amp;#93;&amp;#93;&amp;#93;&amp;#41;
+
+&amp;#40;defn about-page &amp;#91;&amp;#93;
+  &amp;#91;:div &amp;#91;:h2 &amp;quot;About newreagentproject&amp;quot;&amp;#93;
+   &amp;#91;:div &amp;#91;:a {:href &amp;quot;/&amp;quot;} &amp;quot;go to the home page&amp;quot;&amp;#93;&amp;#93;&amp;#93;&amp;#41;
+
+&amp;#40;defn current-page &amp;#91;&amp;#93;
+  &amp;#91;:div &amp;#91;&amp;#40;session/get :current-page&amp;#41;&amp;#93;&amp;#93;&amp;#41;
+
+;; -------------------------
+;; Routes
+
+&amp;#40;secretary/defroute &amp;quot;/&amp;quot; &amp;#91;&amp;#93;
+  &amp;#40;session/put! :current-page #'home-page&amp;#41;&amp;#41;
+
+&amp;#40;secretary/defroute &amp;quot;/about&amp;quot; &amp;#91;&amp;#93;
+  &amp;#40;session/put! :current-page #'about-page&amp;#41;&amp;#41;
+
+;; -------------------------
+;; Initialize app
+
+&amp;#40;defn mount-root &amp;#91;&amp;#93;
+  &amp;#40;Reagent/render &amp;#91;current-page&amp;#93; &amp;#40;.getElementById js/document &amp;quot;app&amp;quot;&amp;#41;&amp;#41;&amp;#41;
+
+&amp;#40;defn init! &amp;#91;&amp;#93;
+  &amp;#40;accountant/configure-navigation!
+    {:nav-handler
+     &amp;#40;fn &amp;#91;path&amp;#93;
+       &amp;#40;secretary/dispatch! path&amp;#41;&amp;#41;
+     :path-exists?
+     &amp;#40;fn &amp;#91;path&amp;#93;
+       &amp;#40;secretary/locate-route path&amp;#41;&amp;#41;}&amp;#41;
+  &amp;#40;accountant/dispatch-current!&amp;#41;
+  &amp;#40;mount-root&amp;#41;&amp;#41;
+ &lt;/code&gt;&lt;/pre&gt; The section with the functions of home-page, about-page, and current-page are the web pages of the site. If you have used hiccup you'll realize that the web page is made of these brackets which represent a specific html element. &lt;br/&gt;&lt;br/&gt; The routing part of the code is dealing with which page is displayed depending on the uri. &lt;br/&gt;&lt;br/&gt; The actual initalization of the app happens at init! as well as where all of the page html elements will be rendered at is done by a Reagent function called &lt;newcode&gt;reagent/render&lt;/newcode&gt;. &lt;br/&gt;&lt;br/&gt; So now lets look at how the site looks by starting lein figwheel from within the newreagentproject directory.&lt;pre&gt;&lt;code&gt;$ lein figwheel
+ &lt;/code&gt;&lt;/pre&gt; Once that loads up go to the localhost to open up the site which is usally on http://0.0.0.0:3449/ &lt;br/&gt;&lt;br/&gt; The great thing about figwheel is you see the changes you make in your code instantly. So lets get started. Lets begin by playing around in the home-page and make your home-page function in the core.cljs file into this.&lt;pre&gt;&lt;code&gt;&amp;#40;defn home-page &amp;#91;&amp;#93;
+    &amp;#91;:div &amp;#40;for &amp;#91;i &amp;#40;range 0 12&amp;#41;&amp;#93;
+          &amp;#91;:div &amp;#40;range 0 i&amp;#41;&amp;#93;&amp;#41;&amp;#93;&amp;#41;
+ &lt;/code&gt;&lt;/pre&gt; &lt;img src=&quot;https://defunsm.github.io/img/reagent1.png&quot; alt=&quot;reagent1&quot; /&gt; Notice now that you have a sequence of numbers being printed starting from 1 and than continuing to go higher and higher and ending at 10. So You can actually use these html elements in for loops to create rather dynamic html elements. The Reagent examples page has an excellent varity of examples of things you can do with reagent to see more complex things. However I'll leave it here and show you some things like how to create new pages. &lt;br/&gt;&lt;br/&gt; So to create a new page lets first create a function to represent the new page. So lets call it reagent-page and put it right under the home-page function.&lt;pre&gt;&lt;code&gt;&amp;#40;defn reagent-page &amp;#91;&amp;#93;
+  &amp;#91;:div &amp;quot;Hello new reagent page!&amp;quot;&amp;#93;&amp;#41;
+ &lt;/code&gt;&lt;/pre&gt; So now save that but you won't be able to go to the /reagent page just yet. You need to set up the roots for it so put this new route into the routes section right under the other defroutes.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;secretary/defroute &amp;quot;/reagent&amp;quot; &amp;#91;&amp;#93;
+  &amp;#40;session/put! :current-page #'reagent-page&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;Great but we aren't done yet we need to do one last thing. Go back to the src directory and go into the clj directory and you'll come across a handler.clj and edit it so that your defroutes at the bottom look something like this just adding the /reagent.&lt;pre&gt;&lt;code&gt;&amp;#40;defroutes routes
+  &amp;#40;GET &amp;quot;/&amp;quot; &amp;#91;&amp;#93; &amp;#40;loading-page&amp;#41;&amp;#41;
+  &amp;#40;GET &amp;quot;/about&amp;quot; &amp;#91;&amp;#93; &amp;#40;loading-page&amp;#41;&amp;#41;
+  &amp;#40;GET &amp;quot;/reagent&amp;quot; &amp;#91;&amp;#93; &amp;#40;loading-page&amp;#41;&amp;#41; ;; add this.
+
+  &amp;#40;resources &amp;quot;/&amp;quot;&amp;#41;
+  &amp;#40;not-found &amp;quot;Not Found&amp;quot;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;So now that you have seen just a little of what Reagent can do and you can create pages with Reagent you can go and do experiment with it and do some more complicated manipulations with Reagent.&lt;/p&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Sun, 30 Oct 2016 00:00:00 -0400
+</pubDate>
+</item>
 <item>
 <guid>
 http://blogawesome.com/posts-output/quantum-common-sense/
