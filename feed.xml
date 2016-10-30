@@ -12,7 +12,7 @@ http://blogawesome.com/
 A place to share my knowledge
 </description>
 <lastBuildDate>
-Sun, 30 Oct 2016 12:07:56 -0400
+Sun, 30 Oct 2016 12:09:01 -0400
 </lastBuildDate>
 <generator>
 clj-rss
@@ -80,7 +80,7 @@ ClojureScript - Reagent
  &lt;/code&gt;&lt;/pre&gt; Once that loads up go to the localhost to open up the site which is usally on http://0.0.0.0:3449/ &lt;br/&gt;&lt;br/&gt; The great thing about figwheel is you see the changes you make in your code instantly. So lets get started. Lets begin by playing around in the home-page and make your home-page function in the core.cljs file into this.&lt;pre&gt;&lt;code&gt;&amp;#40;defn home-page &amp;#91;&amp;#93;
     &amp;#91;:div &amp;#40;for &amp;#91;i &amp;#40;range 0 12&amp;#41;&amp;#93;
           &amp;#91;:div &amp;#40;range 0 i&amp;#41;&amp;#93;&amp;#41;&amp;#93;&amp;#41;
- &lt;/code&gt;&lt;/pre&gt; &lt;img src=&quot;https://defunsm.github.io/img/reagent1.png&quot; alt=&quot;reagent1&quot; /&gt; Notice now that you have a sequence of numbers being printed starting from 1 and than continuing to go higher and higher and ending at 10. So You can actually use these html elements in for loops to create rather dynamic html elements. The Reagent examples page has an excellent varity of examples of things you can do with reagent to see more complex things. However I'll leave it here and show you some things like how to create new pages. &lt;br/&gt;&lt;br/&gt; So to create a new page lets first create a function to represent the new page. So lets call it reagent-page and put it right under the home-page function.&lt;pre&gt;&lt;code&gt;&amp;#40;defn reagent-page &amp;#91;&amp;#93;
+ &lt;/code&gt;&lt;/pre&gt; &lt;img src=&quot;https://defunsm.github.io/img/reagent1.png&quot; alt=&quot;reagent1&quot; /&gt;&lt;/p&gt;&lt;p&gt;Notice now that you have a sequence of numbers being printed starting from 1 and than continuing to go higher and higher and ending at 10. So You can actually use these html elements in for loops to create rather dynamic html elements. The Reagent examples page has an excellent varity of examples of things you can do with reagent to see more complex things. However I'll leave it here and show you some things like how to create new pages. &lt;br/&gt;&lt;br/&gt; So to create a new page lets first create a function to represent the new page. So lets call it reagent-page and put it right under the home-page function.&lt;pre&gt;&lt;code&gt;&amp;#40;defn reagent-page &amp;#91;&amp;#93;
   &amp;#91;:div &amp;quot;Hello new reagent page!&amp;quot;&amp;#93;&amp;#41;
  &lt;/code&gt;&lt;/pre&gt; So now save that but you won't be able to go to the /reagent page just yet. You need to set up the roots for it so put this new route into the routes section right under the other defroutes.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;secretary/defroute &amp;quot;/reagent&amp;quot; &amp;#91;&amp;#93;
   &amp;#40;session/put! :current-page #'reagent-page&amp;#41;&amp;#41;
