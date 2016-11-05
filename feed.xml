@@ -12,11 +12,197 @@ http://blogawesome.com/
 A place to share my knowledge
 </description>
 <lastBuildDate>
-Mon, 31 Oct 2016 21:27:14 -0400
+Sat, 05 Nov 2016 16:05:36 -0400
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://blogawesome.com/posts-output/clojure-using-quil-4/
+</guid>
+<link>
+http://blogawesome.com/posts-output/clojure-using-quil-4/
+</link>
+<title>
+Graphics using Quil in Clojure (Part 4)
+</title>
+<description>
+&lt;p&gt;Once you have created something using quil the natural thing is to display it right? Doing that is easy if you follow the steps. There are some pitfalls you have to becareful of getting into. The best place to see how to include quil into the browser is the &lt;a href='https://github.com/quil/quil/wiki/ClojureScript'&gt;quil wiki&lt;/a&gt;. &lt;br/&gt;&lt;br/&gt; The guide shows you how to start a browser with the quil applet. I'll go through how to incorporate the quil applet in a reagent template which is pretty much the same thing expect it can be a bit confusing on where exactly to place the defsketch macro. &lt;br/&gt;&lt;br/&gt; To start a reagent template go ahead and type the following...&lt;pre&gt;&lt;code&gt;$ lein new reagent quilreagent
+ &lt;/code&gt;&lt;/pre&gt; The first thing to do is to add quil as a dependency in the project.clj so lets do that.&lt;pre&gt;&lt;code&gt;  :dependencies &amp;#91;&amp;#91;org.clojure/clojure &amp;quot;1.8.0&amp;quot;&amp;#93;
+                 &amp;#91;ring-server &amp;quot;0.4.0&amp;quot;&amp;#93;
+                 &amp;#91;reagent &amp;quot;0.6.0&amp;quot;&amp;#93;
+                 &amp;#91;reagent-forms &amp;quot;0.5.25&amp;quot;&amp;#93;
+                 &amp;#91;reagent-utils &amp;quot;0.2.0&amp;quot;&amp;#93;
+                 &amp;#91;ring &amp;quot;1.5.0&amp;quot;&amp;#93;
+                 &amp;#91;ring/ring-defaults &amp;quot;0.2.1&amp;quot;&amp;#93;
+                 &amp;#91;compojure &amp;quot;1.5.1&amp;quot;&amp;#93;
+                 &amp;#91;hiccup &amp;quot;1.0.5&amp;quot;&amp;#93;
+                 &amp;#91;yogthos/config &amp;quot;0.8&amp;quot;&amp;#93;
+                 &amp;#91;org.clojure/clojurescript &amp;quot;1.9.229&amp;quot;
+                  :scope &amp;quot;provided&amp;quot;&amp;#93;
+                 &amp;#91;secretary &amp;quot;1.2.3&amp;quot;&amp;#93;
+                 &amp;#91;venantius/accountant &amp;quot;0.1.7&amp;quot;
+                  :exclusions &amp;#91;org.clojure/tools.reader&amp;#93;&amp;#93;
+                 &amp;#91;quil &amp;quot;2.4.0&amp;quot;&amp;#93;&amp;#93; ;; add quil as a dependency
+ &lt;/code&gt;&lt;/pre&gt; That is what your :dependencies should look like now just add quil as a dependency at the bottom. Now that is done. Go to the &lt;newcode&gt;core.cljs&lt;/newcode&gt; file in your src directory. Open it up and lets add quil in the required place as q and the macros needed as well. So your name space should look like this.&lt;pre&gt;&lt;code&gt;&amp;#40;ns quilreagent.core
+    &amp;#40;:require &amp;#91;reagent.core :as reagent :refer &amp;#91;atom&amp;#93;&amp;#93;
+              &amp;#91;reagent.session :as session&amp;#93;
+              &amp;#91;secretary.core :as secretary :include-macros true&amp;#93;
+              &amp;#91;accountant.core :as accountant&amp;#93;
+              &amp;#91;quil.core :as q :include-macros true&amp;#93; ;; add this
+              &amp;#91;quil.middleware :as m&amp;#93;&amp;#41;&amp;#41; ;; as well as this
+ &lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;As well as add all of the code needed for quil for now we'll use the basic quil example. So add all of this right after the name space.&lt;pre&gt;&lt;code&gt;&amp;#40;defn setup &amp;#91;&amp;#93;
+  ; Set frame rate to 30 frames per second.
+  &amp;#40;q/frame-rate 30&amp;#41;
+  ; Set color mode to HSB &amp;#40;HSV&amp;#41; instead of default RGB.
+  &amp;#40;q/color-mode :hsb&amp;#41;
+  ; setup function returns initial state. It contains
+  ; circle color and position.
+  {:color 0
+   :angle 0}&amp;#41;
+
+&amp;#40;defn update-state &amp;#91;state&amp;#93;
+  ; Update sketch state by changing circle color and position.
+  {:color &amp;#40;mod &amp;#40;+ &amp;#40;:color state&amp;#41; 0.7&amp;#41; 255&amp;#41;
+   :angle &amp;#40;+ &amp;#40;:angle state&amp;#41; 0.1&amp;#41;}&amp;#41;
+
+&amp;#40;defn draw-state &amp;#91;state&amp;#93;
+  ; Clear the sketch by filling it with light-grey color.
+  &amp;#40;q/background 240&amp;#41;
+  ; Set circle color.
+  &amp;#40;q/fill &amp;#40;:color state&amp;#41; 255 255&amp;#41;
+  ; Calculate x and y coordinates of the circle.
+  &amp;#40;let &amp;#91;angle &amp;#40;:angle state&amp;#41;
+        x &amp;#40;&amp;#42; 150 &amp;#40;q/cos angle&amp;#41;&amp;#41;
+        y &amp;#40;&amp;#42; 150 &amp;#40;q/sin angle&amp;#41;&amp;#41;&amp;#93;
+    ; Move origin point to the center of the sketch.
+    &amp;#40;q/with-translation &amp;#91;&amp;#40;/ &amp;#40;q/width&amp;#41; 2&amp;#41;
+                         &amp;#40;/ &amp;#40;q/height&amp;#41; 2&amp;#41;&amp;#93;
+      ; Draw the circle.
+      &amp;#40;q/ellipse x y 100 100&amp;#41;&amp;#41;&amp;#41;&amp;#41;
+
+&amp;#40;q/defsketch example-quil
+  :host &amp;quot;example-quil&amp;quot;
+  :size &amp;#91;500 500&amp;#93;
+  ; setup function called only once, during sketch initialization.
+  :setup setup
+  ; update-state is called on each iteration before draw-state.
+  :update update-state
+  :draw draw-state
+  ; This sketch uses functional-mode middleware.
+  ; Check quil wiki for more info about middlewares and particularly
+  ; fun-mode.
+  :middleware &amp;#91;m/fun-mode&amp;#93;&amp;#41;
+ &lt;/code&gt;&lt;/pre&gt; Note that the &lt;newcode&gt;:host&lt;/newcode&gt; has to be specified in order for the canvas to know what applet to sketch. So now that you have the quil code in the core.cljs now you have to add it to the home-page which you can do by editing &lt;newcode&gt;home-page&lt;/newcode&gt; to the following.&lt;pre&gt;&lt;code&gt;&amp;#40;defn home-page &amp;#91;&amp;#93;
+  &amp;#91;:div &amp;#91;:h2 &amp;quot;Welcome to quilreagent&amp;quot;&amp;#93;
+   &amp;#91;:div &amp;#91;:a {:href &amp;quot;/about&amp;quot;} &amp;quot;go to about page&amp;quot;&amp;#93;&amp;#93;
+   &amp;#91;:canvas#example-quil&amp;#93;&amp;#93;&amp;#41; ;; add this part.
+ &lt;/code&gt;&lt;/pre&gt; Now run figwheel and that should be it. &lt;br/&gt;&lt;br/&gt; Note that the # is used to represent the host id which is example-quil in this case. If it were something else than you would have to replace it with that something else instead of example-quil. You may need to reload the page manually before the applet shows on the browser. Once you do that it'll show a circle spinning around which is exactly what we wanted. Thats pretty much it and if you don't like to have all the quil code in the core.cljs you can have it in another namespace so it is more condensed and neat. In case you want to see the full code the below is the full code of what the core.cljs should look like.&lt;pre&gt;&lt;code&gt;&amp;#40;ns quilreagent.core
+    &amp;#40;:require &amp;#91;reagent.core :as reagent :refer &amp;#91;atom&amp;#93;&amp;#93;
+              &amp;#91;reagent.session :as session&amp;#93;
+              &amp;#91;secretary.core :as secretary :include-macros true&amp;#93;
+              &amp;#91;accountant.core :as accountant&amp;#93;
+              &amp;#91;quil.core :as q :include-macros true&amp;#93; ;; add this
+              &amp;#91;quil.middleware :as m&amp;#93;&amp;#41;&amp;#41; ;; as well as this
+
+
+&amp;#40;defn setup &amp;#91;&amp;#93;
+  ; Set frame rate to 30 frames per second.
+  &amp;#40;q/frame-rate 30&amp;#41;
+  ; Set color mode to HSB &amp;#40;HSV&amp;#41; instead of default RGB.
+  &amp;#40;q/color-mode :hsb&amp;#41;
+  ; setup function returns initial state. It contains
+  ; circle color and position.
+  {:color 0
+   :angle 0}&amp;#41;
+
+&amp;#40;defn update-state &amp;#91;state&amp;#93;
+  ; Update sketch state by changing circle color and position.
+  {:color &amp;#40;mod &amp;#40;+ &amp;#40;:color state&amp;#41; 0.7&amp;#41; 255&amp;#41;
+   :angle &amp;#40;+ &amp;#40;:angle state&amp;#41; 0.1&amp;#41;}&amp;#41;
+
+&amp;#40;defn draw-state &amp;#91;state&amp;#93;
+  ; Clear the sketch by filling it with light-grey color.
+  &amp;#40;q/background 240&amp;#41;
+  ; Set circle color.
+  &amp;#40;q/fill &amp;#40;:color state&amp;#41; 255 255&amp;#41;
+  ; Calculate x and y coordinates of the circle.
+  &amp;#40;let &amp;#91;angle &amp;#40;:angle state&amp;#41;
+        x &amp;#40;&amp;#42; 150 &amp;#40;q/cos angle&amp;#41;&amp;#41;
+        y &amp;#40;&amp;#42; 150 &amp;#40;q/sin angle&amp;#41;&amp;#41;&amp;#93;
+    ; Move origin point to the center of the sketch.
+    &amp;#40;q/with-translation &amp;#91;&amp;#40;/ &amp;#40;q/width&amp;#41; 2&amp;#41;
+                         &amp;#40;/ &amp;#40;q/height&amp;#41; 2&amp;#41;&amp;#93;
+      ; Draw the circle.
+      &amp;#40;q/ellipse x y 100 100&amp;#41;&amp;#41;&amp;#41;&amp;#41;
+
+&amp;#40;q/defsketch example-quil
+  :host &amp;quot;example-quil&amp;quot;
+  :size &amp;#91;500 500&amp;#93;
+  ; setup function called only once, during sketch initialization.
+  :setup setup
+  ; update-state is called on each iteration before draw-state.
+  :update update-state
+  :draw draw-state
+  ; This sketch uses functional-mode middleware.
+  ; Check quil wiki for more info about middlewares and particularly
+  ; fun-mode.
+  :middleware &amp;#91;m/fun-mode&amp;#93;&amp;#41;
+
+;; -------------------------
+;; Views
+
+
+
+&amp;#40;defn home-page &amp;#91;&amp;#93;
+  &amp;#91;:div &amp;#91;:h2 &amp;quot;Welcome to quilreagent&amp;quot;&amp;#93;
+   &amp;#91;:div &amp;#91;:a {:href &amp;quot;/about&amp;quot;} &amp;quot;go to about page&amp;quot;&amp;#93;&amp;#93;
+   &amp;#91;:canvas#example-quil&amp;#93;&amp;#93;&amp;#41; ;; add the canvas in the home-page
+
+&amp;#40;defn about-page &amp;#91;&amp;#93;
+  &amp;#91;:div &amp;#91;:h2 &amp;quot;About quilreagent&amp;quot;&amp;#93;
+   &amp;#91;:div &amp;#91;:a {:href &amp;quot;/&amp;quot;} &amp;quot;go to the home page&amp;quot;&amp;#93;&amp;#93;&amp;#93;&amp;#41;
+
+&amp;#40;defn current-page &amp;#91;&amp;#93;
+  &amp;#91;:div &amp;#91;&amp;#40;session/get :current-page&amp;#41;&amp;#93;&amp;#93;&amp;#41;
+
+
+
+;; -------------------------
+;; Routes
+
+&amp;#40;secretary/defroute &amp;quot;/&amp;quot; &amp;#91;&amp;#93;
+  &amp;#40;session/put! :current-page #'home-page&amp;#41;&amp;#41;
+
+&amp;#40;secretary/defroute &amp;quot;/about&amp;quot; &amp;#91;&amp;#93;
+  &amp;#40;session/put! :current-page #'about-page&amp;#41;&amp;#41;
+
+;; -------------------------
+;; Initialize app
+
+&amp;#40;defn mount-root &amp;#91;&amp;#93;
+  &amp;#40;reagent/render &amp;#91;current-page&amp;#93; &amp;#40;.getElementById js/document &amp;quot;app&amp;quot;&amp;#41;&amp;#41;&amp;#41;
+
+&amp;#40;defn init! &amp;#91;&amp;#93;
+  &amp;#40;accountant/configure-navigation!
+    {:nav-handler
+     &amp;#40;fn &amp;#91;path&amp;#93;
+       &amp;#40;secretary/dispatch! path&amp;#41;&amp;#41;
+     :path-exists?
+     &amp;#40;fn &amp;#91;path&amp;#93;
+       &amp;#40;secretary/locate-route path&amp;#41;&amp;#41;}&amp;#41;
+  &amp;#40;accountant/dispatch-current!&amp;#41;
+  &amp;#40;mount-root&amp;#41;&amp;#41;
+ &lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Sat, 05 Nov 2016 00:00:00 -0400
+</pubDate>
+</item>
 <item>
 <guid>
 http://blogawesome.com/posts-output/clojure-ringserver/
