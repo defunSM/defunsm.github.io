@@ -12,11 +12,39 @@ http://blogawesome.com/
 A place to share my knowledge
 </description>
 <lastBuildDate>
-Sat, 05 Nov 2016 16:05:36 -0400
+Wed, 30 Nov 2016 17:05:15 -0500
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://blogawesome.com/posts-output/Heroku/
+</guid>
+<link>
+http://blogawesome.com/posts-output/Heroku/
+</link>
+<title>
+Clojure - How to start a web app using Heroku
+</title>
+<description>
+&lt;p&gt;Heroku is a platform that allows developers to build web apps and run them on their servers. It is really nice that they do have documentation on how to start a server using clojure as well. I'll go over through some of the stuff that they tell you to do from their set up page. You can follow along here or just follow their &lt;a href='https://devcenter.heroku.com/articles/getting-started-with-clojure#set-up'&gt;instructions&lt;/a&gt;. &lt;br/&gt;&lt;br/&gt;&lt;h1&gt;&lt;a name=&quot;make&amp;#95;a&amp;#95;heroku&amp;#95;account&quot;&gt;&lt;/a&gt;Make a Heroku Account&lt;/h1&gt; &lt;br/&gt;&lt;br/&gt; First things first is that you will need an account to manage your web apps. Just go ahead and do that on &lt;a href='https://signup.heroku.com/dc'&gt;Heorku&lt;/a&gt;. &lt;br/&gt;&lt;br/&gt;&lt;h1&gt;&lt;a name=&quot;installing&amp;#95;the&amp;#95;heroku&amp;#95;cli&quot;&gt;&lt;/a&gt;Installing the Heroku CLI&lt;/h1&gt; &lt;br/&gt;&lt;br/&gt; Now let us go on ahead and install the &lt;newcode&gt;Heroku Command Line Interface&lt;/newcode&gt; which you'll need to manage your web apps from the terminal. You can do that using the following command from the terminal.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;$ wget -qO- https://toolbelt.heroku.com/install.sh | sh 
+&lt;/code&gt;&lt;/pre&gt;*You will need to make sure that you have ruby installed as well.&lt;br/&gt;&lt;br/&gt;&lt;h1&gt;&lt;a name=&quot;create&amp;#95;the&amp;#95;web&amp;#95;app&quot;&gt;&lt;/a&gt;Create the web app&lt;/h1&gt;&lt;p&gt;&lt;br/&gt;&lt;br/&gt; Lets go ahead and clone a sample web app that heroku provides or you can clone the reagent heroku web app template either one.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;$ git clone https://github.com/heroku/clojure-getting-started.git
+&lt;/code&gt;&lt;/pre&gt;or&lt;pre&gt;&lt;code&gt;$ git clone https://github.com/reagent-project/reagent-template.git
+&lt;/code&gt;&lt;/pre&gt;&lt;br/&gt;&lt;br/&gt;&lt;h1&gt;&lt;a name=&quot;create&amp;#95;the&amp;#95;web&amp;#95;app&amp;#95;on&amp;#95;heroku&quot;&gt;&lt;/a&gt;Create the web app on heroku&lt;/h1&gt;&lt;p&gt;&lt;br/&gt;&lt;br/&gt; Now lets create a heroku app to recieve the code. You can decide to specify the name or leave it blank and it'll give you a random name.&lt;pre&gt;&lt;code&gt;$ heroku create 
+ &lt;/code&gt;&lt;/pre&gt; or&lt;pre&gt;&lt;code&gt;$ heroku create heroku-app-name
+ &lt;/code&gt;&lt;/pre&gt; &lt;br/&gt;&lt;br/&gt;&lt;h1&gt;&lt;a name=&quot;push&amp;#95;the&amp;#95;web&amp;#95;app&quot;&gt;&lt;/a&gt;Push the web app&lt;/h1&gt; &lt;br/&gt;&lt;br/&gt; Now you can push the source code like you do for git. First make sure to add all files.&lt;pre&gt;&lt;code&gt;$ git add .
+ &lt;/code&gt;&lt;/pre&gt; Commit all the files with the message &quot;init&quot;.&lt;pre&gt;&lt;code&gt;$ git commit -m &amp;quot;init&amp;quot;
+ &lt;/code&gt;&lt;/pre&gt; Push to the heroku web app.&lt;pre&gt;&lt;code&gt;$ git push heroku master
+ &lt;/code&gt;&lt;/pre&gt; Now you should be able to visit the site hosting the source code at heroku-app-name.herokuapp.com!&lt;/p&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Wed, 30 Nov 2016 00:00:00 -0500
+</pubDate>
+</item>
 <item>
 <guid>
 http://blogawesome.com/posts-output/clojure-using-quil-4/
