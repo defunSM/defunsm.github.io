@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-	<title>Python - Special Relativity</title>
+	<title>Python - SpaceTime Diagrams</title>
 	<!-- Styles -->
 	<link rel="stylesheet" href="https://defunsm.github.io/css/style.css" />
 	<link rel="stylesheet" href="https://defunsm.github.io/css/font-awesome.min.css" />
@@ -60,7 +60,7 @@
 		<div class="fade child">
 			<div class="container_small">
 				<!-- Header Titles -->
-				<h1 class="header_title">Python - Special Relativity</h1>
+				<h1 class="header_title">Python - SpaceTime Diagrams</h1>
 
 
 <br/>
@@ -87,11 +87,13 @@
         <div class="col-lg-6">December 4, 2016</div>
         
     </div>
-    <h2>Python - Special Relativity</h2>
+    <h2>Python - SpaceTime Diagrams</h2>
 </div>
 <div>
     
-     <p> So I been playing around with numpy and matplotlib in python lately. Wonderful tools for numerical analysis and data ploting. So I played around with them and decided to use them to construct a script in order to generate spacetime graphs. For those that don't know what a space time graph or diagram is essentially a way to visualize an object moving or not moving through space and time. Looks something like that on the bottom.  </p><p> <img src="https://defunsm.github.io/img/spacetimegraph.png" alt="" /></p><p>One of the things you'll instantly maybe find alarming about spacetime diagrams is that time is on the y axis. I know I did since usually we put time on the x axis. Placing time on the y axis as I been told is somewhat traditional not really done on purpose but thats the way spacetime diagrams should be done. <br/><br/> So since time is on the y axis this means a few things our y intercept, b is going to be a value with units of time usually seconds. However in spacetime diagrams you can essentially make the units whatever you want as long as they make sense so if you wanted you could make the units of time as meters using the speed of light constant c. So whatever the distance that light will cover in 1 second you can convert to that for meters and use that as a value of time since it is equivilant. Of course that might sound a bit wierd and probably I didn't explain that too well but your x axis is a measure of space. Space can be measured in meters. So now you have the same units for both x and y axis.  <br/><br/> Now remember that time is onthe y axis so this brings about some consequences such as the slope of the line becomes 1 over the speed of the object. So we can write an equation for this line in the following way as t = (1/v)*x + b. <br/><br/> The t stands for the time (m), the v in this case is the velocity which is in units of c, the x is the position of the object (m), and the y intercept is b which remember would originally be seconds but we converted time to meters using the speed of light constant so b is in terms of meters.</p>
+     <p> So I been playing around with numpy and matplotlib in python lately. Wonderful tools for numerical analysis and data ploting. So I played around with them and decided to use them to construct a script in order to generate spacetime graphs. For those that don't know what a space time graph or diagram is essentially a way to visualize an object moving or not moving through space and time. Looks something like that on the bottom.  </p><p> <img src="https://defunsm.github.io/img/spacetimegraph.png" alt="" /></p><p>One of the things you'll instantly maybe find alarming about spacetime diagrams is that time is on the y axis. I know I did since usually we put time on the x axis. Placing time on the y axis as I been told is somewhat traditional not really done on purpose but thats the way spacetime diagrams should be done. <br/><br/> So since time is on the y axis this means a few things our y intercept, b is going to be a value with units of time usually seconds. However in spacetime diagrams you can essentially make the units whatever you want as long as they make sense so if you wanted you could make the units of time as meters using the speed of light constant c. So whatever the distance that light will cover in 1 second you can convert to that for meters and use that as a value of time since it is equivilant. Of course that might sound a bit wierd and probably I didn't explain that too well but your x axis is a measure of space. Space can be measured in meters. So now you have the same units for both x and y axis.  <br/><br/> Now remember that time is onthe y axis so this brings about some consequences such as the slope of the line becomes 1 over the speed of the object. So we can write an equation for this line in the following way as t = (1/v)*x + b. <br/><br/> The t stands for the time (m), the v in this case is the velocity which is in units of c, the x is the position of the object (m), and the y intercept is b which remember would originally be seconds but we converted time to meters using the speed of light constant so b is in terms of meters. <br/><br/> In order to generate the script you need the <a href='https://github.com/defunSM/SpecialRel/blob/master/SpecialRel.py'>SpecialRel.py</a> and <a href='https://github.com/defunSM/SpecialRel/blob/master/SpaceTimeGraph.py'>SpaceTimeGraph.py</a>. <br/><br/> You can get those scripts by just cloning the entire repo or just downloading them individually.</p><h2><a name="usage"></a>Usage</h2><p><br/><br/> The way you use the script is the following.</p><pre><code>$ python SpaceTimeGraph.py -v 0.2 -b 2
+</code></pre>You are specifiying the speed as 0.2c and the y intercept as 2m. You should see a graph pop up hopefully if not you will probably need to install numpy and matplotlib if you do not have those.<br/><br/>There are other options that you can specify and to see all of them type the following.<pre><code>$ python SpaceTimeGraph.py -h
+</code></pre>You should get something like the picture below.<img src="https://defunsm.github.io/img/options.png" alt="options" /><br/><br/>You can change the upper and lower limits of the graph and determine how far you want the graph to extend out to using the options <newcode>-u</newcode> and <newcode>-l</newcode>. As well as name the object with <newcode>-n</newcode> so the object's name will appear on the legend. 
 </div>
 
 <div id="post-tags">
