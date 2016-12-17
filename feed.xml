@@ -12,11 +12,31 @@ http://blogawesome.com/
 A place to share my knowledge
 </description>
 <lastBuildDate>
-Sun, 04 Dec 2016 12:01:52 -0500
+Sat, 17 Dec 2016 17:12:24 -0500
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://blogawesome.com/posts-output/python-bokeh/
+</guid>
+<link>
+http://blogawesome.com/posts-output/python-bokeh/
+</link>
+<title>
+Python - Bokeh to Graph Boot Times
+</title>
+<description>
+ &lt;p&gt; So I been playing around with Bokeh's graphing utilities which is always fun. So I wanted to make some graphs using the boot times that I keep using a script. So I made three different graphs 2 of which represent the total boot time and the other pie graph represents the total boot time into segments of firmware, loader, kernel and userspace.  &lt;/p&gt;&lt;p&gt;&lt;img src=&quot;https://defunsm.github.io/img/bokeh3.png&quot; alt=&quot;graph image&quot; /&gt;&lt;/p&gt;&lt;p&gt;The one above is demonstrates the total time as an area under the line. You can clearly see here that there was a spike in the boot time since that 40 second boot time is distinguishable from the other plots are around 12 seconds.&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;https://defunsm.github.io/img/bokeh2.png&quot; alt=&quot;graph pie graph&quot; /&gt;&lt;/p&gt;&lt;p&gt;This one is a pie graph I couldn't figure out how to label them but it just demonstrates each part of the boot as a pie graph (Firmware, Loader, Kernel, Userspace). &lt;br/&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;&lt;a href='https://github.com/defunSM/visualize-my-boot-time'&gt;Github Repo&lt;/a&gt;&lt;/p&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Sat, 17 Dec 2016 00:00:00 -0500
+</pubDate>
+</item>
 <item>
 <guid>
 http://blogawesome.com/posts-output/special-relativity/
