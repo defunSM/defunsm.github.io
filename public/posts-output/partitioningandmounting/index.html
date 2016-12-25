@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+	<title>Partitoning and Mounting (Linux)</title>
+	<!-- Styles -->
+	<link rel="stylesheet" href="https://defunsm.github.io/css/style.css" />
+	<link rel="stylesheet" href="https://defunsm.github.io/css/font-awesome.min.css" />
+	<link type="text/css" rel="stylesheet" href="https://defunsm.github.io/featherlight.css" />
+        <link rel="stylesheet" href="https://defunsm.github.io/css/screen.css" />
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css">
+
+	<style type="text/css">
+		@media all {
+			.lightbox { display: none; }
+		}
+	</style>
+	<!-- jQuery -->
+	<script src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js'></script>
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="images/favicon.png">
+</head>
+<body class="fade-in cmon body">
+
+
+	<!-- HEADER /////////////////////////////////////////////////////////////////////////// -->
+	<header id="postwelcome" class="parent module parallax parallax-1">
+		<div class="burger" id="toggle">
+			<span class="top"></span>
+			<span class="middle"></span>
+			<span class="bottom"></span>
+
+		</div>
+
+		<div class="navigation" id="navigation">
+			<nav class="overlay-menu">
+			  <ul>
+                                          <li>
+                              <a href="https://defunsm.github.io/#Welcome" class="menu">Home <i class="fa fa-home" aria-hidden="true"></i>
+</a>
+			      <span class="simple_line"></span>
+                              </li>
+					<li >
+						<a href="https://defunsm.github.io/#about" class="menu">About <i class="fa fa-heart" aria-hidden="true"></i></a>
+						<span class="simple_line"></span>
+					</li>
+					<li>
+						<a href="https://defunsm.github.io/#portfolio" class="menu">Github <i class="fa fa-github" aria-hidden="true"></i></a>
+						<span class="simple_line"></span>
+					</li>
+					<li>
+						<a href="https://defunsm.github.io/archives" class="menu">Archives <i class="fa fa-book" aria-hidden="true"></i></a>
+					</li>
+
+			  </ul>
+			</nav>
+		</div>
+		<div class="scroll_down"></div>
+		<div class="fade child">
+			<div class="container_small">
+				<!-- Header Titles -->
+				<h1 class="header_title">Partitoning and Mounting (Linux)</h1>
+
+
+                                <a href="/posts-output/wordcal/" class="button"><i class="fa fa-arrow-left" aria-hidden="true"></i> WordCal - A Python Script</a>
+
+<br/>
+                                
+                                <a href="/posts-output/smchat/" class="button">SMChat <i class="fa fa-arrow-right" aria-hidden="true"></i>
+</i></a>
+
+
+			</div>
+		</div>
+	</header>
+	<!-- END HEADER /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- ABOUT SECTION /////////////////////////////////////////////////////////////////////////// -->
+	<section id="about" class="module">
+
+
+          <div class="anotherclass">
+
+
+                    
+                    <div class="post-header">
+    <div id="post-meta" class="row">
+        <div class="col-lg-6">October 1, 2016</div>
+        
+    </div>
+    <h2>Partitoning and Mounting (Linux)</h2>
+</div>
+<div>
+    
+    <p><h1>Partitioning</h1> <br/><br/> Think of it as creating a room (partition) in a house (The actual harddrive) for where data can stay. <br/><br/> <h3>Creating a Partition on Linux</h3> <br/><br/> <img src="https://defunsm.github.io/img/par1.png" alt="partitioning" /> <br/><br/> Typing <code>lsblk</code> will show a quick result of your avaliable devices on your computer. <br/><br/> It'll display two types disks and parts. <br/><br/> A quick difference you can see between disks and parts is that disks don't have a number at the end. <strong>Note:</strong> There are expections but for the most part USBs don't have numbers at the end. <br/><br/> Parts on the other hand do have numbers that correspond with the disk it is in. Such as <em>sda1</em> is within the disk sda and thus if there is a <em>sda5</em> most likely there are four other partitions. <br/><br/> <h4>Using a disk management program: Gparted</h4> There are various disk management programs but <em>gparted</em> is most common in linux. There is <em>fdisk</em> and <em>parted</em> but without a gui that can acomplish the same feats as gparted. <br/><br/> <img src="https://defunsm.github.io/img/par2.png" alt="gparted" /> <br/><br/> Im going to be changing the <em>sdb</em> disk so make sure to select that. <strong>Note:</strong> All paths to devices avaliable on the computer start with /dev/... <br/><br/> Now we already have one partition on the <em>sdb</em> disk called <em>sdb1</em>. If we did have more unallocated memory we could create another partition from the unallocated memory. However we don't so lets delete the partition <em>sdb1</em> and create 2 partitions splitting the memory. <br/><br/> Deleting the partition by right clicking on the partition you want deleted and selecting "Delete". Now all of the partition memory is turned to unallocated as seen below. <br/><br/> <img src="https://defunsm.github.io/img/par3.png" alt="gparted unallocated" /> <br/><br/> <strong>Note:</strong> No changes actually occur till the green check mark is clicked. <br/><br/> Now if you check your devices with <code>lsblk</code> you'll notice that <em>sdb</em> is all alone without <em>sdb1</em> or any partitions. This is because all of sdb is unallocated memory at the moment. <br/><br/> <img src="https://defunsm.github.io/img/par4.png" alt="gparted nodisk" /> <br/><br/> Now you can select the unallocated memory and create a partition with it. However since you want to make two partitions leave some memory left for the second one depending on how much you want. This is done by right clicking on the unallocated memory and clicking "New". <br/><br/> This should bring you to a menu such as this below ... <br/><br/> <img src="https://defunsm.github.io/img/par5.png" alt="gparted filesystem" /> <br/><br/> If you want to make a 60 <em>GiB</em> partition make the new size 60*1024 = 61440 <em>MiB</em>. (1024 <em>MiB</em> in 1 <em>GiB</em>) Keep the everything else the same since ext4 is readiable by linux. <br/><br/> Then click on the rest of the unallocated memory and click add to create the rest of the memory into a partition. If that went smoothly you should have two partitions now and you can verify this by <code>lsblk</code>. <br/><br/> <img src="https://defunsm.github.io/img/par6.png" alt="gparted two partitions" /> <br/><br/> The result is two partitions on the sdb disk detected by your computer. Thats it now you have two partitions. <br/><br/> <h3>Mounting the Partitions / Placing files in the Partitions</h3> <br/><br/> <strong>Note:</strong> If you aren't too familiar with using a terminal please read up on how to use a terminal. <br/><br/> <code>mount</code> is a command that will allow you to attach the filesystem (partition) to the computer. <br/><br/> In this case we are going to mount the two partitions onto our computer. Begin by opening up your favorite terminal and entering the following command. Ignore the dollar sign it just stands for the prompt. <br/><br/> <code>$ mount /dev/sdb1 /mnt</code> - What this does is attach the first partition to the /mnt directory. <br/><br/> You can check this by doing <code>lsblk</code> <br/><br/> <img src="https://defunsm.github.io/img/par7.png" alt="gparted mount" /> <br/><br/> As you can see the mount point of <em>sdb1</em> is now /mnt <br/><br/> You can now copy files into the /mnt directory using <code>cp</code> or make files using <code>echo</code> Whatever is placed into the /mnt directory will now be in the partition. <br/><br/> Example: <br/><br/> <code>$ echo "hello" >> /mnt/file.txt</code> <br/><br/> Now you should see a file called file.txt in the /mnt directory using <code>ls /mnt</code> <br/><br/> Using <code>umount</code> you can remove a mount point from the partition unmounting it. <br/><br/> Example: <br/><br/> <code>$ umount /dev/sdb1</code> - You can examine through <code>lsblk</code><code>ls /mnt</code> that it is no longer there. <br/><br/> You can mount using <code>mount /dev/sdb1 /mnt</code> and again see that the file.txt is now back again which shows that the file indeed is in the partition.</p>
+</div>
+
+<div id="post-tags">
+    <b>Tags: </b>
+    
+    <a href="/tags-output/Computers/">Computers</a>
+    
+    <a href="/tags-output/Guide/">Guide</a>
+    
+</div>
+
+
+                          <div id="prev-next">
+                            
+                            <a href="/posts-output/wordcal/">&laquo; WordCal - A Python Script</a>
+                            
+                            
+                            <a class="right" href="/posts-output/smchat/">SMChat &raquo;</a>
+                            
+                          </div>
+
+                          
+                          <div id="disqus_thread"></div>
+                          <script type="text/javascript">
+                            (function() {
+                            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                            dsq.src = '//defunsm-github-io.disqus.com/embed.js';
+                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                            })();
+                          </script>
+                          
+
+
+
+                        
+          </div>
+
+
+
+	</section>
+
+        <!-- END ABOUT SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- PORTFOLIO SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- END CONTACT SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- FOOTER /////////////////////////////////////////////////////////////////////////// -->
+	<footer>
+		<div class="container_footer">
+			<div class="left">
+				<p>© 2016 <span>Salman Hossain</span></p>
+			</div>
+			<div class="right">
+				<a href="#postwelcome">Top <i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+			</div>
+		</div>
+	</footer>
+	<!-- END FOOTER /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- Scripts -->
+	<script src="https://defunsm.github.io/js/parallax.js"></script>
+	<script src="https://defunsm.github.io/js/menu.js"></script>
+	<script src="https://defunsm.github.io/js/featherlight.js" type="text/javascript" charset="utf-8"></script>
+	<script src="https://defunsm.github.io/js/scroll.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+        <script src="/js/highlight.pack.js" type="text/javascript"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>

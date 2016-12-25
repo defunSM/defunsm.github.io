@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+	<title>Python - Booleans</title>
+	<!-- Styles -->
+	<link rel="stylesheet" href="https://defunsm.github.io/css/style.css" />
+	<link rel="stylesheet" href="https://defunsm.github.io/css/font-awesome.min.css" />
+	<link type="text/css" rel="stylesheet" href="https://defunsm.github.io/featherlight.css" />
+        <link rel="stylesheet" href="https://defunsm.github.io/css/screen.css" />
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css">
+
+	<style type="text/css">
+		@media all {
+			.lightbox { display: none; }
+		}
+	</style>
+	<!-- jQuery -->
+	<script src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js'></script>
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="images/favicon.png">
+</head>
+<body class="fade-in cmon body">
+
+
+	<!-- HEADER /////////////////////////////////////////////////////////////////////////// -->
+	<header id="postwelcome" class="parent module parallax parallax-1">
+		<div class="burger" id="toggle">
+			<span class="top"></span>
+			<span class="middle"></span>
+			<span class="bottom"></span>
+
+		</div>
+
+		<div class="navigation" id="navigation">
+			<nav class="overlay-menu">
+			  <ul>
+                                          <li>
+                              <a href="https://defunsm.github.io/#Welcome" class="menu">Home <i class="fa fa-home" aria-hidden="true"></i>
+</a>
+			      <span class="simple_line"></span>
+                              </li>
+					<li >
+						<a href="https://defunsm.github.io/#about" class="menu">About <i class="fa fa-heart" aria-hidden="true"></i></a>
+						<span class="simple_line"></span>
+					</li>
+					<li>
+						<a href="https://defunsm.github.io/#portfolio" class="menu">Github <i class="fa fa-github" aria-hidden="true"></i></a>
+						<span class="simple_line"></span>
+					</li>
+					<li>
+						<a href="https://defunsm.github.io/archives" class="menu">Archives <i class="fa fa-book" aria-hidden="true"></i></a>
+					</li>
+
+			  </ul>
+			</nav>
+		</div>
+		<div class="scroll_down"></div>
+		<div class="fade child">
+			<div class="container_small">
+				<!-- Header Titles -->
+				<h1 class="header_title">Python - Booleans</h1>
+
+
+                                <a href="/posts-output/pythonifstatements/" class="button"><i class="fa fa-arrow-left" aria-hidden="true"></i> Python - If-else-statements</a>
+
+<br/>
+                                
+                                <a href="/posts-output/pythonvariables/" class="button">Python - Variables <i class="fa fa-arrow-right" aria-hidden="true"></i>
+</i></a>
+
+
+			</div>
+		</div>
+	</header>
+	<!-- END HEADER /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- ABOUT SECTION /////////////////////////////////////////////////////////////////////////// -->
+	<section id="about" class="module">
+
+
+          <div class="anotherclass">
+
+
+                    
+                    <div class="post-header">
+    <div id="post-meta" class="row">
+        <div class="col-lg-6">October 8, 2016</div>
+        
+    </div>
+    <h2>Python - Booleans</h2>
+</div>
+<div>
+    
+    <p>A boolean is either True or False. In python 0 evaluates to False. While every other number is True. Boolean is also a data type which is used to do logical conditions. Such as is 2 greater than 5? Thus returns the boolean False.  <br/><br/> <img src="https://defunsm.github.io/img/booleans.png" alt="booleans" /> <br/><br/> Note that the double equal sign is not the same as a single equal sign. This is a common mistake rather when using the == it tests for equality if or not the two things being compared are equal. If they are it returns true otherwise false. <br/><br/></p><p>Open up a python file you can call it pybooleans.py and type out the following.</p><pre><code>def main&#40;&#41;:
+
+    print&#40;&quot;Is 2 less than 5?: &quot;, &#40;2 &lt; 5&#41;&#41;
+    print&#40;&quot;Is 2 greater than 5?:&quot;, &#40;2 &gt; 5&#41;&#41;
+    print&#40;&quot;Is 2 equal than 5?: &quot;, &#40;2 == 5&#41;&#41;
+    print&#40;&quot;Is 3 greater than or equal to 3?: &quot;, &#40;3 &gt;= 3&#41;&#41;
+    print&#40;&quot;Is 5 less than or equal to 1?: &quot;, &#40;5 &gt;= 1&#41;&#41;
+
+    print&#40;&quot;Is True equal to True?: &quot;, &#40;True == True&#41;&#41;
+    print&#40;&quot;Is True equal to False?: &quot;, &#40;True == False&#41;&#41;
+
+    print&#40;&quot;What is the value of True or True?: &quot;, &#40;True or True&#41;&#41;
+    print&#40;&quot;What is the value of True or False?: &quot;, &#40;True or False&#41;&#41;
+    print&#40;&quot;What is the value of False or False?: &quot;, &#40;False or False&#41;&#41;
+
+    print&#40;&quot;What is the value of False and False?: &quot;, &#40;False and False&#41;&#41;
+    print&#40;&quot;What is the value of False and True?: &quot;, &#40;False and True&#41;&#41;
+    print&#40;&quot;What is the value of True and True?: &quot;, &#40;True and True&#41;&#41;
+
+    print&#40;&quot;What is the value of not True and True?: &quot;, &#40;not True and True&#41;&#41;
+    print&#40;&quot;What is the value of not True or True?: &quot;, &#40;not True or True&#41;&#41;
+    print&#40;&quot;What is the value of not True or not True?: &quot;, &#40;not True or not True&#41;&#41;
+
+    print&#40;&quot;What is the value of True and 0?: &quot;, &#40;True and 0&#41;&#41;
+    print&#40;&quot;What is the value of 1 and 0?: &quot;, &#40;1 and 0&#41;&#41;
+    print&#40;&quot;What is the value of 1 or 0?: &quot;, &#40;1 or 0&#41;&#41;
+
+main&#40;&#41;
+</code></pre><br/><br/><p>Result:<pre><code>Is 2 less than 5?:  True
+Is 2 greater than 5?: False
+Is 2 equal than 5?:  False
+Is 3 greater than or equal to 3?:  True
+Is 5 less than or equal to 1?:  True
+Is True equal to True?:  True
+Is True equal to False?:  False
+What is the value of True or True?:  True
+What is the value of True or False?:  True
+What is the value of False or False?:  False
+What is the value of False and False?:  False
+What is the value of False and True?:  False
+What is the value of True and True?:  True
+What is the value of not True and True?:  False
+What is the value of not True or True?:  True
+What is the value of not True or not True?:  False
+What is the value of True or 0?:  0
+What is the value of 1 and 0?:  0
+What is the value of 1 or 0?:  1
+ </code></pre></p><p>Explanation below:</p><p>Line 1:<pre><code>def main&#40;&#41;
+ </code></pre> Always start with this creating our main function. <br/><br/> Line 3-7:<pre><code>    print&#40;&quot;Is 2 less than 5?: &quot;, &#40;2 &lt; 5&#41;&#41;
+    print&#40;&quot;Is 2 greater than 5?:&quot;, &#40;2 &gt; 5&#41;&#41;
+    print&#40;&quot;Is 2 equal than 5?: &quot;, &#40;2 == 5&#41;&#41;
+    print&#40;&quot;Is 3 greater than or equal to 3?: &quot;, &#40;3 &gt;= 3&#41;&#41;
+    print&#40;&quot;Is 5 less than or equal to 1?: &quot;, &#40;5 &gt;= 1&#41;&#41;
+ </code></pre> Using the the operators to test for true or false. In line 5 it tests if 2 and 5 are equal since they are not it returns false. If you did 5 == 5 than it would've returned true.  <br/><br/> Line 9-10:<pre><code>    print&#40;&quot;Is True equal to True?: &quot;, &#40;True == True&#41;&#41;
+    print&#40;&quot;Is True equal to False?: &quot;, &#40;True == False&#41;&#41;
+ </code></pre> You can also test if booleans are equal to each other in the following way using == to do a comparison test between the two booleans. <br/><br/> Line 12-14:<br /><pre><code>    print&#40;&quot;What is the value of True or True?: &quot;, &#40;True or True&#41;&#41;
+    print&#40;&quot;What is the value of True or False?: &quot;, &#40;True or False&#41;&#41;
+    print&#40;&quot;What is the value of False or False?: &quot;, &#40;False or False&#41;&#41;
+ </code></pre> Using "or" you are testing if one of the booleans is true. If at least one of the booleans is true than it'll return true but if both are false than it'll return false. Also if both are true than you will get true as well. <br/><br/> Line 16-18:<pre><code>    print&#40;&quot;What is the value of False and False?: &quot;, &#40;False and False&#41;&#41;
+    print&#40;&quot;What is the value of False and True?: &quot;, &#40;False and True&#41;&#41;
+    print&#40;&quot;What is the value of True and True?: &quot;, &#40;True and True&#41;&#41;
+ </code></pre> Using "and" you are testing if both of the booleans are true. If both are true than you will get true however if either one is false you'll get false. As well as both being false you will get false. <br/><br/> Line 20-22:<pre><code>    print&#40;&quot;What is the value of not True and True?: &quot;, &#40;not True and True&#41;&#41;
+    print&#40;&quot;What is the value of not True or True?: &quot;, &#40;not True or True&#41;&#41;
+    print&#40;&quot;What is the value of not True or not True?: &quot;, &#40;not True or not True&#41;&#41;
+ </code></pre> Using not you are reversing the boolean. So not True is False and vise versa not False is True. <br/><br/> Line 24-26:<pre><code>   print&#40;&quot;What is the value of True or 0?: &quot;, &#40;True and 0&#41;&#41;
+    print&#40;&quot;What is the value of 1 and 0?: &quot;, &#40;1 and 0&#41;&#41;
+    print&#40;&quot;What is the value of 1 or 0?: &quot;, &#40;1 or 0&#41;&#41;
+ </code></pre> You'll notice in this section we are using 0's and 1's. 1 and any other number will evaluate as True. The only expection is 0 which evaluates to False. So line 24 returns 0 because 0 is evaluated to False and hence returns the 0. But in line 26 you see the 1 being returned because or is being used and so if one of them is evaluated to true and it'll be true and thus returning the 1. <br/><br/> Line 28:<pre><code>main&#40;&#41;
+ </code></pre> Finally we call the function main. Nothing new here. <br/><br/></p>
+</div>
+
+<div id="post-tags">
+    <b>Tags: </b>
+    
+    <a href="/tags-output/Python/">Python</a>
+    
+    <a href="/tags-output/Code/">Code</a>
+    
+    <a href="/tags-output/Guide/">Guide</a>
+    
+</div>
+
+
+                          <div id="prev-next">
+                            
+                            <a href="/posts-output/pythonifstatements/">&laquo; Python - If-else-statements</a>
+                            
+                            
+                            <a class="right" href="/posts-output/pythonvariables/">Python - Variables &raquo;</a>
+                            
+                          </div>
+
+                          
+                          <div id="disqus_thread"></div>
+                          <script type="text/javascript">
+                            (function() {
+                            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                            dsq.src = '//defunsm-github-io.disqus.com/embed.js';
+                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                            })();
+                          </script>
+                          
+
+
+
+                        
+          </div>
+
+
+
+	</section>
+
+        <!-- END ABOUT SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- PORTFOLIO SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- END CONTACT SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- FOOTER /////////////////////////////////////////////////////////////////////////// -->
+	<footer>
+		<div class="container_footer">
+			<div class="left">
+				<p>© 2016 <span>Salman Hossain</span></p>
+			</div>
+			<div class="right">
+				<a href="#postwelcome">Top <i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+			</div>
+		</div>
+	</footer>
+	<!-- END FOOTER /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- Scripts -->
+	<script src="https://defunsm.github.io/js/parallax.js"></script>
+	<script src="https://defunsm.github.io/js/menu.js"></script>
+	<script src="https://defunsm.github.io/js/featherlight.js" type="text/javascript" charset="utf-8"></script>
+	<script src="https://defunsm.github.io/js/scroll.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+        <script src="/js/highlight.pack.js" type="text/javascript"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>

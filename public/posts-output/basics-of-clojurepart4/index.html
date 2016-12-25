@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+	<title>Basics of Clojure - Atoms (Part 4)</title>
+	<!-- Styles -->
+	<link rel="stylesheet" href="https://defunsm.github.io/css/style.css" />
+	<link rel="stylesheet" href="https://defunsm.github.io/css/font-awesome.min.css" />
+	<link type="text/css" rel="stylesheet" href="https://defunsm.github.io/featherlight.css" />
+        <link rel="stylesheet" href="https://defunsm.github.io/css/screen.css" />
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css">
+
+	<style type="text/css">
+		@media all {
+			.lightbox { display: none; }
+		}
+	</style>
+	<!-- jQuery -->
+	<script src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js'></script>
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="images/favicon.png">
+</head>
+<body class="fade-in cmon body">
+
+
+	<!-- HEADER /////////////////////////////////////////////////////////////////////////// -->
+	<header id="postwelcome" class="parent module parallax parallax-1">
+		<div class="burger" id="toggle">
+			<span class="top"></span>
+			<span class="middle"></span>
+			<span class="bottom"></span>
+
+		</div>
+
+		<div class="navigation" id="navigation">
+			<nav class="overlay-menu">
+			  <ul>
+                                          <li>
+                              <a href="https://defunsm.github.io/#Welcome" class="menu">Home <i class="fa fa-home" aria-hidden="true"></i>
+</a>
+			      <span class="simple_line"></span>
+                              </li>
+					<li >
+						<a href="https://defunsm.github.io/#about" class="menu">About <i class="fa fa-heart" aria-hidden="true"></i></a>
+						<span class="simple_line"></span>
+					</li>
+					<li>
+						<a href="https://defunsm.github.io/#portfolio" class="menu">Github <i class="fa fa-github" aria-hidden="true"></i></a>
+						<span class="simple_line"></span>
+					</li>
+					<li>
+						<a href="https://defunsm.github.io/archives" class="menu">Archives <i class="fa fa-book" aria-hidden="true"></i></a>
+					</li>
+
+			  </ul>
+			</nav>
+		</div>
+		<div class="scroll_down"></div>
+		<div class="fade child">
+			<div class="container_small">
+				<!-- Header Titles -->
+				<h1 class="header_title">Basics of Clojure - Atoms (Part 4)</h1>
+
+
+                                <a href="/posts-output/basics-of-clojure5/" class="button"><i class="fa fa-arrow-left" aria-hidden="true"></i> Basics of Clojure - Watching an Atom (Part 5)</a>
+
+<br/>
+                                
+                                <a href="/posts-output/basics-of-clojurepart3/" class="button">Basics of Clojure - Recursion (Part 3) <i class="fa fa-arrow-right" aria-hidden="true"></i>
+</i></a>
+
+
+			</div>
+		</div>
+	</header>
+	<!-- END HEADER /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- ABOUT SECTION /////////////////////////////////////////////////////////////////////////// -->
+	<section id="about" class="module">
+
+
+          <div class="anotherclass">
+
+
+                    
+                    <div class="post-header">
+    <div id="post-meta" class="row">
+        <div class="col-lg-6">September 20, 2016</div>
+        
+    </div>
+    <h2>Basics of Clojure - Atoms (Part 4)</h2>
+</div>
+<div>
+    
+    <p>This is like the fun part where you can now begin to model databases using atoms. Atoms are used a whole lot in clojure and are particularly useful so make sure you know them well. Here I'm just going to provide a brief outline of what atoms can do without explaining what atoms are actually which is a whole another conversation. <br/><br/> Let me introduce to you the atom data structure.</p><pre><code>&#40;type &#40;atom {}&#41;&#41; ;; This is an atom. 
+</code></pre><p>Also the persistant Array Map which is another data structure in clojure. Typically we don't use vectors when using atoms. </p><pre><code>&#40;type {}&#41; ;; Using {} is a persistantArrayMap in other languages this can be thought of as hashes. 
+</code></pre><p>Now that you are familiar with the data structures that will be presented lets use atoms and persistantArrayMaps to create a var called stats that will contain two values which will be health points and gold. We can do this by the following...</p><pre><code>&#40;def stats &#40;atom {:hp 100 :gold 0}&#41;&#41; ;; How to create an atom in clojure. The :hp and :gold are key-words that can be used to look up the values later on.
+
+&#40;println @stats&#41; ;; This shows the value of stats. Notice that you have to add the @ to show the value of stats. This is called dereferencing an atom.
+
+&#40;println &#40;:hp @stats&#41;&#41; ;; This will show you the value for hp which is 100. key-words are useful to look up specific values.
+</code></pre><p>Now that you can somewhat view and make atoms how would you go about updating stats with a new value? We do this with swap!</p><pre><code>&#40;swap! stats assoc :hp 13&#41; ;; Now you have changed the hp value in stats
+
+&#40;println @stats&#41; ;; You can check that the value of stats changed to 13
+</code></pre><p>Now what if you want to increase or decrease one of the values without changing to a specific number?</p><pre><code>&#40;defn gold-inc &#91;&#93;
+  &#40;swap! stats update-in &#91;:gold&#93; + 1&#41;&#41; ;; using update-in will increase the gold value by 1 every time it is called.
+
+&#40;println @stats&#41; ;; You can now see the the gold as increased by the number of times the previous swap! was called.  
+</code></pre><p>You can also write the same gold-inc function using just a function in swap.</p><pre><code>&#40;defn gold-inc &#91;&#93;
+  &#40;swap! stats update-in &#91;:gold&#93; inc&#41;&#41; ;; We replaced the + 1 with an existing clojure library function inc which increases the argument by 1.
+</code></pre><p>What if we want a general function that will allow us to increase or decrease a specific value of stats we want. We can write a function called change-by.</p><pre><code>&#40;defn change-by &#91;key val&#93;
+  &#40;swap! stats update-in &#91;&#40;keyword key&#41;&#93; + val&#41;&#41; ;; something new is the keyword function that converts a string into a keyword.
+  
+&#40;change-by &quot;gold&quot; 4&#41; ;; Increase the gold value by 4.  
+  
+&#40;println @stats&#41; ;; you can now check that your value has changed for gold.  
+
+&#40;change-by &quot;hp&quot; -5&#41; ;; Decreases the hp value by 5.
+</code></pre><p>One last thing to add is if you want to reset the entire atom. </p><pre><code>&#40;reset! stats {:hp 100 :gold 0}&#41; ;; this will set the value of stats to {:hp 100 :gold 0} 
+</code></pre><p>Now you have everything you need to make your own little RPG text games!</p>
+</div>
+
+<div id="post-tags">
+    <b>Tags: </b>
+    
+    <a href="/tags-output/Clojure/">Clojure</a>
+    
+    <a href="/tags-output/Code/">Code</a>
+    
+    <a href="/tags-output/Guide/">Guide</a>
+    
+</div>
+
+
+                          <div id="prev-next">
+                            
+                            <a href="/posts-output/basics-of-clojure5/">&laquo; Basics of Clojure - Watching an Atom (Part 5)</a>
+                            
+                            
+                            <a class="right" href="/posts-output/basics-of-clojurepart3/">Basics of Clojure - Recursion (Part 3) &raquo;</a>
+                            
+                          </div>
+
+                          
+                          <div id="disqus_thread"></div>
+                          <script type="text/javascript">
+                            (function() {
+                            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                            dsq.src = '//defunsm-github-io.disqus.com/embed.js';
+                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                            })();
+                          </script>
+                          
+
+
+
+                        
+          </div>
+
+
+
+	</section>
+
+        <!-- END ABOUT SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- PORTFOLIO SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- END CONTACT SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- FOOTER /////////////////////////////////////////////////////////////////////////// -->
+	<footer>
+		<div class="container_footer">
+			<div class="left">
+				<p>© 2016 <span>Salman Hossain</span></p>
+			</div>
+			<div class="right">
+				<a href="#postwelcome">Top <i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+			</div>
+		</div>
+	</footer>
+	<!-- END FOOTER /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- Scripts -->
+	<script src="https://defunsm.github.io/js/parallax.js"></script>
+	<script src="https://defunsm.github.io/js/menu.js"></script>
+	<script src="https://defunsm.github.io/js/featherlight.js" type="text/javascript" charset="utf-8"></script>
+	<script src="https://defunsm.github.io/js/scroll.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+        <script src="/js/highlight.pack.js" type="text/javascript"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>

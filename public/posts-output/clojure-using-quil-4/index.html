@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+	<title>Graphics using Quil in Clojure (Part 4)</title>
+	<!-- Styles -->
+	<link rel="stylesheet" href="https://defunsm.github.io/css/style.css" />
+	<link rel="stylesheet" href="https://defunsm.github.io/css/font-awesome.min.css" />
+	<link type="text/css" rel="stylesheet" href="https://defunsm.github.io/featherlight.css" />
+        <link rel="stylesheet" href="https://defunsm.github.io/css/screen.css" />
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css">
+
+	<style type="text/css">
+		@media all {
+			.lightbox { display: none; }
+		}
+	</style>
+	<!-- jQuery -->
+	<script src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js'></script>
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="images/favicon.png">
+</head>
+<body class="fade-in cmon body">
+
+
+	<!-- HEADER /////////////////////////////////////////////////////////////////////////// -->
+	<header id="postwelcome" class="parent module parallax parallax-1">
+		<div class="burger" id="toggle">
+			<span class="top"></span>
+			<span class="middle"></span>
+			<span class="bottom"></span>
+
+		</div>
+
+		<div class="navigation" id="navigation">
+			<nav class="overlay-menu">
+			  <ul>
+                                          <li>
+                              <a href="https://defunsm.github.io/#Welcome" class="menu">Home <i class="fa fa-home" aria-hidden="true"></i>
+</a>
+			      <span class="simple_line"></span>
+                              </li>
+					<li >
+						<a href="https://defunsm.github.io/#about" class="menu">About <i class="fa fa-heart" aria-hidden="true"></i></a>
+						<span class="simple_line"></span>
+					</li>
+					<li>
+						<a href="https://defunsm.github.io/#portfolio" class="menu">Github <i class="fa fa-github" aria-hidden="true"></i></a>
+						<span class="simple_line"></span>
+					</li>
+					<li>
+						<a href="https://defunsm.github.io/archives" class="menu">Archives <i class="fa fa-book" aria-hidden="true"></i></a>
+					</li>
+
+			  </ul>
+			</nav>
+		</div>
+		<div class="scroll_down"></div>
+		<div class="fade child">
+			<div class="container_small">
+				<!-- Header Titles -->
+				<h1 class="header_title">Graphics using Quil in Clojure (Part 4)</h1>
+
+
+                                <a href="/posts-output/Heroku/" class="button"><i class="fa fa-arrow-left" aria-hidden="true"></i> Clojure - How to start a web app using Heroku</a>
+
+<br/>
+                                
+                                <a href="/posts-output/clojure-ringserver/" class="button">Clojure - Ring <i class="fa fa-arrow-right" aria-hidden="true"></i>
+</i></a>
+
+
+			</div>
+		</div>
+	</header>
+	<!-- END HEADER /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- ABOUT SECTION /////////////////////////////////////////////////////////////////////////// -->
+	<section id="about" class="module">
+
+
+          <div class="anotherclass">
+
+
+                    
+                    <div class="post-header">
+    <div id="post-meta" class="row">
+        <div class="col-lg-6">November 5, 2016</div>
+        
+    </div>
+    <h2>Graphics using Quil in Clojure (Part 4)</h2>
+</div>
+<div>
+    
+    <p>Once you have created something using quil the natural thing is to display it right? Doing that is easy if you follow the steps. There are some pitfalls you have to becareful of getting into. The best place to see how to include quil into the browser is the <a href='https://github.com/quil/quil/wiki/ClojureScript'>quil wiki</a>. <br/><br/> The guide shows you how to start a browser with the quil applet. I'll go through how to incorporate the quil applet in a reagent template which is pretty much the same thing expect it can be a bit confusing on where exactly to place the defsketch macro. <br/><br/> To start a reagent template go ahead and type the following...<pre><code>$ lein new reagent quilreagent
+ </code></pre> The first thing to do is to add quil as a dependency in the project.clj so lets do that.<pre><code>  :dependencies &#91;&#91;org.clojure/clojure &quot;1.8.0&quot;&#93;
+                 &#91;ring-server &quot;0.4.0&quot;&#93;
+                 &#91;reagent &quot;0.6.0&quot;&#93;
+                 &#91;reagent-forms &quot;0.5.25&quot;&#93;
+                 &#91;reagent-utils &quot;0.2.0&quot;&#93;
+                 &#91;ring &quot;1.5.0&quot;&#93;
+                 &#91;ring/ring-defaults &quot;0.2.1&quot;&#93;
+                 &#91;compojure &quot;1.5.1&quot;&#93;
+                 &#91;hiccup &quot;1.0.5&quot;&#93;
+                 &#91;yogthos/config &quot;0.8&quot;&#93;
+                 &#91;org.clojure/clojurescript &quot;1.9.229&quot;
+                  :scope &quot;provided&quot;&#93;
+                 &#91;secretary &quot;1.2.3&quot;&#93;
+                 &#91;venantius/accountant &quot;0.1.7&quot;
+                  :exclusions &#91;org.clojure/tools.reader&#93;&#93;
+                 &#91;quil &quot;2.4.0&quot;&#93;&#93; ;; add quil as a dependency
+ </code></pre> That is what your :dependencies should look like now just add quil as a dependency at the bottom. Now that is done. Go to the <newcode>core.cljs</newcode> file in your src directory. Open it up and lets add quil in the required place as q and the macros needed as well. So your name space should look like this.<pre><code>&#40;ns quilreagent.core
+    &#40;:require &#91;reagent.core :as reagent :refer &#91;atom&#93;&#93;
+              &#91;reagent.session :as session&#93;
+              &#91;secretary.core :as secretary :include-macros true&#93;
+              &#91;accountant.core :as accountant&#93;
+              &#91;quil.core :as q :include-macros true&#93; ;; add this
+              &#91;quil.middleware :as m&#93;&#41;&#41; ;; as well as this
+ </code></pre></p><p>As well as add all of the code needed for quil for now we'll use the basic quil example. So add all of this right after the name space.<pre><code>&#40;defn setup &#91;&#93;
+  ; Set frame rate to 30 frames per second.
+  &#40;q/frame-rate 30&#41;
+  ; Set color mode to HSB &#40;HSV&#41; instead of default RGB.
+  &#40;q/color-mode :hsb&#41;
+  ; setup function returns initial state. It contains
+  ; circle color and position.
+  {:color 0
+   :angle 0}&#41;
+
+&#40;defn update-state &#91;state&#93;
+  ; Update sketch state by changing circle color and position.
+  {:color &#40;mod &#40;+ &#40;:color state&#41; 0.7&#41; 255&#41;
+   :angle &#40;+ &#40;:angle state&#41; 0.1&#41;}&#41;
+
+&#40;defn draw-state &#91;state&#93;
+  ; Clear the sketch by filling it with light-grey color.
+  &#40;q/background 240&#41;
+  ; Set circle color.
+  &#40;q/fill &#40;:color state&#41; 255 255&#41;
+  ; Calculate x and y coordinates of the circle.
+  &#40;let &#91;angle &#40;:angle state&#41;
+        x &#40;&#42; 150 &#40;q/cos angle&#41;&#41;
+        y &#40;&#42; 150 &#40;q/sin angle&#41;&#41;&#93;
+    ; Move origin point to the center of the sketch.
+    &#40;q/with-translation &#91;&#40;/ &#40;q/width&#41; 2&#41;
+                         &#40;/ &#40;q/height&#41; 2&#41;&#93;
+      ; Draw the circle.
+      &#40;q/ellipse x y 100 100&#41;&#41;&#41;&#41;
+
+&#40;q/defsketch example-quil
+  :host &quot;example-quil&quot;
+  :size &#91;500 500&#93;
+  ; setup function called only once, during sketch initialization.
+  :setup setup
+  ; update-state is called on each iteration before draw-state.
+  :update update-state
+  :draw draw-state
+  ; This sketch uses functional-mode middleware.
+  ; Check quil wiki for more info about middlewares and particularly
+  ; fun-mode.
+  :middleware &#91;m/fun-mode&#93;&#41;
+ </code></pre> Note that the <newcode>:host</newcode> has to be specified in order for the canvas to know what applet to sketch. So now that you have the quil code in the core.cljs now you have to add it to the home-page which you can do by editing <newcode>home-page</newcode> to the following.<pre><code>&#40;defn home-page &#91;&#93;
+  &#91;:div &#91;:h2 &quot;Welcome to quilreagent&quot;&#93;
+   &#91;:div &#91;:a {:href &quot;/about&quot;} &quot;go to about page&quot;&#93;&#93;
+   &#91;:canvas#example-quil&#93;&#93;&#41; ;; add this part.
+ </code></pre> Now run figwheel and that should be it. <br/><br/> Note that the # is used to represent the host id which is example-quil in this case. If it were something else than you would have to replace it with that something else instead of example-quil. You may need to reload the page manually before the applet shows on the browser. Once you do that it'll show a circle spinning around which is exactly what we wanted. Thats pretty much it and if you don't like to have all the quil code in the core.cljs you can have it in another namespace so it is more condensed and neat. In case you want to see the full code the below is the full code of what the core.cljs should look like.<pre><code>&#40;ns quilreagent.core
+    &#40;:require &#91;reagent.core :as reagent :refer &#91;atom&#93;&#93;
+              &#91;reagent.session :as session&#93;
+              &#91;secretary.core :as secretary :include-macros true&#93;
+              &#91;accountant.core :as accountant&#93;
+              &#91;quil.core :as q :include-macros true&#93; ;; add this
+              &#91;quil.middleware :as m&#93;&#41;&#41; ;; as well as this
+
+
+&#40;defn setup &#91;&#93;
+  ; Set frame rate to 30 frames per second.
+  &#40;q/frame-rate 30&#41;
+  ; Set color mode to HSB &#40;HSV&#41; instead of default RGB.
+  &#40;q/color-mode :hsb&#41;
+  ; setup function returns initial state. It contains
+  ; circle color and position.
+  {:color 0
+   :angle 0}&#41;
+
+&#40;defn update-state &#91;state&#93;
+  ; Update sketch state by changing circle color and position.
+  {:color &#40;mod &#40;+ &#40;:color state&#41; 0.7&#41; 255&#41;
+   :angle &#40;+ &#40;:angle state&#41; 0.1&#41;}&#41;
+
+&#40;defn draw-state &#91;state&#93;
+  ; Clear the sketch by filling it with light-grey color.
+  &#40;q/background 240&#41;
+  ; Set circle color.
+  &#40;q/fill &#40;:color state&#41; 255 255&#41;
+  ; Calculate x and y coordinates of the circle.
+  &#40;let &#91;angle &#40;:angle state&#41;
+        x &#40;&#42; 150 &#40;q/cos angle&#41;&#41;
+        y &#40;&#42; 150 &#40;q/sin angle&#41;&#41;&#93;
+    ; Move origin point to the center of the sketch.
+    &#40;q/with-translation &#91;&#40;/ &#40;q/width&#41; 2&#41;
+                         &#40;/ &#40;q/height&#41; 2&#41;&#93;
+      ; Draw the circle.
+      &#40;q/ellipse x y 100 100&#41;&#41;&#41;&#41;
+
+&#40;q/defsketch example-quil
+  :host &quot;example-quil&quot;
+  :size &#91;500 500&#93;
+  ; setup function called only once, during sketch initialization.
+  :setup setup
+  ; update-state is called on each iteration before draw-state.
+  :update update-state
+  :draw draw-state
+  ; This sketch uses functional-mode middleware.
+  ; Check quil wiki for more info about middlewares and particularly
+  ; fun-mode.
+  :middleware &#91;m/fun-mode&#93;&#41;
+
+;; -------------------------
+;; Views
+
+
+
+&#40;defn home-page &#91;&#93;
+  &#91;:div &#91;:h2 &quot;Welcome to quilreagent&quot;&#93;
+   &#91;:div &#91;:a {:href &quot;/about&quot;} &quot;go to about page&quot;&#93;&#93;
+   &#91;:canvas#example-quil&#93;&#93;&#41; ;; add the canvas in the home-page
+
+&#40;defn about-page &#91;&#93;
+  &#91;:div &#91;:h2 &quot;About quilreagent&quot;&#93;
+   &#91;:div &#91;:a {:href &quot;/&quot;} &quot;go to the home page&quot;&#93;&#93;&#93;&#41;
+
+&#40;defn current-page &#91;&#93;
+  &#91;:div &#91;&#40;session/get :current-page&#41;&#93;&#93;&#41;
+
+
+
+;; -------------------------
+;; Routes
+
+&#40;secretary/defroute &quot;/&quot; &#91;&#93;
+  &#40;session/put! :current-page #'home-page&#41;&#41;
+
+&#40;secretary/defroute &quot;/about&quot; &#91;&#93;
+  &#40;session/put! :current-page #'about-page&#41;&#41;
+
+;; -------------------------
+;; Initialize app
+
+&#40;defn mount-root &#91;&#93;
+  &#40;reagent/render &#91;current-page&#93; &#40;.getElementById js/document &quot;app&quot;&#41;&#41;&#41;
+
+&#40;defn init! &#91;&#93;
+  &#40;accountant/configure-navigation!
+    {:nav-handler
+     &#40;fn &#91;path&#93;
+       &#40;secretary/dispatch! path&#41;&#41;
+     :path-exists?
+     &#40;fn &#91;path&#93;
+       &#40;secretary/locate-route path&#41;&#41;}&#41;
+  &#40;accountant/dispatch-current!&#41;
+  &#40;mount-root&#41;&#41;
+ </code></pre></p>
+</div>
+
+<div id="post-tags">
+    <b>Tags: </b>
+    
+    <a href="/tags-output/Graphics/">Graphics</a>
+    
+    <a href="/tags-output/Clojure/">Clojure</a>
+    
+    <a href="/tags-output/Code/">Code</a>
+    
+</div>
+
+
+                          <div id="prev-next">
+                            
+                            <a href="/posts-output/Heroku/">&laquo; Clojure - How to start a web app using Heroku</a>
+                            
+                            
+                            <a class="right" href="/posts-output/clojure-ringserver/">Clojure - Ring &raquo;</a>
+                            
+                          </div>
+
+                          
+                          <div id="disqus_thread"></div>
+                          <script type="text/javascript">
+                            (function() {
+                            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                            dsq.src = '//defunsm-github-io.disqus.com/embed.js';
+                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                            })();
+                          </script>
+                          
+
+
+
+                        
+          </div>
+
+
+
+	</section>
+
+        <!-- END ABOUT SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- PORTFOLIO SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- END CONTACT SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- FOOTER /////////////////////////////////////////////////////////////////////////// -->
+	<footer>
+		<div class="container_footer">
+			<div class="left">
+				<p>© 2016 <span>Salman Hossain</span></p>
+			</div>
+			<div class="right">
+				<a href="#postwelcome">Top <i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+			</div>
+		</div>
+	</footer>
+	<!-- END FOOTER /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- Scripts -->
+	<script src="https://defunsm.github.io/js/parallax.js"></script>
+	<script src="https://defunsm.github.io/js/menu.js"></script>
+	<script src="https://defunsm.github.io/js/featherlight.js" type="text/javascript" charset="utf-8"></script>
+	<script src="https://defunsm.github.io/js/scroll.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+        <script src="/js/highlight.pack.js" type="text/javascript"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>

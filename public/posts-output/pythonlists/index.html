@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+	<title>Python - Lists</title>
+	<!-- Styles -->
+	<link rel="stylesheet" href="https://defunsm.github.io/css/style.css" />
+	<link rel="stylesheet" href="https://defunsm.github.io/css/font-awesome.min.css" />
+	<link type="text/css" rel="stylesheet" href="https://defunsm.github.io/featherlight.css" />
+        <link rel="stylesheet" href="https://defunsm.github.io/css/screen.css" />
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css">
+
+	<style type="text/css">
+		@media all {
+			.lightbox { display: none; }
+		}
+	</style>
+	<!-- jQuery -->
+	<script src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js'></script>
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="images/favicon.png">
+</head>
+<body class="fade-in cmon body">
+
+
+	<!-- HEADER /////////////////////////////////////////////////////////////////////////// -->
+	<header id="postwelcome" class="parent module parallax parallax-1">
+		<div class="burger" id="toggle">
+			<span class="top"></span>
+			<span class="middle"></span>
+			<span class="bottom"></span>
+
+		</div>
+
+		<div class="navigation" id="navigation">
+			<nav class="overlay-menu">
+			  <ul>
+                                          <li>
+                              <a href="https://defunsm.github.io/#Welcome" class="menu">Home <i class="fa fa-home" aria-hidden="true"></i>
+</a>
+			      <span class="simple_line"></span>
+                              </li>
+					<li >
+						<a href="https://defunsm.github.io/#about" class="menu">About <i class="fa fa-heart" aria-hidden="true"></i></a>
+						<span class="simple_line"></span>
+					</li>
+					<li>
+						<a href="https://defunsm.github.io/#portfolio" class="menu">Github <i class="fa fa-github" aria-hidden="true"></i></a>
+						<span class="simple_line"></span>
+					</li>
+					<li>
+						<a href="https://defunsm.github.io/archives" class="menu">Archives <i class="fa fa-book" aria-hidden="true"></i></a>
+					</li>
+
+			  </ul>
+			</nav>
+		</div>
+		<div class="scroll_down"></div>
+		<div class="fade child">
+			<div class="container_small">
+				<!-- Header Titles -->
+				<h1 class="header_title">Python - Lists</h1>
+
+
+                                <a href="/posts-output/clojure-probabilities/" class="button"><i class="fa fa-arrow-left" aria-hidden="true"></i> Clojure - Probabilities</a>
+
+<br/>
+                                
+                                <a href="/posts-output/Zshvsbash/" class="button">Zsh vs Bash (Shell Comparsion) <i class="fa fa-arrow-right" aria-hidden="true"></i>
+</i></a>
+
+
+			</div>
+		</div>
+	</header>
+	<!-- END HEADER /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- ABOUT SECTION /////////////////////////////////////////////////////////////////////////// -->
+	<section id="about" class="module">
+
+
+          <div class="anotherclass">
+
+
+                    
+                    <div class="post-header">
+    <div id="post-meta" class="row">
+        <div class="col-lg-6">October 21, 2016</div>
+        
+    </div>
+    <h2>Python - Lists</h2>
+</div>
+<div>
+    
+    <p>Python has a data structure called lists. They are extremely useful for manipulating data and the data type comes with methods that make it easy for you to do complex operations. The syntax used to represent lists in python are brackets. The example below would represent a list containing 3 elements of 1, 2 and 3.</p><pre><code>&#91;1, 2, 3&#93;
+</code></pre><p>So lets dive into the actual code where we make a very useful program which will tell us the probability of obtaining a sum given two dice. So lets say we want to know the probability of getting a sum of 8 with 2 dice well we can do that in python using lists. <br/><br/> <img src="https://defunsm.github.io/img/newlist1.png" alt="list" /> <br/><br/> Some of the methods we are going to use include sorted, append, reverse, values and Counter which is being imported from collections. The way to think of lists in Python as one of my computer science friend nicely put it is putting stuff into a container.   </p><pre><code>#!/usr/bin/env python
+import sys, os, math
+from collections import Counter
+
+def display&#95;possibilities&#40;outcomes&#41;:  # This does all the printing.
+
+    possibility = Counter&#40;outcomes&#41;  # Contains the number of possible outcomes for each outcome.
+    total&#95;outcomes = 0               # This will become 36 once all of the outcomes are added.
+    for i in possibility.values&#40;&#41;:   # adding up all of the number of possible outcomes for each outcome.
+        total&#95;outcomes += i
+
+    print&#40;&quot;Total Possibilities:&quot;, total&#95;outcomes, &quot;\n&quot;&#41;       
+    print&#40;&quot;Sum:    Percentage:   Out of&quot;, total&#95;outcomes, &quot;:&quot;, sep=''&#41;  # The sep='' just removes whitespace don't let that confuse you.
+
+    for i in sorted&#40;Counter&#40;outcomes&#41;&#41;:
+        print&#40;i, &quot;      &quot;, round&#40;&#40;&#40;possibility&#91;i&#93;/float&#40;total&#95;outcomes&#41;&#41; &#42; 100&#41;, 3&#41;, &quot;%         &quot;, possibility&#91;i&#93;&#41;
+
+def main&#40;&#41;:
+
+    highest&#95;roll = 7         # The highest value that the dice roll can have. It is 7 because range&#40;1,7&#41; will
+    lowest&#95;roll = 1          # The lowest value the dice can roll.
+    possible&#95;outcomes = &#91;&#93;   # this is an empty list
+    sum&#95;of&#95;outcomes = &#91;&#93;
+
+    d = &#91;&#91;x&#93; for x in range&#40;lowest&#95;roll ,highest&#95;roll&#41;&#93;  # Creates a list of possible values for a dice roll.
+    rd = &#91;&#91;x&#93; for x in reversed&#40;range&#40;lowest&#95;roll, highest&#95;roll&#41;&#41;&#93; # Reverses the list of possible values.
+
+    for x in d:          # A for loop for putting both lists together creating a list of possible values for both dice rolls.
+        for i in rd:
+            possible&#95;outcomes.append&#40;x+i&#41;  
+
+    for result in possible&#95;outcomes:                 # Adds the sum of the dice rolls.
+        sum&#95;of&#95;outcomes.append&#40;result&#91;0&#93;+result&#91;1&#93;&#41;
+
+    print&#40;sum&#95;of&#95;outcomes, &quot;\n&quot;&#41;
+
+    display&#95;possibilities&#40;sum&#95;of&#95;outcomes&#41;   # Calls the function to print everything.
+
+if &#95;&#95;name&#95;&#95;==&quot;&#95;&#95;main&#95;&#95;&quot;:
+    main&#40;&#41;
+</code></pre><p>The result of running the code:</p><pre><code>&#91;7, 6, 5, 4, 3, 2, 8, 7, 6, 5, 4, 3, 9, 8, 7, 6, 5, 4, 10, 9, 8, 7, 6, 5, 11, 10, 9, 8, 7, 6, 12, 11, 10,
+ 9, 8, 7&#93;                                                                                               
+
+Total Possibilities: 36 
+
+Sum:    Percentage:   Out of36:
+2        2.778 %          1
+3        5.556 %          2
+4        8.333 %          3
+5        11.111 %          4
+6        13.889 %          5
+7        16.667 %          6
+8        13.889 %          5
+9        11.111 %          4
+10        8.333 %          3
+11        5.556 %          2
+12        2.778 %          1
+</code></pre>Usually I would go line by line when explaining each part of the code but I think it would be more useful to start from the main function.<pre><code>highest&#95;roll = 7         # The highest value that the dice roll can have. It is 7 because range&#40;1,7&#41; will
+lowest&#95;roll = 1          # The lowest value the dice can roll.
+possible&#95;outcomes = &#91;&#93;   # this is an empty list
+sum&#95;of&#95;outcomes = &#91;&#93;
+</code></pre><p>This first part of the main function is setting up all the variables. The highest and lowest roll will go into the range function which will than generate a list. Range is a rather useful function to generate lists and than do manipulations on the list generated by range. Both <code>possible<b>outcomes</code> and <code>sum</b>of__outcomes</code> are variables holding empty lists waiting to be filled. </p><pre><code>d = &#91;&#91;x&#93; for x in range&#40;lowest&#95;roll ,highest&#95;roll&#41;&#93;  # Creates a list of possible values for a dice roll.
+rd = &#91;&#91;x&#93; for x in reversed&#40;range&#40;lowest&#95;roll, highest&#95;roll&#41;&#41;&#93; # Reverses the list of possible values.
+</code></pre>d and rd are lists. In fact you can print d and rd and you'll see that rd is just the reverse of d which is what reversed does to a list. You may have noticed that there is a for in the bracket which is just saying for every element in the list created by range put it into the list.<pre><code>for x in d:          # A for loop for putting both lists together creating a list of possible values for both dice rolls.
+        for i in rd:
+            possible&#95;outcomes.append&#40;x+i&#41;
+</code></pre>Another for loop within a for loop. So using this for loop it is taking an element from d and an element and adding it with every element in rd and than moving on like this till every element in d is exhausted. This will result in all the possible outcomes.<pre><code>for result in possible&#95;outcomes:                 # Adds the sum of the dice rolls.
+        sum&#95;of&#95;outcomes.append&#40;result&#91;0&#93;+result&#91;1&#93;&#41;
+</code></pre>Finally one last for loop using the list just created and adding the pairs created in the previous for loop to have a sum of every possible combination that can be made. <pre><code>display&#95;possibilities&#40;sum&#95;of&#95;outcomes&#41;   # Calls the function to print everything.
+</code></pre>Calls the display Possibilities function that will do all the printing and manipulating of our lists.<pre><code>possibility = Counter&#40;outcomes&#41;  # Contains the number of possible outcomes for each outcome.
+total&#95;outcomes = 0               # This will become 36 once all of the outcomes are added.
+</code></pre>the function Counter is imported from collections and does exactly what it sounds like it counts the number of times a element appears in a list. The total outcome is 0 for now because in the next line there is a for loop that adds up the total outcomes.<pre><code>for i in possibility.values&#40;&#41;:   # adding up all of the number of possible outcomes for each outcome.
+    total&#95;outcomes += i
+</code></pre>The method .values() works on taking out the values only and then the for loop we add all the values up so we can find the total number of possible outcomes.<pre><code>for i in sorted&#40;Counter&#40;outcomes&#41;&#41;:
+    print&#40;i, &quot;      &quot;, round&#40;&#40;&#40;possibility&#91;i&#93;/float&#40;total&#95;outcomes&#41;&#41; &#42; 100&#41;, 3&#41;, &quot;%         &quot;, possibility&#91;i&#93;&#41;
+</code></pre>Finally this prints all of the information out formated in a nice way. The round function that is being used here allows me to select the amount of significant figures I want after the decimal point. The round function takes two arguments one being the number and the other being the number of significant figures. In this case I wanted 3 significant figures after the decimal point and so I put in 3 as the second argument and the first argument is the possibility divided by the total outcome. Notice that I made the total outcome a float in order to get a float answer.<br/><br/>Thats about it and now you can make lists and make all kinds of dice rolling games and statistics.
+</div>
+
+<div id="post-tags">
+    <b>Tags: </b>
+    
+    <a href="/tags-output/Python/">Python</a>
+    
+    <a href="/tags-output/Code/">Code</a>
+    
+    <a href="/tags-output/Guide/">Guide</a>
+    
+</div>
+
+
+                          <div id="prev-next">
+                            
+                            <a href="/posts-output/clojure-probabilities/">&laquo; Clojure - Probabilities</a>
+                            
+                            
+                            <a class="right" href="/posts-output/Zshvsbash/">Zsh vs Bash (Shell Comparsion) &raquo;</a>
+                            
+                          </div>
+
+                          
+                          <div id="disqus_thread"></div>
+                          <script type="text/javascript">
+                            (function() {
+                            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                            dsq.src = '//defunsm-github-io.disqus.com/embed.js';
+                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                            })();
+                          </script>
+                          
+
+
+
+                        
+          </div>
+
+
+
+	</section>
+
+        <!-- END ABOUT SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- PORTFOLIO SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- END CONTACT SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- FOOTER /////////////////////////////////////////////////////////////////////////// -->
+	<footer>
+		<div class="container_footer">
+			<div class="left">
+				<p>© 2016 <span>Salman Hossain</span></p>
+			</div>
+			<div class="right">
+				<a href="#postwelcome">Top <i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+			</div>
+		</div>
+	</footer>
+	<!-- END FOOTER /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- Scripts -->
+	<script src="https://defunsm.github.io/js/parallax.js"></script>
+	<script src="https://defunsm.github.io/js/menu.js"></script>
+	<script src="https://defunsm.github.io/js/featherlight.js" type="text/javascript" charset="utf-8"></script>
+	<script src="https://defunsm.github.io/js/scroll.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+        <script src="/js/highlight.pack.js" type="text/javascript"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>

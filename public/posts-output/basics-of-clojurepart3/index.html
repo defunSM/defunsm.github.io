@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+	<title>Basics of Clojure - Recursion (Part 3)</title>
+	<!-- Styles -->
+	<link rel="stylesheet" href="https://defunsm.github.io/css/style.css" />
+	<link rel="stylesheet" href="https://defunsm.github.io/css/font-awesome.min.css" />
+	<link type="text/css" rel="stylesheet" href="https://defunsm.github.io/featherlight.css" />
+        <link rel="stylesheet" href="https://defunsm.github.io/css/screen.css" />
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css">
+
+	<style type="text/css">
+		@media all {
+			.lightbox { display: none; }
+		}
+	</style>
+	<!-- jQuery -->
+	<script src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js'></script>
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="images/favicon.png">
+</head>
+<body class="fade-in cmon body">
+
+
+	<!-- HEADER /////////////////////////////////////////////////////////////////////////// -->
+	<header id="postwelcome" class="parent module parallax parallax-1">
+		<div class="burger" id="toggle">
+			<span class="top"></span>
+			<span class="middle"></span>
+			<span class="bottom"></span>
+
+		</div>
+
+		<div class="navigation" id="navigation">
+			<nav class="overlay-menu">
+			  <ul>
+                                          <li>
+                              <a href="https://defunsm.github.io/#Welcome" class="menu">Home <i class="fa fa-home" aria-hidden="true"></i>
+</a>
+			      <span class="simple_line"></span>
+                              </li>
+					<li >
+						<a href="https://defunsm.github.io/#about" class="menu">About <i class="fa fa-heart" aria-hidden="true"></i></a>
+						<span class="simple_line"></span>
+					</li>
+					<li>
+						<a href="https://defunsm.github.io/#portfolio" class="menu">Github <i class="fa fa-github" aria-hidden="true"></i></a>
+						<span class="simple_line"></span>
+					</li>
+					<li>
+						<a href="https://defunsm.github.io/archives" class="menu">Archives <i class="fa fa-book" aria-hidden="true"></i></a>
+					</li>
+
+			  </ul>
+			</nav>
+		</div>
+		<div class="scroll_down"></div>
+		<div class="fade child">
+			<div class="container_small">
+				<!-- Header Titles -->
+				<h1 class="header_title">Basics of Clojure - Recursion (Part 3)</h1>
+
+
+                                <a href="/posts-output/basics-of-clojurepart4/" class="button"><i class="fa fa-arrow-left" aria-hidden="true"></i> Basics of Clojure - Atoms (Part 4)</a>
+
+<br/>
+                                
+                                <a href="/posts-output/basics-of-clojurepart2/" class="button">Basics of Clojure - Mapping (Part 2) <i class="fa fa-arrow-right" aria-hidden="true"></i>
+</i></a>
+
+
+			</div>
+		</div>
+	</header>
+	<!-- END HEADER /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- ABOUT SECTION /////////////////////////////////////////////////////////////////////////// -->
+	<section id="about" class="module">
+
+
+          <div class="anotherclass">
+
+
+                    
+                    <div class="post-header">
+    <div id="post-meta" class="row">
+        <div class="col-lg-6">September 18, 2016</div>
+        
+    </div>
+    <h2>Basics of Clojure - Recursion (Part 3)</h2>
+</div>
+<div>
+    
+      <p>If you're learning clojure chances are this isn't your first language. So you probably have some familiarity with what recursion is. <br/><br/> We will start off with making a simple factorial function to get us started with seeing recursion.</p><pre><code>&#40;defn factorial &#91;n&#93;  ;; our factorial function accepting one argument
+  &#40;if &#40;= n 1&#41;        ;; checks if n is equal to 1 and if so returns 1
+    1
+    &#40;&#42; n &#40;factorial &#40;dec n&#41;&#41;&#41;&#41;&#41;  ;; calls the factorial again after decreasing n by 1.
+</code></pre><p>Alright now lets see if it works by doing a test.</p><pre><code>&#40;factorial 3&#41; ;; which we know should be 3x2x1 which is 6. So it works.
+
+;; 6
+</code></pre><p>So lets test the power of our function by doing something larger like 40.</p><pre><code>&#40;factorial 40&#41; ;; Oh no a StackOverError. What happened?
+</code></pre><p>So our function isn't as great as we may think. It won't accept larger numbers.</p><pre><code>&#40;defn factorial &#91;n&#93; ;; Our factorial function accepts one argument.
+  &#40;loop &#91;n n        ;; This is the looping part which sets our argument to n
+         sum 1&#93;     ;; Our sum is just one for now.
+    &#40;if &#40;= n 0&#41;     ;; If n becomes 0 than return the sum basically ends the loop
+      sum
+      &#40;recur &#40;dec n&#41; &#40;&#42; sum n&#41;&#41;&#41;&#41;&#41;  ;; This will continue the loop til the if state is met.
+</code></pre><p>Using recur will ensure that you won't run into a StackOverError such as the function before was not taking advantage of recur and thus was not head-tail optimized clojure will do tail-call optimization if you use the recur function. Also if use this function now it'll give you a StackOverError but because you have to set the JVM using -Xss and -XThreadStackSize to set the stack size otherwise you'll still get this error for numbers greater than 20. </p><p>There is an even shorter two line way of doing it using reduce as I showed you previously.</p><pre><code>&#40;defn factorial &#91;n&#93;
+  &#40;reduce &#42; &#40;range 1 &#40;inc n&#41;&#41;&#41;&#41; ;; Takes advantage of range making a list of numbers.
+</code></pre><p>The second one takes advantage of range since it creates a list of numbers and than reduce multiplies all the numbers that range creates.</p>
+</div>
+
+<div id="post-tags">
+    <b>Tags: </b>
+    
+    <a href="/tags-output/Clojure/">Clojure</a>
+    
+    <a href="/tags-output/Code/">Code</a>
+    
+    <a href="/tags-output/Guide/">Guide</a>
+    
+</div>
+
+
+                          <div id="prev-next">
+                            
+                            <a href="/posts-output/basics-of-clojurepart4/">&laquo; Basics of Clojure - Atoms (Part 4)</a>
+                            
+                            
+                            <a class="right" href="/posts-output/basics-of-clojurepart2/">Basics of Clojure - Mapping (Part 2) &raquo;</a>
+                            
+                          </div>
+
+                          
+                          <div id="disqus_thread"></div>
+                          <script type="text/javascript">
+                            (function() {
+                            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                            dsq.src = '//defunsm-github-io.disqus.com/embed.js';
+                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                            })();
+                          </script>
+                          
+
+
+
+                        
+          </div>
+
+
+
+	</section>
+
+        <!-- END ABOUT SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- PORTFOLIO SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- END CONTACT SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- FOOTER /////////////////////////////////////////////////////////////////////////// -->
+	<footer>
+		<div class="container_footer">
+			<div class="left">
+				<p>© 2016 <span>Salman Hossain</span></p>
+			</div>
+			<div class="right">
+				<a href="#postwelcome">Top <i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+			</div>
+		</div>
+	</footer>
+	<!-- END FOOTER /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- Scripts -->
+	<script src="https://defunsm.github.io/js/parallax.js"></script>
+	<script src="https://defunsm.github.io/js/menu.js"></script>
+	<script src="https://defunsm.github.io/js/featherlight.js" type="text/javascript" charset="utf-8"></script>
+	<script src="https://defunsm.github.io/js/scroll.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+        <script src="/js/highlight.pack.js" type="text/javascript"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>

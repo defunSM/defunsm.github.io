@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+	<title>Python - Functions</title>
+	<!-- Styles -->
+	<link rel="stylesheet" href="https://defunsm.github.io/css/style.css" />
+	<link rel="stylesheet" href="https://defunsm.github.io/css/font-awesome.min.css" />
+	<link type="text/css" rel="stylesheet" href="https://defunsm.github.io/featherlight.css" />
+        <link rel="stylesheet" href="https://defunsm.github.io/css/screen.css" />
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css">
+
+	<style type="text/css">
+		@media all {
+			.lightbox { display: none; }
+		}
+	</style>
+	<!-- jQuery -->
+	<script src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js'></script>
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="images/favicon.png">
+</head>
+<body class="fade-in cmon body">
+
+
+	<!-- HEADER /////////////////////////////////////////////////////////////////////////// -->
+	<header id="postwelcome" class="parent module parallax parallax-1">
+		<div class="burger" id="toggle">
+			<span class="top"></span>
+			<span class="middle"></span>
+			<span class="bottom"></span>
+
+		</div>
+
+		<div class="navigation" id="navigation">
+			<nav class="overlay-menu">
+			  <ul>
+                                          <li>
+                              <a href="https://defunsm.github.io/#Welcome" class="menu">Home <i class="fa fa-home" aria-hidden="true"></i>
+</a>
+			      <span class="simple_line"></span>
+                              </li>
+					<li >
+						<a href="https://defunsm.github.io/#about" class="menu">About <i class="fa fa-heart" aria-hidden="true"></i></a>
+						<span class="simple_line"></span>
+					</li>
+					<li>
+						<a href="https://defunsm.github.io/#portfolio" class="menu">Github <i class="fa fa-github" aria-hidden="true"></i></a>
+						<span class="simple_line"></span>
+					</li>
+					<li>
+						<a href="https://defunsm.github.io/archives" class="menu">Archives <i class="fa fa-book" aria-hidden="true"></i></a>
+					</li>
+
+			  </ul>
+			</nav>
+		</div>
+		<div class="scroll_down"></div>
+		<div class="fade child">
+			<div class="container_small">
+				<!-- Header Titles -->
+				<h1 class="header_title">Python - Functions</h1>
+
+
+                                <a href="/posts-output/pythonloops/" class="button"><i class="fa fa-arrow-left" aria-hidden="true"></i> Python - Recursion</a>
+
+<br/>
+                                
+                                <a href="/posts-output/pythonuserinput/" class="button">Python - User input <i class="fa fa-arrow-right" aria-hidden="true"></i>
+</i></a>
+
+
+			</div>
+		</div>
+	</header>
+	<!-- END HEADER /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- ABOUT SECTION /////////////////////////////////////////////////////////////////////////// -->
+	<section id="about" class="module">
+
+
+          <div class="anotherclass">
+
+
+                    
+                    <div class="post-header">
+    <div id="post-meta" class="row">
+        <div class="col-lg-6">October 11, 2016</div>
+        
+    </div>
+    <h2>Python - Functions</h2>
+</div>
+<div>
+    
+     <p>So as you been writing python code you may see me typing things such as this every time at the beginning of any file.</p><pre><code>def main&#40;&#41;:
+      
+      # some kind of code here in the body.
+        
+main&#40;&#41;        
+</code></pre>In python "def" is the keyword that is used to create a function defination. Following after the keyword is of course the function name. So the syntax for creating a general function is such.<pre><code>def functionName&#40;arg1, arg2&#41;:
+</code></pre>arg1 and arg2 are the arguments passed to the function. These arguments can be variables from other functions, strings, values, later on you'll see lists and hashes. To demonstrate a function lets write a function that'll help us do some math. Lets say we want to find the hypothenuse given the legs of the triangle. We could define a function called "hypothenuse" than pass the arguments to the function.<pre><code>import sys, math
+
+def hypothenuse&#40;a, b&#41;:
+
+    return math.sqrt&#40;float&#40;a&#41; &#42;&#42; 2 + float&#40;b&#41; &#42;&#42; 2&#41;
+
+def main&#40;&#41;:
+
+    print&#40;hypothenuse&#40;sys.argv&#91;1&#93;, sys.argv&#91;2&#93;&#41;&#41;
+
+main&#40;&#41;
+</code></pre>First we are importing sys and math which we will both need their libraries to write the hypothenuse function. Since from the pythagorean theorem we know that a ^ 2 + b ^ 2 = c ^ 2 so c = sqrt(a ^ 2 + b ^ 2). So our function hypothenuse will do something like that in it's body.<br/><br/>Something new that you are seeing is the return and as the name suggests it is returning the value calculated by the hypothenuse function.<br/><br/>If you are coming from C++ you know that every function has a return but in python that is not the case. In the main function we have the hypothenuse function given the sys.argv[1] as an argument for a and sys.argv[2] as the argument for b. The Hypothenuse function will then use the arguments recieved from the terminal and than preform the pythagorean theorem and boom returns a value which then print will print it to the standard output to your terminal.<br/><br/>So to check that works this is what you should type into your terminal in my case I called my file hypothenuse.py but you use whatever you called your file.<pre><code>$ python3 hypothenuse.py 3 4
+</code></pre>The result is ...<pre><code>5.0
+</code></pre>So we could see that the hypothenuse function is returning back it's value and then print is printing it out to display to us the value.<br/><br/>Wraping up:<br/><br/>Thats all there is too it not too complicated. Just make sure to give your function name reasonable names and have meaning to them otherwise when you begin to write a lot of code and need to know what a function does you don't want go through reading the code in that function so having the function name relatable to what it's doing is important. As well as making sure your passing it the right kind of arguments. Make sure that if it wants a string to pass it a string and if the function wants a number pass it a number. In this case we don't have to worry about that since float will just convert it but in other cases you may need to consider it. As well as passing it the right number of arguments. If you passed hypothenuse three arguments instead of two it would give you a typeError that hypothenuse only takes 2 positional arguments but 3 were given. This is because the function will not know what to do with the extra function so you need to keep in mind when writing a function and than using that function how many arguments it will take. There are also ways to write functions take take any number of arguments which I'll show you later on.
+</div>
+
+<div id="post-tags">
+    <b>Tags: </b>
+    
+    <a href="/tags-output/Python/">Python</a>
+    
+    <a href="/tags-output/Code/">Code</a>
+    
+    <a href="/tags-output/Guide/">Guide</a>
+    
+</div>
+
+
+                          <div id="prev-next">
+                            
+                            <a href="/posts-output/pythonloops/">&laquo; Python - Recursion</a>
+                            
+                            
+                            <a class="right" href="/posts-output/pythonuserinput/">Python - User input &raquo;</a>
+                            
+                          </div>
+
+                          
+                          <div id="disqus_thread"></div>
+                          <script type="text/javascript">
+                            (function() {
+                            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                            dsq.src = '//defunsm-github-io.disqus.com/embed.js';
+                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                            })();
+                          </script>
+                          
+
+
+
+                        
+          </div>
+
+
+
+	</section>
+
+        <!-- END ABOUT SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- PORTFOLIO SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- END CONTACT SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- FOOTER /////////////////////////////////////////////////////////////////////////// -->
+	<footer>
+		<div class="container_footer">
+			<div class="left">
+				<p>© 2016 <span>Salman Hossain</span></p>
+			</div>
+			<div class="right">
+				<a href="#postwelcome">Top <i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+			</div>
+		</div>
+	</footer>
+	<!-- END FOOTER /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- Scripts -->
+	<script src="https://defunsm.github.io/js/parallax.js"></script>
+	<script src="https://defunsm.github.io/js/menu.js"></script>
+	<script src="https://defunsm.github.io/js/featherlight.js" type="text/javascript" charset="utf-8"></script>
+	<script src="https://defunsm.github.io/js/scroll.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+        <script src="/js/highlight.pack.js" type="text/javascript"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
