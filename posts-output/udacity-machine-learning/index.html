@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-	<title>Python - Bokeh to Graph Boot Times</title>
+	<title>Python - Naive Bayes Algorithm</title>
 	<!-- Styles -->
 	<link rel="stylesheet" href="https://defunsm.github.io/css/style.css" />
 	<link rel="stylesheet" href="https://defunsm.github.io/css/font-awesome.min.css" />
@@ -60,14 +60,12 @@
 		<div class="fade child">
 			<div class="container_small">
 				<!-- Header Titles -->
-				<h1 class="header_title">Python - Bokeh to Graph Boot Times</h1>
+				<h1 class="header_title">Python - Naive Bayes Algorithm</h1>
 
-
-                                <a href="/posts-output/udacity-machine-learning/" class="button"><i class="fa fa-arrow-left" aria-hidden="true"></i> Python - Naive Bayes Algorithm</a>
 
 <br/>
                                 
-                                <a href="/posts-output/special-relativity/" class="button">Python - SpaceTime Diagrams <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                                <a href="/posts-output/python-bokeh/" class="button">Python - Bokeh to Graph Boot Times <i class="fa fa-arrow-right" aria-hidden="true"></i>
 </i></a>
 
 
@@ -86,15 +84,19 @@
                     
                     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">December 17, 2016</div>
+        <div class="col-lg-6">December 25, 2016</div>
         
     </div>
-    <h2>Python - Bokeh to Graph Boot Times</h2>
+    <h2>Python - Naive Bayes Algorithm</h2>
 </div>
 <div>
     
-     <p> So I been playing around with Bokeh's graphing utilities which is always fun. So I wanted to make some graphs using the boot times that I keep using a script. So I made three different graphs 2 of which represent the total boot time and the other pie graph represents the total boot time into segments of firmware, loader, kernel and userspace.  </p><p><img src="https://defunsm.github.io/img/bokeh3.png" alt="graph image" /></p><p>The one above demonstrates the total time as an area under the line. You can clearly see here that there was a spike in the boot time since that 40 second boot time is distinguishable from the other plots are around 12 seconds.</p><p><img src="https://defunsm.github.io/img/bokeh2.png" alt="graph pie graph" /></p><p>This one is a pie graph I couldn't figure out how to label them but it just demonstrates each part of the boot as a pie graph (Firmware, Loader, Kernel, Userspace).</p><p><img src="https://defunsm.github.io/img/bokeh1.png" alt="graph histogram" /></p><p>There is also a histogram showing the usual time it takes to boot up which you can see from this graph is around 12 seconds since that is the most frequent time it takes to boot up. <br/><br/></p><p>The data is collected from <newcode>systemd-analyze</newcode>. Which I have a script which just stores all the boot times into a file from time.txt.</p><pre><code>systemd-analyze time &gt;&gt; time.txt
-</code></pre><p><a href='https://github.com/defunSM/visualize-my-boot-time'>Github Repo</a></p>
+     <p>Been trying to get into machine learning and found that the udacity courses are extremely well. Specially at their intro into machine learning course which is what I'm doing over the winter break to familiarize myself with different algorithms. They go step by step and don't really require much background besides some python programming as a prerequisite.  <br/><br/> <a href='https://www.udacity.com/course/intro-to-artificial-intelligence&ndash;cs271'>Udacity Intro into Machine Learning Course</a></p><p><a href='https://github.com/udacity/ud120-projects'>Udacity Project Repo for Intro Into Machine Learning</a> <br/><br/></p><p>The udacity course goes through explaining the concepts of machine learning rather well. One of the first algorithms that the course introduces you to is the Naive Bayes algoirthm.  <br/><br/> <a href='http://scikit-learn.org/stable/modules/naive_bayes.html'>Naive Bayes Algorithm Sklearn</a> <br/><br/></p><p>Python has a varity of libraries for machine learning like tensorflow, sklearn, and numpy. Sklearn has algorithms which is pretty stright forward to use and implement in your code. You can google it and sklearn will provide a short example code on how to use that particular algorithm and also displays the pros and cons of that particular algorithm. For example the Naive Bayes Algorithm shows a short example code in just 3 lines of code you can make your prediction dataset. Also using the <a href='http://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html'>sklearn.metrics</a> you can get a feel for how well your classifer does in predicting new data points.</p><pre><code>from sklearn.naive&#95;bayes import GaussianNB
+gnb = GaussianNB&#40;&#41;
+y&#95;pred = gnb.fit&#40;iris.data, iris.target&#41;.predict&#40;iris.data&#41;
+</code></pre><pre><code>from sklearn.metrics import accuracy&#95;score
+acc = accuracy&#95;score&#40;iris.data, y&#95;pred&#41;
+</code></pre><p>As you continue through the udacity course you'll be introduced to two other algorithms the Support Vector Machines and the Decision Tree algorithm. The course is approximated to be 4 months but I started 2 days ago and finished about 1/4 of it getting up to Decision Trees in two days so it can definitely be finished in less than a month if you go through it really quickly.</p>
 </div>
 
 <div id="post-tags">
@@ -102,19 +104,17 @@
     
     <a href="/tags-output/Python/">Python</a>
     
-    <a href="/tags-output/Graphing/">Graphing</a>
-    
     <a href="/tags-output/Code/">Code</a>
+    
+    <a href="/tags-output/Machine Learning/">Machine Learning</a>
     
 </div>
 
 
                           <div id="prev-next">
                             
-                            <a href="/posts-output/udacity-machine-learning/">&laquo; Python - Naive Bayes Algorithm</a>
                             
-                            
-                            <a class="right" href="/posts-output/special-relativity/">Python - SpaceTime Diagrams &raquo;</a>
+                            <a class="right" href="/posts-output/python-bokeh/">Python - Bokeh to Graph Boot Times &raquo;</a>
                             
                           </div>
 

@@ -12,11 +12,36 @@ http://blogawesome.com/
 A place to share my knowledge
 </description>
 <lastBuildDate>
-Sat, 17 Dec 2016 17:32:10 -0500
+Sun, 25 Dec 2016 17:06:03 -0500
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://blogawesome.com/posts-output/udacity-machine-learning/
+</guid>
+<link>
+http://blogawesome.com/posts-output/udacity-machine-learning/
+</link>
+<title>
+Python - Naive Bayes Algorithm
+</title>
+<description>
+ &lt;p&gt;Been trying to get into machine learning and found that the udacity courses are extremely well. Specially at their intro into machine learning course which is what I'm doing over the winter break to familiarize myself with different algorithms. They go step by step and don't really require much background besides some python programming as a prerequisite.  &lt;br/&gt;&lt;br/&gt; &lt;a href='https://www.udacity.com/course/intro-to-artificial-intelligence&amp;ndash;cs271'&gt;Udacity Intro into Machine Learning Course&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;a href='https://github.com/udacity/ud120-projects'&gt;Udacity Project Repo for Intro Into Machine Learning&lt;/a&gt; &lt;br/&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;The udacity course goes through explaining the concepts of machine learning rather well. One of the first algorithms that the course introduces you to is the Naive Bayes algoirthm.  &lt;br/&gt;&lt;br/&gt; &lt;a href='http://scikit-learn.org/stable/modules/naive_bayes.html'&gt;Naive Bayes Algorithm Sklearn&lt;/a&gt; &lt;br/&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Python has a varity of libraries for machine learning like tensorflow, sklearn, and numpy. Sklearn has algorithms which is pretty stright forward to use and implement in your code. You can google it and sklearn will provide a short example code on how to use that particular algorithm and also displays the pros and cons of that particular algorithm. For example the Naive Bayes Algorithm shows a short example code in just 3 lines of code you can make your prediction dataset. Also using the &lt;a href='http://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html'&gt;sklearn.metrics&lt;/a&gt; you can get a feel for how well your classifer does in predicting new data points.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;from sklearn.naive&amp;#95;bayes import GaussianNB
+gnb = GaussianNB&amp;#40;&amp;#41;
+y&amp;#95;pred = gnb.fit&amp;#40;iris.data, iris.target&amp;#41;.predict&amp;#40;iris.data&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;from sklearn.metrics import accuracy&amp;#95;score
+acc = accuracy&amp;#95;score&amp;#40;iris.data, y&amp;#95;pred&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;As you continue through the udacity course you'll be introduced to two other algorithms the Support Vector Machines and the Decision Tree algorithm. The course is approximated to be 4 months but I started 2 days ago and finished about 1/4 of it getting up to Decision Trees in two days so it can definitely be finished in less than a month if you go through it really quickly.&lt;/p&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Sun, 25 Dec 2016 00:00:00 -0500
+</pubDate>
+</item>
 <item>
 <guid>
 http://blogawesome.com/posts-output/python-bokeh/
