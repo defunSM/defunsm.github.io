@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-	<title>Python</title>
+	<title>Python - Optparse</title>
 	<!-- Styles -->
 	<link rel="stylesheet" href="https://defunsm.github.io/css/style.css" />
 	<link rel="stylesheet" href="https://defunsm.github.io/css/font-awesome.min.css" />
@@ -30,16 +30,17 @@
 			<span class="top"></span>
 			<span class="middle"></span>
 			<span class="bottom"></span>
+
 		</div>
+
 		<div class="navigation" id="navigation">
 			<nav class="overlay-menu">
 			  <ul>
-
-                            <li >
-			      <a href="https://defunsm.github.io/" class="menu">Home <i class="fa fa-home" aria-hidden="true"></i></a>
+                                          <li>
+                              <a href="https://defunsm.github.io/#Welcome" class="menu">Home <i class="fa fa-home" aria-hidden="true"></i>
+</a>
 			      <span class="simple_line"></span>
-			    </li>
-
+                              </li>
 					<li >
 						<a href="https://defunsm.github.io/#about" class="menu">About <i class="fa fa-heart" aria-hidden="true"></i></a>
 						<span class="simple_line"></span>
@@ -51,14 +52,23 @@
 					<li>
 						<a href="https://defunsm.github.io/archives" class="menu">Archives <i class="fa fa-book" aria-hidden="true"></i></a>
 					</li>
-				</ul>
+
+			  </ul>
 			</nav>
 		</div>
 		<div class="scroll_down"></div>
 		<div class="fade child">
 			<div class="container_small">
 				<!-- Header Titles -->
-				<h1 class="header_title">Python</h1>
+				<h1 class="header_title">Python - Optparse</h1>
+
+
+<br/>
+                                
+                                <a href="/posts-output/udacity-machine-learning/" class="button">Python - Naive Bayes Algorithm <i class="fa fa-arrow-right" aria-hidden="true"></i>
+</i></a>
+
+
 			</div>
 		</div>
 	</header>
@@ -71,89 +81,54 @@
           <div class="anotherclass">
 
 
-            Posts tagged as &quot;Python&quot;
-            
-            <div id="posts-by-tag">
-              <div id="page-header">
-                <h2>Posts Tagged &quot;Python&quot;</h2>
-              </div>
-              <ul>
-                
-                <li>
-                  <a href="/posts-output/python-optparse/">Python - Optparse</a>
-                </li>
-                
-                <li>
-                  <a href="/posts-output/udacity-machine-learning/">Python - Naive Bayes Algorithm</a>
-                </li>
-                
-                <li>
-                  <a href="/posts-output/python-bokeh/">Python - Bokeh to Graph Boot Times</a>
-                </li>
-                
-                <li>
-                  <a href="/posts-output/special-relativity/">Python - SpaceTime Diagrams</a>
-                </li>
-                
-                <li>
-                  <a href="/posts-output/pythonlists/">Python - Lists</a>
-                </li>
-                
-                <li>
-                  <a href="/posts-output/pythonclasses/">Python - Classes</a>
-                </li>
-                
-                <li>
-                  <a href="/posts-output/pythonloops/">Python - Recursion</a>
-                </li>
-                
-                <li>
-                  <a href="/posts-output/pythonfunctions/">Python - Functions</a>
-                </li>
-                
-                <li>
-                  <a href="/posts-output/pythonuserinput/">Python - User input</a>
-                </li>
-                
-                <li>
-                  <a href="/posts-output/pythonifstatements/">Python - If-else-statements</a>
-                </li>
-                
-                <li>
-                  <a href="/posts-output/python-booleans/">Python - Booleans</a>
-                </li>
-                
-                <li>
-                  <a href="/posts-output/pythonvariables/">Python - Variables</a>
-                </li>
-                
-                <li>
-                  <a href="/posts-output/python2/">Python - Numbers</a>
-                </li>
-                
-                <li>
-                  <a href="/posts-output/pythonpart1/">Python - Printing</a>
-                </li>
-                
-                <li>
-                  <a href="/posts-output/pythonpart0/">Python - Setup</a>
-                </li>
-                
-                <li>
-                  <a href="/posts-output/introductiontopython/">Python - A short introduction</a>
-                </li>
-                
-                <li>
-                  <a href="/posts-output/wordcal/">WordCal - A Python Script</a>
-                </li>
-                
-              </ul>
-            </div>
-            
+                    
+                    <div class="post-header">
+    <div id="post-meta" class="row">
+        <div class="col-lg-6">December 26, 2016</div>
+        
+    </div>
+    <h2>Python - Optparse</h2>
+</div>
+<div>
+    
+     <p>Optparse is pretty nice way to make command-line tools. It streamlines the process of making arguments.  To add the parser from the optparse library in Python.<pre><code>from optparse import OptionParser
+ </code></pre> This will allow you to make a parser using OptionParser() like the following.</p><pre><code>parser = OptionParser&#40;&#41;
+</code></pre>This will allow you to add options to it like the following.<pre><code>parser.add&#95;option&#40;&quot;-c&quot;, &quot;--cos&quot;, help=&quot;Calculates the cosine given the degree.&quot;, dest=&quot;cosdegree&quot;, action=&quot;store&quot;&#41;
+</code></pre>The add_option is avaliable can allows you to store the value passed to the -c option. So on the command line you can do things like the following..<pre><code>&lt;scriptname&gt; -c 3
+</code></pre><p>and you can retrieve the value passed to -c using options.cosdegree since it was stored in that using the dest="cosdegree"</p><p>You will be able to change the dest= to something else by default if not specified it would be cos since that is the option it is being assigned to.</p><p>So you can create some useful scripts to calculate the cos or sin from the command line without opening up a calculator. You could essentially make a command line for commonly used math functions on the command line using optparse. If you're too lazy to open up a calculator.</p><p>Also have the classical &ndash;help or -h which will list a short description of each option. You can specify the help that'll be show for each option using the help= when creating the option using add_option. </p><p>The documentation for <a href='https://docs.python.org/3/library/optparse.html'>Optparse</a>.</p>
+</div>
+
+<div id="post-tags">
+    <b>Tags: </b>
+    
+    <a href="/tags-output/Python/">Python</a>
+    
+    <a href="/tags-output/Code/">Code</a>
+    
+</div>
+
+
+                          <div id="prev-next">
+                            
+                            
+                            <a class="right" href="/posts-output/udacity-machine-learning/">Python - Naive Bayes Algorithm &raquo;</a>
+                            
+                          </div>
+
+                          
+                          <div id="disqus_thread"></div>
+                          <script type="text/javascript">
+                            (function() {
+                            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                            dsq.src = '//defunsm-github-io.disqus.com/embed.js';
+                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                            })();
+                          </script>
+                          
 
 
 
-
+                        
           </div>
 
 
