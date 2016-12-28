@@ -12,11 +12,42 @@ http://blogawesome.com/
 A place to share my knowledge
 </description>
 <lastBuildDate>
-Mon, 26 Dec 2016 21:57:58 -0500
+Tue, 27 Dec 2016 23:59:23 -0500
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://blogawesome.com/posts-output/python-color-in-terminal/
+</guid>
+<link>
+http://blogawesome.com/posts-output/python-color-in-terminal/
+</link>
+<title>
+Python - Color in Terminal
+</title>
+<description>
+ &lt;p&gt;So say you have a script written and displays some sort of information. It isn't just enough to just display it in normal colors but you want to add color coded messages to help readability. So there is a few options such as the &lt;a href='https://pypi.python.org/pypi/colorama/0.3.3'&gt;colorama&lt;/a&gt; module which helps you add color when you print. &lt;br&gt;&lt;br/&gt; I wanted to create a small python file and make my own functions in order to quickly color in text being printed to the terminal. Set the colors as strings into variables.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;green = &amp;quot;\033&amp;#91;1;32;40m&amp;quot;
+red = &amp;quot;\033&amp;#91;1;31;40m&amp;quot;
+yellow = &amp;quot;\033&amp;#91;1;33;40m&amp;quot;
+purple = &amp;quot;\033&amp;#91;1;35;40m&amp;quot;
+cyan = &amp;quot;\033&amp;#91;1;36;40m&amp;quot;
+white = &amp;quot;\033&amp;#91;1;37;40m&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Than put the variables into an array as c short handing it for color. &lt;/p&gt;&lt;pre&gt;&lt;code&gt;c = &amp;#91;green, red, yellow, purple, cyan, white&amp;#93;
+&lt;/code&gt;&lt;/pre&gt;So you can call green just by doing c[0] infront of a string. So if you wanted to have a green colored text appear in the terminal you can do the following... &lt;pre&gt;&lt;code&gt;print&amp;#40;c&amp;#91;0&amp;#93;, &amp;quot;Green text&amp;quot;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;I also made a function &lt;newcode&gt;display_colors&lt;/newcode&gt; in case you want to see which default color you want to use. I also made a ctext function which takes in the style, textcolor and background color in case you want to use something else besides the default colors. &lt;pre&gt;&lt;code&gt;def ctext&amp;#40;style, textcolor, bgcolor&amp;#41;:
+
+    return &amp;quot;\033&amp;#91;&amp;quot; + str&amp;#40;style&amp;#41; + &amp;quot;;&amp;quot; + str&amp;#40;textcolor&amp;#41; + &amp;quot;;&amp;quot; + str&amp;#40;bgcolor&amp;#41; + &amp;quot;m&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The github Repo of &lt;a href='https://github.com/defunSM/colormyterminal'&gt;colormyterminal&lt;/a&gt;.&lt;/p&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Tue, 27 Dec 2016 00:00:00 -0500
+</pubDate>
+</item>
 <item>
 <guid>
 http://blogawesome.com/posts-output/python-optparse/
