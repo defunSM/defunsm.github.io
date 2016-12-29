@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-	<title>Python - Color in Terminal</title>
+	<title>Python - Parsing HTML with BeautifulSoup</title>
 	<!-- Styles -->
 	<link rel="stylesheet" href="https://defunsm.github.io/css/style.css" />
 	<link rel="stylesheet" href="https://defunsm.github.io/css/font-awesome.min.css" />
@@ -60,14 +60,12 @@
 		<div class="fade child">
 			<div class="container_small">
 				<!-- Header Titles -->
-				<h1 class="header_title">Python - Color in Terminal</h1>
+				<h1 class="header_title">Python - Parsing HTML with BeautifulSoup</h1>
 
-
-                                <a href="/posts-output/python-web-scraper/" class="button"><i class="fa fa-arrow-left" aria-hidden="true"></i> Python - Parsing HTML with BeautifulSoup</a>
 
 <br/>
                                 
-                                <a href="/posts-output/python-optparse/" class="button">Python - Optparse <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                                <a href="/posts-output/python-color-in-terminal/" class="button">Python - Color in Terminal <i class="fa fa-arrow-right" aria-hidden="true"></i>
 </i></a>
 
 
@@ -86,25 +84,77 @@
                     
                     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">December 27, 2016</div>
+        <div class="col-lg-6">December 28, 2016</div>
         
     </div>
-    <h2>Python - Color in Terminal</h2>
+    <h2>Python - Parsing HTML with BeautifulSoup</h2>
 </div>
 <div>
     
-     <p>So say you have a script written and displays some sort of information. It isn't just enough to just display it in normal colors but you want to add color coded messages to help readability. So there is a few options such as the <a href='https://pypi.python.org/pypi/colorama/0.3.3'>colorama</a> module which helps you add color when you print. <br><br/> I wanted to create a small python file and make my own functions in order to quickly color in text being printed to the terminal. Set the colors as strings into variables.</p><pre><code>green = &quot;\033&#91;1;32;40m&quot;
-red = &quot;\033&#91;1;31;40m&quot;
-yellow = &quot;\033&#91;1;33;40m&quot;
-purple = &quot;\033&#91;1;35;40m&quot;
-cyan = &quot;\033&#91;1;36;40m&quot;
-white = &quot;\033&#91;1;37;40m&quot;
-</code></pre><p>Than put the variables into an array as c short handing it for color. </p><pre><code>c = &#91;green, red, yellow, purple, cyan, white&#93;
-</code></pre>So you can call green just by doing c[0] infront of a string. So if you wanted to have a green colored text appear in the terminal you can do the following... <pre><code>print&#40;c&#91;0&#93;, &quot;Green text&quot;&#41;
-</code></pre>I also made a function <newcode>display_colors</newcode> in case you want to see which default color you want to use. I also made a ctext function which takes in the style, textcolor and background color in case you want to use something else besides the default colors. <pre><code>def ctext&#40;style, textcolor, bgcolor&#41;:
+    <p>I wanted to gather a collection of all the links on a wikipedia page so I decided to code something up real quick. Luckily it is rather easy in python using BeautifulSoup. You'll need to download the python module <newcode>bs4</newcode> first which you can do with pip...</p><pre><code>sudo pip install bs4
+</code></pre><p>After the installing is completed. Go ahead and open up a file called webscraper.py and import requests and bs4. </p><pre><code>import requests
+from bs4 import BeautifulSoup
+</code></pre><p>To get the html of a document from the web we'll be using requests. The variable resp will contain all of the html for the site.</p><pre><code>link = 'https://en.wikipedia.org/wiki/Physics'
+resp = requests.get&#40;link&#41;
+</code></pre><p>Now that we have all the html we'll begin to parse it using BeautifulSoup.</p><pre><code>soup = BeautifulSoup&#40;resp.text, 'lxml'&#41;
+</code></pre><p>soup is an object in which we can parse and manipulate to obtain all the href's that may be contained within the html like so.</p><pre><code>urls = &#91;&#93;
+  for h in soup.find&#95;all&#40;'p'&#41;:
 
-    return &quot;\033&#91;&quot; + str&#40;style&#41; + &quot;;&quot; + str&#40;textcolor&#41; + &quot;;&quot; + str&#40;bgcolor&#41; + &quot;m&quot;
-</code></pre><p>The github Repo of <a href='https://github.com/defunSM/colormyterminal'>colormyterminal</a>.</p>
+    a = h.find&#95;all&#40;'a'&#41;
+
+    for t in a:
+
+      urls.append&#40;t.attrs&#91;'href'&#93;&#41;
+</code></pre><p>This will place all the hrefs in the urls array. So than you can print all the urls you find but say you want to write them to a file instead you can do the following...</p><pre><code>f = open&#40;'urls.txt', 'w'&#41;
+
+for url in urls:
+
+   f.write&#40;link + url&#41;
+   f.write&#40;&quot;\n&quot;&#41;
+</code></pre><p>The link is added in to the f.write so it shows the full url rather than just the /wiki/something. So now you have a bunch of urls in a file named urls.txt when you run the command. Of course you'll notice something when looking at the urls.txt is that there are citiation urls which you don't want. Well it is rather simple to remove that by filtering out based on "#". So rewriting your for statement like this will filter out the cititation urls.</p><pre><code>    for url in urls:
+
+        if '#' in url:
+            pass
+        else:
+            f.write&#40;link + url&#41;
+            f.write&#40;&quot;\n&quot;&#41;
+</code></pre><p>Oh and of course don't forget to close the file. Which I always do.</p><pre><code>f.close&#40;&#41;
+</code></pre><p>And that is pretty much it. Of course you can use optparse python module to make it so it takes an argument which can be the link and then generates the site and add on to this. So the full file should look something like this.</p><pre><code>#!/usr/bin/env python
+import requests
+from bs4 import BeautifulSoup
+
+def main&#40;&#41;:
+
+    link = 'https://en.wikipedia.org/wiki/Physics'
+    resp = requests.get&#40;link&#41;
+    soup = BeautifulSoup&#40;resp.text, 'lxml'&#41;
+
+    urls = &#91;&#93;
+    for h in soup.find&#95;all&#40;'p'&#41;:
+
+        a = h.find&#95;all&#40;'a'&#41;
+
+        for t in a:
+
+            urls.append&#40;t.attrs&#91;'href'&#93;&#41;
+
+
+    f = open&#40;'urls.txt', 'w'&#41;
+
+    for url in urls:
+
+        if '#' in url:
+            pass
+        else:
+            f.write&#40;link + url&#41;
+            f.write&#40;&quot;\n&quot;&#41;
+
+    f.close&#40;&#41;
+
+if &#95;&#95;name&#95;&#95;==&quot;&#95;&#95;main&#95;&#95;&quot;:
+    main&#40;&#41;
+
+</code></pre>Now you can just run that and it'll generate the urls.txt file. Enjoy scraping the web.<br/><br/><a href='https://github.com/defunSM/web-scraper'>WebScraper</a>
 </div>
 
 <div id="post-tags">
@@ -114,15 +164,15 @@ white = &quot;\033&#91;1;37;40m&quot;
     
     <a href="/tags-output/Code/">Code</a>
     
+    <a href="/tags-output/Guide/">Guide</a>
+    
 </div>
 
 
                           <div id="prev-next">
                             
-                            <a href="/posts-output/python-web-scraper/">&laquo; Python - Parsing HTML with BeautifulSoup</a>
                             
-                            
-                            <a class="right" href="/posts-output/python-optparse/">Python - Optparse &raquo;</a>
+                            <a class="right" href="/posts-output/python-color-in-terminal/">Python - Color in Terminal &raquo;</a>
                             
                           </div>
 

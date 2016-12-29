@@ -12,11 +12,94 @@ http://blogawesome.com/
 A place to share my knowledge
 </description>
 <lastBuildDate>
-Tue, 27 Dec 2016 23:59:23 -0500
+Wed, 28 Dec 2016 20:26:52 -0500
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://blogawesome.com/posts-output/python-web-scraper/
+</guid>
+<link>
+http://blogawesome.com/posts-output/python-web-scraper/
+</link>
+<title>
+Python - Parsing HTML with BeautifulSoup
+</title>
+<description>
+&lt;p&gt;I wanted to gather a collection of all the links on a wikipedia page so I decided to code something up real quick. Luckily it is rather easy in python using BeautifulSoup. You'll need to download the python module &lt;newcode&gt;bs4&lt;/newcode&gt; first which you can do with pip...&lt;/p&gt;&lt;pre&gt;&lt;code&gt;sudo pip install bs4
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;After the installing is completed. Go ahead and open up a file called webscraper.py and import requests and bs4. &lt;/p&gt;&lt;pre&gt;&lt;code&gt;import requests
+from bs4 import BeautifulSoup
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;To get the html of a document from the web we'll be using requests. The variable resp will contain all of the html for the site.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;link = 'https://en.wikipedia.org/wiki/Physics'
+resp = requests.get&amp;#40;link&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now that we have all the html we'll begin to parse it using BeautifulSoup.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;soup = BeautifulSoup&amp;#40;resp.text, 'lxml'&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;soup is an object in which we can parse and manipulate to obtain all the href's that may be contained within the html like so.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;urls = &amp;#91;&amp;#93;
+  for h in soup.find&amp;#95;all&amp;#40;'p'&amp;#41;:
+
+    a = h.find&amp;#95;all&amp;#40;'a'&amp;#41;
+
+    for t in a:
+
+      urls.append&amp;#40;t.attrs&amp;#91;'href'&amp;#93;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;This will place all the hrefs in the urls array. So than you can print all the urls you find but say you want to write them to a file instead you can do the following...&lt;/p&gt;&lt;pre&gt;&lt;code&gt;f = open&amp;#40;'urls.txt', 'w'&amp;#41;
+
+for url in urls:
+
+   f.write&amp;#40;link + url&amp;#41;
+   f.write&amp;#40;&amp;quot;\n&amp;quot;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The link is added in to the f.write so it shows the full url rather than just the /wiki/something. So now you have a bunch of urls in a file named urls.txt when you run the command. Of course you'll notice something when looking at the urls.txt is that there are citiation urls which you don't want. Well it is rather simple to remove that by filtering out based on &quot;#&quot;. So rewriting your for statement like this will filter out the cititation urls.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;    for url in urls:
+
+        if '#' in url:
+            pass
+        else:
+            f.write&amp;#40;link + url&amp;#41;
+            f.write&amp;#40;&amp;quot;\n&amp;quot;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Oh and of course don't forget to close the file. Which I always do.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;f.close&amp;#40;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;And that is pretty much it. Of course you can use optparse python module to make it so it takes an argument which can be the link and then generates the site and add on to this. So the full file should look something like this.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;#!/usr/bin/env python
+import requests
+from bs4 import BeautifulSoup
+
+def main&amp;#40;&amp;#41;:
+
+    link = 'https://en.wikipedia.org/wiki/Physics'
+    resp = requests.get&amp;#40;link&amp;#41;
+    soup = BeautifulSoup&amp;#40;resp.text, 'lxml'&amp;#41;
+
+    urls = &amp;#91;&amp;#93;
+    for h in soup.find&amp;#95;all&amp;#40;'p'&amp;#41;:
+
+        a = h.find&amp;#95;all&amp;#40;'a'&amp;#41;
+
+        for t in a:
+
+            urls.append&amp;#40;t.attrs&amp;#91;'href'&amp;#93;&amp;#41;
+
+
+    f = open&amp;#40;'urls.txt', 'w'&amp;#41;
+
+    for url in urls:
+
+        if '#' in url:
+            pass
+        else:
+            f.write&amp;#40;link + url&amp;#41;
+            f.write&amp;#40;&amp;quot;\n&amp;quot;&amp;#41;
+
+    f.close&amp;#40;&amp;#41;
+
+if &amp;#95;&amp;#95;name&amp;#95;&amp;#95;==&amp;quot;&amp;#95;&amp;#95;main&amp;#95;&amp;#95;&amp;quot;:
+    main&amp;#40;&amp;#41;
+
+&lt;/code&gt;&lt;/pre&gt;Now you can just run that and it'll generate the urls.txt file. Enjoy scraping the web.&lt;br/&gt;&lt;br/&gt;&lt;a href='https://github.com/defunSM/web-scraper'&gt;WebScraper&lt;/a&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Wed, 28 Dec 2016 00:00:00 -0500
+</pubDate>
+</item>
 <item>
 <guid>
 http://blogawesome.com/posts-output/python-color-in-terminal/
