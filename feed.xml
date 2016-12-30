@@ -12,7 +12,7 @@ http://blogawesome.com/
 A place to share my knowledge
 </description>
 <lastBuildDate>
-Wed, 28 Dec 2016 20:26:52 -0500
+Fri, 30 Dec 2016 01:51:30 -0500
 </lastBuildDate>
 <generator>
 clj-rss
@@ -146,7 +146,9 @@ Python - Optparse
  &lt;/code&gt;&lt;/pre&gt; This will allow you to make a parser using OptionParser() like the following.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;parser = OptionParser&amp;#40;&amp;#41;
 &lt;/code&gt;&lt;/pre&gt;This will allow you to add options to it like the following.&lt;pre&gt;&lt;code&gt;parser.add&amp;#95;option&amp;#40;&amp;quot;-c&amp;quot;, &amp;quot;--cos&amp;quot;, help=&amp;quot;Calculates the cosine given the degree.&amp;quot;, dest=&amp;quot;cosdegree&amp;quot;, action=&amp;quot;store&amp;quot;&amp;#41;
 &lt;/code&gt;&lt;/pre&gt;The add_option is avaliable can allows you to store the value passed to the -c option. So on the command line you can do things like the following..&lt;pre&gt;&lt;code&gt;&amp;lt;scriptname&amp;gt; -c 3
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;and you can retrieve the value passed to -c using options.cosdegree since it was stored in that using the dest=&quot;cosdegree&quot; &lt;br&gt;&lt;br/&gt; You will be able to change the dest= to something else by default if not specified it would be cos since that is the option it is being assigned to. &lt;br&gt;&lt;br/&gt; So you can create some useful scripts to calculate the cos or sin from the command line without opening up a calculator. You could essentially make a command line for commonly used math functions on the command line using optparse. If you're too lazy to open up a calculator. &lt;br&gt;&lt;br/&gt; Also have the classical &amp;ndash;help or -h which will list a short description of each option. You can specify the help that'll be show for each option using the help= when creating the option using add_option.  &lt;br&gt;&lt;br/&gt; The documentation for &lt;a href='https://docs.python.org/3/library/optparse.html'&gt;Optparse&lt;/a&gt;.&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;You can also add something like this...&lt;pre&gt;&lt;code&gt;options, arguments = parser.parse&amp;#95;args&amp;#40;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;so now you can put the values passed to each option as a variable. Like so...&lt;pre&gt;&lt;code&gt;ans = options.cosine
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;and you can retrieve the value passed to -c using options.cosdegree since it was stored in that using the dest=&quot;cosdegree&quot; like I showed you above. &lt;br&gt;&lt;br/&gt; You will be able to change the dest= to something else by default if not specified it would be cos since that is the option it is being assigned to. &lt;br&gt;&lt;br/&gt; So you can create some useful scripts to calculate the cos or sin from the command line without opening up a calculator. You could essentially make a command line for commonly used math functions on the command line using optparse. If you're too lazy to open up a calculator. &lt;br&gt;&lt;br/&gt; Also have the classical &amp;ndash;help or -h which will list a short description of each option. You can specify the help that'll be show for each option using the help= when creating the option using add_option.  &lt;br&gt;&lt;br/&gt; The documentation for &lt;a href='https://docs.python.org/3/library/optparse.html'&gt;Optparse&lt;/a&gt;.&lt;/p&gt;
 </description>
 <enclosure>
 
