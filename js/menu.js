@@ -46,8 +46,8 @@ $(window).scroll(function() {
 
 var enlarged = false;
 
-$('code').on('click', function() {
-  var width = $(this).font-size();
+$('.hljs').on('click', function() {
+  var width = $(this).css.("font-size")
   var height = $(this).height();
   var $p = $(this).find('.hljs')
 
@@ -68,7 +68,7 @@ $('code').on('click', function() {
   }
 
   $(this).stop().animate({
-    width: width,
+    font-size: width,
   }, callback($p));
 
 });
