@@ -30,4 +30,16 @@ $(window).scroll(function() {
      {
       $('.burger').fadeIn();
      }
+});
+
+$(window).scroll(function() {
+
+    if ($(this).scrollTop()<350)
+     {
+        $('ul3').fadeOut();
+     }
+    else
+     {
+      $('ul3').fadeIn();
+     }
  });
