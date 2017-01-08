@@ -799,8 +799,17 @@ li3 {
 }
 
 .twol {
-    left: 200px;
+    left: 175px;
 }
+
+.onel {
+    left: 95px;
+}
+
+.fourl {
+    left: 266px;
+}
+
 li3 a {
     display: block;
     color: black;
