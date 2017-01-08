@@ -833,6 +833,6 @@ body::-webkit-scrollbar-track {
 }
 
 body::-webkit-scrollbar-thumb {
-  background-color: red;
+  background-color: darkgrey;
   outline: 1px solid slategrey;
 }

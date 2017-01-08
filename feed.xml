@@ -12,11 +12,84 @@ http://blogawesome.com/
 A place to share my knowledge
 </description>
 <lastBuildDate>
-Sun, 08 Jan 2017 11:25:06 -0500
+Sun, 08 Jan 2017 16:51:28 -0500
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://blogawesome.com/posts-output/python-gtk/
+</guid>
+<link>
+http://blogawesome.com/posts-output/python-gtk/
+</link>
+<title>
+Python - GTK 3.0
+</title>
+<description>
+ &lt;p&gt;If you're looking to make GUI's using python. You should take a look at GTK 3.0 which is a nice module for building GUIs.  &lt;br/&gt;&lt;br/&gt; &lt;a href='http://python-gtk-3-tutorial.readthedocs.io/en/latest/install.html'&gt;GTK 3.0&lt;/a&gt; &lt;br/&gt;&lt;br/&gt; After installing it they have a couple of example code to get started with. Put the following in a file called gtktut.py and go ahead and run the code below.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;import gi
+gi.require&amp;#95;version&amp;#40;'Gtk', '3.0'&amp;#41;
+from gi.repository import Gtk
+
+class MyWindow&amp;#40;Gtk.Window&amp;#41;:
+
+    def &amp;#95;&amp;#95;init&amp;#95;&amp;#95;&amp;#40;self&amp;#41;:
+        Gtk.Window.&amp;#95;&amp;#95;init&amp;#95;&amp;#95;&amp;#40;self, title=&amp;quot;Hello World&amp;quot;&amp;#41;
+
+        self.button = Gtk.Button&amp;#40;label=&amp;quot;Click Here&amp;quot;&amp;#41;
+        self.button.connect&amp;#40;&amp;quot;clicked&amp;quot;, self.on&amp;#95;button&amp;#95;clicked&amp;#41;
+        self.add&amp;#40;self.button&amp;#41;
+
+    def on&amp;#95;button&amp;#95;clicked&amp;#40;self, widget&amp;#41;:
+        print&amp;#40;&amp;quot;Hello World&amp;quot;&amp;#41;
+
+win = MyWindow&amp;#40;&amp;#41;
+win.connect&amp;#40;&amp;quot;delete-event&amp;quot;, Gtk.main&amp;#95;quit&amp;#41;
+win.show&amp;#95;all&amp;#40;&amp;#41;
+Gtk.main&amp;#40;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;I'll go through some of the code above. So the first line is the basic import you have probably seen it just imports gi which allows you to import GTK from the gi.repository specifically you have to require Gtk 3.0. &lt;pre&gt;&lt;code&gt;Gtk.Window.&amp;#95;&amp;#95;init&amp;#95;&amp;#95;&amp;#40;self, title=&amp;quot;Hello World&amp;quot;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;This is the class constructor to set the window title.&lt;pre&gt;&lt;code&gt;self.button = Gtk.Button&amp;#40;label=&amp;quot;Click Here&amp;quot;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;So in this code you're just inheriting from the Gtk.Window class and initializing some basic things on the 8th line. Also then setting up a button which you do by calling Gtk.Button().&lt;pre&gt;&lt;code&gt;self.button.connect&amp;#40;&amp;quot;clicked&amp;quot;, self.on&amp;#95;button&amp;#95;clicked&amp;#41;
+self.add&amp;#40;self.button&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Then you are connecting the button to a function called on&amp;#95;button&amp;#95;clicked which you define within the class.&lt;pre&gt;&lt;code&gt;win = MyWindow&amp;#40;&amp;#41;
+win.connect&amp;#40;&amp;quot;delete-event&amp;quot;, Gtk.main&amp;#95;quit&amp;#41;
+win.show&amp;#95;all&amp;#40;&amp;#41;
+Gtk.main&amp;#40;&amp;#41;
+ &lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;The first line is setting win as an object of the class MyWindow(). The second line allows you to close the window and without it you wont be able to close it. The second line shows the window and finally the Gtk.main() creates the main loop. &lt;br/&gt;&lt;br/&gt; So we can easily make a menu launcher just by knowing how to make buttons, a grid, and running commands in python using call. So lets start with the example code that the documentation gives us to start with and make our own menu launcher. First we'll start off by importing call from subprocesses.&lt;pre&gt;&lt;code&gt;from subprocess import call
+ &lt;/code&gt;&lt;/pre&gt; Now using call you can exechute commands in python. So if we wanted to open firefox we could do something like the following and change on&amp;#95;button&amp;#95;clicked.&lt;pre&gt;&lt;code&gt;def on&amp;#95;button&amp;#95;clicked&amp;#40;self, widget&amp;#41;:
+   call&amp;#40;&amp;#91;&amp;quot;firefox&amp;quot;&amp;#93;&amp;#41;
+ &lt;/code&gt;&lt;/pre&gt; Now you can launch firefox by pressing the button and you change the label of the button to 'Firefox'.&lt;pre&gt;&lt;code&gt;self.button = Gtk.Button&amp;#40;label=&amp;quot;Firefox&amp;quot;&amp;#41;
+ &lt;/code&gt;&lt;/pre&gt; Now the button will be labeled as firefox and launches firefox. You could essentially make more of these buttons and make a launcher if you wanted to but I'll leave that up to you. So you're final code for gtktut.py should be something like this...&lt;/p&gt;&lt;pre&gt;&lt;code&gt;import gi
+gi.require&amp;#95;version&amp;#40;'Gtk', '3.0'&amp;#41;
+from gi.repository import Gtk
+from subprocess import call
+
+class MyWindow&amp;#40;Gtk.Window&amp;#41;:
+
+    def &amp;#95;&amp;#95;init&amp;#95;&amp;#95;&amp;#40;self&amp;#41;:
+        Gtk.Window.&amp;#95;&amp;#95;init&amp;#95;&amp;#95;&amp;#40;self, title=&amp;quot;Hello World&amp;quot;&amp;#41;
+
+        self.button = Gtk.Button&amp;#40;label=&amp;quot;Firefox&amp;quot;&amp;#41;
+        self.button.connect&amp;#40;&amp;quot;clicked&amp;quot;, self.on&amp;#95;button&amp;#95;clicked&amp;#41;
+        self.add&amp;#40;self.button&amp;#41;
+
+    def on&amp;#95;button&amp;#95;clicked&amp;#40;self, widget&amp;#41;:
+        call&amp;#40;&amp;#91;&amp;quot;firefox&amp;quot;&amp;#93;&amp;#41;
+
+win = MyWindow&amp;#40;&amp;#41;
+win.connect&amp;#40;&amp;quot;delete-event&amp;quot;, Gtk.main&amp;#95;quit&amp;#41;
+win.show&amp;#95;all&amp;#40;&amp;#41;
+Gtk.main&amp;#40;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;I just overviewed a small amount of what Gtk can do but you could look into comboboxs, entries, progressbars, and lists. Prehaps in a later blog post I'll go over a more complex project using GTK.&lt;/p&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Sun, 08 Jan 2017 00:00:00 -0500
+</pubDate>
+</item>
 <item>
 <guid>
 http://blogawesome.com/posts-output/python-reading-writing-files/
