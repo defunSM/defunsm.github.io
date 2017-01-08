@@ -762,3 +762,50 @@ footer p {
 	}
 	.left { padding: 0 0 15px 0;}
 }
+
+
+ul3 {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #111;
+}
+
+li3 {
+    float: left;
+    position: fixed;
+}
+
+.one {
+  left: 106px;
+}
+
+.two {
+  left: 202.1px;
+
+}
+
+.three {
+
+  left: 20px;
+
+}
+
+.four {
+
+  left: 273px;
+}
+li3 a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li3 a:hover {
+    background-color: #111;
+    color: white;
+}
