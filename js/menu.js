@@ -46,7 +46,7 @@ $(window).scroll(function() {
 
 var enlarged = false;
 
-$('.hljs').on('click', function() {
+$('code').on('click', function() {
   var width = $(this).width();
   var height = $(this).height();
   var $p = $(this).find('p')
