@@ -51,7 +51,7 @@ $('.hljs').on('click', function() {
 
     if (fontsize != "xx-large") {
 
-        $(this).css({"font-size":"xx-large"});
+        $(this).css({'font-size':'xx-large'});
 
     }
 
