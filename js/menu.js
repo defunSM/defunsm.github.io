@@ -46,20 +46,20 @@ $(window).scroll(function() {
 
 var enlarged = false;
 
-$('code').on('click', function() {
-  var width = $(this).width();
+$('.hljs').on('click', function() {
+  var width = $(this).font-size();
   var height = $(this).height();
   var $p = $(this).find('.hljs')
 
   if (!enlarged) {
-    width = width * 2;
+    width = "xx-large"
     height = height * 2;
     enlarged = true;
     var callback = function($this) {
       $this.show();
     };
   } else {
-    width = width / 2;
+    width = "normal"
     height = height / 2;
     enlarged = false;
     var callback = function($this) {
