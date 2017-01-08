@@ -46,6 +46,17 @@ $(window).scroll(function() {
 
 $('code').on('click', function() {
 
-    $(this).css({'font-size':'90px'});
+    var myvar = $(this).css('font-size')
+
+    if (myvar == "30px") {
+
+        $(this).css({'font-size':'inherit'});
+    }
+    else {
+
+        $(this).css({'font-size':'30px'});
+
+    }
+
 
 });
