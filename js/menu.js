@@ -22,7 +22,7 @@ $('.menu').click(function() {
 
 $(window).scroll(function() {
 
-    if ($(this).scrollTop()>350)
+    if ($(this).scrollTop()>450)
      {
         $('.burger').fadeOut();
      }
@@ -34,7 +34,7 @@ $(window).scroll(function() {
 
 $(window).scroll(function() {
 
-    if ($(this).scrollTop()<350)
+    if ($(this).scrollTop()<450)
      {
         $('ul3').fadeOut();
      }
