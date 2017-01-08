@@ -47,7 +47,7 @@ $(window).scroll(function() {
 var enlarged = false;
 
 $('.hljs').on('click', function() {
-  var fontsize = $(this).css.("font-size")
+    var fontsize = $(this).css.("font-size");
 
     if (fontsize != "xx-large") {
 
