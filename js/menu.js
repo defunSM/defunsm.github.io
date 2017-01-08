@@ -44,9 +44,7 @@ $(window).scroll(function() {
      }
  });
 
-var enlarged = false;
-
-$('.hljs').on('click', function() {
+$('code').on('click', function() {
 
     $(this).css({'font-size':'90px'});
 
