@@ -47,28 +47,12 @@ $(window).scroll(function() {
 var enlarged = false;
 
 $('.hljs').on('click', function() {
-  var width = $(this).css.("font-size")
-  var height = $(this).height();
-  var $p = $(this).find('.hljs')
+  var fontsize = $(this).css.("font-size")
 
-  if (!enlarged) {
-    width = "xx-large"
+    if (fontsize != "xx-large") {
 
-    enlarged = true;
-    var callback = function($this) {
-      $this.show();
-    };
-  } else {
-    width = "normal"
+        $(this).css({"font-size":"xx-large"});
 
-    enlarged = false;
-    var callback = function($this) {
-      $this.hide();
-    };
-  }
-
-  $(this).stop().animate({
-    font-size: width,
-  }, callback($p));
+    }
 
 });
