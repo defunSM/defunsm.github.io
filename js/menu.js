@@ -49,7 +49,7 @@ var enlarged = false;
 $('code').on('click', function() {
   var width = $(this).width();
   var height = $(this).height();
-  var $p = $(this).find('p')
+  var $p = $(this).find('.hljs')
 
   if (!enlarged) {
     width = width * 2;
