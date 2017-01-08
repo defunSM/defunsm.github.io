@@ -49,8 +49,9 @@ time, mark, audio, video {
 }
 
 newcode {
-    color: red;
-    padding: 0px 5px 0px 5px;
+    color: #096A89;
+    padding: 0px 2px 0px 2px;
+    font-weight: bold;
 }
 
 /* HTML5 display-role reset for older browsers */
