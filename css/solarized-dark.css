@@ -16,10 +16,6 @@ Orginal Style from ethanschoonover.com/solarized (c) Jeremy Hull <sourdrums@gmai
 /*     font-size: xx-large; */
 /* } */
 
-.hljs.active {
-    font-size: xx-large;
-}
-
 .hljs-comment,
 .hljs-quote {
   color: #586e75;

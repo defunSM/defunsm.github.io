@@ -44,6 +44,32 @@ $(window).scroll(function() {
      }
  });
 
-$(function(){
-    $(".hljs").click(function(){$(this).toggleClass("active")})
-})
+var enlarged = false;
+
+$('.hljs').on('click', function() {
+  var width = $(this).width();
+  var height = $(this).height();
+  var $p = $(this).find('p')
+
+  if (!enlarged) {
+    width = width * 2;
+    height = height * 2;
+    enlarged = true;
+    var callback = function($this) {
+      $this.show();
+    };
+  } else {
+    width = width / 2;
+    height = height / 2;
+    enlarged = false;
+    var callback = function($this) {
+      $this.hide();
+    };
+  }
+
+  $(this).stop().animate({
+    width: width,
+    height: height
+  }, callback($p));
+
+});
