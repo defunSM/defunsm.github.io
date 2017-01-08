@@ -12,7 +12,11 @@ Orginal Style from ethanschoonover.com/solarized (c) Jeremy Hull <sourdrums@gmai
   color: #839496;
 }
 
-.hljs:hover {
+/* .hljs:hover { */
+/*     font-size: xx-large; */
+/* } */
+
+.hljs.active {
     font-size: xx-large;
 }
 
