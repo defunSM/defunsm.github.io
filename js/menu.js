@@ -46,21 +46,21 @@ $(window).scroll(function() {
 
 var enlarged = false;
 
-$('.hljs').on('click', function() {
+$('code').on('click', function() {
   var width = $(this).font-size();
   var height = $(this).height();
   var $p = $(this).find('.hljs')
 
   if (!enlarged) {
     width = "xx-large"
-    height = height * 2;
+
     enlarged = true;
     var callback = function($this) {
       $this.show();
     };
   } else {
     width = "normal"
-    height = height / 2;
+
     enlarged = false;
     var callback = function($this) {
       $this.hide();
@@ -69,7 +69,6 @@ $('.hljs').on('click', function() {
 
   $(this).stop().animate({
     width: width,
-    height: height
   }, callback($p));
 
 });
