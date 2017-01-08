@@ -45,5 +45,5 @@ $(window).scroll(function() {
  });
 
 $(function(){
-    $(this).click(function(){$(this).toggleClass("active")})
+    $(".hljs").click(function(){$(this).toggleClass("active")})
 })
