@@ -775,6 +775,7 @@ ul3 {
 li3 {
     float: left;
     position: fixed;
+    z-index: 101;
 }
 
 .one {

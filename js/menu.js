@@ -19,3 +19,15 @@ $('.menu').click(function() {
 //         $(".burger").show();
 //     }
 // });
+
+$(window).scroll(function() {
+
+    if ($(this).scrollTop()>350)
+     {
+        $('.burger').fadeOut();
+     }
+    else
+     {
+      $('.burger').fadeIn();
+     }
+ });
