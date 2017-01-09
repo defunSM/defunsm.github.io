@@ -153,23 +153,6 @@ pre {
     margin: 20px 10px 30px 10px;
 }
 
-pre.scroll {
-
-
-  scrollbar-base-color: red;
-  scrollbar-face-color: red;
-  scrollbar-track-color: red;
-  scrollbar-3dlight-color: red;
-  scrollbar-highlight-color: red;
-  scrollbar-arrow-color: red;
-  scrollbar-darkshadow-color: red;
-  scrollbar-shadow-color: red;
-
-
-}
-
-
-
 
 @media (min-width: 768px) {
     .navbar {
