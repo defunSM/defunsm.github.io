@@ -143,7 +143,17 @@ code {
     transition: font 1s ease;
 }
 
-code.scroll {
+
+
+pre {
+    background: #002b36 url('https://defunsm.github.io/img/noise.png') top left;
+    border-radius: 0.4em;
+    padding: 1em 1em;
+    font-family: Menlo,Monaco,"Andale Mono","lucida console","Courier New",monospace;
+    margin: 20px 10px 30px 10px;
+}
+
+pre.scroll {
 
 
   scrollbar-base-color: red;
@@ -159,14 +169,6 @@ code.scroll {
 }
 
 
-
-pre {
-    background: #002b36 url('https://defunsm.github.io/img/noise.png') top left;
-    border-radius: 0.4em;
-    padding: 1em 1em;
-    font-family: Menlo,Monaco,"Andale Mono","lucida console","Courier New",monospace;
-    margin: 20px 10px 30px 10px;
-}
 
 
 @media (min-width: 768px) {
