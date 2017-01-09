@@ -143,6 +143,22 @@ code {
     transition: font 1s ease;
 }
 
+code.scroll {
+
+
+  scrollbar-base-color: red;
+  scrollbar-face-color: red;
+  scrollbar-track-color: red;
+  scrollbar-3dlight-color: red;
+  scrollbar-highlight-color: red;
+  scrollbar-arrow-color: red;
+  scrollbar-darkshadow-color: red;
+  scrollbar-shadow-color: red;
+
+
+}
+
+
 
 pre {
     background: #002b36 url('https://defunsm.github.io/img/noise.png') top left;
