@@ -69,4 +69,13 @@ $(window).scroll(function() {
         'transform' : 'translate(0px, ' + wScroll/2 + '%)'
     });
 
+    $('.header_subtitle').css({
+        'transform' : 'translate(0px, ' + wScroll/2 + '%)'
+    });
+
+    $('.header_paralaxstyle').css({
+        'transform' : 'translate(0px, ' + wScroll/2 + '%)'
+    });
+
+
 });
