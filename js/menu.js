@@ -73,9 +73,5 @@ $(window).scroll(function() {
         'transform' : 'translate(0px, ' + wScroll/2 + 'px)'
     });
 
-    $('.header_paralaxstyle').css({
-        'transform' : 'translate(0px, ' + wScroll/2 + 'px)'
-    });
-
 
 });
