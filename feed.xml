@@ -12,7 +12,7 @@ http://blogawesome.com/
 A place to share my knowledge
 </description>
 <lastBuildDate>
-Mon, 09 Jan 2017 15:03:08 -0500
+Mon, 09 Jan 2017 16:41:33 -0500
 </lastBuildDate>
 <generator>
 clj-rss
@@ -28,7 +28,28 @@ http://blogawesome.com/posts-output/python-entropy/
 Python - Entropy in Machine Learning
 </title>
 <description>
-  &lt;p&gt; Entropy when talked about in computer science relates to the randomness in data. So a high entropy is essentially saying that the data is scattered around while a low entropy means that nearly all the data is the same. So since in machine learning data is essentially the way that we build classifiers we often need to manage the entropy to be not too low nor too high and reach a nice balance.&lt;/p&gt;&lt;p&gt; &lt;img src=&quot;https://defunsm.github.io/img/entropypic.png&quot; alt=&quot;picture of entropy equation&quot; /&gt;&lt;/p&gt;
+  &lt;p&gt; Entropy when talked about in information theory relates to the randomness in data. Another way to think about entropy is that it is the unpredictability of the data. So a high entropy is essentially saying that the data is scattered around while a low entropy means that nearly all the data is the same. So since in machine learning data is essentially the way that we build classifiers we often need to manage the entropy to be not too low nor too high and reach a nice balance. The &lt;newcode&gt;Pi&lt;/newcode&gt; in the entropy equation below represents the probability of the event occuring. &lt;/p&gt;&lt;p&gt; &lt;img src=&quot;https://defunsm.github.io/img/entropypic.png&quot; alt=&quot;picture of entropy equation&quot; /&gt;&lt;/p&gt;&lt;p&gt;So just a few things to note when calculating entropy we are using log 2 and not log 10 small distinction but does change your result. You may see different forms of this equation if you search up entropy but generally you'll find it'll look something like the above. &lt;br/&gt;&lt;br/&gt; So what is the point of finding entropy? I mean yes its nice I guess to know if your data is more or less random but what can we do with entropy? Well entropy also tells us how much &lt;newcode&gt;information&lt;/newcode&gt; we are going to get from a specific event. For example if we have a coin and say it isn't loaded in any way and has a 50/50 chance of either head or tails. This will result in lower entropy since the chances are fair which means more information. &lt;br/&gt;&lt;br/&gt; We could create a nice python script to calculate the entropy for us. So lets go ahead and do that we'll need the &lt;newcode&gt;math module&lt;/newcode&gt; for the log. After that we'll make a function that will take an &lt;newcode&gt;array of probabilities&lt;/newcode&gt; of each event occuring. So our probability array will be [0.5, 0.5] since it is an equal chance of either heads or tails occuring.&lt;pre&gt;&lt;code&gt;import math
+
+def entropy&amp;#95;cal&amp;#40;array&amp;#41;:
+
+    total&amp;#95;entropy = 0
+
+    for i in array:
+
+        total&amp;#95;entropy += -i &amp;#42; math.log&amp;#40;2, i&amp;#41;
+
+    return total&amp;#95;entropy
+
+def main&amp;#40;&amp;#41;:
+
+    probabilities = &amp;#91;0.5, 0.5&amp;#93;
+    entropy = entropy&amp;#95;cal&amp;#40;probabilities&amp;#41;
+
+    print&amp;#40;entropy&amp;#41;
+
+if &amp;#95;&amp;#95;name&amp;#95;&amp;#95;==&amp;quot;&amp;#95;&amp;#95;main&amp;#95;&amp;#95;&amp;quot;:
+    main&amp;#40;&amp;#41;
+ &lt;/code&gt;&lt;/pre&gt; One of the things you'll find out if you play around with the entropy equation is that equal chance events give out more information because there is less entropy. For example try changing the probability to [0.75, 0.25] in other words a rigged coin toss in which heads is 0.75 and tails is 0.25 or vise versa and you'll find that there is a higher entropy. Events that are more tilted have higher entropy than those with equal chances resulting in less information. So essentially more entropy is less information and less entropy is more information. You can also see this as reduced uncertainity means a lower entropy. Since a higher entropy means there is a higher uncertainity. &lt;br/&gt;&lt;br/&gt; So that is about it as far as calculating entropies go and if you were wondering what the units are for entropy it is usally refered to as a 'bit' but this depends on the log base you are using but since we are using 2 which means it can either be 1 or 0. &lt;br/&gt;&lt;br/&gt; Thats about it when it comes to just doing some basic calculations with the entropy equation.&lt;/p&gt;
 </description>
 <enclosure>
 
