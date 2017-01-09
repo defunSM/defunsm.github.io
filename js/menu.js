@@ -66,11 +66,11 @@ $(window).scroll(function() {
     var wScroll = $(this).scrollTop();
 
     $('.header_title').css({
-        'transform' : 'translate(0px, ' + wScroll/2 + 'px)'
+        'transform' : 'translate(0px, ' + wScroll/3 + 'px)'
     });
 
     $('.header_subtitle').css({
-        'transform' : 'translate(0px, ' + wScroll/2 + 'px)'
+        'transform' : 'translate(0px, ' + wScroll/3 + 'px)'
     });
 
 
