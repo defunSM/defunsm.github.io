@@ -60,3 +60,13 @@ $('code').on('click', function() {
 
 
 });
+
+$(window).scroll(function() {
+
+    var wScroll = $(this).scrollTop();
+
+    $('.header_title').css({
+        'transform' : 'translate(0px, ' + wScroll/2 + '%)'
+    });
+
+});
