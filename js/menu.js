@@ -60,3 +60,23 @@ $('code').on('click', function() {
 
 
 });
+
+function changeSize() {
+    var width = parseInt($("#Width").val());
+    var height = parseInt($("#Height").val());
+
+    $("code").width(width).height(height);
+
+    // update scrollbars
+    $('code').perfectScrollbar('update');
+
+    // or even with vanilla JS!
+    Ps.update(document.getElementById('code'));
+}
+
+$(function() {
+    $('code').perfectScrollbar();
+
+    // with vanilla JS!
+    Ps.initialize(document.getElementById('code'));
+});
