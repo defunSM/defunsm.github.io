@@ -12,7 +12,7 @@ http://blogawesome.com/
 A place to share my knowledge
 </description>
 <lastBuildDate>
-Mon, 09 Jan 2017 14:52:52 -0500
+Mon, 09 Jan 2017 15:03:08 -0500
 </lastBuildDate>
 <generator>
 clj-rss
@@ -28,7 +28,7 @@ http://blogawesome.com/posts-output/python-entropy/
 Python - Entropy in Machine Learning
 </title>
 <description>
- &lt;p&gt; &lt;img src=&quot;https://defunsm.github.io/img/entropypic.png&quot; alt=&quot;picture of entropy equation&quot; /&gt;  &lt;/p&gt;&lt;p&gt; Entropy when talked about in computer science relates to the randomness in data. So a high entropy is essentially saying that the data is scattered around while a low entropy means that nearly all the data is the same. So since in machine learning data is essentially the way that we build classifiers we often need to manage the entropy to be not too low nor too high and reach a nice balance.&lt;/p&gt;
+  &lt;p&gt; Entropy when talked about in computer science relates to the randomness in data. So a high entropy is essentially saying that the data is scattered around while a low entropy means that nearly all the data is the same. So since in machine learning data is essentially the way that we build classifiers we often need to manage the entropy to be not too low nor too high and reach a nice balance.&lt;/p&gt;&lt;p&gt; &lt;img src=&quot;https://defunsm.github.io/img/entropypic.png&quot; alt=&quot;picture of entropy equation&quot; /&gt;&lt;/p&gt;
 </description>
 <enclosure>
 
