@@ -837,3 +837,8 @@ body::-webkit-scrollbar-thumb {
   background-color: darkgrey;
   outline: 1px solid slategrey;
 }
+
+.header_paralaxstyle {
+    position: absolute;
+    top: 300px;
+}
