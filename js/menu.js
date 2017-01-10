@@ -35,13 +35,13 @@ $(window).scroll(function() {
      {
          $('ul3').fadeOut();
          $('.menubarblack').fadeOut();
-         $('li3').fadeOut();
+
      }
     else
      {
          $('ul3').fadeIn();
          $('.menubarblack').fadeIn();
-         $('li3').fadeIn();
+
      }
 
     var wScroll = $(this).scrollTop();
