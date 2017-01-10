@@ -820,10 +820,10 @@ li3 a {
 }
 
 /* Change the link color to #111 (black) on hover */
-li3 a:hover {
-    background-color: #FFFFFF;
-    color: black;
-}
+/* li3 a:hover { */
+/*     background-color: #FFFFFF; */
+/*     color: black; */
+/* } */
 
 body::-webkit-scrollbar {
     width: 1em;
