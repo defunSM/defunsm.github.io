@@ -68,10 +68,3 @@ $('code').on('click', function() {
 
 
 });
-
-addEventListener('click', function (ev) {
-    if (ev.target.classList.contains('whatever')) {
-        ev.preventDefault();
-        loadWithAjax(ev.target.href);
-    }
-});
