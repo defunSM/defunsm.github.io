@@ -33,11 +33,13 @@ $(window).scroll(function() {
 
         if ($(this).scrollTop()<700)
      {
-        $('ul3').fadeOut();
+         $('ul3').fadeOut();
+         $('.menubarblack').fadeOut();
      }
     else
      {
-      $('ul3').fadeIn();
+         $('ul3').fadeIn();
+         $('.menubarblack').fadeIn();
      }
 
     var wScroll = $(this).scrollTop();
