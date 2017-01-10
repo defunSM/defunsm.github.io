@@ -813,7 +813,7 @@ li3 {
 
 li3 a {
     display: block;
-    color: black;
+    color: white;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -821,8 +821,8 @@ li3 a {
 
 /* Change the link color to #111 (black) on hover */
 li3 a:hover {
-    background-color: #111;
-    color: white;
+    background-color: #FFFFFF;
+    color: black;
 }
 
 body::-webkit-scrollbar {
@@ -849,6 +849,6 @@ body::-webkit-scrollbar-thumb {
     position: fixed;
     z-index: 50;
     width: 100%;
-    height: 30px;
+    height: 60px;
     background-color: #000000;
 }
