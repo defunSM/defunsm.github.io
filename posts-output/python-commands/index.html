@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-	<title>Python - Prior, Posterior Probability and Normalization</title>
+	<title>Python - Running Commands</title>
 	<!-- Styles -->
 	<link rel="stylesheet" href="https://defunsm.github.io/css/style.css" />
 	<link rel="stylesheet" href="https://defunsm.github.io/css/font-awesome.min.css" />
@@ -71,14 +71,12 @@
 		<div class="fade child">
 			<div class="container_small">
 				<!-- Header Titles -->
-				<h1 class="header_title">Python - Prior, Posterior Probability and Normalization</h1>
+				<h1 class="header_title">Python - Running Commands</h1>
 
-
-                                <a href="/posts-output/python-commands/" class="button"><i class="fa fa-arrow-left" aria-hidden="true"></i> Python - Running Commands</a>
 
 <br/>
                                 
-                                <a href="/posts-output/python-entropy/" class="button">Python - Entropy in Machine Learning <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                                <a href="/posts-output/python-posterior-probability/" class="button">Python - Prior, Posterior Probability and Normalization <i class="fa fa-arrow-right" aria-hidden="true"></i>
 </i></a>
 
 
@@ -97,33 +95,16 @@
                     
                     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">January 10, 2017</div>
+        <div class="col-lg-6">January 11, 2017</div>
         
     </div>
-    <h2>Python - Prior, Posterior Probability and Normalization</h2>
+    <h2>Python - Running Commands</h2>
 </div>
 <div>
     
-    <p>When learning about Baye's theorem there is often talk about <newcode>Priors</newcode>, <newcode>Posterior Probability</newcode>, and <newcode>Normalization</newcode>. Those are fancy words when I first heard them but really they are simple concepts so I will try to explain them in the simplest terms I can. So lets start with trying to give a basic idea of a prior. <br/><br/> A way to think about a prior is as your belief in a certain event or information. If a person believes that theres equal chances for either event to occur such as maybe a coin flip than that person has a prior of 0.5 for heads and 0.5 for tails. One thing to note about the prior is that this is a value assigned before any evidence and before the coin is even flipped. Now lets say we flip the coin a thousand of times and it seems to favor heads slightly more than tails for whatever reason than your original prior can be updated to favor the evidence and so now you're prior could be 0.60 for heads and 0.40 for tails.  <br/><br/> Normalization is done by first finding the probability of being heads and not being heads which is done by multiplying by the prior and than adding up the probabilities. Adding up the probability will give you the total probability which does not usually add up to one. In that case you have to normalize it by adding both probabilities and than dividing the probability of the event over the total probability. <br/><br/> The posterior probability is than determined by calculating the probability of the event by multiplying by the prior but this time dividing by the total probability so that the probability of not occuring will equal to 1. So you can think of the posterior probability as your updated probability after examining the data. <br/><br/> So lets look at an example of putting all this stuff into practice. Lets say we have two guys Jake and Tony who both like Emily. Lets say our belief/prior is that they both have a fifty-fifty chance of hooking up with Emily. Now the next part is a bit unrealistic as we are going to quantify personality, appearance, and intelligence which are things that are quite difficult to do so. However for now we'll just be using this example to demonstrate and look at a more realistic example later on. So lets say Tony has 0.5 appearance, 0.3 intelligence, and 0.2 personality. Notice we are making the character traits into a probabity adding to 1. Now the same for Jake but he may not be as appearance inclined as Tony but has slightly more intelligence. So Jake has 0.3 appearance, 0.5 intelligence, 0.2 personality. Now lets say Emily doesn't care about appearance since you know its overrated now a days. So she values intelligence and personality so how do we know who is more likely to hook up with Emily? From just common sense you could probably figure it out since it isn't really a close call but lets do the math. <br/><br/> So lets write a quick python script to figure it out or you could just do the math on a calculator if you want but I would rather create a small script so if you wanted to change the values you would do it rather quickly and easily.<pre><code>def main&#40;&#41;:
-
-    prior = 0.5
-    tony = {&quot;Appearance&quot;: 0.5, &quot;Intelligence&quot;: 0.3, &quot;Personality&quot;: 0.2}
-    jake = {&quot;Appearance&quot;: 0.3, &quot;Intelligence&quot;: 0.5, &quot;Personality&quot;: 0.2}
-
-    total&#95;probability = &#40;tony&#91;&quot;Intelligence&quot;&#93; &#42; tony&#91;&quot;Personality&quot;&#93; &#42; prior&#41; + &#40;jake&#91;&quot;Intelligence&quot;&#93; &#42; tony&#91;&quot;Personality&quot;&#93; &#42; prior&#41;
-
-    print&#40;total&#95;probability&#41;
-
-    tony&#95;posterior&#95;probability = &#40;tony&#91;&quot;Intelligence&quot;&#93; &#42; tony&#91;&quot;Personality&quot;&#93; &#42; prior&#41; / total&#95;probability
-    jake&#95;posterior&#95;probability = &#40;jake&#91;&quot;Intelligence&quot;&#93; &#42; jake&#91;&quot;Personality&quot;&#93; &#42; prior&#41; / total&#95;probability
-
-    print&#40;&quot;Tony's Posterior Probability: &quot;, tony&#95;posterior&#95;probability&#41;
-    print&#40;&quot;Jake's Posterior Probability: &quot;, jake&#95;posterior&#95;probability&#41;
-
-
-if &#95;&#95;name&#95;&#95;==&quot;&#95;&#95;main&#95;&#95;&quot;:
-    main&#40;&#41;
- </code></pre></p><p>After running the calculations you'll find that the results are that jake has a higher posterior probabilty and that makes sense since you put into consideration that Emily doesn't care about appearance. So you would get that Tony has a posterior probability of 0.375 and Jake has a posterior probability of 0.625. Sad news for Tony unfortunately. </p>
+    <p>If you want to run some shell commands from your python script. Often this is sometimes needed in your code and the way that this is done in python is with <newcode>subprocess</newcode> module. So to run a shell command using the subprocess module you import call.<pre><code>from subprocess import call
+ </code></pre> After that you can use call to pass the arguments and call the shell command like the following.<pre><code>call&#40;&#91;&quot;touch&quot;, &quot;newfile.txt&quot;&#93;&#41;
+ </code></pre> That is all there is to it. More about how to use the subprocess module you can check the <a href='https://docs.python.org/2/library/subprocess.html'>documentation</a>.</p>
 </div>
 
 <div id="post-tags">
@@ -131,7 +112,7 @@ if &#95;&#95;name&#95;&#95;==&quot;&#95;&#95;main&#95;&#95;&quot;:
     
     <a href="/tags-output/Python/">Python</a>
     
-    <a href="/tags-output/Machine Learning/">Machine Learning</a>
+    <a href="/tags-output/Code/">Code</a>
     
     <a href="/tags-output/Guide/">Guide</a>
     
@@ -140,10 +121,8 @@ if &#95;&#95;name&#95;&#95;==&quot;&#95;&#95;main&#95;&#95;&quot;:
 
                           <div id="prev-next">
                             
-                            <a href="/posts-output/python-commands/">&laquo; Python - Running Commands</a>
                             
-                            
-                            <a class="right" href="/posts-output/python-entropy/">Python - Entropy in Machine Learning &raquo;</a>
+                            <a class="right" href="/posts-output/python-posterior-probability/">Python - Prior, Posterior Probability and Normalization &raquo;</a>
                             
                           </div>
 
