@@ -75,3 +75,7 @@ $('code').on('click', function() {
 
 
 });
+
+$( 'i' ).click(function() {
+  $( "#toggle" ).toggle( "bounce", { times: 3 }, "slow" );
+});
