@@ -43,7 +43,7 @@ $(window).scroll(function() {
      {
          $('ul3').fadeIn();
          $('.menubarblack').fadeIn();
-         $('.menubarblack').css({'height': wScroll/10 + 'px'});
+         // $('.menubarblack').css({'height':  + 'px'});
 
      }
 
