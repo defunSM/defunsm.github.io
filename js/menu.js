@@ -75,8 +75,3 @@ $('code').on('click', function() {
 
 
 });
-
-
-$("i").hover(function() {
-    $(this).css({'background-color': 'red'});
-});
