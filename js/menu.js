@@ -78,6 +78,6 @@ $('code').on('click', function() {
 
 
 $("i").hover(
-    function(e){ $(this).animate({ marginTop: -10 }); }, // over
-    function(e){ $(this).animate({ marginTop: 0 }); }  // out
+    function(e){ $(this).animate({ marginTop: 0 }); }, // over
+    function(e){ $(this).animate({ marginTop: 10 }); }  // out
 );
