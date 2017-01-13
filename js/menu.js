@@ -77,7 +77,7 @@ $('code').on('click', function() {
 });
 
 
-
-$("i").mouseover(function() {
-    $(this).animate({ marginTop: -100 });
-})
+$("i").hover(
+    function(e){ $(this).animate({ marginTop: -100 }); }, // over
+    function(e){ $(this).animate({ marginTop: 100 }); }  // out
+);
