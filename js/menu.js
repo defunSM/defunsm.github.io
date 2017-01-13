@@ -77,7 +77,6 @@ $('code').on('click', function() {
 });
 
 
-$("i").hover(
-    function(e){ $(this).animate({ top: 0 }); }, // over
-    function(e){ $(this).animate({ top: 10 }); }  // out
-);
+$("i").hover(function() {
+    $(this).css({'background-color': 'red'});
+});
