@@ -76,6 +76,6 @@ $('code').on('click', function() {
 
 });
 
-$( 'i' ).click(function() {
+$( 'i' ).hover(function() {
   $( "#toggle" ).toggle( "bounce", { times: 3 }, "slow" );
 });
