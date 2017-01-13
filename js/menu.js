@@ -22,6 +22,8 @@ $('.menu').click(function() {
 
 $(window).scroll(function() {
 
+    var wScroll = $(this).scrollTop();
+
     if ($(this).scrollTop()>700)
      {
         $('.burger').fadeOut();
@@ -41,10 +43,11 @@ $(window).scroll(function() {
      {
          $('ul3').fadeIn();
          $('.menubarblack').fadeIn();
+         $('.menubarblack').css({'height': wScroll + 'px'});
 
      }
 
-    var wScroll = $(this).scrollTop();
+
 
     $('.header_title').css({
         'transform' : 'translate(0px, ' + wScroll/3 + 'px)'
