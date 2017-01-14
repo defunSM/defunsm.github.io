@@ -503,18 +503,18 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .button3:hover {
-	background: #a67d4a;
-	color: #fff;
+        background: cyan;
+        color: black;
 }
 
 .button4:hover {
-	background: #a67d4a;
-	color: #fff;
+	background: cyan;
+	color: black;
 }
 
 .button5:hover {
-	background: #a67d4a;
-	color: #fff;
+	background: cyan;
+	color: black;
 }
 
 .button3 {
