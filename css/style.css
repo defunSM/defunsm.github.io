@@ -473,9 +473,32 @@ h1, h2, h3, h4, h5, h6 {
         background-color: #a67d4a;
 }
 
+.button1 {
+	margin: 50px 0 0;
+	padding: 0 20px;
+	height: 50px;
+	line-height: 50px;
+	border: 2px solid #a67d4a;
+	font-family: 'Montserrat', sans-serif;
+	text-transform: uppercase;
+	text-decoration: none;
+	display: inline-block;
+	-webkit-transition: all 300ms linear;
+	-moz-transition: all 300ms linear;
+	-o-transition: all 300ms linear;
+	-ms-transition: all 300ms linear;
+	transition: all 300ms linear;
+        border-radius: 5px;
+}
+
 .button:hover {
 	background: #a67d4a;
-	color: #249AF3;
+	color: #fff;
+}
+
+.button1:hover {
+	background: #a67d4a;
+	color: #fff;
 }
 
 /* 06 PORTFOLIO SETTINGS
