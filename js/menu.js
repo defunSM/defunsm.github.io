@@ -36,12 +36,14 @@ $(window).scroll(function() {
         if ($(this).scrollTop()<700)
      {
          $('ul3').fadeOut();
+         $('li3').fadeOut();
          $('.menubarblack').fadeOut();
 
      }
     else
      {
          $('ul3').fadeIn();
+         $('li3').fadeIn();
          $('.menubarblack').fadeIn();
          // $('.menubarblack').css({'height':  + 'px'});
 
