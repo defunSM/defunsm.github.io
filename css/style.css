@@ -952,4 +952,5 @@ body::-webkit-scrollbar-thumb {
     height: 47px;
     background-color: #249AF3;
     display: none;
+    text-overflow: inherit;
 }
