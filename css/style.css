@@ -477,6 +477,7 @@ h1, h2, h3, h4, h5, h6 {
         border-radius: 5px;
         color: white;
         background-color: #a67d4a;
+        opacity: 0.7;
 }
 
 .button1 {
@@ -500,6 +501,7 @@ h1, h2, h3, h4, h5, h6 {
 .button:hover {
 	background: #a67d4a;
 	color: black;
+        opacity: 0.9;
 }
 
 .button1:hover {
