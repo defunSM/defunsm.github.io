@@ -49,10 +49,15 @@ time, mark, audio, video {
 }
 
 newcode {
-    color: #096A89;
+    color: #a67;
     padding: 0px 2px 0px 2px;
     font-weight: bold;
 }
+
+newcode:hover {
+    color: cyan;
+}
+
 
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
