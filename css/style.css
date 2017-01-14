@@ -771,6 +771,7 @@ ul3 {
     padding: 0;
     overflow: hidden;
     background-color: #111;
+    display: hidden;
 }
 
 li3 {
