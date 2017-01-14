@@ -536,9 +536,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .button4 {
-	margin: 5px 5px;
-	padding: 0 20px;
-        font-size: 15px;
+	margin: 0px 0px;
+	padding: 0 10px;
+        font-size: 10px;
 	height: 50px;
 	line-height: 50px;
 	font-family: 'Montserrat', sans-serif;
