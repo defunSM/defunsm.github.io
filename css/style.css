@@ -595,7 +595,6 @@ h1, h2, h3, h4, h5, h6 {
 
 #portfolio {
 	background: #f5f5f5;
-	padding: 100px 50px 75px;
 }
 
 .works {
@@ -775,7 +774,6 @@ footer {
 	width: 100%;
 	max-width: 1150px;
 	margin: 0 auto;
-	padding: 50px;
 	overflow: hidden;
 }
 
@@ -829,7 +827,7 @@ footer p {
 	.section_subtitle { margin: 0 0 30px 0; }
 	#about, #contact { padding: 80px 25px; }
 
-	#portfolio { }
+	#portfolio { padding: 80px 25px 65px; }
 
 	.works article {
 		flex: 0 0 48%;
@@ -993,5 +991,9 @@ body::-webkit-scrollbar-thumb {
 }
 
 .defaultportpadding {
-    padding: 80px 25px 65px; }
+    padding: 80px 25px 65px;
+}
+
+.defaultfooterpadding {
+    padding: 50px;
 }
