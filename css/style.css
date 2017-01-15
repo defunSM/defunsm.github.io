@@ -357,6 +357,16 @@ h1, h2, h3, h4, h5, h6 {
 	height: 100%;
         width:30%;
 }
+
+@media screen and (max-width: 500px) {
+
+    .navigation.open, .navigation.close {
+	opacity: 1;
+	visibility: visible;
+	height: 100%;
+        width:100%;
+    }
+}
 .navigation.open:before, .navigation.close:before { left: 0; }
 
 .navigation.open li {
