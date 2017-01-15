@@ -351,12 +351,7 @@ h1, h2, h3, h4, h5, h6 {
 	transition: left .35s ease;
 }
 
-.navigation.open, .navigation.close {
-	opacity: 1;
-	visibility: visible;
-	height: 100%;
-        width:30%;
-}
+
 
 @media screen and (max-width: 500px) {
 
@@ -977,4 +972,16 @@ body::-webkit-scrollbar-thumb {
     text-overflow: inherit;
     flex-flow: row wrap;
     overflow: hidden;
+}
+
+.navigation.open, .navigation.close {
+	opacity: 1;
+	visibility: visible;
+	height: 100%;
+        width:30%;
+
+        #about {
+	    background: #fff;
+	    padding: 30px 5px 0px 30%;
+        }
 }
