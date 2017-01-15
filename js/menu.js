@@ -4,6 +4,9 @@ $('#toggle').click(function() {
     $('#navigation').toggleClass('open');
     $('#about').css({"padding": "30px 5px 0px 30%"});
     $('#portfolio').css({"padding": "30px 5px 0px 30%"});
+    $('#contract').css({"padding": "30px 5px 0px 30%"});
+    $('.container_footer').css({"padding": "30px 5px 0px 30%"});
+
   });
 
 $('.menu').click(function() {
@@ -12,6 +15,8 @@ $('.menu').click(function() {
     $('#navigation').removeClass('open');
     $('#about').css({"padding": "100px 50px"});
     $('#portfolio').css({"padding": "100px 50px"});
+    $('#contract').css({"padding": "100px 50px"});
+    $('.container_footer').css({"padding": "100px 50px"});
   });
 
 // $(window).scroll(function(){
