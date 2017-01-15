@@ -13,10 +13,10 @@ $('.burger.active').click(function() {
     $('.body').removeClass('body_hidden');
     $( "#toggle" ).removeClass( "active" );
     $('#navigation').removeClass('open');
-    $('#about').css({"padding": "100px 50px"});
-    $('#portfolio').css({"padding": "100px 50px"});
-    $('#contact').css({"padding": "100px 50px"});
-    $('.container_footer').css({"padding": "50px"});
+    $('#about').removeClass('addpadding');
+    $('#portfolio').removeClass('addpadding');
+    $('#contact').removeClass('addpadding');
+    $('.container_footer').removeClass('addpadding');
   });
 
 // $(window).scroll(function(){

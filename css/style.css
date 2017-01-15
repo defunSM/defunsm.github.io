@@ -59,6 +59,10 @@ newcode:hover {
 }
 
 
+.addpadding {
+    padding: 30px 5px 0px 30%;
+}
+
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
@@ -984,8 +988,4 @@ body::-webkit-scrollbar-thumb {
 	    background: #fff;
 	    padding: 30px 5px 0px 30%;
         }
-}
-
-.addpadding {
-    padding: 30px 5px 0px 30%;
 }
