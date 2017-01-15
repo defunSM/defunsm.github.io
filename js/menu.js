@@ -2,10 +2,10 @@ $('#toggle').click(function() {
     $(this).toggleClass('active');
     $('.body').toggleClass('body_hidden');
     $('#navigation').toggleClass('open');
-    $('#about').css({"padding": "30px 5px 0px 30%"});
-    $('#portfolio').css({"padding": "30px 5px 0px 30%"});
-    $('#contact').css({"padding": "30px 5px 0px 30%"});
-    $('.container_footer').css({"padding": "30px 5px 0px 20%"});
+    $('#about').toggleClass('addpadding');
+    $('#portfolio').toggleClass('addpadding');
+    $('#contact').toggleClass('addpadding');
+    $('.container_footer').toggleClass('addpadding');
 
   });
 
