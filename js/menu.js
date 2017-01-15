@@ -6,6 +6,8 @@ $('#toggle').click(function() {
     $('#portfolio').toggleClass('addpadding');
     $('#contact').toggleClass('addpadding');
     $('.container_footer').toggleClass('addpadding');
+    $('#welcome').toggleClass('addpadding');
+
 
   });
 
@@ -17,6 +19,7 @@ $('.burger.active').click(function() {
     $('#portfolio').removeClass('addpadding');
     $('#contact').removeClass('addpadding');
     $('.container_footer').removeClass('addpadding');
+    $('#welcome').removeClass('addpadding');
   });
 
 // $(window).scroll(function(){
