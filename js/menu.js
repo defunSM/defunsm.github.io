@@ -1,13 +1,14 @@
 $('#toggle').click(function() {
-   $(this).toggleClass('active');
-   $('.body').toggleClass('body_hidden')
-   $('#navigation').toggleClass('open');
+    $(this).toggleClass('active');
+    $('.body').toggleClass('body_hidden');
+    $('#navigation').toggleClass('open');
+    $('#about').css({"padding": "30px 5px 0px 30%"});
   });
 
 $('.menu').click(function() {
-   $('.body').removeClass('body_hidden')
-   $( "#toggle" ).removeClass( "active" )
-   $('#navigation').removeClass('open');
+    $('.body').removeClass('body_hidden');
+    $( "#toggle" ).removeClass( "active" );
+    $('#navigation').removeClass('open');
   });
 
 // $(window).scroll(function(){
