@@ -113,7 +113,7 @@ body {
 	color: #999;
 }
 
-.body_hidden { overflow: hidden; }
+.body_hidden {  }
 
 p {
 	line-height: 30px;
