@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+	<title>Python - User input</title>
+	<!-- Styles -->
+	<link rel="stylesheet" href="https://defunsm.github.io/css/style.css" />
+	<link rel="stylesheet" href="https://defunsm.github.io/css/font-awesome.min.css" />
+	<link type="text/css" rel="stylesheet" href="https://defunsm.github.io/featherlight.css" />
+        <link rel="stylesheet" href="https://defunsm.github.io/css/screen.css" />
+        <!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css"> -->
+        <link rel="stylesheet" href="https://defunsm.github.io/css/solarized-dark.css" />
+
+	<style type="text/css">
+		@media all {
+			.lightbox { display: none; }
+		}
+	</style>
+	<!-- jQuery -->
+	<script src="https://defunsm.github.io/js/jquery.min.js"></script>
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="images/favicon.png">
+</head>
+<body class="fade-in cmon body">
+
+
+  <!-- HEADER /////////////////////////////////////////////////////////////////////////// -->
+
+
+     <ul3 class="nav-two">
+  <li3 class="three"><a href="#welcome">Home <i class="fa fa-home" aria-hidden="true"></i></a></li3>
+  <li3 class="fourl"><a href="#about">About <i class="fa fa-heart" aria-hidden="true"></i></a></li3>
+  <li3 class="onel"><a href="#portfolio">GitHub <i class="fa fa-github" aria-hidden="true"></i></a></li3>
+  <li3 class="twol"><a href="#contact">Blog <i class="fa fa-book" aria-hidden="true"></i></a></li3>
+  </ul3>
+
+   <div class="menubarblack"></div>
+
+	<header id="postwelcome" class="parent module parallax parallax-1">
+		<div class="burger" id="toggle">
+			<span class="top"></span>
+			<span class="middle"></span>
+			<span class="bottom"></span>
+
+		</div>
+
+		<div class="navigation" id="navigation">
+			<nav class="overlay-menu">
+			  <ul>
+                                          <li>
+                              <a href="https://defunsm.github.io/#Welcome" class="menu">Home <i class="fa fa-home" aria-hidden="true"></i>
+</a>
+			      <span class="simple_line"></span>
+                              </li>
+					<li >
+						<a href="https://defunsm.github.io/#about" class="menu">About <i class="fa fa-heart" aria-hidden="true"></i></a>
+						<span class="simple_line"></span>
+					</li>
+					<li>
+						<a href="https://defunsm.github.io/#portfolio" class="menu">Github <i class="fa fa-github" aria-hidden="true"></i></a>
+						<span class="simple_line"></span>
+					</li>
+					<li>
+						<a href="https://defunsm.github.io/archives" class="menu">Archives <i class="fa fa-book" aria-hidden="true"></i></a>
+					</li>
+
+			  </ul>
+			</nav>
+		</div>
+		<div class="scroll_down"></div>
+		<div class="fade child">
+			<div class="container_small">
+				<!-- Header Titles -->
+				<h1 class="header_title">Python - User input</h1>
+
+
+                                <a href="/posts/pythonfunctions/" class="button"><i class="fa fa-arrow-left" aria-hidden="true"></i> Python - Functions</a>
+
+<br/>
+                                
+                                <a href="/posts/pythonifstatements/" class="button">Python - If-else-statements <i class="fa fa-arrow-right" aria-hidden="true"></i>
+</i></a>
+
+
+			</div>
+		</div>
+	</header>
+	<!-- END HEADER /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- ABOUT SECTION /////////////////////////////////////////////////////////////////////////// -->
+	<section id="about" class="module">
+
+
+          <div class="anotherclass">
+
+
+                    
+                    <div class="post-header">
+    <div id="post-meta" class="row">
+        <div class="col-lg-6">October 10, 2016</div>
+        
+    </div>
+    <h2>Python - User input</h2>
+</div>
+<div>
+    
+     <p>In this section we'll learn all about user input. How we can get our code to prompt the user for some information and than do something with that information. This is a pretty useful thing to do since usually we want to collect some kind of user data and manipulate it in some way. So lets say we want to do some math and return the sin of whatever the user inputs. We would first need to import math into our code since we need to use math.sin() and also using input() which is how you ask for user input from the user.<pre><code>import math
+
+def main&#40;&#41;:
+
+    user&#95;input = input&#40;&quot;&gt; &quot;&#41;
+    answer = math.sin&#40;user&#95;input&#41;
+    print&#40;answer&#41;
+
+main&#40;&#41;
+ </code></pre> Once you run that you'll quickly realize that something went wrong. Oh no. You get an error TypeError that a float is required on line 6. So what is going on here? Well math.sin needs a float as an argument. Otherwise it can't do its operations. We'll learn more about functions and how they take arguments soon enough but note that when we use input() the variable user_input stores the input that the user writes as a STRING and NOT a INTEGER. Thus we need to convert the user input to a float. Luckily Python is rather convinent and has a function to do just that that you have seen before float(). You can use float() on a string to convert it into a float and there is another function called int() that will convert your string or number to a integer.<pre><code>float&#40;&quot;5&quot;&#41; =&gt; 5.0
+
+int&#40;&quot;5&quot;&#41; =&gt; 5
+ </code></pre></p><p>So add the user_input as an argument of float like so.</p><pre><code>import math
+
+def main&#40;&#41;:
+
+    user&#95;input = input&#40;&quot;&gt; &quot;&#41;
+    answer = math.sin&#40;float&#40;user&#95;input&#41;&#41;
+    print&#40;answer&#41;
+
+main&#40;&#41;
+</code></pre>Notice that to give a function an argument you place a variable, string, number or anything else into the parantheses that come after it. You may wonder about why you need to use a period to call the function sin because it imported from the math library and using the function from there and hence you use the period to indicate that and otherwise you would get an error without including the math part and wouldn't know where the function sin is coming from thinking you have written your own sin function. Now run the code and you shouldn't get an error this time.<br/><br/>The result is that you get a prompt like the following below:<pre><code>&gt; 
+</code></pre>Which you can enter a number which math.sin and thus pops out a decimal. However you may notice that it does radians instead of degrees. If that annoys you than theres an easy fix to convert the answer into degrees using math.radians(). Just give the answer produced by float(user_input) to math.radians() and it will do the conversation for you so you can type in degrees.<pre><code>answer = math.sin&#40;math.radians&#40;float&#40;user&#95;input&#41;&#41;&#41;
+</code></pre>We could also get userinput stright from the command line by rewriting out code a little bit and importing sys. Which allows you to take in arguments from the command and do a whole lot of more system related stuff. We can also get rid of our userinput and clean it up to be the following ...<pre><code>import sys
+import math
+
+def main&#40;&#41;:
+
+    answer = math.sin&#40;math.radians&#40;float&#40;sys.argv&#91;1&#93;&#41;&#41;&#41;
+    print&#40;answer&#41;
+
+main&#40;&#41;
+</code></pre>If you run that with the following...<pre><code>$ python3 yourfile.py 
+</code></pre>You will get an IndexError and says that list index is out of range? Well this is because now that you have used sys.argv[1] but you didnt give an argument when running the file. sys.argv takes arguments from your command line so when it doesn't recieve one it'll throw you an error. We'll learn more about catching these errors and managing them with try and except. As well as other things about error handling. So the right way to run the file now is to add the number you want the sin of in your command line as an argument to python3 like so ...<pre><code>$ python3 yourfile.py 90
+</code></pre>The result of this is the following...<pre><code>1.0
+</code></pre>As expected the sin of 90 is 1 and you have your expected result. Now you have a python file that does sin which is rather since but what if you want both sin and cos? How would you do that? Well there is a few ways we could use if-statements which is the way we are going to do it or we could just show both results. But we are going to do the if-statement way and make a nice little way that the user can enter either cos or sin followed by the number they want to find the sin or cos of. This can easily be done using if-statements which you learned about and changing your code to the following...<pre><code>import sys
+import math
+
+def main&#40;&#41;:
+
+    if &#40;sys.argv&#91;1&#93; == &quot;sin&quot;&#41;:
+        answer = math.sin&#40;math.radians&#40;float&#40;sys.argv&#91;2&#93;&#41;&#41;&#41;
+        print&#40;answer&#41;
+    elif &#40;sys.argv&#91;1&#93; == &quot;cos&quot;&#41;:
+        answer = math.cos&#40;math.radians&#40;float&#40;sys.argv&#91;2&#93;&#41;&#41;&#41;
+        print&#40;answer&#41;
+    else:
+        print&#40;&quot;Don't know what to do with &quot;, sys.argv&#91;1&#93;&#41;
+
+main&#40;&#41;
+</code></pre>Now that you added sys.argv[2] pyton will be expecting another argument. So to run the program now you have to do something like this ...<pre><code>$ python3 yourfile.py cos 0
+</code></pre>The result should be 1.0 just like you expect.<br/><br/>Wraping up:<br/><br/>You can keep adding more and more arguments as your heart desires. Now you have a python file that does both sin and cos and you can keep adding to its functionally and maybe make raising numbers to an exponent or whatever really. You may be wondering what the brackets are on sys.argv are. Sys.argv itself is something called a list. A list can contain things such as strings which is how we are getting the arguments from the terminal. As you saw changing the number in the bracket will give you access to a different argument provided from the command line. However without going too much indepth about what exactly a list is because thats for another time just know that lists are just one way to index through and store things in this case the user agruments that he or she types from the command line. This is the very reason that you get and index error when you try to access a sys.argv index that hasn't been given yet. Now that you have learned how to get user input you could radically change your code and make some more interesting functionality with your python code. Maybe even recreate a mini <a href='https://en.wikipedia.org/wiki/Zork'>Zork</a>.
+</div>
+
+<div id="post-tags">
+    <b>Tags: </b>
+    
+    <a href="/tags/Python/" class="button4">Python</a>
+    
+    <a href="/tags/Code/" class="button4">Code</a>
+    
+    <a href="/tags/Guide/" class="button4">Guide</a>
+    
+</div>
+
+
+                          <div id="prev-next">
+                            
+                            <a class="center button3" href="/posts/pythonfunctions/"><i class="fa fa-arrow-left" aria-hidden="true"></i> Python - Functions</a>
+                            
+                            
+                            <a class="center button3" href="/posts/pythonifstatements/">Python - If-else-statements <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                            
+                          </div>
+
+                          
+                          <div id="disqus_thread"></div>
+                          <script type="text/javascript">
+                            (function() {
+                            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                            dsq.src = '//defunsm-github-io.disqus.com/embed.js';
+                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                            })();
+                          </script>
+                          
+
+
+
+                        
+          </div>
+
+
+
+	</section>
+
+        <!-- END ABOUT SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- PORTFOLIO SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- END CONTACT SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- FOOTER /////////////////////////////////////////////////////////////////////////// -->
+	<footer>
+		<div class="container_footer">
+		  <div class="left">
+                    <a href="https://github.com/defunSM"><i class="fa fa-github-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://www.facebook.com/salman.hossain.944"><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://plus.google.com/u/0/109736817709668742056"><i class="fa fa-google-plus-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://twitter.com/SmSalmanHossain"><i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://www.linkedin.com/in/salman-hossain"><i class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i></a>
+                    <p>&nbsp;</p>
+
+
+                    <p>Email: &nbsp;&nbsp; <span>sxh8083@g.rit.edu</span></p>
+                    <p>Phone: &nbsp;&nbsp; <span>(347) - 398 - 1701 </span></p>
+				<p>© 2016-17 <span>Salman Hossain</span></p>
+			</div>
+			<div class="right">
+				<a href="#postwelcome">Top <i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+			</div>
+		</div>
+	</footer>
+	<!-- END FOOTER /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- Scripts -->
+	<script src="https://defunsm.github.io/js/parallax.js"></script>
+	<script src="https://defunsm.github.io/js/diffscroll.js"></script>
+	<script src="https://defunsm.github.io/js/featherlight.js" type="text/javascript" charset="utf-8"></script>
+	<script src="https://defunsm.github.io/js/scroll.js"></script>
+        <!-- <script src="//code.jquery.com/jquery-1.11.0.min.js"></script> -->
+        <!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script> -->
+
+        <script src="https://defunsm.github.io/js/highlight.pack.js"></script>
+        <script src="/js/highlight.pack.js" type="text/javascript"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>

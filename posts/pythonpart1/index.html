@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+	<title>Python - Printing</title>
+	<!-- Styles -->
+	<link rel="stylesheet" href="https://defunsm.github.io/css/style.css" />
+	<link rel="stylesheet" href="https://defunsm.github.io/css/font-awesome.min.css" />
+	<link type="text/css" rel="stylesheet" href="https://defunsm.github.io/featherlight.css" />
+        <link rel="stylesheet" href="https://defunsm.github.io/css/screen.css" />
+        <!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css"> -->
+        <link rel="stylesheet" href="https://defunsm.github.io/css/solarized-dark.css" />
+
+	<style type="text/css">
+		@media all {
+			.lightbox { display: none; }
+		}
+	</style>
+	<!-- jQuery -->
+	<script src="https://defunsm.github.io/js/jquery.min.js"></script>
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="images/favicon.png">
+</head>
+<body class="fade-in cmon body">
+
+
+  <!-- HEADER /////////////////////////////////////////////////////////////////////////// -->
+
+
+     <ul3 class="nav-two">
+  <li3 class="three"><a href="#welcome">Home <i class="fa fa-home" aria-hidden="true"></i></a></li3>
+  <li3 class="fourl"><a href="#about">About <i class="fa fa-heart" aria-hidden="true"></i></a></li3>
+  <li3 class="onel"><a href="#portfolio">GitHub <i class="fa fa-github" aria-hidden="true"></i></a></li3>
+  <li3 class="twol"><a href="#contact">Blog <i class="fa fa-book" aria-hidden="true"></i></a></li3>
+  </ul3>
+
+   <div class="menubarblack"></div>
+
+	<header id="postwelcome" class="parent module parallax parallax-1">
+		<div class="burger" id="toggle">
+			<span class="top"></span>
+			<span class="middle"></span>
+			<span class="bottom"></span>
+
+		</div>
+
+		<div class="navigation" id="navigation">
+			<nav class="overlay-menu">
+			  <ul>
+                                          <li>
+                              <a href="https://defunsm.github.io/#Welcome" class="menu">Home <i class="fa fa-home" aria-hidden="true"></i>
+</a>
+			      <span class="simple_line"></span>
+                              </li>
+					<li >
+						<a href="https://defunsm.github.io/#about" class="menu">About <i class="fa fa-heart" aria-hidden="true"></i></a>
+						<span class="simple_line"></span>
+					</li>
+					<li>
+						<a href="https://defunsm.github.io/#portfolio" class="menu">Github <i class="fa fa-github" aria-hidden="true"></i></a>
+						<span class="simple_line"></span>
+					</li>
+					<li>
+						<a href="https://defunsm.github.io/archives" class="menu">Archives <i class="fa fa-book" aria-hidden="true"></i></a>
+					</li>
+
+			  </ul>
+			</nav>
+		</div>
+		<div class="scroll_down"></div>
+		<div class="fade child">
+			<div class="container_small">
+				<!-- Header Titles -->
+				<h1 class="header_title">Python - Printing</h1>
+
+
+                                <a href="/posts/python2/" class="button"><i class="fa fa-arrow-left" aria-hidden="true"></i> Python - Numbers</a>
+
+<br/>
+                                
+                                <a href="/posts/pythonpart0/" class="button">Python - Setup <i class="fa fa-arrow-right" aria-hidden="true"></i>
+</i></a>
+
+
+			</div>
+		</div>
+	</header>
+	<!-- END HEADER /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- ABOUT SECTION /////////////////////////////////////////////////////////////////////////// -->
+	<section id="about" class="module">
+
+
+          <div class="anotherclass">
+
+
+                    
+                    <div class="post-header">
+    <div id="post-meta" class="row">
+        <div class="col-lg-6">October 5, 2016</div>
+        
+    </div>
+    <h2>Python - Printing</h2>
+</div>
+<div>
+    
+    <p>Open up the python interpreter on your command line by the following...</p><pre><code>$ python3
+</code></pre> <p>Type the following one by one into the python interpreter. I'll explain each line one by one later but try to figure out what the result of each line is before typing it out and hitting enter.</p><pre><code>print&#40;&quot;A string&quot;&#41;
+
+print&#40;'This is a string too'&#41;
+
+print&#40;&quot;stuff&quot; + &quot;and more stuff&quot;&#41;
+
+print&#40;&quot;The char:&quot;, 'a'&#41;
+
+print&#40;&quot;The string: &quot;, &quot;stuff&quot;&#41;
+
+print&#40;&quot;The digit&quot;, 5&#41;
+
+print&#40;&quot;The float &quot;, 4.0&#41;
+
+print&#40;&quot;Printing multiple stuff:&quot;, 'a', &quot;stuff&quot;, 5, 4.0&#41;&#41;
+
+print&#40;&quot;First Line \nSecond Line&quot;&#41;
+
+print&#40;&quot;\tI am a tabbed Line.&quot;&#41;
+
+# print&#40;&quot;I am a comment so I won't print. :&#40;&quot;&#41;
+
+print&#40;&quot;&quot;&quot;
+This is a bit weird.
+But acts as if I added newlines.
+&quot;&quot;&quot;&#41;
+</code></pre>The explanations are below make sure you ran all of them before checking the explanations.<pre><code>python3 ex1.py
+</code></pre><p>Explanations:</p><p>Line 1:</p><pre><code>print&#40;&quot;A string&quot;&#41;
+</code></pre>Using the print function you display "A string" which is a string to the console. You have to include the quotations otherwise it'll be treated as a variable which you'll learn later.<br/><br/>Line 3:<pre><code>print&#40;'This is a string too'&#41;
+</code></pre>This is also a string but using single quotes you can use either whatever you prefer. <br/><br/>Line 5:<pre><code>print&#40;&quot;stuff&quot; + &quot;and more stuff&quot;&#41;
+</code></pre>What you are doing here is called concatenation which is a fancy word for joining strings together. You are doing this by using the + symbol adding the two strings to form one string and displaying it onto the console.<br/><br/>Line 7:<pre><code>print&#40;&quot;The char&quot;, 'a'&#41;
+</code></pre>Using the , symbol is the format symbol in python which allows you to insert the character 'a' into the string. Also notice that is followed by the leter 'c' indicating that it is expecting a character.<br /><br/>You are printing a single character NOT a string. A string contains many characters but a character is a single letter. Notice that I used single quotes for this which if you come from c++ you may know that characters are in single quotes. However in Python you don't have to use single quotes on characters you could use double quotes and this line of code would have worked just fine.<br/><br/>Line 9:<pre><code>print&#40;&quot;The string&quot;, &quot;stuff&quot;&#41;
+</code></pre>This time you are using the string formator symbol but expecting a string.<br/><br/>Line 11:<pre><code>print&#40;&quot;The digit&quot;, 5&#41;
+</code></pre>Formating a digit instead of a string or character.<br/><br/>Line 13:<pre><code>print&#40;&quot;The float&quot;, 4.0&#41;
+</code></pre>Formatting a float. A float having digits after the decimal place.<br/><br/>Line 15:<pre><code>print&#40;&quot;Printing multiple stuff:&quot;, 'a', &quot;stuff&quot;, 5, 4.0&#41;&#41;
+</code></pre>Now you are using multiple commas to print out a character, string, integer and a float.<br/><br/>Line 17:<pre><code>print&#40;&quot;First Line \nSecond Line&quot;&#41;
+</code></pre>The "\n" is an escape character and creates a new line thus showing you the string on two different lines on the console. There are many escape characters and if you want to see all of them you can see them in the <a href='https://docs.python.org/2.0/ref/strings.html'>python documentation</a>.<br/><br/><img src="https://defunsm.github.io/img/escapes.png" alt="escapes" /><br/><br/>Line 19:<pre><code>print&#40;&quot;\tI am a tabbed Line.&quot;&#41;
+</code></pre>\t creates a tab and displays it onto the console.<br/><br/>Line 21:<pre><code># print&#40;&quot;I am a comment so I won't print. :&#40;&quot;&#41;
+</code></pre>This is a comment so it won't show up. This is how you write notes in your program without it being interpreted as code.<br/><br/>Line 23-26:<pre><code>print&#40;&quot;&quot;&quot;
+This is a bit weird.
+But acts as if I added newlines.
+&quot;&quot;&quot;&#41;
+</code></pre>Displays on two lines without the use of a \n escape character. Kinda weird but works.<br/><br/>Thats it for now. Finally to quit the python interpreter type the following ...<pre><code>exit&#40;&#41;
+</code></pre>
+</div>
+
+<div id="post-tags">
+    <b>Tags: </b>
+    
+    <a href="/tags/Python/" class="button4">Python</a>
+    
+    <a href="/tags/Code/" class="button4">Code</a>
+    
+    <a href="/tags/Guide/" class="button4">Guide</a>
+    
+</div>
+
+
+                          <div id="prev-next">
+                            
+                            <a class="center button3" href="/posts/python2/"><i class="fa fa-arrow-left" aria-hidden="true"></i> Python - Numbers</a>
+                            
+                            
+                            <a class="center button3" href="/posts/pythonpart0/">Python - Setup <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                            
+                          </div>
+
+                          
+                          <div id="disqus_thread"></div>
+                          <script type="text/javascript">
+                            (function() {
+                            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                            dsq.src = '//defunsm-github-io.disqus.com/embed.js';
+                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                            })();
+                          </script>
+                          
+
+
+
+                        
+          </div>
+
+
+
+	</section>
+
+        <!-- END ABOUT SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- PORTFOLIO SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- END CONTACT SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- FOOTER /////////////////////////////////////////////////////////////////////////// -->
+	<footer>
+		<div class="container_footer">
+		  <div class="left">
+                    <a href="https://github.com/defunSM"><i class="fa fa-github-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://www.facebook.com/salman.hossain.944"><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://plus.google.com/u/0/109736817709668742056"><i class="fa fa-google-plus-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://twitter.com/SmSalmanHossain"><i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://www.linkedin.com/in/salman-hossain"><i class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i></a>
+                    <p>&nbsp;</p>
+
+
+                    <p>Email: &nbsp;&nbsp; <span>sxh8083@g.rit.edu</span></p>
+                    <p>Phone: &nbsp;&nbsp; <span>(347) - 398 - 1701 </span></p>
+				<p>© 2016-17 <span>Salman Hossain</span></p>
+			</div>
+			<div class="right">
+				<a href="#postwelcome">Top <i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+			</div>
+		</div>
+	</footer>
+	<!-- END FOOTER /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- Scripts -->
+	<script src="https://defunsm.github.io/js/parallax.js"></script>
+	<script src="https://defunsm.github.io/js/diffscroll.js"></script>
+	<script src="https://defunsm.github.io/js/featherlight.js" type="text/javascript" charset="utf-8"></script>
+	<script src="https://defunsm.github.io/js/scroll.js"></script>
+        <!-- <script src="//code.jquery.com/jquery-1.11.0.min.js"></script> -->
+        <!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script> -->
+
+        <script src="https://defunsm.github.io/js/highlight.pack.js"></script>
+        <script src="/js/highlight.pack.js" type="text/javascript"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>

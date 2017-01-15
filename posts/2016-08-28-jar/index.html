@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+	<title>Clojure File to Standalone Jar</title>
+	<!-- Styles -->
+	<link rel="stylesheet" href="https://defunsm.github.io/css/style.css" />
+	<link rel="stylesheet" href="https://defunsm.github.io/css/font-awesome.min.css" />
+	<link type="text/css" rel="stylesheet" href="https://defunsm.github.io/featherlight.css" />
+        <link rel="stylesheet" href="https://defunsm.github.io/css/screen.css" />
+        <!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css"> -->
+        <link rel="stylesheet" href="https://defunsm.github.io/css/solarized-dark.css" />
+
+	<style type="text/css">
+		@media all {
+			.lightbox { display: none; }
+		}
+	</style>
+	<!-- jQuery -->
+	<script src="https://defunsm.github.io/js/jquery.min.js"></script>
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="images/favicon.png">
+</head>
+<body class="fade-in cmon body">
+
+
+  <!-- HEADER /////////////////////////////////////////////////////////////////////////// -->
+
+
+     <ul3 class="nav-two">
+  <li3 class="three"><a href="#welcome">Home <i class="fa fa-home" aria-hidden="true"></i></a></li3>
+  <li3 class="fourl"><a href="#about">About <i class="fa fa-heart" aria-hidden="true"></i></a></li3>
+  <li3 class="onel"><a href="#portfolio">GitHub <i class="fa fa-github" aria-hidden="true"></i></a></li3>
+  <li3 class="twol"><a href="#contact">Blog <i class="fa fa-book" aria-hidden="true"></i></a></li3>
+  </ul3>
+
+   <div class="menubarblack"></div>
+
+	<header id="postwelcome" class="parent module parallax parallax-1">
+		<div class="burger" id="toggle">
+			<span class="top"></span>
+			<span class="middle"></span>
+			<span class="bottom"></span>
+
+		</div>
+
+		<div class="navigation" id="navigation">
+			<nav class="overlay-menu">
+			  <ul>
+                                          <li>
+                              <a href="https://defunsm.github.io/#Welcome" class="menu">Home <i class="fa fa-home" aria-hidden="true"></i>
+</a>
+			      <span class="simple_line"></span>
+                              </li>
+					<li >
+						<a href="https://defunsm.github.io/#about" class="menu">About <i class="fa fa-heart" aria-hidden="true"></i></a>
+						<span class="simple_line"></span>
+					</li>
+					<li>
+						<a href="https://defunsm.github.io/#portfolio" class="menu">Github <i class="fa fa-github" aria-hidden="true"></i></a>
+						<span class="simple_line"></span>
+					</li>
+					<li>
+						<a href="https://defunsm.github.io/archives" class="menu">Archives <i class="fa fa-book" aria-hidden="true"></i></a>
+					</li>
+
+			  </ul>
+			</nav>
+		</div>
+		<div class="scroll_down"></div>
+		<div class="fade child">
+			<div class="container_small">
+				<!-- Header Titles -->
+				<h1 class="header_title">Clojure File to Standalone Jar</h1>
+
+
+                                <a href="/posts/2016-08-29-Clojure_GUI_as_an_Exe/" class="button"><i class="fa fa-arrow-left" aria-hidden="true"></i> Creating an Exechuteable GUI</a>
+
+<br/>
+                                
+                                <a href="/posts/2016-08-27-new/" class="button">A New Beginning <i class="fa fa-arrow-right" aria-hidden="true"></i>
+</i></a>
+
+
+			</div>
+		</div>
+	</header>
+	<!-- END HEADER /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- ABOUT SECTION /////////////////////////////////////////////////////////////////////////// -->
+	<section id="about" class="module">
+
+
+          <div class="anotherclass">
+
+
+                    
+                    <div class="post-header">
+    <div id="post-meta" class="row">
+        <div class="col-lg-6">August 28, 2016</div>
+        
+    </div>
+    <h2>Clojure File to Standalone Jar</h2>
+</div>
+<div>
+    
+    <p>Clojure luckily relies on the JVM and thus it is easy to turn a .clj into a .jar with relative ease. Of course there are some things you have to watch out for such as making sure that the -main function contains everything and nothing is in the top level that's supposed to be in the -main function. <br/><br/> So start with the basics start a leiningen project running the following...</p><pre><code>$ lein new defunsmproject
+</code></pre><p>This will create a new leiningen project which now means you should have a project.clj file. That looks something like this.</p><pre><code>&#40;defproject defunsmproject &quot;0.1.0-SNAPSHOT&quot;
+  :description &quot;FIXME: write description&quot;
+  :url &quot;http://example.com/FIXME&quot;
+  :license {:name &quot;Eclipse Public License&quot;
+            :url &quot;http://www.eclipse.org/legal/epl-v10.html&quot;}
+  :dependencies &#91;&#91;org.clojure/clojure &quot;1.8.0&quot;&#93;&#93;&#41;
+</code></pre><p>Your core.clj should look like this which is located in the src directory of the leiningen project directory. </p><pre><code>&#40;ns defunsmproject.core&#41;
+
+&#40;defn foo
+  &quot;I don't do a whole lot.&quot;
+  &#91;x&#93;
+  &#40;println x &quot;Hello, World!&quot;&#41;&#41;
+</code></pre><p>Step 1: <br/><br/>  Edit project.clj so that leiningen knows which one is your -main function.  In this cause it would be defunsmproject.core.  <br/><br/> As well as adding :profiles telling leiningen how to build the jar file.</p><pre><code>&#40;defproject defunsmproject &quot;0.1.0-SNAPSHOT&quot;
+  :description &quot;FIXME: write description&quot;
+  :url &quot;http://example.com/FIXME&quot;
+  :license {:name &quot;Eclipse Public License&quot;
+            :url &quot;http://www.eclipse.org/legal/epl-v10.html&quot;}
+  :dependencies &#91;&#91;org.clojure/clojure &quot;1.8.0&quot;&#93;&#93;
+  :profiles {:uberjar {:aot &#91;defunsmproject.core&#93;}} ;; add this
+  :jar-name &quot;defunsmproject.jar&quot; ;; add this
+  :uberjar-name &quot;defunsmproject-uber.jar&quot; ;; add this
+  :main defunsmproject.core&#41; ;; add this
+</code></pre><p>Step 2:  <br/><br/> Add :gen-class and -main function in the core.clj.</p><pre><code>&#40;ns defunsmproject.core
+  &#40;:gen-class&#41;&#41; ;; add this gen-class
+
+&#40;defn -main &#91;&amp; args&#93;  ;; add this -main function
+  &#40;println &quot;Converting a clojure file to a standalone jar!&quot;&#41;&#41;
+</code></pre><p>Step 3:  <br/><br/> Now you can make a uberjar which is the standalone jar by running ...</p><pre><code>$ lein uberjar
+</code></pre><p>If that worked than your in good luck and should have a uber-jar and a jar. The standalone one that you probably want is the uber-jar one which will be in the the target directory that was generated. <br/><br/> To run the jar file do the following. And you should see the output as expected. <br/><br/><pre><code>$ java -jar defunsmproject-uber.jar
+ </code></pre></p><p>If you run into problems make sure that your project.clj and core.clj is set up just like mine. Otherwise you now have a .jar file from a .clj file!</p>
+</div>
+
+<div id="post-tags">
+    <b>Tags: </b>
+    
+    <a href="/tags/Clojure/" class="button4">Clojure</a>
+    
+    <a href="/tags/Code/" class="button4">Code</a>
+    
+    <a href="/tags/Guide/" class="button4">Guide</a>
+    
+</div>
+
+
+                          <div id="prev-next">
+                            
+                            <a class="center button3" href="/posts/2016-08-29-Clojure_GUI_as_an_Exe/"><i class="fa fa-arrow-left" aria-hidden="true"></i> Creating an Exechuteable GUI</a>
+                            
+                            
+                            <a class="center button3" href="/posts/2016-08-27-new/">A New Beginning <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                            
+                          </div>
+
+                          
+                          <div id="disqus_thread"></div>
+                          <script type="text/javascript">
+                            (function() {
+                            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                            dsq.src = '//defunsm-github-io.disqus.com/embed.js';
+                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                            })();
+                          </script>
+                          
+
+
+
+                        
+          </div>
+
+
+
+	</section>
+
+        <!-- END ABOUT SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- PORTFOLIO SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- END CONTACT SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- FOOTER /////////////////////////////////////////////////////////////////////////// -->
+	<footer>
+		<div class="container_footer">
+		  <div class="left">
+                    <a href="https://github.com/defunSM"><i class="fa fa-github-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://www.facebook.com/salman.hossain.944"><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://plus.google.com/u/0/109736817709668742056"><i class="fa fa-google-plus-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://twitter.com/SmSalmanHossain"><i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://www.linkedin.com/in/salman-hossain"><i class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i></a>
+                    <p>&nbsp;</p>
+
+
+                    <p>Email: &nbsp;&nbsp; <span>sxh8083@g.rit.edu</span></p>
+                    <p>Phone: &nbsp;&nbsp; <span>(347) - 398 - 1701 </span></p>
+				<p>© 2016-17 <span>Salman Hossain</span></p>
+			</div>
+			<div class="right">
+				<a href="#postwelcome">Top <i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+			</div>
+		</div>
+	</footer>
+	<!-- END FOOTER /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- Scripts -->
+	<script src="https://defunsm.github.io/js/parallax.js"></script>
+	<script src="https://defunsm.github.io/js/diffscroll.js"></script>
+	<script src="https://defunsm.github.io/js/featherlight.js" type="text/javascript" charset="utf-8"></script>
+	<script src="https://defunsm.github.io/js/scroll.js"></script>
+        <!-- <script src="//code.jquery.com/jquery-1.11.0.min.js"></script> -->
+        <!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script> -->
+
+        <script src="https://defunsm.github.io/js/highlight.pack.js"></script>
+        <script src="/js/highlight.pack.js" type="text/javascript"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>

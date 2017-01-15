@@ -1,28 +1,28 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <rss version='2.0' xmlns:atom='http://www.w3.org/2005/Atom'>
 <channel>
-<atom:link href='http://blogawesome.com/' rel='self' type='application/rss+xml'/>
+<atom:link href='http://salmanhossain.me' rel='self' type='application/rss+xml'/>
 <title>
 Physics. Computers. Code.
 </title>
 <link>
-http://blogawesome.com/
+http://salmanhossain.me
 </link>
 <description>
 A place to share my knowledge
 </description>
 <lastBuildDate>
-Sat, 14 Jan 2017 22:16:43 -0500
+Sun, 15 Jan 2017 09:22:44 -0500
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
 <item>
 <guid>
-http://blogawesome.com/posts-output/python-pyqt5/
+http://salmanhossain.me/posts/python-pyqt5/
 </guid>
 <link>
-http://blogawesome.com/posts-output/python-pyqt5/
+http://salmanhossain.me/posts/python-pyqt5/
 </link>
 <title>
 Python - Creating a Table using PyGt5
@@ -126,7 +126,7 @@ self.tableWidget.setColumnCount&amp;#40;3&amp;#41;
    self.tableWidget.setItem&amp;#40;i, 0, QTableWidgetItem&amp;#40;elements&amp;#91;i&amp;#93;&amp;#91;0&amp;#93;&amp;#41;&amp;#41;
    self.tableWidget.setItem&amp;#40;i, 1, QTableWidgetItem&amp;#40;elements&amp;#91;i&amp;#93;&amp;#91;1&amp;#93;&amp;#41;&amp;#41;
    self.tableWidget.setItem&amp;#40;i, 2, QTableWidgetItem&amp;#40;elements&amp;#91;i&amp;#93;&amp;#91;2&amp;#93;&amp;#41;&amp;#41;
- &lt;/code&gt;&lt;/pre&gt; This is the meat of the code so to speak. Where all of the major action is going on. The for statement is looping and placing the elements into its respective cell. This is done by using the setItem method and as you can see it is looped for the amount of arrays in elements using len to find that value.  &lt;br/&gt;&lt;br/&gt; The majority of the rest of the code is just to set up the frame which is not so vital but now you can create tables from a .txt file which is amazing and can extend this even further and create some graphs using matplotlib which is built into PyGt5.&lt;/p&gt;
+ &lt;/code&gt;&lt;/pre&gt; This is the meat of the code so to speak. Where all of the major action is going on. The for statement is looping and placing the elements into its respective cell. This is done by using the &lt;newcode&gt;setItem&lt;/newcode&gt; method and as you can see it is looped for the amount of arrays in elements using len to find that value.  &lt;br/&gt;&lt;br/&gt; The majority of the rest of the code is just to set up the frame which is not so vital but now you can create tables from a .txt file which is amazing and can extend this even further and create some graphs using matplotlib which is built into PyGt5.&lt;/p&gt;
 </description>
 <enclosure>
 
@@ -137,10 +137,10 @@ Sat, 14 Jan 2017 00:00:00 -0500
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/python-commands/
+http://salmanhossain.me/posts/python-commands/
 </guid>
 <link>
-http://blogawesome.com/posts-output/python-commands/
+http://salmanhossain.me/posts/python-commands/
 </link>
 <title>
 Python - Running Commands
@@ -159,10 +159,10 @@ Wed, 11 Jan 2017 00:00:00 -0500
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/python-posterior-probability/
+http://salmanhossain.me/posts/python-posterior-probability/
 </guid>
 <link>
-http://blogawesome.com/posts-output/python-posterior-probability/
+http://salmanhossain.me/posts/python-posterior-probability/
 </link>
 <title>
 Python - Prior, Posterior Probability and Normalization
@@ -198,10 +198,10 @@ Tue, 10 Jan 2017 00:00:00 -0500
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/python-entropy/
+http://salmanhossain.me/posts/python-entropy/
 </guid>
 <link>
-http://blogawesome.com/posts-output/python-entropy/
+http://salmanhossain.me/posts/python-entropy/
 </link>
 <title>
 Python - Entropy in Machine Learning
@@ -238,10 +238,10 @@ Mon, 09 Jan 2017 00:00:00 -0500
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/python-gtk/
+http://salmanhossain.me/posts/python-gtk/
 </guid>
 <link>
-http://blogawesome.com/posts-output/python-gtk/
+http://salmanhossain.me/posts/python-gtk/
 </link>
 <title>
 Python - GTK 3.0
@@ -311,10 +311,10 @@ Sun, 08 Jan 2017 00:00:00 -0500
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/python-reading-writing-files/
+http://salmanhossain.me/posts/python-reading-writing-files/
 </guid>
 <link>
-http://blogawesome.com/posts-output/python-reading-writing-files/
+http://salmanhossain.me/posts/python-reading-writing-files/
 </link>
 <title>
 Python - Reading and Writing Files
@@ -376,10 +376,10 @@ Fri, 30 Dec 2016 00:00:00 -0500
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/python-web-scraper/
+http://salmanhossain.me/posts/python-web-scraper/
 </guid>
 <link>
-http://blogawesome.com/posts-output/python-web-scraper/
+http://salmanhossain.me/posts/python-web-scraper/
 </link>
 <title>
 Python - Parsing HTML with BeautifulSoup
@@ -459,10 +459,10 @@ Wed, 28 Dec 2016 00:00:00 -0500
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/python-color-in-terminal/
+http://salmanhossain.me/posts/python-color-in-terminal/
 </guid>
 <link>
-http://blogawesome.com/posts-output/python-color-in-terminal/
+http://salmanhossain.me/posts/python-color-in-terminal/
 </link>
 <title>
 Python - Color in Terminal
@@ -490,10 +490,10 @@ Tue, 27 Dec 2016 00:00:00 -0500
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/python-optparse/
+http://salmanhossain.me/posts/python-optparse/
 </guid>
 <link>
-http://blogawesome.com/posts-output/python-optparse/
+http://salmanhossain.me/posts/python-optparse/
 </link>
 <title>
 Python - Optparse
@@ -516,10 +516,10 @@ Mon, 26 Dec 2016 00:00:00 -0500
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/udacity-machine-learning/
+http://salmanhossain.me/posts/udacity-machine-learning/
 </guid>
 <link>
-http://blogawesome.com/posts-output/udacity-machine-learning/
+http://salmanhossain.me/posts/udacity-machine-learning/
 </link>
 <title>
 Python - Naive Bayes Algorithm
@@ -541,10 +541,10 @@ Sun, 25 Dec 2016 00:00:00 -0500
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/python-bokeh/
+http://salmanhossain.me/posts/python-bokeh/
 </guid>
 <link>
-http://blogawesome.com/posts-output/python-bokeh/
+http://salmanhossain.me/posts/python-bokeh/
 </link>
 <title>
 Python - Bokeh to Graph Boot Times
@@ -562,10 +562,10 @@ Sat, 17 Dec 2016 00:00:00 -0500
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/special-relativity/
+http://salmanhossain.me/posts/special-relativity/
 </guid>
 <link>
-http://blogawesome.com/posts-output/special-relativity/
+http://salmanhossain.me/posts/special-relativity/
 </link>
 <title>
 Python - SpaceTime Diagrams
@@ -584,10 +584,10 @@ Sun, 04 Dec 2016 00:00:00 -0500
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/Heroku/
+http://salmanhossain.me/posts/Heroku/
 </guid>
 <link>
-http://blogawesome.com/posts-output/Heroku/
+http://salmanhossain.me/posts/Heroku/
 </link>
 <title>
 Clojure - How to start a web app using Heroku
@@ -612,10 +612,10 @@ Wed, 30 Nov 2016 00:00:00 -0500
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/clojure-using-quil-4/
+http://salmanhossain.me/posts/clojure-using-quil-4/
 </guid>
 <link>
-http://blogawesome.com/posts-output/clojure-using-quil-4/
+http://salmanhossain.me/posts/clojure-using-quil-4/
 </link>
 <title>
 Graphics using Quil in Clojure (Part 4)
@@ -798,10 +798,10 @@ Sat, 05 Nov 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/clojure-ringserver/
+http://salmanhossain.me/posts/clojure-ringserver/
 </guid>
 <link>
-http://blogawesome.com/posts-output/clojure-ringserver/
+http://salmanhossain.me/posts/clojure-ringserver/
 </link>
 <title>
 Clojure - Ring
@@ -853,10 +853,10 @@ Mon, 31 Oct 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/clojurescript-reagent/
+http://salmanhossain.me/posts/clojurescript-reagent/
 </guid>
 <link>
-http://blogawesome.com/posts-output/clojurescript-reagent/
+http://salmanhossain.me/posts/clojurescript-reagent/
 </link>
 <title>
 ClojureScript - Reagent
@@ -936,10 +936,10 @@ Sun, 30 Oct 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/quantum-common-sense/
+http://salmanhossain.me/posts/quantum-common-sense/
 </guid>
 <link>
-http://blogawesome.com/posts-output/quantum-common-sense/
+http://salmanhossain.me/posts/quantum-common-sense/
 </link>
 <title>
 Quantum Mechanics - Common Sense
@@ -956,10 +956,10 @@ Wed, 26 Oct 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/clojure-figwheel/
+http://salmanhossain.me/posts/clojure-figwheel/
 </guid>
 <link>
-http://blogawesome.com/posts-output/clojure-figwheel/
+http://salmanhossain.me/posts/clojure-figwheel/
 </link>
 <title>
 Clojure - Figwheel
@@ -979,10 +979,10 @@ Tue, 25 Oct 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/clojure-leiningen/
+http://salmanhossain.me/posts/clojure-leiningen/
 </guid>
 <link>
-http://blogawesome.com/posts-output/clojure-leiningen/
+http://salmanhossain.me/posts/clojure-leiningen/
 </link>
 <title>
 Clojure - Leiningen
@@ -1031,10 +1031,10 @@ Mon, 24 Oct 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/clojure-reading-writing/
+http://salmanhossain.me/posts/clojure-reading-writing/
 </guid>
 <link>
-http://blogawesome.com/posts-output/clojure-reading-writing/
+http://salmanhossain.me/posts/clojure-reading-writing/
 </link>
 <title>
 Clojure - Shell Commands
@@ -1059,10 +1059,10 @@ Sun, 23 Oct 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/clojure-probabilities/
+http://salmanhossain.me/posts/clojure-probabilities/
 </guid>
 <link>
-http://blogawesome.com/posts-output/clojure-probabilities/
+http://salmanhossain.me/posts/clojure-probabilities/
 </link>
 <title>
 Clojure - Probabilities
@@ -1131,10 +1131,10 @@ Sat, 22 Oct 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/pythonlists/
+http://salmanhossain.me/posts/pythonlists/
 </guid>
 <link>
-http://blogawesome.com/posts-output/pythonlists/
+http://salmanhossain.me/posts/pythonlists/
 </link>
 <title>
 Python - Lists
@@ -1227,10 +1227,10 @@ Fri, 21 Oct 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/Zshvsbash/
+http://salmanhossain.me/posts/Zshvsbash/
 </guid>
 <link>
-http://blogawesome.com/posts-output/Zshvsbash/
+http://salmanhossain.me/posts/Zshvsbash/
 </link>
 <title>
 Zsh vs Bash (Shell Comparsion)
@@ -1247,10 +1247,10 @@ Thu, 20 Oct 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/dualbooting/
+http://salmanhossain.me/posts/dualbooting/
 </guid>
 <link>
-http://blogawesome.com/posts-output/dualbooting/
+http://salmanhossain.me/posts/dualbooting/
 </link>
 <title>
 Dual Booting (Linux + Windows)
@@ -1267,10 +1267,10 @@ Wed, 19 Oct 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/virtualmachine/
+http://salmanhossain.me/posts/virtualmachine/
 </guid>
 <link>
-http://blogawesome.com/posts-output/virtualmachine/
+http://salmanhossain.me/posts/virtualmachine/
 </link>
 <title>
 Virtual Machine
@@ -1287,10 +1287,10 @@ Tue, 18 Oct 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/pythonclasses/
+http://salmanhossain.me/posts/pythonclasses/
 </guid>
 <link>
-http://blogawesome.com/posts-output/pythonclasses/
+http://salmanhossain.me/posts/pythonclasses/
 </link>
 <title>
 Python - Classes
@@ -1425,10 +1425,10 @@ Sat, 15 Oct 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/livebooting/
+http://salmanhossain.me/posts/livebooting/
 </guid>
 <link>
-http://blogawesome.com/posts-output/livebooting/
+http://salmanhossain.me/posts/livebooting/
 </link>
 <title>
 Live Booting (USB)
@@ -1445,10 +1445,10 @@ Fri, 14 Oct 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/pythonloops/
+http://salmanhossain.me/posts/pythonloops/
 </guid>
 <link>
-http://blogawesome.com/posts-output/pythonloops/
+http://salmanhossain.me/posts/pythonloops/
 </link>
 <title>
 Python - Recursion
@@ -1501,10 +1501,10 @@ Wed, 12 Oct 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/pythonfunctions/
+http://salmanhossain.me/posts/pythonfunctions/
 </guid>
 <link>
-http://blogawesome.com/posts-output/pythonfunctions/
+http://salmanhossain.me/posts/pythonfunctions/
 </link>
 <title>
 Python - Functions
@@ -1540,10 +1540,10 @@ Tue, 11 Oct 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/pythonuserinput/
+http://salmanhossain.me/posts/pythonuserinput/
 </guid>
 <link>
-http://blogawesome.com/posts-output/pythonuserinput/
+http://salmanhossain.me/posts/pythonuserinput/
 </link>
 <title>
 Python - User input
@@ -1611,10 +1611,10 @@ Mon, 10 Oct 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/pythonifstatements/
+http://salmanhossain.me/posts/pythonifstatements/
 </guid>
 <link>
-http://blogawesome.com/posts-output/pythonifstatements/
+http://salmanhossain.me/posts/pythonifstatements/
 </link>
 <title>
 Python - If-else-statements
@@ -1706,10 +1706,10 @@ Sun, 09 Oct 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/python-booleans/
+http://salmanhossain.me/posts/python-booleans/
 </guid>
 <link>
-http://blogawesome.com/posts-output/python-booleans/
+http://salmanhossain.me/posts/python-booleans/
 </link>
 <title>
 Python - Booleans
@@ -1794,10 +1794,10 @@ Sat, 08 Oct 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/pythonvariables/
+http://salmanhossain.me/posts/pythonvariables/
 </guid>
 <link>
-http://blogawesome.com/posts-output/pythonvariables/
+http://salmanhossain.me/posts/pythonvariables/
 </link>
 <title>
 Python - Variables
@@ -1853,10 +1853,10 @@ Fri, 07 Oct 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/python2/
+http://salmanhossain.me/posts/python2/
 </guid>
 <link>
-http://blogawesome.com/posts-output/python2/
+http://salmanhossain.me/posts/python2/
 </link>
 <title>
 Python - Numbers
@@ -1920,10 +1920,10 @@ Thu, 06 Oct 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/pythonpart1/
+http://salmanhossain.me/posts/pythonpart1/
 </guid>
 <link>
-http://blogawesome.com/posts-output/pythonpart1/
+http://salmanhossain.me/posts/pythonpart1/
 </link>
 <title>
 Python - Printing
@@ -1984,10 +1984,10 @@ Wed, 05 Oct 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/pythonpart0/
+http://salmanhossain.me/posts/pythonpart0/
 </guid>
 <link>
-http://blogawesome.com/posts-output/pythonpart0/
+http://salmanhossain.me/posts/pythonpart0/
 </link>
 <title>
 Python - Setup
@@ -2005,10 +2005,10 @@ Tue, 04 Oct 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/introductiontopython/
+http://salmanhossain.me/posts/introductiontopython/
 </guid>
 <link>
-http://blogawesome.com/posts-output/introductiontopython/
+http://salmanhossain.me/posts/introductiontopython/
 </link>
 <title>
 Python - A short introduction
@@ -2033,10 +2033,10 @@ Mon, 03 Oct 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/wordcal/
+http://salmanhossain.me/posts/wordcal/
 </guid>
 <link>
-http://blogawesome.com/posts-output/wordcal/
+http://salmanhossain.me/posts/wordcal/
 </link>
 <title>
 WordCal - A Python Script
@@ -2053,10 +2053,10 @@ Sun, 02 Oct 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/partitioningandmounting/
+http://salmanhossain.me/posts/partitioningandmounting/
 </guid>
 <link>
-http://blogawesome.com/posts-output/partitioningandmounting/
+http://salmanhossain.me/posts/partitioningandmounting/
 </link>
 <title>
 Partitoning and Mounting (Linux)
@@ -2073,10 +2073,10 @@ Sat, 01 Oct 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/smchat/
+http://salmanhossain.me/posts/smchat/
 </guid>
 <link>
-http://blogawesome.com/posts-output/smchat/
+http://salmanhossain.me/posts/smchat/
 </link>
 <title>
 SMChat
@@ -2093,10 +2093,10 @@ Tue, 27 Sep 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/haskellpart1-ghci/
+http://salmanhossain.me/posts/haskellpart1-ghci/
 </guid>
 <link>
-http://blogawesome.com/posts-output/haskellpart1-ghci/
+http://salmanhossain.me/posts/haskellpart1-ghci/
 </link>
 <title>
 Haskell - Loading functions into GHCI (Part 1)
@@ -2139,10 +2139,10 @@ Mon, 26 Sep 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/intro-to-haskell/
+http://salmanhossain.me/posts/intro-to-haskell/
 </guid>
 <link>
-http://blogawesome.com/posts-output/intro-to-haskell/
+http://salmanhossain.me/posts/intro-to-haskell/
 </link>
 <title>
 Haskell - Introduction
@@ -2161,10 +2161,10 @@ Sun, 25 Sep 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/Using_swingpart3/
+http://salmanhossain.me/posts/Using_swingpart3/
 </guid>
 <link>
-http://blogawesome.com/posts-output/Using_swingpart3/
+http://salmanhossain.me/posts/Using_swingpart3/
 </link>
 <title>
 Graphics using Quil in Clojure (Part 3)
@@ -2181,10 +2181,10 @@ Sat, 24 Sep 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/basics-of-clojure5/
+http://salmanhossain.me/posts/basics-of-clojure5/
 </guid>
 <link>
-http://blogawesome.com/posts-output/basics-of-clojure5/
+http://salmanhossain.me/posts/basics-of-clojure5/
 </link>
 <title>
 Basics of Clojure - Watching an Atom (Part 5)
@@ -2212,10 +2212,10 @@ Wed, 21 Sep 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/basics-of-clojurepart4/
+http://salmanhossain.me/posts/basics-of-clojurepart4/
 </guid>
 <link>
-http://blogawesome.com/posts-output/basics-of-clojurepart4/
+http://salmanhossain.me/posts/basics-of-clojurepart4/
 </link>
 <title>
 Basics of Clojure - Atoms (Part 4)
@@ -2257,10 +2257,10 @@ Tue, 20 Sep 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/basics-of-clojurepart3/
+http://salmanhossain.me/posts/basics-of-clojurepart3/
 </guid>
 <link>
-http://blogawesome.com/posts-output/basics-of-clojurepart3/
+http://salmanhossain.me/posts/basics-of-clojurepart3/
 </link>
 <title>
 Basics of Clojure - Recursion (Part 3)
@@ -2293,10 +2293,10 @@ Sun, 18 Sep 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/basics-of-clojurepart2/
+http://salmanhossain.me/posts/basics-of-clojurepart2/
 </guid>
 <link>
-http://blogawesome.com/posts-output/basics-of-clojurepart2/
+http://salmanhossain.me/posts/basics-of-clojurepart2/
 </link>
 <title>
 Basics of Clojure - Mapping (Part 2)
@@ -2338,10 +2338,10 @@ Sat, 17 Sep 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/basics-of-clojure/
+http://salmanhossain.me/posts/basics-of-clojure/
 </guid>
 <link>
-http://blogawesome.com/posts-output/basics-of-clojure/
+http://salmanhossain.me/posts/basics-of-clojure/
 </link>
 <title>
 Basics of Clojure (Part 1)
@@ -2402,10 +2402,10 @@ Sun, 11 Sep 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/terminalshell/
+http://salmanhossain.me/posts/terminalshell/
 </guid>
 <link>
-http://blogawesome.com/posts-output/terminalshell/
+http://salmanhossain.me/posts/terminalshell/
 </link>
 <title>
 Terminals and Shell Commands
@@ -2422,10 +2422,10 @@ Thu, 08 Sep 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/path-finding/
+http://salmanhossain.me/posts/path-finding/
 </guid>
 <link>
-http://blogawesome.com/posts-output/path-finding/
+http://salmanhossain.me/posts/path-finding/
 </link>
 <title>
 Pathfinding
@@ -2442,10 +2442,10 @@ Wed, 07 Sep 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/2016-09-03-using_quil_part_2/
+http://salmanhossain.me/posts/2016-09-03-using_quil_part_2/
 </guid>
 <link>
-http://blogawesome.com/posts-output/2016-09-03-using_quil_part_2/
+http://salmanhossain.me/posts/2016-09-03-using_quil_part_2/
 </link>
 <title>
 Graphics using Quil in Clojure (Part 2)
@@ -2566,10 +2566,10 @@ Sat, 03 Sep 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/getting-started-with-clojure/
+http://salmanhossain.me/posts/getting-started-with-clojure/
 </guid>
 <link>
-http://blogawesome.com/posts-output/getting-started-with-clojure/
+http://salmanhossain.me/posts/getting-started-with-clojure/
 </link>
 <title>
 Getting Started with Clojure
@@ -2587,10 +2587,10 @@ Fri, 02 Sep 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/using_quil/
+http://salmanhossain.me/posts/using_quil/
 </guid>
 <link>
-http://blogawesome.com/posts-output/using_quil/
+http://salmanhossain.me/posts/using_quil/
 </link>
 <title>
 Graphics using Quil in Clojure (Part 1)
@@ -2656,10 +2656,10 @@ Thu, 01 Sep 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/2016-08-31-Using_Swing_Part_2/
+http://salmanhossain.me/posts/2016-08-31-Using_Swing_Part_2/
 </guid>
 <link>
-http://blogawesome.com/posts-output/2016-08-31-Using_Swing_Part_2/
+http://salmanhossain.me/posts/2016-08-31-Using_Swing_Part_2/
 </link>
 <title>
 Creating JFrames using Swing APIs in Clojure (Part 2)
@@ -2719,10 +2719,10 @@ Wed, 31 Aug 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/2016-08-30-Using_Swing/
+http://salmanhossain.me/posts/2016-08-30-Using_Swing/
 </guid>
 <link>
-http://blogawesome.com/posts-output/2016-08-30-Using_Swing/
+http://salmanhossain.me/posts/2016-08-30-Using_Swing/
 </link>
 <title>
 Creating JFrames using Swing APIs in Clojure (Part 1)
@@ -2789,10 +2789,10 @@ Tue, 30 Aug 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/2016-08-29-Clojure_GUI_as_an_Exe/
+http://salmanhossain.me/posts/2016-08-29-Clojure_GUI_as_an_Exe/
 </guid>
 <link>
-http://blogawesome.com/posts-output/2016-08-29-Clojure_GUI_as_an_Exe/
+http://salmanhossain.me/posts/2016-08-29-Clojure_GUI_as_an_Exe/
 </link>
 <title>
 Creating an Exechuteable GUI
@@ -2809,10 +2809,10 @@ Mon, 29 Aug 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/2016-08-28-jar/
+http://salmanhossain.me/posts/2016-08-28-jar/
 </guid>
 <link>
-http://blogawesome.com/posts-output/2016-08-28-jar/
+http://salmanhossain.me/posts/2016-08-28-jar/
 </link>
 <title>
 Clojure File to Standalone Jar
@@ -2859,10 +2859,10 @@ Sun, 28 Aug 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/2016-08-27-new/
+http://salmanhossain.me/posts/2016-08-27-new/
 </guid>
 <link>
-http://blogawesome.com/posts-output/2016-08-27-new/
+http://salmanhossain.me/posts/2016-08-27-new/
 </link>
 <title>
 A New Beginning

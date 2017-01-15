@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+	<title>Haskell - Loading functions into GHCI (Part 1)</title>
+	<!-- Styles -->
+	<link rel="stylesheet" href="https://defunsm.github.io/css/style.css" />
+	<link rel="stylesheet" href="https://defunsm.github.io/css/font-awesome.min.css" />
+	<link type="text/css" rel="stylesheet" href="https://defunsm.github.io/featherlight.css" />
+        <link rel="stylesheet" href="https://defunsm.github.io/css/screen.css" />
+        <!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css"> -->
+        <link rel="stylesheet" href="https://defunsm.github.io/css/solarized-dark.css" />
+
+	<style type="text/css">
+		@media all {
+			.lightbox { display: none; }
+		}
+	</style>
+	<!-- jQuery -->
+	<script src="https://defunsm.github.io/js/jquery.min.js"></script>
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="images/favicon.png">
+</head>
+<body class="fade-in cmon body">
+
+
+  <!-- HEADER /////////////////////////////////////////////////////////////////////////// -->
+
+
+     <ul3 class="nav-two">
+  <li3 class="three"><a href="#welcome">Home <i class="fa fa-home" aria-hidden="true"></i></a></li3>
+  <li3 class="fourl"><a href="#about">About <i class="fa fa-heart" aria-hidden="true"></i></a></li3>
+  <li3 class="onel"><a href="#portfolio">GitHub <i class="fa fa-github" aria-hidden="true"></i></a></li3>
+  <li3 class="twol"><a href="#contact">Blog <i class="fa fa-book" aria-hidden="true"></i></a></li3>
+  </ul3>
+
+   <div class="menubarblack"></div>
+
+	<header id="postwelcome" class="parent module parallax parallax-1">
+		<div class="burger" id="toggle">
+			<span class="top"></span>
+			<span class="middle"></span>
+			<span class="bottom"></span>
+
+		</div>
+
+		<div class="navigation" id="navigation">
+			<nav class="overlay-menu">
+			  <ul>
+                                          <li>
+                              <a href="https://defunsm.github.io/#Welcome" class="menu">Home <i class="fa fa-home" aria-hidden="true"></i>
+</a>
+			      <span class="simple_line"></span>
+                              </li>
+					<li >
+						<a href="https://defunsm.github.io/#about" class="menu">About <i class="fa fa-heart" aria-hidden="true"></i></a>
+						<span class="simple_line"></span>
+					</li>
+					<li>
+						<a href="https://defunsm.github.io/#portfolio" class="menu">Github <i class="fa fa-github" aria-hidden="true"></i></a>
+						<span class="simple_line"></span>
+					</li>
+					<li>
+						<a href="https://defunsm.github.io/archives" class="menu">Archives <i class="fa fa-book" aria-hidden="true"></i></a>
+					</li>
+
+			  </ul>
+			</nav>
+		</div>
+		<div class="scroll_down"></div>
+		<div class="fade child">
+			<div class="container_small">
+				<!-- Header Titles -->
+				<h1 class="header_title">Haskell - Loading functions into GHCI (Part 1)</h1>
+
+
+                                <a href="/posts/smchat/" class="button"><i class="fa fa-arrow-left" aria-hidden="true"></i> SMChat</a>
+
+<br/>
+                                
+                                <a href="/posts/intro-to-haskell/" class="button">Haskell - Introduction <i class="fa fa-arrow-right" aria-hidden="true"></i>
+</i></a>
+
+
+			</div>
+		</div>
+	</header>
+	<!-- END HEADER /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- ABOUT SECTION /////////////////////////////////////////////////////////////////////////// -->
+	<section id="about" class="module">
+
+
+          <div class="anotherclass">
+
+
+                    
+                    <div class="post-header">
+    <div id="post-meta" class="row">
+        <div class="col-lg-6">September 26, 2016</div>
+        
+    </div>
+    <h2>Haskell - Loading functions into GHCI (Part 1)</h2>
+</div>
+<div>
+    
+     <p>The way you identify a file to be haskell code is by adding a <i>.hs</i> tag at the end of the file. So make a file called ex1.hs and open up a <i>ghci</i>.  <br/><br/> Before we go any further I want to distinguish when I am typing into the <i>ghci</i> which will be identified with the <code>Prelude></code> which means I am telling you to type into the <i>ghci</i>. If there is a <code>$</code> this means you are typing into your terminal. When there is no <code>Prelude></code> and <code>$</code> that means type into whatever text editor you happen to be using onto the ex1.hs file.  <br/><br/> Making the ex1.hs using touch. Or however else you may prefer to make a file.</p><pre><code>$ touch ex1.hs 
+</code></pre><p>Open up a ghci. I suggest you get a little familiar with the ghci since you will be spending a bit of time on it and to do that you can type <code>:?</code> to view some options for the ghci.</p><pre><code>$ ghci 
+</code></pre><p>Now that you have a ghci up and running lets write some code into ex1.hs and later we can load it into the ghci using :load ex1.hs and afterwards we can use :reload every time we edit ex1.hs. Now lets start with a pythagorean theorem to start off things. If you go back to your middle school and remember that a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup> which is basically what we are going to be writing. In a lot of ways Haskell is very much just like math.</p><pre><code>{- ################################################
+        ex1.hs
+        defunSM, Sept 2016.
+        Haskell Part 1
+################################################## -}
+
+pythagorean :: Float -&gt; Float -&gt; Float   {-- Notice that there are two arguments pythagorean is taking a and b. --}
+pythagorean a b = sqrt &#40;a &#94; 2 + b &#94; 2&#41;  
+</code></pre><p>The first line is identifying the type that pythagorean will recieve. In this case it'll recieve two Floats and the out put will be a Float. We do this since Haskell is statically typed and that the function can know before hand what to expect and doing this allows us to reuse our function later on. <br/><br/> Also to have comments you can do curly brackets and a dash like so {- this is a comment -}.</p><p>So now we can load our function by heading to the ghci which hopefully you still have running if not you can just run ghci again in the same directory of your ex1.hs file and type in the following to load pythagorean into the ghci. Once you used <code>:load</code> you can now just use <code>:reload</code> and it'll just update the functions you have in your file.</p><pre><code>Prelude&gt; :load ex1.hs
+</code></pre><p>You should see Ok, Modules Loaded: Main. Meaning you're golden and no errors in your code. So now you can type the following to use pythagorean...</p><pre><code>Prelude&gt; pythagorean 3 4
+</code></pre><p>Now lets look at how to construct a factorial which is rather an easy one two liner in haskell.</p><pre><code>factorial :: Integer -&gt; Integer
+factorial n = if n &gt; 0 then n &#42; factorial &#40;n-1&#41; else 1
+</code></pre><p>factorial takes one argument than than checks if it is greater than 0 and if it is than it does n * factorial (n-1) otherwise its 1. This takes advantage of recursion calling itself. Now you can reload the file into ghci using <code>:reload</code>. </p><pre><code>Prelude&gt; :reload 
+</code></pre><p>And use factorial 5 to check that it works.</p><pre><code>Prelude&gt; factorial 5
+</code></pre><p>Now lets look at how to use guards in Haskell which are like conditionals. Lets look at this example of identifying if a quadradic has real roots. If you remember the quadradic equation you might remember that the discriminant is used to determine if a quadradic has real roots. So by using conditions and checking if the discriminant is positive, 0 or negative. Positive being two real numbers, zero being one real number and negative being no real numbers and only imginary roots. a will be the cofficient to the square term, b being the cofficent to the first power and c is the constant.</p><pre><code>numberOfRoots :: Integer-&gt; Integer-&gt; Integer -&gt; Int
+numberOfRoots a b c
+              | &#40;b &#94; 2 &gt; 4 &#42; b &#42; c&#41; = 2    
+              | &#40;b &#94; 2 == 4 &#42; b &#42; c&#41; = 1
+              | &#40;b &#94; 2 &lt; 4 &#42; b &#42; c&#41; = 0
+</code></pre><p>Notice that to use guards each case is started on a new line with the | which is how you state each condition. Guards are very important in Haskell and can allow you to systemically go through and do different manipulations based on the arguments. However sometimes it isn't possible to account for all of the conditions so there in that case you can use otherwise. So you could have written the numberOfRoots function like this. You can check this works out actually in the <i>ghci</i> by giving numberOfRoots three arguments.</p><pre><code>numberOfRoots :: Integer-&gt; Integer-&gt; Integer -&gt; Int
+numberOfRoots a b c
+              | &#40;b &#94; 2 &gt; 4 &#42; b &#42; c&#41; = 2    
+              | &#40;b &#94; 2 == 4 &#42; b &#42; c&#41; = 1
+              | otherwise = 0
+</code></pre><p>As you may begin to comprend now Haskell allows you to do computational math rather well and probably help you do your math homework I know it has for me.</p> 
+</div>
+
+<div id="post-tags">
+    <b>Tags: </b>
+    
+    <a href="/tags/Haskell/" class="button4">Haskell</a>
+    
+    <a href="/tags/Code/" class="button4">Code</a>
+    
+    <a href="/tags/Guide/" class="button4">Guide</a>
+    
+</div>
+
+
+                          <div id="prev-next">
+                            
+                            <a class="center button3" href="/posts/smchat/"><i class="fa fa-arrow-left" aria-hidden="true"></i> SMChat</a>
+                            
+                            
+                            <a class="center button3" href="/posts/intro-to-haskell/">Haskell - Introduction <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                            
+                          </div>
+
+                          
+                          <div id="disqus_thread"></div>
+                          <script type="text/javascript">
+                            (function() {
+                            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                            dsq.src = '//defunsm-github-io.disqus.com/embed.js';
+                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                            })();
+                          </script>
+                          
+
+
+
+                        
+          </div>
+
+
+
+	</section>
+
+        <!-- END ABOUT SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- PORTFOLIO SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- END CONTACT SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- FOOTER /////////////////////////////////////////////////////////////////////////// -->
+	<footer>
+		<div class="container_footer">
+		  <div class="left">
+                    <a href="https://github.com/defunSM"><i class="fa fa-github-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://www.facebook.com/salman.hossain.944"><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://plus.google.com/u/0/109736817709668742056"><i class="fa fa-google-plus-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://twitter.com/SmSalmanHossain"><i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://www.linkedin.com/in/salman-hossain"><i class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i></a>
+                    <p>&nbsp;</p>
+
+
+                    <p>Email: &nbsp;&nbsp; <span>sxh8083@g.rit.edu</span></p>
+                    <p>Phone: &nbsp;&nbsp; <span>(347) - 398 - 1701 </span></p>
+				<p>© 2016-17 <span>Salman Hossain</span></p>
+			</div>
+			<div class="right">
+				<a href="#postwelcome">Top <i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+			</div>
+		</div>
+	</footer>
+	<!-- END FOOTER /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- Scripts -->
+	<script src="https://defunsm.github.io/js/parallax.js"></script>
+	<script src="https://defunsm.github.io/js/diffscroll.js"></script>
+	<script src="https://defunsm.github.io/js/featherlight.js" type="text/javascript" charset="utf-8"></script>
+	<script src="https://defunsm.github.io/js/scroll.js"></script>
+        <!-- <script src="//code.jquery.com/jquery-1.11.0.min.js"></script> -->
+        <!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script> -->
+
+        <script src="https://defunsm.github.io/js/highlight.pack.js"></script>
+        <script src="/js/highlight.pack.js" type="text/javascript"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>

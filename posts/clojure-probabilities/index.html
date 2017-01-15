@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+	<title>Clojure - Probabilities</title>
+	<!-- Styles -->
+	<link rel="stylesheet" href="https://defunsm.github.io/css/style.css" />
+	<link rel="stylesheet" href="https://defunsm.github.io/css/font-awesome.min.css" />
+	<link type="text/css" rel="stylesheet" href="https://defunsm.github.io/featherlight.css" />
+        <link rel="stylesheet" href="https://defunsm.github.io/css/screen.css" />
+        <!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css"> -->
+        <link rel="stylesheet" href="https://defunsm.github.io/css/solarized-dark.css" />
+
+	<style type="text/css">
+		@media all {
+			.lightbox { display: none; }
+		}
+	</style>
+	<!-- jQuery -->
+	<script src="https://defunsm.github.io/js/jquery.min.js"></script>
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="images/favicon.png">
+</head>
+<body class="fade-in cmon body">
+
+
+  <!-- HEADER /////////////////////////////////////////////////////////////////////////// -->
+
+
+     <ul3 class="nav-two">
+  <li3 class="three"><a href="#welcome">Home <i class="fa fa-home" aria-hidden="true"></i></a></li3>
+  <li3 class="fourl"><a href="#about">About <i class="fa fa-heart" aria-hidden="true"></i></a></li3>
+  <li3 class="onel"><a href="#portfolio">GitHub <i class="fa fa-github" aria-hidden="true"></i></a></li3>
+  <li3 class="twol"><a href="#contact">Blog <i class="fa fa-book" aria-hidden="true"></i></a></li3>
+  </ul3>
+
+   <div class="menubarblack"></div>
+
+	<header id="postwelcome" class="parent module parallax parallax-1">
+		<div class="burger" id="toggle">
+			<span class="top"></span>
+			<span class="middle"></span>
+			<span class="bottom"></span>
+
+		</div>
+
+		<div class="navigation" id="navigation">
+			<nav class="overlay-menu">
+			  <ul>
+                                          <li>
+                              <a href="https://defunsm.github.io/#Welcome" class="menu">Home <i class="fa fa-home" aria-hidden="true"></i>
+</a>
+			      <span class="simple_line"></span>
+                              </li>
+					<li >
+						<a href="https://defunsm.github.io/#about" class="menu">About <i class="fa fa-heart" aria-hidden="true"></i></a>
+						<span class="simple_line"></span>
+					</li>
+					<li>
+						<a href="https://defunsm.github.io/#portfolio" class="menu">Github <i class="fa fa-github" aria-hidden="true"></i></a>
+						<span class="simple_line"></span>
+					</li>
+					<li>
+						<a href="https://defunsm.github.io/archives" class="menu">Archives <i class="fa fa-book" aria-hidden="true"></i></a>
+					</li>
+
+			  </ul>
+			</nav>
+		</div>
+		<div class="scroll_down"></div>
+		<div class="fade child">
+			<div class="container_small">
+				<!-- Header Titles -->
+				<h1 class="header_title">Clojure - Probabilities</h1>
+
+
+                                <a href="/posts/clojure-reading-writing/" class="button"><i class="fa fa-arrow-left" aria-hidden="true"></i> Clojure - Shell Commands</a>
+
+<br/>
+                                
+                                <a href="/posts/pythonlists/" class="button">Python - Lists <i class="fa fa-arrow-right" aria-hidden="true"></i>
+</i></a>
+
+
+			</div>
+		</div>
+	</header>
+	<!-- END HEADER /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- ABOUT SECTION /////////////////////////////////////////////////////////////////////////// -->
+	<section id="about" class="module">
+
+
+          <div class="anotherclass">
+
+
+                    
+                    <div class="post-header">
+    <div id="post-meta" class="row">
+        <div class="col-lg-6">October 22, 2016</div>
+        
+    </div>
+    <h2>Clojure - Probabilities</h2>
+</div>
+<div>
+    
+     <p>So I wrote a Python program that allows you to roll two dice and it will tell you the probabilitiy of obtaining a specific sum with those two dice. I found that writing it in clojure was so much more concise than in Python. Prehaps it is because I already wrote it in Python but the code itself in Clojure is shorter and it could even be shorter with some adjustments. When writing it in Python pretty much worked like a charm and there was functions to do everything already so considering that Clojure still ended up shorter with 30 lines of code while the Python code is 48 lines. I do think that the Python code could be adjusted to be shorter as well but it is pretty amazing that Clojure code can be written to do the same thing as Python which is extremely idiomatic. <br/><br/> This is the Clojure code below:  </p><pre><code>&#40;ns dice.core&#41;
+
+&#40;defn create-dice &#91;low high&#93;
+  &#40;for &#91;i &#40;range low high&#41;&#93;
+    &#40;map &#40;fn &#91;b&#93; &#40;+ i b&#41;&#41; &#40;range low high&#41;&#41;&#41;&#41;
+
+&#40;defn outcome &#91;arg&#93;
+  &#40;reduce + &#40;for &#91;i arg&#93;
+              &#40;count i&#41;&#41;&#41;&#41;
+
+&#40;defn count-occurrences &#91;s list&#93;
+  &#40;count &#40;filter #{s} &#40;flatten list&#41;&#41;&#41;&#41;
+
+&#40;defn percentage &#91;min max dice outcome&#93;
+  &#40;for &#91;x &#40;range min &#40;+ max 1&#41;&#41;&#93;
+    &#40;println x &quot;           &quot; &#40;count-occurrences x dice&#41; &quot;               &quot; &#40;format &quot;%.4f&quot; &#40;&#42; 100 &#40;float &#40;/ &#40;count-occurrences x dice&#41; outcome&#41;&#41;&#41;&#41; &quot;%&quot;&#41;&#41;&#41;
+
+&#40;defn stats &#91;low high&#93;
+  &#40;let &#91;dice-pos &#40;create-dice low high&#41;
+        outcome &#40;outcome dice-pos&#41;
+        max &#40;apply max &#40;flatten dice-pos&#41;&#41;
+        min &#40;apply min &#40;flatten dice-pos&#41;&#41;&#93;
+      &#40;println &quot;\n\nDice Possibilities: &quot; dice-pos &quot;\n\n&quot;&#41;
+      &#40;println &quot;Total Number of Possibilities: &quot; outcome&#41;
+      &#40;println &quot;The Max Sum: &quot; max&#41;
+      &#40;println &quot;The Min Sum: &quot; min &quot;\n\n&quot;&#41;
+      &#40;println &quot;Sum:    #ofPossibilities:    Percentage %:&quot;&#41;
+      &#40;percentage min max &#40;flatten dice-pos&#41; outcome&#41;&#41;&#41;
+
+&#40;stats 1 7&#41;
+</code></pre>One of the great things about Clojure is that performing mathmatical calculations feels so natural which is probably because of drawing from haskell. Its range, max, min functions go so well with apply along with using map to display all the sums in three lines.<br/><br/>Creating all the sum possibilities is rather easy using the range which creates the original list of (1 2 3 4 5 6) and than the map adds each element to all of the elements in the second list which is the same as the first list created in the for binding loop. <pre><code>&#40;defn create-dice &#91;low high&#93;
+  &#40;for &#91;i &#40;range low high&#41;&#93;
+    &#40;map &#40;fn &#91;b&#93; &#40;+ i b&#41;&#41; &#40;range low high&#41;&#41;&#41;&#41;
+</code></pre>To demonstrate this a little more graphically on what exactly is going on in this you can think of it like this where each element of the first list is being added to all of the elements in the second list and than moving on to the second element in the first list and than adding it to all the elements in the second list until all the elements in the first list are used up.<img src="https://defunsm.github.io/img/prob1.png" alt="mapping in clojure" /><p>Next we want to figure out how many elements there are or how many outcomes there can be when using two dice. We can use the count function to do this. However just using count will give us 6 since it only accounts for the lists which are elements. But we want the elements within those lists. This is where the function defination outcome comes into play which uses a for loop.<pre><code>&#40;defn outcome &#91;arg&#93;
+  &#40;reduce + &#40;for &#91;i arg&#93;
+              &#40;count i&#41;&#41;&#41;&#41;
+ </code></pre> The argument that outcome will take the the list produced by the create-dice function and will count the amount of elements in each list. Since the list is from 1 to 6 that should give us 6 in each list. There is 6 lists with 6 elements in each so thus a total of 36 is produced using the outcome function. Why do we need the total amount of elements in the list? Well this is because to find probability we need to do the occurances of each sum over the total number of outcomes. <br/><br/> Which leads to the next function since we have the total number of outcomes we now need a function that will give us the number of occurances for each sum which we can do in a two liner rather easily using filter, count and flatten.<pre><code>&#40;defn count-occurrences &#91;s list&#93;
+  &#40;count &#40;filter #{s} &#40;flatten list&#41;&#41;&#41;&#41;
+ </code></pre> First let me talk about flatten and what it is doing to the list that will be given as an argument to the count-occurrences. Right now our sum possibilities list contains 6 lists within a list. In order to filter through that we need just a list of all the elements in the 6 lists. So in order to have just one list instead of having 6 lists within a list we use flatten. After flattening all the lists into one retaining all the elements in each one we can now use filter which takes a regex expression. In this case the regex expression is an argument that count-occurrences will take. In the next function you'll see how everything is put together and all the functions are used to display the final result.</p><pre><code>&#40;defn percentage &#91;min max dice outcome&#93;
+  &#40;for &#91;x &#40;range min &#40;+ max 1&#41;&#41;&#93;
+    &#40;println x &quot;           &quot; &#40;count-occurrences x dice&#41; &quot;               &quot; &#40;format &quot;%.4f&quot; &#40;&#42; 100 &#40;float &#40;/ &#40;count-occurrences x dice&#41; outcome&#41;&#41;&#41;&#41; &quot;%&quot;&#41;&#41;&#41;
+</code></pre>First yes I realize that the println section is hideous to look at with those long spaces. But I wasn't really focused as making the code appear nice as just to display the results in a sensible format. In the end we get this insanely long println line.<br/><br/>Anyways lets get into this function and how it brings everything together. First min and max are two arguments that this function will take. As you may figure this is the min and max of the list of possibilities which you'll see is a easy one liner to get the max and min of a list using guess what max and min which are functions already defined in clojure. The dice and outcome are exactly that asking for the list of possibilities and the outcome so that it can calculate the probabilitiy and print it.<br/><br/>We have a for loop given to us based on the max and min values to display the percentage of each of the sum's one by one. The insanely long println line is using count-occurrences which was defined previously and taking the element from the list created in the range as an argument and the list of possibilities as the second argument. Format is being used for 4 significant figures after the decimal place. There is a whole lot of other math that also goes in such as multiplying it after getting the result of the possibility to make it into a percentage.<pre><code>&#40;defn stats &#91;low high&#93;
+  &#40;let &#91;dice-pos &#40;create-dice low high&#41;
+        outcome &#40;outcome dice-pos&#41;
+        max &#40;apply max &#40;flatten dice-pos&#41;&#41;
+        min &#40;apply min &#40;flatten dice-pos&#41;&#41;&#93;
+      &#40;println &quot;\n\nDice Possibilities: &quot; dice-pos &quot;\n\n&quot;&#41;
+      &#40;println &quot;Total Number of Possibilities: &quot; outcome&#41;
+      &#40;println &quot;The Max Sum: &quot; max&#41;
+      &#40;println &quot;The Min Sum: &quot; min &quot;\n\n&quot;&#41;
+      &#40;println &quot;Sum:    #ofPossibilities:    Percentage %:&quot;&#41;
+      &#40;percentage min max &#40;flatten dice-pos&#41; outcome&#41;&#41;&#41;
+</code></pre>Finally you have stats which calls all of the functions which we just defined and prints a bunch of other information.<br/><br/>First lets talk about the arguments that stats is taking which is low and high. This is given to stats to determine what is the highest and lowest value that the dice can roll. In this case we use 1 and 7 because we want a list that goes from 1 to 6. <br/><br/>Moving on we let which binds dice-pos to all the possibilities that can occur. Outcome which is binded to the number of outcomes that can happen in the dice-pos. Max and min which is a easy one liner using apply min or max to the flattened list of possibilities.<br/><br/>After the let bindings its all just printing the information for the user. At the end we call the percentage function which does all the real work combining all the functions we have used before and displays the actual information that we want to see and displays a nice percentage of each sum.
+</div>
+
+<div id="post-tags">
+    <b>Tags: </b>
+    
+    <a href="/tags/Clojure/" class="button4">Clojure</a>
+    
+    <a href="/tags/Code/" class="button4">Code</a>
+    
+    <a href="/tags/Guide/" class="button4">Guide</a>
+    
+</div>
+
+
+                          <div id="prev-next">
+                            
+                            <a class="center button3" href="/posts/clojure-reading-writing/"><i class="fa fa-arrow-left" aria-hidden="true"></i> Clojure - Shell Commands</a>
+                            
+                            
+                            <a class="center button3" href="/posts/pythonlists/">Python - Lists <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                            
+                          </div>
+
+                          
+                          <div id="disqus_thread"></div>
+                          <script type="text/javascript">
+                            (function() {
+                            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                            dsq.src = '//defunsm-github-io.disqus.com/embed.js';
+                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                            })();
+                          </script>
+                          
+
+
+
+                        
+          </div>
+
+
+
+	</section>
+
+        <!-- END ABOUT SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- PORTFOLIO SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- END CONTACT SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- FOOTER /////////////////////////////////////////////////////////////////////////// -->
+	<footer>
+		<div class="container_footer">
+		  <div class="left">
+                    <a href="https://github.com/defunSM"><i class="fa fa-github-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://www.facebook.com/salman.hossain.944"><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://plus.google.com/u/0/109736817709668742056"><i class="fa fa-google-plus-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://twitter.com/SmSalmanHossain"><i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://www.linkedin.com/in/salman-hossain"><i class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i></a>
+                    <p>&nbsp;</p>
+
+
+                    <p>Email: &nbsp;&nbsp; <span>sxh8083@g.rit.edu</span></p>
+                    <p>Phone: &nbsp;&nbsp; <span>(347) - 398 - 1701 </span></p>
+				<p>© 2016-17 <span>Salman Hossain</span></p>
+			</div>
+			<div class="right">
+				<a href="#postwelcome">Top <i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+			</div>
+		</div>
+	</footer>
+	<!-- END FOOTER /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- Scripts -->
+	<script src="https://defunsm.github.io/js/parallax.js"></script>
+	<script src="https://defunsm.github.io/js/diffscroll.js"></script>
+	<script src="https://defunsm.github.io/js/featherlight.js" type="text/javascript" charset="utf-8"></script>
+	<script src="https://defunsm.github.io/js/scroll.js"></script>
+        <!-- <script src="//code.jquery.com/jquery-1.11.0.min.js"></script> -->
+        <!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script> -->
+
+        <script src="https://defunsm.github.io/js/highlight.pack.js"></script>
+        <script src="/js/highlight.pack.js" type="text/javascript"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>

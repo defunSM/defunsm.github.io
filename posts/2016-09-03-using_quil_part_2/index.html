@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+	<title>Graphics using Quil in Clojure (Part 2)</title>
+	<!-- Styles -->
+	<link rel="stylesheet" href="https://defunsm.github.io/css/style.css" />
+	<link rel="stylesheet" href="https://defunsm.github.io/css/font-awesome.min.css" />
+	<link type="text/css" rel="stylesheet" href="https://defunsm.github.io/featherlight.css" />
+        <link rel="stylesheet" href="https://defunsm.github.io/css/screen.css" />
+        <!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css"> -->
+        <link rel="stylesheet" href="https://defunsm.github.io/css/solarized-dark.css" />
+
+	<style type="text/css">
+		@media all {
+			.lightbox { display: none; }
+		}
+	</style>
+	<!-- jQuery -->
+	<script src="https://defunsm.github.io/js/jquery.min.js"></script>
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="images/favicon.png">
+</head>
+<body class="fade-in cmon body">
+
+
+  <!-- HEADER /////////////////////////////////////////////////////////////////////////// -->
+
+
+     <ul3 class="nav-two">
+  <li3 class="three"><a href="#welcome">Home <i class="fa fa-home" aria-hidden="true"></i></a></li3>
+  <li3 class="fourl"><a href="#about">About <i class="fa fa-heart" aria-hidden="true"></i></a></li3>
+  <li3 class="onel"><a href="#portfolio">GitHub <i class="fa fa-github" aria-hidden="true"></i></a></li3>
+  <li3 class="twol"><a href="#contact">Blog <i class="fa fa-book" aria-hidden="true"></i></a></li3>
+  </ul3>
+
+   <div class="menubarblack"></div>
+
+	<header id="postwelcome" class="parent module parallax parallax-1">
+		<div class="burger" id="toggle">
+			<span class="top"></span>
+			<span class="middle"></span>
+			<span class="bottom"></span>
+
+		</div>
+
+		<div class="navigation" id="navigation">
+			<nav class="overlay-menu">
+			  <ul>
+                                          <li>
+                              <a href="https://defunsm.github.io/#Welcome" class="menu">Home <i class="fa fa-home" aria-hidden="true"></i>
+</a>
+			      <span class="simple_line"></span>
+                              </li>
+					<li >
+						<a href="https://defunsm.github.io/#about" class="menu">About <i class="fa fa-heart" aria-hidden="true"></i></a>
+						<span class="simple_line"></span>
+					</li>
+					<li>
+						<a href="https://defunsm.github.io/#portfolio" class="menu">Github <i class="fa fa-github" aria-hidden="true"></i></a>
+						<span class="simple_line"></span>
+					</li>
+					<li>
+						<a href="https://defunsm.github.io/archives" class="menu">Archives <i class="fa fa-book" aria-hidden="true"></i></a>
+					</li>
+
+			  </ul>
+			</nav>
+		</div>
+		<div class="scroll_down"></div>
+		<div class="fade child">
+			<div class="container_small">
+				<!-- Header Titles -->
+				<h1 class="header_title">Graphics using Quil in Clojure (Part 2)</h1>
+
+
+                                <a href="/posts/path-finding/" class="button"><i class="fa fa-arrow-left" aria-hidden="true"></i> Pathfinding</a>
+
+<br/>
+                                
+                                <a href="/posts/getting-started-with-clojure/" class="button">Getting Started with Clojure <i class="fa fa-arrow-right" aria-hidden="true"></i>
+</i></a>
+
+
+			</div>
+		</div>
+	</header>
+	<!-- END HEADER /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- ABOUT SECTION /////////////////////////////////////////////////////////////////////////// -->
+	<section id="about" class="module">
+
+
+          <div class="anotherclass">
+
+
+                    
+                    <div class="post-header">
+    <div id="post-meta" class="row">
+        <div class="col-lg-6">September 3, 2016</div>
+        
+    </div>
+    <h2>Graphics using Quil in Clojure (Part 2)</h2>
+</div>
+<div>
+    
+     <p>If you are interested in following along please read the <a href='https://defunsm.github.io/posts-output/using_quil/'>first part</a> or it may not make sense. </p><p><img src="https://defunsm.github.io/img/quilthird.png" alt="quil line segments" /></p><p>We are going to continue with the same project as we did in part 1 with newquil-project. However we are going to rewrite the draw function. First we need some defs to be added in the beginning so add the following in the top after the name space.</p><pre><code>&#40;def mouse-press-time &#40;atom 0&#41;&#41;     ;; The original time for when them mouse was clicked.
+&#40;def mouse-hold-x &#40;atom 0&#41;&#41;         ;; The x-location when the mouse was clicked.
+&#40;def mouse-hold-y &#40;atom 0&#41;&#41;         ;; The y-location when the mouse was clicked.
+&#40;def mouse-release-stage &#40;atom 0&#41;&#41;  ;; The release stage &#40;0 - nothing, 1 - pressed&#41;
+</code></pre><p>Those will come in handy while setting up our draw function which we'll completely rewrite. Change the stroke/stroke-weight/fill to the following values.</p><pre><code>  &#40;q/stroke 100&#41;          ;; Change to 100 rather than q/random
+  &#40;q/stroke-weight 5&#41;     ;; Change to 5
+  &#40;q/fill 100&#41;            ;; Change to 100
+</code></pre><p>Now you can remove everything else in the draw function. Adding the following into the draw function after the stroke/stroke-weight/fill.</p><pre><code>&#40;if &#40;q/mouse-pressed?&#41; ;; When the mouse is pressed it returns true.
+    &#40;do &#40;if &#40;= 0 @mouse-release-stage&#41;      ;; This can only happen when mouse-release-stage is 0 so that the values aren't reset every time it's held.
+          &#40;do &#40;let &#91;diam 10&#93;                 
+                &#40;q/ellipse &#40;q/mouse-x&#41; &#40;q/mouse-y&#41; diam diam&#41;&#41;  ;; Creates a circle of 10 diam.
+              &#40;reset! mouse-press-time &#40;q/millis&#41;&#41; ;; Sets the press time to the current time in milliseconds.
+              &#40;reset! mouse-hold-x &#40;q/mouse-x&#41;&#41;    ;; Sets the mouse-hold-x time to where the mouse is on the x coordinate.
+              &#40;reset! mouse-hold-y &#40;q/mouse-y&#41;&#41;    ;; Same for the y coordinate.
+              &#40;reset! mouse-release-stage 1&#41;&#41;&#41;&#41;    ;; Sets the mouse-release-stage to 1 so that the release can trigger only once. 
+    &#40;do &#40;if &#40;= 1 @mouse-release-stage&#41;             ;; Only occurs if the mouse-release stage is 1.
+          &#40;do &#40;reset! mouse-release-stage 0&#41;                     
+              &#40;let &#91;delta-time &#40;- &#40;q/millis&#41; @mouse-press-time&#41; ;; The time change between the click and release.
+                    mouse-release-x &#40;q/mouse-x&#41;     ;; Release x coordinate.
+                    mouse-release-y &#40;q/mouse-y&#41;     ;; Release y coordinate.
+                    delta-x &#40;- mouse-release-x @mouse-hold-x&#41;  ;; Change in x coordinate.
+                    delta-y &#40;- mouse-release-y @mouse-hold-y&#41;  ;; Change in y coordinate.
+                    distance &#40;Math/sqrt &#40;+ &#40;&#42; delta-x delta-x&#41; &#40;&#42; delta-y delta-y&#41;&#41;&#41; ;; Finds the distance between two points.
+                    vel &#40;/ distance delta-time&#41;&#93; ;; Calculates the avg velocity by taking the distance and time changed.
+                &#40;let &#91;diam 10&#93;
+                  &#40;q/ellipse &#40;q/mouse-x&#41; &#40;q/mouse-y&#41; diam diam&#41;&#41; ; creates another circle at the end point of release.
+                &#40;q/stroke 255 0 0&#41;  
+                &#40;q/stroke-weight 2&#41;
+                &#40;q/line @mouse-hold-x @mouse-hold-y mouse-release-x mouse-release-y&#41; ;; Creates a line from the first to end circle.
+                &#40;println &quot;Dt: &quot; delta-time &quot;Dx: &quot; delta-x &quot;Dy: &quot; delta-y &quot;X: &quot; distance &quot;V: &quot; vel&#41;&#41;&#41;&#41;&#41;&#41; ;; Prints out all the information.
+
+</code></pre><p>Now you can run it by the following...</p><pre><code>lein run
+</code></pre><p>Now you can click on the applet and release in a different place and should see lines connecting two circles! As a bonus if you want to clear the applet without exiting you can add the following in the draw function...</p><pre><code>&#40;if &#40;q/key-pressed?&#41;
+  &#40;do &#40;if &#40;= &#40;.toString &#40;q/raw-key&#41;&#41; &quot;c&quot;&#41;
+          &#40;do &#40;q/clear&#41;
+              &#40;q/background 200&#41;&#41;&#41;
+</code></pre><p>So this is what your entire core.clj should look like. More or less with some extra key presses.</p><pre><code>&#40;ns newquil-project.core
+  &#40;:require &#91;quil.core :as q&#93;
+            &#91;quil.middleware :as m&#93;&#41;&#41;
+
+&#40;def brush &#40;atom 0&#41;&#41; ;; if the brush is up or down &#40;0 - down 1 - up&#41;
+&#40;def mouse-press-time &#40;atom 0&#41;&#41; ;; The original time for the mouse press
+&#40;def mouse-hold-x &#40;atom 0&#41;&#41;
+&#40;def mouse-hold-y &#40;atom 0&#41;&#41;
+&#40;def mouse-release-stage &#40;atom 0&#41;&#41;
+
+&#40;defn setup &#91;&#93;
+  &#40;q/frame-rate 20&#41;
+  &#40;q/background 200&#41;&#41;
+
+&#40;defn draw &#91;&#93;
+  &#40;q/stroke 100&#41;
+  &#40;q/stroke-weight 5&#41;
+  &#40;q/fill 100&#41;
+
+  &#40;if &#40;= 1 @brush&#41;
+    &#40;let &#91;diam &#40;q/random 100&#41;&#93;
+      &#40;q/ellipse &#40;q/mouse-x&#41; &#40;q/mouse-y&#41; diam diam&#41;&#41;&#41;
+
+  &#40;if &#40;q/mouse-pressed?&#41;
+    &#40;do &#40;if &#40;= 0 @mouse-release-stage&#41;
+          &#40;do &#40;let &#91;diam 10&#93;
+                &#40;q/ellipse &#40;q/mouse-x&#41; &#40;q/mouse-y&#41; diam diam&#41;&#41;
+              &#40;reset! mouse-press-time &#40;q/millis&#41;&#41;
+              &#40;reset! mouse-hold-x &#40;q/mouse-x&#41;&#41;
+              &#40;reset! mouse-hold-y &#40;q/mouse-y&#41;&#41;
+              &#40;reset! mouse-release-stage 1&#41;&#41;&#41;&#41;
+    &#40;do &#40;if &#40;= 1 @mouse-release-stage&#41;
+          &#40;do &#40;reset! mouse-release-stage 0&#41;
+              &#40;let &#91;delta-time &#40;- &#40;q/millis&#41; @mouse-press-time&#41;
+                    mouse-release-x &#40;q/mouse-x&#41;
+                    mouse-release-y &#40;q/mouse-y&#41;
+                    delta-x &#40;- mouse-release-x @mouse-hold-x&#41;
+                    delta-y &#40;- mouse-release-y @mouse-hold-y&#41;
+                    distance &#40;Math/sqrt &#40;+ &#40;&#42; delta-x delta-x&#41; &#40;&#42; delta-y delta-y&#41;&#41;&#41;
+                    vel &#40;/ distance delta-time&#41;&#93;
+                &#40;let &#91;diam 10&#93;
+                  &#40;q/ellipse &#40;q/mouse-x&#41; &#40;q/mouse-y&#41; diam diam&#41;&#41;
+                &#40;q/stroke 255 0 0&#41;
+                &#40;q/stroke-weight 2&#41;
+                &#40;q/line @mouse-hold-x @mouse-hold-y mouse-release-x mouse-release-y&#41;
+                &#40;println &quot;Dt: &quot; delta-time &quot;Dx: &quot; delta-x &quot;Dy: &quot; delta-y &quot;X: &quot; distance &quot;V: &quot; vel&#41;&#41;&#41;&#41;&#41;&#41;
+
+  &#40;if &#40;q/key-pressed?&#41;
+    &#40;do &#40;if &#40;= &#40;.toString &#40;q/raw-key&#41;&#41; &quot;q&quot;&#41;
+          &#40;do &#40;q/exit&#41;&#41;&#41;
+        &#40;if &#40;= &#40;.toString &#40;q/raw-key&#41;&#41; &quot;u&quot;&#41;
+          &#40;do &#40;if &#40;= 0 @brush&#41;
+                &#40;reset! brush 1&#41;
+                &#40;reset! brush 0&#41;&#41;&#41;&#41;
+        &#40;if &#40;= &#40;.toString &#40;q/raw-key&#41;&#41; &quot;e&quot;&#41;
+          &#40;do &#40;let &#91;radius &#40;q/random 75&#41;&#93;
+                &#40;q/box radius radius radius&#41;&#41;&#41;&#41;
+        &#40;if &#40;= &#40;.toString &#40;q/raw-key&#41;&#41; &quot;c&quot;&#41;
+          &#40;do &#40;q/clear&#41;
+              &#40;q/background 200&#41;&#41;&#41;&#41;&#41;&#41;
+
+&#40;q/defsketch example
+  :title &quot;Oh so many grey circles&quot;
+  :settings #&#40;q/smooth 2&#41;
+  :setup setup
+  :draw draw
+  :size &#91;640 480&#93;&#41;
+
+</code></pre><p>And there you have it you can make line segments! And do all kinds of things if you add onto them.</p>
+</div>
+
+<div id="post-tags">
+    <b>Tags: </b>
+    
+    <a href="/tags/Graphics/" class="button4">Graphics</a>
+    
+    <a href="/tags/Clojure/" class="button4">Clojure</a>
+    
+</div>
+
+
+                          <div id="prev-next">
+                            
+                            <a class="center button3" href="/posts/path-finding/"><i class="fa fa-arrow-left" aria-hidden="true"></i> Pathfinding</a>
+                            
+                            
+                            <a class="center button3" href="/posts/getting-started-with-clojure/">Getting Started with Clojure <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                            
+                          </div>
+
+                          
+                          <div id="disqus_thread"></div>
+                          <script type="text/javascript">
+                            (function() {
+                            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                            dsq.src = '//defunsm-github-io.disqus.com/embed.js';
+                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                            })();
+                          </script>
+                          
+
+
+
+                        
+          </div>
+
+
+
+	</section>
+
+        <!-- END ABOUT SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- PORTFOLIO SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- END CONTACT SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- FOOTER /////////////////////////////////////////////////////////////////////////// -->
+	<footer>
+		<div class="container_footer">
+		  <div class="left">
+                    <a href="https://github.com/defunSM"><i class="fa fa-github-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://www.facebook.com/salman.hossain.944"><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://plus.google.com/u/0/109736817709668742056"><i class="fa fa-google-plus-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://twitter.com/SmSalmanHossain"><i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://www.linkedin.com/in/salman-hossain"><i class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i></a>
+                    <p>&nbsp;</p>
+
+
+                    <p>Email: &nbsp;&nbsp; <span>sxh8083@g.rit.edu</span></p>
+                    <p>Phone: &nbsp;&nbsp; <span>(347) - 398 - 1701 </span></p>
+				<p>© 2016-17 <span>Salman Hossain</span></p>
+			</div>
+			<div class="right">
+				<a href="#postwelcome">Top <i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+			</div>
+		</div>
+	</footer>
+	<!-- END FOOTER /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- Scripts -->
+	<script src="https://defunsm.github.io/js/parallax.js"></script>
+	<script src="https://defunsm.github.io/js/diffscroll.js"></script>
+	<script src="https://defunsm.github.io/js/featherlight.js" type="text/javascript" charset="utf-8"></script>
+	<script src="https://defunsm.github.io/js/scroll.js"></script>
+        <!-- <script src="//code.jquery.com/jquery-1.11.0.min.js"></script> -->
+        <!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script> -->
+
+        <script src="https://defunsm.github.io/js/highlight.pack.js"></script>
+        <script src="/js/highlight.pack.js" type="text/javascript"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>

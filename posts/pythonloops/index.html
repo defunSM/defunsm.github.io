@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+	<title>Python - Recursion</title>
+	<!-- Styles -->
+	<link rel="stylesheet" href="https://defunsm.github.io/css/style.css" />
+	<link rel="stylesheet" href="https://defunsm.github.io/css/font-awesome.min.css" />
+	<link type="text/css" rel="stylesheet" href="https://defunsm.github.io/featherlight.css" />
+        <link rel="stylesheet" href="https://defunsm.github.io/css/screen.css" />
+        <!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css"> -->
+        <link rel="stylesheet" href="https://defunsm.github.io/css/solarized-dark.css" />
+
+	<style type="text/css">
+		@media all {
+			.lightbox { display: none; }
+		}
+	</style>
+	<!-- jQuery -->
+	<script src="https://defunsm.github.io/js/jquery.min.js"></script>
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="images/favicon.png">
+</head>
+<body class="fade-in cmon body">
+
+
+  <!-- HEADER /////////////////////////////////////////////////////////////////////////// -->
+
+
+     <ul3 class="nav-two">
+  <li3 class="three"><a href="#welcome">Home <i class="fa fa-home" aria-hidden="true"></i></a></li3>
+  <li3 class="fourl"><a href="#about">About <i class="fa fa-heart" aria-hidden="true"></i></a></li3>
+  <li3 class="onel"><a href="#portfolio">GitHub <i class="fa fa-github" aria-hidden="true"></i></a></li3>
+  <li3 class="twol"><a href="#contact">Blog <i class="fa fa-book" aria-hidden="true"></i></a></li3>
+  </ul3>
+
+   <div class="menubarblack"></div>
+
+	<header id="postwelcome" class="parent module parallax parallax-1">
+		<div class="burger" id="toggle">
+			<span class="top"></span>
+			<span class="middle"></span>
+			<span class="bottom"></span>
+
+		</div>
+
+		<div class="navigation" id="navigation">
+			<nav class="overlay-menu">
+			  <ul>
+                                          <li>
+                              <a href="https://defunsm.github.io/#Welcome" class="menu">Home <i class="fa fa-home" aria-hidden="true"></i>
+</a>
+			      <span class="simple_line"></span>
+                              </li>
+					<li >
+						<a href="https://defunsm.github.io/#about" class="menu">About <i class="fa fa-heart" aria-hidden="true"></i></a>
+						<span class="simple_line"></span>
+					</li>
+					<li>
+						<a href="https://defunsm.github.io/#portfolio" class="menu">Github <i class="fa fa-github" aria-hidden="true"></i></a>
+						<span class="simple_line"></span>
+					</li>
+					<li>
+						<a href="https://defunsm.github.io/archives" class="menu">Archives <i class="fa fa-book" aria-hidden="true"></i></a>
+					</li>
+
+			  </ul>
+			</nav>
+		</div>
+		<div class="scroll_down"></div>
+		<div class="fade child">
+			<div class="container_small">
+				<!-- Header Titles -->
+				<h1 class="header_title">Python - Recursion</h1>
+
+
+                                <a href="/posts/livebooting/" class="button"><i class="fa fa-arrow-left" aria-hidden="true"></i> Live Booting (USB)</a>
+
+<br/>
+                                
+                                <a href="/posts/pythonfunctions/" class="button">Python - Functions <i class="fa fa-arrow-right" aria-hidden="true"></i>
+</i></a>
+
+
+			</div>
+		</div>
+	</header>
+	<!-- END HEADER /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- ABOUT SECTION /////////////////////////////////////////////////////////////////////////// -->
+	<section id="about" class="module">
+
+
+          <div class="anotherclass">
+
+
+                    
+                    <div class="post-header">
+    <div id="post-meta" class="row">
+        <div class="col-lg-6">October 12, 2016</div>
+        
+    </div>
+    <h2>Python - Recursion</h2>
+</div>
+<div>
+    
+     <p> Recursion is a important concept in computer science and a useful technique to use in programming. It cuts down time and saves you unnessary typing which is always good. Most programming languages allow recursion and it is a very useful way to reach a solution to a problem that requires the result of the previous solution.  <br/><br/>  There are a couple of ways to implement recursion in your programs. Once you learn how to do recursion you'll be able to greatly type less and deploy more interesting behavior in your program.  <br/><br/>  One of the ways to implement recursion in python is using a for loop. This is typically the way loops are done in python and is tend to be safer than the other ways. Since using a for loop you set the condition for which is looping.  </p><p> <br/><br/>  For loops are rather nice that they usually loop the elements of a list. So you can hand a bunch of elements and the for loop will do something to each one of them. Lets look at an example.  </p><pre><code> def main&#40;&#41;:
+
+    sum = 0
+    for i in range&#40;5&#41;:
+        print&#40;i&#41;
+        sum += i
+
+    print&#40;sum&#41;
+
+
+main&#40;&#41;
+</code></pre>Results:<pre><code>0
+1
+2
+3
+4
+10
+</code></pre>Notice that a variable is being set before the for part is started. The sum is set to 0 before the for loop begins on line 4. Line 4 is where the for loop begins and everything in the loop is indented. This is the syntax for for loops. Notice that following the for keyword is a variable "i" which is arbitary but you could call it whatever really just make sure your using the same variable in the body of the loop. After the variable you use "in" which is followed by the list which is created by range(5). Range is a really nice function that creates a list of numbers in this case it creates numbers from 0 to 4. This is evident since you see the numbers being printed. Also note that at the end when we print sum all of the numbers printed added up is indeed 10 so the numbers in the list created by range(5) was added to the sum variable one at a time. If the sum += 1 is a bit weird to you it is really the same thing as doing sum = sum + 1. The way I have written it is more cleaner since it removes writing sum again and if you coded in c++ before you mightve seen the same kind of style before. <br/><br/>Now lets take another look at a way to do the same thing but using a while loop.<pre><code>def main&#40;&#41;:
+
+    sum = 0
+    i = 0
+    while i &lt; 5:
+        print&#40;i&#41;
+        sum += i
+        i += 1
+
+    print&#40;sum&#41;
+
+
+main&#40;&#41;
+</code></pre>Result:<pre><code>0
+1
+2
+3
+4
+10
+</code></pre>The result is the same with using a while loop. However notice that we had to implicitly create the sum and i variable this time and set both to 0. Also make a condition for the while loop so that it knows when to stop. If we wrote while True: instead of putting the condition after the while it would essentially run forever so don't do this. Also if you didn't increment the i variable by 1 every time in the loop then also the while loop will run forever. This is why writing while loops are not as safe as writing a for loop since there is a potentional for while loops to run forever.<br/><br/>
+</div>
+
+<div id="post-tags">
+    <b>Tags: </b>
+    
+    <a href="/tags/Python/" class="button4">Python</a>
+    
+    <a href="/tags/Code/" class="button4">Code</a>
+    
+    <a href="/tags/Guide/" class="button4">Guide</a>
+    
+</div>
+
+
+                          <div id="prev-next">
+                            
+                            <a class="center button3" href="/posts/livebooting/"><i class="fa fa-arrow-left" aria-hidden="true"></i> Live Booting (USB)</a>
+                            
+                            
+                            <a class="center button3" href="/posts/pythonfunctions/">Python - Functions <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                            
+                          </div>
+
+                          
+                          <div id="disqus_thread"></div>
+                          <script type="text/javascript">
+                            (function() {
+                            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                            dsq.src = '//defunsm-github-io.disqus.com/embed.js';
+                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                            })();
+                          </script>
+                          
+
+
+
+                        
+          </div>
+
+
+
+	</section>
+
+        <!-- END ABOUT SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- PORTFOLIO SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- END CONTACT SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- FOOTER /////////////////////////////////////////////////////////////////////////// -->
+	<footer>
+		<div class="container_footer">
+		  <div class="left">
+                    <a href="https://github.com/defunSM"><i class="fa fa-github-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://www.facebook.com/salman.hossain.944"><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://plus.google.com/u/0/109736817709668742056"><i class="fa fa-google-plus-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://twitter.com/SmSalmanHossain"><i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://www.linkedin.com/in/salman-hossain"><i class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i></a>
+                    <p>&nbsp;</p>
+
+
+                    <p>Email: &nbsp;&nbsp; <span>sxh8083@g.rit.edu</span></p>
+                    <p>Phone: &nbsp;&nbsp; <span>(347) - 398 - 1701 </span></p>
+				<p>© 2016-17 <span>Salman Hossain</span></p>
+			</div>
+			<div class="right">
+				<a href="#postwelcome">Top <i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+			</div>
+		</div>
+	</footer>
+	<!-- END FOOTER /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- Scripts -->
+	<script src="https://defunsm.github.io/js/parallax.js"></script>
+	<script src="https://defunsm.github.io/js/diffscroll.js"></script>
+	<script src="https://defunsm.github.io/js/featherlight.js" type="text/javascript" charset="utf-8"></script>
+	<script src="https://defunsm.github.io/js/scroll.js"></script>
+        <!-- <script src="//code.jquery.com/jquery-1.11.0.min.js"></script> -->
+        <!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script> -->
+
+        <script src="https://defunsm.github.io/js/highlight.pack.js"></script>
+        <script src="/js/highlight.pack.js" type="text/javascript"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>
