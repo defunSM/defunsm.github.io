@@ -9,7 +9,7 @@ $('#toggle').click(function() {
 
   });
 
-$('burger active').click(function() {
+$('#toggle.burger.active').click(function() {
     $('.body').removeClass('body_hidden');
     $( "#toggle" ).removeClass( "active" );
     $('#navigation').removeClass('open');
