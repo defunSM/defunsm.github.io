@@ -12,11 +12,129 @@ http://blogawesome.com/
 A place to share my knowledge
 </description>
 <lastBuildDate>
-Sat, 14 Jan 2017 01:09:49 -0500
+Sat, 14 Jan 2017 22:15:04 -0500
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://blogawesome.com/posts-output/python-pyqt5/
+</guid>
+<link>
+http://blogawesome.com/posts-output/python-pyqt5/
+</link>
+<title>
+Python - Creating a Table using PyGt5
+</title>
+<description>
+ &lt;p&gt;&lt;img src=&quot;http://defunsm.github.io/img/entropypic.png&quot; alt=&quot;table&quot; /&gt; &lt;a href='http://pyqt.sourceforge.net/Docs/PyQt5/index.html'&gt;PyGt5&lt;/a&gt; is pretty nice when it comes to constructing some nice tables. I found that making tables in PyGt5 is easier than Gtk. So I thought I would just show you how to create a really quick python script to take a file such as the one below and create a table from it in a frame. Create the following text file below as example.txt and make sure you add those , because we are going to be later spliting by ',' to get each of the element and place them into the table.&lt;pre&gt;&lt;code&gt;red,blue,yellow
+c++,java,python
+physics,chemistry,biology
+1,2,3
+ &lt;/code&gt;&lt;/pre&gt; So if you don't have pyqt5 yet go ahead and install that with pip or whatever you use to download python modules.&lt;pre&gt;&lt;code&gt;pip install pyqt5
+ &lt;/code&gt;&lt;/pre&gt; Now there's already some basic tutorials out there to make tables like the one from &lt;a href='https://pythonspot.com/en/pyqt5-table/'&gt;pythonspot&lt;/a&gt;. However I wanna show how to make a more functional table of taking the example.txt and placing it into the table. So we'll just follow the example given and modify it. So go ahead and copy that code into the sample in pythonspot and we'll be modifying specifically the the &lt;newcode&gt;create_table()&lt;/newcode&gt; part.&lt;pre&gt;&lt;code&gt;#!/usr/bin/env python
+import sys
+from PyQt5.QtWidgets import QMainWindow, QApplication, QWidget, QAction, QTableWidget,QTableWidgetItem,QVBoxLayout
+from PyQt5.QtGui import QIcon
+from PyQt5.QtCore import pyqtSlot
+
+class App&amp;#40;QWidget&amp;#41;:
+
+    def &amp;#95;&amp;#95;init&amp;#95;&amp;#95;&amp;#40;self&amp;#41;:
+        super&amp;#40;&amp;#41;.&amp;#95;&amp;#95;init&amp;#95;&amp;#95;&amp;#40;&amp;#41;
+        self.title = 'PyQt5 table - pythonspot.com'
+        self.left = 0
+        self.top = 0
+        self.width = 300
+        self.height = 200
+        self.initUI&amp;#40;&amp;#41;
+
+    def initUI&amp;#40;self&amp;#41;:
+        self.setWindowTitle&amp;#40;self.title&amp;#41;
+        self.setGeometry&amp;#40;self.left, self.top, self.width, self.height&amp;#41;
+
+        self.createTable&amp;#40;&amp;#41;
+
+        # Add box layout, add table to box layout and add box layout to widget
+        self.layout = QVBoxLayout&amp;#40;&amp;#41;
+        self.layout.addWidget&amp;#40;self.tableWidget&amp;#41;
+        self.setLayout&amp;#40;self.layout&amp;#41;
+
+        # Show widget
+        self.show&amp;#40;&amp;#41;
+
+    def createTable&amp;#40;self&amp;#41;:
+       # Create table
+        self.tableWidget = QTableWidget&amp;#40;&amp;#41;
+        self.tableWidget.setRowCount&amp;#40;4&amp;#41;
+        self.tableWidget.setColumnCount&amp;#40;2&amp;#41;
+        self.tableWidget.setItem&amp;#40;0,0, QTableWidgetItem&amp;#40;&amp;quot;Cell &amp;#40;1,1&amp;#41;&amp;quot;&amp;#41;&amp;#41;
+        self.tableWidget.setItem&amp;#40;0,1, QTableWidgetItem&amp;#40;&amp;quot;Cell &amp;#40;1,2&amp;#41;&amp;quot;&amp;#41;&amp;#41;
+        self.tableWidget.setItem&amp;#40;1,0, QTableWidgetItem&amp;#40;&amp;quot;Cell &amp;#40;2,1&amp;#41;&amp;quot;&amp;#41;&amp;#41;
+        self.tableWidget.setItem&amp;#40;1,1, QTableWidgetItem&amp;#40;&amp;quot;Cell &amp;#40;2,2&amp;#41;&amp;quot;&amp;#41;&amp;#41;
+        self.tableWidget.setItem&amp;#40;2,0, QTableWidgetItem&amp;#40;&amp;quot;Cell &amp;#40;3,1&amp;#41;&amp;quot;&amp;#41;&amp;#41;
+        self.tableWidget.setItem&amp;#40;2,1, QTableWidgetItem&amp;#40;&amp;quot;Cell &amp;#40;3,2&amp;#41;&amp;quot;&amp;#41;&amp;#41;
+        self.tableWidget.setItem&amp;#40;3,0, QTableWidgetItem&amp;#40;&amp;quot;Cell &amp;#40;4,1&amp;#41;&amp;quot;&amp;#41;&amp;#41;
+        self.tableWidget.setItem&amp;#40;3,1, QTableWidgetItem&amp;#40;&amp;quot;Cell &amp;#40;4,2&amp;#41;&amp;quot;&amp;#41;&amp;#41;
+        self.tableWidget.move&amp;#40;0,0&amp;#41;
+
+        # table selection change
+        self.tableWidget.doubleClicked.connect&amp;#40;self.on&amp;#95;click&amp;#41;
+
+    @pyqtSlot&amp;#40;&amp;#41;
+    def on&amp;#95;click&amp;#40;self&amp;#41;:
+        print&amp;#40;&amp;quot;\n&amp;quot;&amp;#41;
+        for currentQTableWidgetItem in self.tableWidget.selectedItems&amp;#40;&amp;#41;:
+            print&amp;#40;currentQTableWidgetItem.row&amp;#40;&amp;#41;, currentQTableWidgetItem.column&amp;#40;&amp;#41;, currentQTableWidgetItem.text&amp;#40;&amp;#41;&amp;#41;
+
+if &amp;#95;&amp;#95;name&amp;#95;&amp;#95; == '&amp;#95;&amp;#95;main&amp;#95;&amp;#95;':
+    app = QApplication&amp;#40;sys.argv&amp;#41;
+    ex = App&amp;#40;&amp;#41;
+    sys.exit&amp;#40;app.exec&amp;#95;&amp;#40;&amp;#41;&amp;#41;
+ &lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;So you should have it like this so far. And if you run it you'll see a cell 4 by 2. So now lets get to editing this to make it take from the example.txt so we'll go stright to createTable and edit that method specifically since that is what we want. Change it to the following...&lt;pre&gt;&lt;code&gt;    def createTable&amp;#40;self&amp;#41;:
+       # Create table
+        elements = &amp;#91;&amp;#93;
+        f = open&amp;#40;'example.txt','r'&amp;#41;
+
+        for line in f.readlines&amp;#40;&amp;#41;:
+            elements.append&amp;#40;line.split&amp;#40;&amp;quot;,&amp;quot;&amp;#41;&amp;#41;
+            
+        f.close&amp;#40;&amp;#41;
+
+        self.tableWidget = QTableWidget&amp;#40;&amp;#41;
+        self.tableWidget.setRowCount&amp;#40;len&amp;#40;elements&amp;#41;&amp;#41;
+        self.tableWidget.setColumnCount&amp;#40;3&amp;#41;
+
+        for i in range&amp;#40;len&amp;#40;elements&amp;#41;&amp;#41;:
+            self.tableWidget.setItem&amp;#40;i, 0, QTableWidgetItem&amp;#40;elements&amp;#91;i&amp;#93;&amp;#91;0&amp;#93;&amp;#41;&amp;#41;
+            self.tableWidget.setItem&amp;#40;i, 1, QTableWidgetItem&amp;#40;elements&amp;#91;i&amp;#93;&amp;#91;1&amp;#93;&amp;#41;&amp;#41;
+            self.tableWidget.setItem&amp;#40;i, 2, QTableWidgetItem&amp;#40;elements&amp;#91;i&amp;#93;&amp;#91;2&amp;#93;&amp;#41;&amp;#41;
+
+        # table selection change
+        self.tableWidget.doubleClicked.connect&amp;#40;self.on&amp;#95;click&amp;#41;
+ &lt;/code&gt;&lt;/pre&gt; Now if you run this you'll see that it will read from the example.txt and actually take those and put it into the table. Try it put more elements into the example.txt and you'll see it correctly places them into the table. Now let me explain what we did the method to do this.&lt;pre&gt;&lt;code&gt;elements = &amp;#91;&amp;#93;
+f = open&amp;#40;'example.txt','r'&amp;#41;
+ &lt;/code&gt;&lt;/pre&gt; This part is creating a variable to store all the elements in the example.txt file to store into an array. After that we open the example.txt using the read param since all we are going to do is read the example.txt file. Of course we also close it later on which you should always remember to do with &lt;newcode&gt;f.close()&lt;/newcode&gt;.&lt;pre&gt;&lt;code&gt;for line in f.readlines&amp;#40;&amp;#41;:
+   elements.append&amp;#40;line.split&amp;#40;&amp;quot;,&amp;quot;&amp;#41;&amp;#41;
+            
+f.close&amp;#40;&amp;#41;
+ &lt;/code&gt;&lt;/pre&gt; This is we loop through each line with a for statement and spliting based on the comma. If you're confused by this just place a print(elements[1]) in the table method to see how the array looks so that you can see how exactly we are going to put them into the tableWidget.&lt;pre&gt;&lt;code&gt;self.tableWidget = QTableWidget&amp;#40;&amp;#41;
+self.tableWidget.setRowCount&amp;#40;len&amp;#40;elements&amp;#41;&amp;#41;
+self.tableWidget.setColumnCount&amp;#40;3&amp;#41;
+ &lt;/code&gt;&lt;/pre&gt; This part is actually creating the QTableWidget which is the table. As well as stating how many rows we are going to have and this is determined by counting how using len on elements to count the amount of rows there is going to be and than since we already know the column amount it is hard coded into the code but we could've done a similiar thing for the column if there is a varity on the column. &lt;pre&gt;&lt;code&gt;for i in range&amp;#40;len&amp;#40;elements&amp;#41;&amp;#41;:
+   self.tableWidget.setItem&amp;#40;i, 0, QTableWidgetItem&amp;#40;elements&amp;#91;i&amp;#93;&amp;#91;0&amp;#93;&amp;#41;&amp;#41;
+   self.tableWidget.setItem&amp;#40;i, 1, QTableWidgetItem&amp;#40;elements&amp;#91;i&amp;#93;&amp;#91;1&amp;#93;&amp;#41;&amp;#41;
+   self.tableWidget.setItem&amp;#40;i, 2, QTableWidgetItem&amp;#40;elements&amp;#91;i&amp;#93;&amp;#91;2&amp;#93;&amp;#41;&amp;#41;
+ &lt;/code&gt;&lt;/pre&gt; This is the meat of the code so to speak. Where all of the major action is going on. The for statement is looping and placing the elements into its respective cell. This is done by using the setItem method and as you can see it is looped for the amount of arrays in elements using len to find that value.  &lt;br/&gt;&lt;br/&gt; The majority of the rest of the code is just to set up the frame which is not so vital but now you can create tables from a .txt file which is amazing and can extend this even further and create some graphs using matplotlib which is built into PyGt5.&lt;/p&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Sat, 14 Jan 2017 00:00:00 -0500
+</pubDate>
+</item>
 <item>
 <guid>
 http://blogawesome.com/posts-output/python-commands/
