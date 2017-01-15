@@ -3,12 +3,15 @@ $('#toggle').click(function() {
     $('.body').toggleClass('body_hidden');
     $('#navigation').toggleClass('open');
     $('#about').css({"padding": "30px 5px 0px 30%"});
+    $('#portfolio').css({"padding": "30px 5px 0px 30%"});
   });
 
 $('.menu').click(function() {
     $('.body').removeClass('body_hidden');
     $( "#toggle" ).removeClass( "active" );
     $('#navigation').removeClass('open');
+    $('#about').css({"padding": "100px 50px"});
+    $('#portfolio').css({"padding": "100px 50px"});
   });
 
 // $(window).scroll(function(){
