@@ -10,9 +10,16 @@ $('#toggle').click(function() {
         $('#about').toggleClass('addpadding');
         $('#downarrow').toggleClass('arrowpadding');
 
+        $('.container_footer').removeClass('defaultpadding');
+        $('.container_footer').toggleClass('addpadding');
+
         $('#portfolio').removeClass('defaultpadding');
         $('#portfolio').toggleClass('addpadding');
     } else {
+
+        $('.container_footer').toggleClass('defaultpadding');
+        $('.container_footer').removeClass('addpadding');
+
         $('#about').removeClass('addpadding');
         $('#about').toggleClass('defaultpadding');
         $('#downarrow').removeClass('arrowpadding');
@@ -36,7 +43,7 @@ $('#toggle').click(function() {
     $('.body').toggleClass('body_hidden');
     $('#navigation').toggleClass('open');
 
-    $('.container_footer').toggleClass('addpadding');
+
     $('#welcome').toggleClass('addpadding');
 
 
