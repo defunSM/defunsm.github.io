@@ -52,6 +52,15 @@ $('#toggle').click(function() {
 
 
 });
+
+$(window).scroll(function(){
+    if ($(window).scrollTop() >= 300){
+        $(".burger span").css({'color':'black'});
+    } else {
+        $(".burger span").css({'color':'white'});
+    }
+
+});
 // $(window).scroll(function(){
 //     if  ($(window).scrollTop() >= 300){
 //         $(".burger").hide();
