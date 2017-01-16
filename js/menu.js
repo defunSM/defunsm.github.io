@@ -11,9 +11,9 @@ $('#toggle').click(function() {
 
   });
 
-$('.burger.active').click(function() {
-    // $('.body').removeClass('body_hidden');
-    // $( "#toggle" ).removeClass( "active" );
+$('.menu').click(function() {
+    $('.body').removeClass('body_hidden');
+    $( "#toggle" ).removeClass( "active" );
     $('#navigation').removeClass('open');
 
     $('#about').removeClass('addpadding');
