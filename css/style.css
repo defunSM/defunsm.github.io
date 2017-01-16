@@ -993,6 +993,10 @@ body::-webkit-scrollbar-thumb {
     padding: 30px 5px 30px 40%;
 }
 
+.welcomeaddpadding {
+    padding: 300px 5px 100px 40%;
+}
+
 .arrowpadding {
     position: relative;
     left: 150px;

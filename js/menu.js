@@ -28,6 +28,8 @@ $('#toggle').click(function() {
 
         $('#portfolio').removeClass('addpadding');
         $('#portfolio').toggleClass('defaultpadding');
+
+        $('#headerspan').toggleClass('fade child');
     }
 
     if (contact == "module defaultpadding") {
