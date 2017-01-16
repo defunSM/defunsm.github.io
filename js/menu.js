@@ -27,6 +27,26 @@ $('#toggle').click(function() {
         $('#portfolio').removeClass('addpadding');
         $('#portfolio').toggleClass('defaultpadding');
     }
+
+    if (contact == "module defaultpadding") {
+        $('#contact').removeClass('defaultpadding');
+        $('#contact').toggleClass('addpadding');
+    } else {
+        $('#contact').removeClass('addpadding');
+        $('#contact').toggleClass('defaultpadding');
+    }
+
+
+
+
+
+    $('.body').toggleClass('body_hidden');
+    $('#navigation').toggleClass('open');
+
+
+    $('#welcome').toggleClass('addpadding');
+
+
 });
 
 
