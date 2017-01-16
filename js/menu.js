@@ -8,15 +8,15 @@ $('#toggle').click(function() {
     if (about == "module defaultpadding") {
         $('#about').removeClass('defaultpadding');
         $('#about').toggleClass('addpadding');
-    } else {
-        $('#about').removeClass('addpadding');
-        $('#about').toggleClass('defaultpadding');
-    }
+        $('#downarrow').toggleClass('arrowpadding');
 
-    if (portfolio == "module defaultpadding") {
         $('#portfolio').removeClass('defaultpadding');
         $('#portfolio').toggleClass('addpadding');
     } else {
+        $('#about').removeClass('addpadding');
+        $('#about').toggleClass('defaultpadding');
+        $('#downarrow').removeClass('arrowpadding');
+
         $('#portfolio').removeClass('addpadding');
         $('#portfolio').toggleClass('defaultpadding');
     }

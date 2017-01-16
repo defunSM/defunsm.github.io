@@ -1001,3 +1001,8 @@ body::-webkit-scrollbar-thumb {
 .defaultcontactpadding {
     padding: 30px 5px 30px 30%;
 }
+
+.arrowpadding {
+    position: relative;
+    left: 150px;
+}
