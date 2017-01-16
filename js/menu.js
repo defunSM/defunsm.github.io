@@ -48,7 +48,7 @@ $('#toggle').click(function() {
     $('#navigation').toggleClass('open');
 
 
-    $('#welcome').toggleClass('addpadding');
+    $('#welcome').toggleClass('welcomeaddpadding');
 
 
 });
