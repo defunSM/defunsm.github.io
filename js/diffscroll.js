@@ -10,6 +10,8 @@ $('#toggle').click(function() {
         $('#about').toggleClass('addpadding');
         $('#downarrow').toggleClass('arrowpadding');
 
+        $('.container_small').toggleClass('defaultcontactpadding');
+
         $('.container_footer').removeClass('defaultpadding');
         $('.container_footer').toggleClass('addpadding');
 
@@ -19,6 +21,8 @@ $('#toggle').click(function() {
 
         $('.container_footer').toggleClass('defaultpadding');
         $('.container_footer').removeClass('addpadding');
+
+        $('.container_small').removeClass('defaultcontactpadding');
 
         $('#about').removeClass('addpadding');
         $('#about').toggleClass('defaultpadding');
