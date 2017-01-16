@@ -15,6 +15,8 @@ $('#toggle').click(function() {
 
         $('#portfolio').removeClass('defaultpadding');
         $('#portfolio').toggleClass('addpadding');
+
+        $('#headerspan').removeClass('fade child');
     } else {
 
         $('.container_footer').toggleClass('defaultpadding');
