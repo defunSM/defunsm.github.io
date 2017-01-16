@@ -322,10 +322,6 @@ h1, h2, h3, h4, h5, h6 {
 	cursor: pointer;
 }
 
-.burger span:hover {
-    background: cyan;
-}
-
 
 .burger span:nth-of-type(2) { top: 20px; }
 .burger span:nth-of-type(3) { top: 30px; }
@@ -361,16 +357,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
-
-@media screen and (max-width: 500px) {
-
-    .navigation.open, .navigation.close {
-	opacity: 1;
-	visibility: visible;
-	height: 100%;
-        width:100%;
-    }
-}
 .navigation.open:before, .navigation.close:before { left: 0; }
 
 .navigation.open li {
@@ -1010,4 +996,14 @@ body::-webkit-scrollbar-thumb {
 .arrowpadding {
     position: relative;
     left: 150px;
+}
+
+@media screen and (max-width: 500px) {
+
+    .navigation.open, .navigation.close {
+	opacity: 1;
+	visibility: visible;
+	height: 100%;
+        width:100%;
+    }
 }
