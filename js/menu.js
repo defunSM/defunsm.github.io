@@ -49,6 +49,15 @@ $('#toggle').click(function() {
 
 });
 
+$(window).scroll(function(){
+    if ($(window).scrollTop() >= 300){
+        $(".burger span").css({'background':'#a67d4a;'});
+    } else {
+        $(".burger span").css({'background':'white'});
+    }
+
+});
+
 
 // $('.menu').click(function() {
 //     $('.body').removeClass('body_hidden');
