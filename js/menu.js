@@ -13,11 +13,29 @@ $('#toggle').click(function() {
         $('#about').toggleClass('defaultpadding');
     }
 
+    if (portfolio == "module defaultpadding") {
+        $('#portfolio').removeClass('defaultpadding');
+        $('#portfolio').toggleClass('addpadding');
+    } else {
+        $('#portfolio').removeClass('addpadding');
+        $('#portfolio').toggleClass('defaultpadding');
+    }
+
+    if (contact == "module defaultpadding") {
+        $('#contact').removeClass('defaultpadding');
+        $('#contact').toggleClass('addpadding');
+    } else {
+        $('#contact').removeClass('addpadding');
+        $('#contact').toggleClass('defaultpadding');
+    }
+
+
+
+
 
     $('.body').toggleClass('body_hidden');
     $('#navigation').toggleClass('open');
-    $('#portfolio').toggleClass('addpadding');
-    $('#contact').toggleClass('addpadding');
+
     $('.container_footer').toggleClass('addpadding');
     $('#welcome').toggleClass('addpadding');
 
