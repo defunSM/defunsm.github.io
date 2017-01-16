@@ -5,7 +5,7 @@ $('#toggle').click(function() {
     var portfolio = $('#portfolio').attr('class');
     var contact = $('#contact').attr('class');
 
-    if (about == "defaultpadding") {
+    if (about == "module defaultpadding") {
         $('#about').removeClass('defaultpadding');
         $('#about').toggleClass('addpadding');
     } else {
