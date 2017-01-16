@@ -15,11 +15,11 @@ $('.burger.active').click(function() {
     $('.body').removeClass('body_hidden');
     $( "#toggle" ).removeClass( "active" );
     $('#navigation').removeClass('open');
-    $('#about').removeClass('addpadding');
-    $('#portfolio').removeClass('addpadding');
-    $('#contact').removeClass('addpadding');
-    $('.container_footer').removeClass('addpadding');
-    $('#welcome').removeClass('addpadding');
+    $('#about').removeClass('defaultpadding');
+    $('#portfolio').removeClass('defaultpadding');
+    $('#contact').removeClass('defaultcontactpadding');
+    $('.container_footer').removeClass('defaultfooterpadding');
+    $('#welcome').removeClass('defaultpadding');
   });
 
 // $(window).scroll(function(){

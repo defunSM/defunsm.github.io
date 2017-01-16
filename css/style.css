@@ -997,3 +997,7 @@ body::-webkit-scrollbar-thumb {
 .defaultfooterpadding {
     padding: 50px;
 }
+
+.defaultcontactpadding {
+    padding: 30px 5px 30px 30%;
+}
