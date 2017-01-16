@@ -176,7 +176,7 @@ h1, h2, h3, h4, h5, h6 {
 .anotherclass {text-align: left;
                max-width: 900px;}
 
-.container_small {max-width: 900px;}
+.container_small {max-width: 1500px;}
 .container_big {max-width: 1050px;}
 
 /* Fade-in Animation */
