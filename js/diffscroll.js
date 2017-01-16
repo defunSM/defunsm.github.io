@@ -1,15 +1,53 @@
 $('#toggle').click(function() {
-   $(this).toggleClass('active');
-   $('.body').toggleClass('body_hidden')
-   $('#navigation').toggleClass('open');
-  });
+    $(this).toggleClass('active');
 
-$('.menu').click(function() {
-   $('.body').removeClass('body_hidden')
-   $( "#toggle" ).removeClass( "active" )
-   $('#navigation').removeClass('open');
-  });
+    var about = $('#about').attr('class');
+    var portfolio = $('#portfolio').attr('class');
+    var contact = $('#contact').attr('class');
 
+    if (about == "module defaultpadding") {
+        $('#about').removeClass('defaultpadding');
+        $('#about').toggleClass('addpadding');
+        $('#downarrow').toggleClass('arrowpadding');
+
+        $('.container_footer').removeClass('defaultpadding');
+        $('.container_footer').toggleClass('addpadding');
+
+        $('#portfolio').removeClass('defaultpadding');
+        $('#portfolio').toggleClass('addpadding');
+    } else {
+
+        $('.container_footer').toggleClass('defaultpadding');
+        $('.container_footer').removeClass('addpadding');
+
+        $('#about').removeClass('addpadding');
+        $('#about').toggleClass('defaultpadding');
+        $('#downarrow').removeClass('arrowpadding');
+
+        $('#portfolio').removeClass('addpadding');
+        $('#portfolio').toggleClass('defaultpadding');
+    }
+
+    if (contact == "module defaultpadding") {
+        $('#contact').removeClass('defaultpadding');
+        $('#contact').toggleClass('addpadding');
+    } else {
+        $('#contact').removeClass('addpadding');
+        $('#contact').toggleClass('defaultpadding');
+    }
+
+
+
+
+
+    $('.body').toggleClass('body_hidden');
+    $('#navigation').toggleClass('open');
+
+
+    $('#welcome').toggleClass('addpadding');
+
+
+});
 // $(window).scroll(function(){
 //     if  ($(window).scrollTop() >= 300){
 //         $(".burger").hide();
