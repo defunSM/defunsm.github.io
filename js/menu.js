@@ -1,8 +1,21 @@
 $('#toggle').click(function() {
     $(this).toggleClass('active');
+
+    var about = $('#about').attr('class');
+    var portfolio = $('#portfolio').attr('class');
+    var contact = $('#contact').attr('class');
+
+    if (about == "defaultpadding") {
+        $('#about').removeClass('defaultpadding');
+        $('#about').toggleClass('addpadding');
+    } else {
+        $('#about').removeClass('addpadding');
+        $('#about').toggleClass('defaultpadding');
+    }
+
+
     $('.body').toggleClass('body_hidden');
     $('#navigation').toggleClass('open');
-    $('#about').toggleClass('addpadding');
     $('#portfolio').toggleClass('addpadding');
     $('#contact').toggleClass('addpadding');
     $('.container_footer').toggleClass('addpadding');
@@ -11,24 +24,24 @@ $('#toggle').click(function() {
 
   });
 
-$('.menu').click(function() {
-    $('.body').removeClass('body_hidden');
-    $( "#toggle" ).removeClass( "active" );
-    $('#navigation').removeClass('open');
+// $('.menu').click(function() {
+//     $('.body').removeClass('body_hidden');
+//     $( "#toggle" ).removeClass( "active" );
+//     $('#navigation').removeClass('open');
 
-    $('#about').removeClass('addpadding');
-    $('#portfolio').removeClass('addpadding');
-    $('#contact').removeClass('addpadding');
-    $('.container_footer').removeClass('addpadding');
-    $('#welcome').removeClass('addpadding');
+//     $('#about').removeClass('addpadding');
+//     $('#portfolio').removeClass('addpadding');
+//     $('#contact').removeClass('addpadding');
+//     $('.container_footer').removeClass('addpadding');
+//     $('#welcome').removeClass('addpadding');
 
 
-    $('#about').toggleClass('defaultpadding');
-    $('#portfolio').toggleClass('defaultpadding');
-    $('#contact').toggleClass('defaultcontactpadding');
-    $('.container_footer').toggleClass('defaultfooterpadding');
-    $('#welcome').toggleClass('defaultpadding');
-  });
+//     $('#about').toggleClass('defaultpadding');
+//     $('#portfolio').toggleClass('defaultpadding');
+//     $('#contact').toggleClass('defaultcontactpadding');
+//     $('.container_footer').toggleClass('defaultfooterpadding');
+//     $('#welcome').toggleClass('defaultpadding');
+//   });
 
 // $(window).scroll(function(){
 //     if  ($(window).scrollTop() >= 300){
