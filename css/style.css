@@ -60,7 +60,7 @@ newcode:hover {
 
 
 .addpadding {
-    padding: 100px 5px 100px 30%;
+    padding: 100px 5px 100px 40%;
 }
 
 /* HTML5 display-role reset for older browsers */
@@ -999,7 +999,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .defaultcontactpadding {
-    padding: 30px 5px 30px 30%;
+    padding: 30px 5px 30px 40%;
 }
 
 .arrowpadding {

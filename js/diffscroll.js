@@ -55,9 +55,9 @@ $('#toggle').click(function() {
 
 $(window).scroll(function(){
     if ($(window).scrollTop() >= 300){
-        $(".burger span").css({'color':'black'});
+        $(".burger span").css({'background':'black'});
     } else {
-        $(".burger span").css({'color':'white'});
+        $(".burger span").css({'background':'white'});
     }
 
 });
