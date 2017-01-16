@@ -322,6 +322,11 @@ h1, h2, h3, h4, h5, h6 {
 	cursor: pointer;
 }
 
+.burger span:hover {
+    background: cyan;
+}
+
+
 .burger span:nth-of-type(2) { top: 20px; }
 .burger span:nth-of-type(3) { top: 30px; }
 
