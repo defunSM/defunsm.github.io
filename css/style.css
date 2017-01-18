@@ -402,7 +402,7 @@ h1, h2, h3, h4, h5, h6 {
 	font-family: 'Montserrat', sans-serif;
 	text-transform: uppercase;
 	font-size: 30px;
-	letter-spacing: 6px;
+	letter-spacing: 1px;
 }
 
 .navigation ul li  a:hover { color: #fff; }
