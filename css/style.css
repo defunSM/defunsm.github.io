@@ -970,6 +970,7 @@ body::-webkit-scrollbar-thumb {
 	visibility: visible;
 	height: 100%;
         width:30%;
+        overflow-y: inherit;
 
         #about {
 	    background: #fff;
