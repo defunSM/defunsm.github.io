@@ -384,9 +384,10 @@ h1, h2, h3, h4, h5, h6 {
 	list-style: none;
 	display: inline-block;
 	position: relative;
-	margin: 20vh 0 0 0;
+	margin: 10vh 0 0 0;
 	padding: 0;
-	height: 60vh;
+	height: 80vh;
+        overflow: scroll;
 }
 
 .navigation ul li {
