@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+	<title>Clojure - Basic Incanter</title>
+	<!-- Styles -->
+	<link rel="stylesheet" href="https://defunsm.github.io/css/style.css" />
+	<link rel="stylesheet" href="https://defunsm.github.io/css/font-awesome.min.css" />
+	<link type="text/css" rel="stylesheet" href="https://defunsm.github.io/featherlight.css" />
+        <link rel="stylesheet" href="https://defunsm.github.io/css/screen.css" />
+        <!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css"> -->
+        <link rel="stylesheet" href="https://defunsm.github.io/css/solarized-dark.css" />
+
+	<style type="text/css">
+		@media all {
+			.lightbox { display: none; }
+		}
+	</style>
+	<!-- jQuery -->
+	<script src="https://defunsm.github.io/js/jquery.min.js"></script>
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="images/favicon.png">
+</head>
+<body class="fade-in cmon body">
+
+
+  <!-- HEADER /////////////////////////////////////////////////////////////////////////// -->
+
+
+  <!--    <ul3 class="nav-two"> -->
+  <!-- <li3 class="three"><a href="http://defunsm.github.io/">Home <i class="fa fa-home" aria-hidden="true"></i></a></li3> -->
+  <!-- <li3 class="fourl"><a href="http://defunsm.github.io/pages-output/another-page/">About <i class="fa fa-heart" aria-hidden="true"></i></a></li3> -->
+  <!-- <li3 class="onel"><a href="https://github.com/defunSM">GitHub <i class="fa fa-github" aria-hidden="true"></i></a></li3> -->
+  <!-- <li3 class="twol"><a href="http://defunsm.github.io/archives/">Archives <i class="fa fa-book" aria-hidden="true"></i></a></li3> -->
+  <!-- </ul3> -->
+
+  <!--  <div class="menubarblack"></div> -->
+
+	<header id="postwelcome" class="parent module parallax parallax-1">
+		<div class="burger" id="toggle">
+			<span class="top"></span>
+			<span class="middle"></span>
+			<span class="bottom"></span>
+
+		</div>
+
+		<div class="navigation" id="navigation">
+			<nav class="overlay-menu">
+			  <ul>
+                                          <li>
+                              <a href="https://defunsm.github.io/#Welcome" class="menu">Home <i class="fa fa-home" aria-hidden="true"></i>
+</a>
+			      <span class="simple_line"></span>
+                              </li>
+					<li >
+						<a href="https://defunsm.github.io/#about" class="menu">About <i class="fa fa-heart" aria-hidden="true"></i></a>
+						<span class="simple_line"></span>
+					</li>
+					<li>
+						<a href="https://defunsm.github.io/#portfolio" class="menu">Github <i class="fa fa-github" aria-hidden="true"></i></a>
+						<span class="simple_line"></span>
+					</li>
+					<li>
+					  <a href="https://defunsm.github.io/archives" class="menu">Archives <i class="fa fa-book" aria-hidden="true"></i></a>
+                                          <span class="simple_line"></span>
+					</li>
+
+                              
+
+
+
+
+
+
+
+
+			  </ul>
+			</nav>
+		</div>
+		<div class="scroll_down"></div>
+		<div class="fade child">
+			<div class="container_small">
+				<!-- Header Titles -->
+				<h1 class="header_title">Clojure - Basic Incanter</h1>
+
+
+<br/>
+                                
+                                <a href="/posts/python-pyqt5/" class="button">Python - Creating a Table using PyGt5 <i class="fa fa-arrow-right" aria-hidden="true"></i>
+</i></a>
+
+
+			</div>
+		</div>
+	</header>
+	<!-- END HEADER /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- ABOUT SECTION /////////////////////////////////////////////////////////////////////////// -->
+	<section id="about" class="module defaultpadding">
+
+
+          <div class="anotherclass">
+
+
+                    
+                    <div class="post-header">
+    <div id="post-meta" class="row">
+        <div class="col-lg-6">January 29, 2017</div>
+        
+    </div>
+    <h2>Clojure - Basic Incanter</h2>
+</div>
+<div>
+    
+     <p><a href='http://incanter.github.io/incanter/index.html'>Incanter</a> is similiar to R which has many uses for statistical computing. Incanter is a clojure based version of R which runs on the JVM. It has many useful functions to help aid in making graphs and analyze data. We'll only be looking on making graphs in this post but in a later post we'll look at analyzing data using incanter. For now lets make some graphs! <br/><br/> Go ahead make a new clojure project with leiningen. Add the following to your project.clj to include incanter into your dependencies.<pre><code>:dependencies &#91;&#91;org.clojure/clojure &quot;1.8.0&quot;&#93;
+               &#91;incanter &quot;1.5.5&quot;&#93;&#93;
+ </code></pre> Go ahead and run lein deps so that leiningen can get incanter as a dependency.<pre><code>lein deps
+ </code></pre> After that we are ready to go and start editing the core.clj and first examining how to create a neat little <newcode>histogram</newcode>. <br/><br/> So lets use the things we are going to need from incanter make your namespace as the following just replace the namespace to whatever project you created in my case I did lein new incantertut but yours will be different so rechange that part of what you did.<pre><code>&#40;ns incantertut.core
+  &#40;:use &#91;incanter.charts :only &#91;histogram scatter-plot pie-chart&#93;&#93;
+        &#91;incanter.core :only &#91;view&#93;&#93;
+        &#91;incanter.stats :only &#91;sample-normal&#93;&#93;&#41;&#41;
+ </code></pre> In this post we'll only be looking at histograms, scatter-plots and pie-charts. <br/><br/> Next part is fun because it is literally one line to generate and view the graph and behold.<pre><code>&#40;view &#40;histogram &#40;sample-normal 10000 :mean 10&#41;&#41; :width 700 :height 700&#41;
+ </code></pre> After running that you should see the following graph pop up. <br/><br/> <a href='https://defunsm.github.io/img/incanter1.png'>incanter</a> <br/><br/> The above one-liner creates a histogram. The sample-normal function creates a normal gaussian distribution with 10,000 points. You can select the mean you want for the distribution in this case it was set to 10 by default it is 1. You can also set the :sd which is the standard deviation. <br/><br/> The view function takes other parameters such as a width and height so you can play around with those changing the starting height/width of the histogram. Note that the view function can do more than just graphs. It can view urls and images as well! <br/><br/> Next lets see how to make a scatter-plot which is pretty much a one liner as well and exactly the same as making a histogram expect we use <newcode>scatter-plot</newcode> instead and define some variables before hand.<pre><code>&#40;def x &#91;1 2 3 4 5&#93;&#41;
+&#40;def y &#91;5 9 11 20 24&#93;&#41;
+
+&#40;view &#40;scatter-plot x y&#41;&#41;
+ </code></pre> <a href='https://defunsm.github.io/img/incanter2.png'>incanter 2</a> <br/><br/> x and y defines the data for the x axis and the y variable contains the data for the y axis. Note that the x and y variables are of type persistentVector. <br/><br/> Notice that the data set is not perfectly linear but it looks like you could draw a line of best fit or a regression line which I'll go over on how to do that in clojure later. As well as find values such as the R<sup>2</sup> value telling us how well the data fits that line of best fit. <br/><br/> Now for the file graph we'll make a pie graph. <br/><br/> Piechart that we are about to make will include the elements making up earth's atmosphere and for that we'll define two variables called elements and percentages. Both persistent vectors however elements will consist of strings that will contain the name of the elements and percentages will contain the percentage of that element in the atmosphere. The main function here to create the pie-chart is called pie-chart which will be taking two arguments the elements and the percentages as well as you can add an additional parameter adding a :title as a string value such as "Composition of the Earth's Atmosphere".<pre><code>&#40;def elements &#91;&quot;Nitrogen&quot; &quot;Oxygen&quot; &quot;Argon&quot; &quot;Carbon&quot;&#93;&#41;
+&#40;def percentages &#91;78 21 0.9 0.03&#93;&#41;
+
+&#40;view &#40;pie-chart elements percentages :title &quot;Composition of the Earth's Atmosphere&quot;&#41;&#41;
+ </code></pre> <a href='https://defunsm.github.io/img/incanter3.png'>incanter 3</a> <br/><br/> There are more variations of graphs avaliable in incanter but I just went through some of the more basic ones that people tend to use so there you go now you can make histograms, scatter-plots, and pie charts. All in a few lines of clojure code.</p>
+</div>
+
+<div id="post-tags">
+    <b>Tags: </b>
+    
+    <a href="/tags/Clojure/" class="button4">Clojure</a>
+    
+    <a href="/tags/Code/" class="button4">Code</a>
+    
+    <a href="/tags/Guide/" class="button4">Guide</a>
+    
+</div>
+
+
+                          <div id="prev-next">
+                            
+                            
+                            <a class="center button3" href="/posts/python-pyqt5/">Python - Creating a Table using PyGt5 <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                            
+                          </div>
+
+                          
+                          <div id="disqus_thread"></div>
+                          <script type="text/javascript">
+                            (function() {
+                            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                            dsq.src = '//defunsm-github-io.disqus.com/embed.js';
+                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                            })();
+                          </script>
+                          
+
+
+
+                        
+          </div>
+
+
+
+	</section>
+
+        <!-- END ABOUT SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- PORTFOLIO SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- END CONTACT SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- FOOTER /////////////////////////////////////////////////////////////////////////// -->
+	<footer>
+		<div class="container_footer">
+		  <div class="left">
+                    <a href="https://github.com/defunSM"><i class="fa fa-github-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://www.facebook.com/salman.hossain.944"><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://plus.google.com/u/0/109736817709668742056"><i class="fa fa-google-plus-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://twitter.com/SmSalmanHossain"><i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://www.linkedin.com/in/salman-hossain"><i class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i></a>
+                    <p>&nbsp;</p>
+
+
+                    <p>Email: &nbsp;&nbsp; <span>sxh8083@g.rit.edu</span></p>
+                    <p>Phone: &nbsp;&nbsp; <span>(347) - 398 - 1701 </span></p>
+				<p>© 2016-17 <span>Salman Hossain</span></p>
+			</div>
+			<div class="right">
+				<a href="#postwelcome">Top <i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+			</div>
+		</div>
+	</footer>
+	<!-- END FOOTER /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- Scripts -->
+	<script src="https://defunsm.github.io/js/parallax.js"></script>
+	<script src="https://defunsm.github.io/js/diffscroll.js"></script>
+	<script src="https://defunsm.github.io/js/featherlight.js" type="text/javascript" charset="utf-8"></script>
+	<script src="https://defunsm.github.io/js/scroll.js"></script>
+        <!-- <script src="//code.jquery.com/jquery-1.11.0.min.js"></script> -->
+        <!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script> -->
+
+        <script src="https://defunsm.github.io/js/highlight.pack.js"></script>
+        <script src="/js/highlight.pack.js" type="text/javascript"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>

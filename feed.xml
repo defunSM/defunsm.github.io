@@ -12,11 +12,47 @@ http://salmanhossain.me
 A place to share my knowledge
 </description>
 <lastBuildDate>
-Tue, 17 Jan 2017 22:14:09 -0500
+Sun, 29 Jan 2017 10:52:07 -0500
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://salmanhossain.me/posts/clojure-incanter/
+</guid>
+<link>
+http://salmanhossain.me/posts/clojure-incanter/
+</link>
+<title>
+Clojure - Basic Incanter
+</title>
+<description>
+ &lt;p&gt;&lt;a href='http://incanter.github.io/incanter/index.html'&gt;Incanter&lt;/a&gt; is similiar to R which has many uses for statistical computing. Incanter is a clojure based version of R which runs on the JVM. It has many useful functions to help aid in making graphs and analyze data. We'll only be looking on making graphs in this post but in a later post we'll look at analyzing data using incanter. For now lets make some graphs! &lt;br/&gt;&lt;br/&gt; Go ahead make a new clojure project with leiningen. Add the following to your project.clj to include incanter into your dependencies.&lt;pre&gt;&lt;code&gt;:dependencies &amp;#91;&amp;#91;org.clojure/clojure &amp;quot;1.8.0&amp;quot;&amp;#93;
+               &amp;#91;incanter &amp;quot;1.5.5&amp;quot;&amp;#93;&amp;#93;
+ &lt;/code&gt;&lt;/pre&gt; Go ahead and run lein deps so that leiningen can get incanter as a dependency.&lt;pre&gt;&lt;code&gt;lein deps
+ &lt;/code&gt;&lt;/pre&gt; After that we are ready to go and start editing the core.clj and first examining how to create a neat little &lt;newcode&gt;histogram&lt;/newcode&gt;. &lt;br/&gt;&lt;br/&gt; So lets use the things we are going to need from incanter make your namespace as the following just replace the namespace to whatever project you created in my case I did lein new incantertut but yours will be different so rechange that part of what you did.&lt;pre&gt;&lt;code&gt;&amp;#40;ns incantertut.core
+  &amp;#40;:use &amp;#91;incanter.charts :only &amp;#91;histogram scatter-plot pie-chart&amp;#93;&amp;#93;
+        &amp;#91;incanter.core :only &amp;#91;view&amp;#93;&amp;#93;
+        &amp;#91;incanter.stats :only &amp;#91;sample-normal&amp;#93;&amp;#93;&amp;#41;&amp;#41;
+ &lt;/code&gt;&lt;/pre&gt; In this post we'll only be looking at histograms, scatter-plots and pie-charts. &lt;br/&gt;&lt;br/&gt; Next part is fun because it is literally one line to generate and view the graph and behold.&lt;pre&gt;&lt;code&gt;&amp;#40;view &amp;#40;histogram &amp;#40;sample-normal 10000 :mean 10&amp;#41;&amp;#41; :width 700 :height 700&amp;#41;
+ &lt;/code&gt;&lt;/pre&gt; After running that you should see the following graph pop up. &lt;br/&gt;&lt;br/&gt; &lt;a href='https://defunsm.github.io/img/incanter1.png'&gt;incanter&lt;/a&gt; &lt;br/&gt;&lt;br/&gt; The above one-liner creates a histogram. The sample-normal function creates a normal gaussian distribution with 10,000 points. You can select the mean you want for the distribution in this case it was set to 10 by default it is 1. You can also set the :sd which is the standard deviation. &lt;br/&gt;&lt;br/&gt; The view function takes other parameters such as a width and height so you can play around with those changing the starting height/width of the histogram. Note that the view function can do more than just graphs. It can view urls and images as well! &lt;br/&gt;&lt;br/&gt; Next lets see how to make a scatter-plot which is pretty much a one liner as well and exactly the same as making a histogram expect we use &lt;newcode&gt;scatter-plot&lt;/newcode&gt; instead and define some variables before hand.&lt;pre&gt;&lt;code&gt;&amp;#40;def x &amp;#91;1 2 3 4 5&amp;#93;&amp;#41;
+&amp;#40;def y &amp;#91;5 9 11 20 24&amp;#93;&amp;#41;
+
+&amp;#40;view &amp;#40;scatter-plot x y&amp;#41;&amp;#41;
+ &lt;/code&gt;&lt;/pre&gt; &lt;a href='https://defunsm.github.io/img/incanter2.png'&gt;incanter 2&lt;/a&gt; &lt;br/&gt;&lt;br/&gt; x and y defines the data for the x axis and the y variable contains the data for the y axis. Note that the x and y variables are of type persistentVector. &lt;br/&gt;&lt;br/&gt; Notice that the data set is not perfectly linear but it looks like you could draw a line of best fit or a regression line which I'll go over on how to do that in clojure later. As well as find values such as the R&lt;sup&gt;2&lt;/sup&gt; value telling us how well the data fits that line of best fit. &lt;br/&gt;&lt;br/&gt; Now for the file graph we'll make a pie graph. &lt;br/&gt;&lt;br/&gt; Piechart that we are about to make will include the elements making up earth's atmosphere and for that we'll define two variables called elements and percentages. Both persistent vectors however elements will consist of strings that will contain the name of the elements and percentages will contain the percentage of that element in the atmosphere. The main function here to create the pie-chart is called pie-chart which will be taking two arguments the elements and the percentages as well as you can add an additional parameter adding a :title as a string value such as &quot;Composition of the Earth's Atmosphere&quot;.&lt;pre&gt;&lt;code&gt;&amp;#40;def elements &amp;#91;&amp;quot;Nitrogen&amp;quot; &amp;quot;Oxygen&amp;quot; &amp;quot;Argon&amp;quot; &amp;quot;Carbon&amp;quot;&amp;#93;&amp;#41;
+&amp;#40;def percentages &amp;#91;78 21 0.9 0.03&amp;#93;&amp;#41;
+
+&amp;#40;view &amp;#40;pie-chart elements percentages :title &amp;quot;Composition of the Earth's Atmosphere&amp;quot;&amp;#41;&amp;#41;
+ &lt;/code&gt;&lt;/pre&gt; &lt;a href='https://defunsm.github.io/img/incanter3.png'&gt;incanter 3&lt;/a&gt; &lt;br/&gt;&lt;br/&gt; There are more variations of graphs avaliable in incanter but I just went through some of the more basic ones that people tend to use so there you go now you can make histograms, scatter-plots, and pie charts. All in a few lines of clojure code.&lt;/p&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Sun, 29 Jan 2017 00:00:00 -0500
+</pubDate>
+</item>
 <item>
 <guid>
 http://salmanhossain.me/posts/python-pyqt5/
