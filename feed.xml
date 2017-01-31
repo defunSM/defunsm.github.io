@@ -12,11 +12,42 @@ http://salmanhossain.me
 A place to share my knowledge
 </description>
 <lastBuildDate>
-Sun, 29 Jan 2017 11:00:08 -0500
+Tue, 31 Jan 2017 00:03:12 -0500
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://salmanhossain.me/posts/clojure-linear-regression/
+</guid>
+<link>
+http://salmanhossain.me/posts/clojure-linear-regression/
+</link>
+<title>
+Clojure - Linear Regression
+</title>
+<description>
+&lt;p&gt;&lt;img src=&quot;https://defunsm.github.io/img/incanter4.png&quot; alt=&quot;incanter&quot; /&gt;&lt;/p&gt;&lt;p&gt;We will try to do a basic linear regression here with incanter. If you don't know what linear regression is it is essentially finding the line of best fit. I'll demonstrate how you can find the line of best fit using incanter with a neat function called linear-model which will do a lot of the numerical calculations for us. Make sure to note that the data for the y axis is the first argument and not the second argument since at least for me it appears to be more intuitive to place the x axis in the second argument of the function but that isn't the case for the linear-model function from incanter.stat so take note of that. Let us go ahead and add our dependencies. As well as make sure that incanter is in your project.clj and your namespace looks like the following below.&lt;pre&gt;&lt;code&gt;&amp;#40;ns incantertut.core
+  &amp;#40;:use &amp;#91;incanter.charts :only &amp;#91;histogram scatter-plot pie-chart add-points add-lines&amp;#93;&amp;#93;
+        &amp;#91;incanter.core :only &amp;#91;view&amp;#93;&amp;#93;
+        &amp;#91;incanter.stats :only &amp;#91;sample-normal linear-model&amp;#93;&amp;#93;&amp;#41;&amp;#41;
+ &lt;/code&gt;&lt;/pre&gt; What linear-model will do for us will do a bunch of calculations off hand so that we don't have to do them ourselves which is good. However if you are interested in the math computational part like I am you should probably go learn linear algebra and some statistics which will help you understand more of whats going on but it isn't absolutely necessary if you just want a line of best fit to be displayed. &lt;br/&gt;&lt;br/&gt; I am not entirely sure why computer science and the machine learning community tend to like to call the line of best fit &quot;linear regression&quot; which sounds a bit scary to me but really all you are doing is fitting a line that happens to be stright to a bunch of points on a x and y axis graph. Nothing complicated really. However when introducing this topic of linear regression in textbooks the impression is that this is a huge big thing but anyways I digress too much and here you go with the easy and simple line of best fit.&lt;pre&gt;&lt;code&gt;&amp;#40;def x &amp;#91;1 2 3 4 5&amp;#93;&amp;#41;
+&amp;#40;def y &amp;#91;5 9 11 20 24&amp;#93;&amp;#41;
+
+&amp;#40;view &amp;#40;add-lines &amp;#40;scatter-plot x y&amp;#41;
+                  x &amp;#40;:fitted &amp;#40;linear-model y x&amp;#41;&amp;#41;&amp;#41;&amp;#41;
+ &lt;/code&gt;&lt;/pre&gt; Let me go through with what is going on here. The view is again if you haven't read through the previous post on basic incanter on how to display a histogram, scatterplot and a pie chart I suggest looking at that. However I'll assume you know what view is doing and is the function that allows you to see the graphs hence view. The add-lines is a new function from the incanter.charts that I haven't shown before and allows you to plot lines you could use add-points instead as well but than it wouldn't be line.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;:coefs &amp;#40;linear-model y x&amp;#41;&amp;#41;
+;; =&amp;gt; &amp;#91;-0.8999999999999915 4.900000000000002&amp;#93;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now lets take a look using :coefs gives us two numbers in a persistent vector. So what do those numbers represent? Well one of is negative and the other positive and so judging from the graph you seen the negative number can't be the slope since the slope was clearly had a positive slope. So from that conclusion you can assume that the first number is the y-intercept which it is. The second number is the slope no surprise there. &lt;br/&gt;&lt;br/&gt; This is going to be a pretty short post just showing you how to obtain slope and y-intercept but you may not satisfied and be left with questions such as how well fitted is my line of best fit? What is the R&lt;sup&gt;2&lt;/sup&gt; value? How do I get that kind of information from my line of best fit well if you're curious you can check the documentation or wait for the next post.&lt;/p&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Mon, 30 Jan 2017 00:00:00 -0500
+</pubDate>
+</item>
 <item>
 <guid>
 http://salmanhossain.me/posts/clojure-incanter/

@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-	<title>Clojure - Basic Incanter</title>
+	<title>Clojure - Linear Regression</title>
 	<!-- Styles -->
 	<link rel="stylesheet" href="https://defunsm.github.io/css/style.css" />
 	<link rel="stylesheet" href="https://defunsm.github.io/css/font-awesome.min.css" />
@@ -82,14 +82,12 @@
 		<div class="fade child">
 			<div class="container_small">
 				<!-- Header Titles -->
-				<h1 class="header_title">Clojure - Basic Incanter</h1>
+				<h1 class="header_title">Clojure - Linear Regression</h1>
 
-
-                                <a href="/posts/clojure-linear-regression/" class="button"><i class="fa fa-arrow-left" aria-hidden="true"></i> Clojure - Linear Regression</a>
 
 <br/>
                                 
-                                <a href="/posts/python-pyqt5/" class="button">Python - Creating a Table using PyGt5 <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                                <a href="/posts/clojure-incanter/" class="button">Clojure - Basic Incanter <i class="fa fa-arrow-right" aria-hidden="true"></i>
 </i></a>
 
 
@@ -108,30 +106,25 @@
                     
                     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">January 29, 2017</div>
+        <div class="col-lg-6">January 30, 2017</div>
         
     </div>
-    <h2>Clojure - Basic Incanter</h2>
+    <h2>Clojure - Linear Regression</h2>
 </div>
 <div>
     
-     <p><a href='http://incanter.github.io/incanter/index.html'>Incanter</a> is similiar to R which has many uses for statistical computing. Incanter is a clojure based version of R which runs on the JVM. It has many useful functions to help aid in making graphs and analyze data. We'll only be looking on making graphs in this post but in a later post we'll look at analyzing data using incanter. For now lets make some graphs! <br/><br/> Go ahead make a new clojure project with leiningen. Add the following to your project.clj to include incanter into your dependencies.<pre><code>:dependencies &#91;&#91;org.clojure/clojure &quot;1.8.0&quot;&#93;
-               &#91;incanter &quot;1.5.5&quot;&#93;&#93;
- </code></pre> Go ahead and run lein deps so that leiningen can get incanter as a dependency.<pre><code>lein deps
- </code></pre> After that we are ready to go and start editing the core.clj and first examining how to create a neat little <newcode>histogram</newcode>. <br/><br/> So lets use the things we are going to need from incanter make your namespace as the following just replace the namespace to whatever project you created in my case I did lein new incantertut but yours will be different so rechange that part of what you did.<pre><code>&#40;ns incantertut.core
-  &#40;:use &#91;incanter.charts :only &#91;histogram scatter-plot pie-chart&#93;&#93;
+    <p><img src="https://defunsm.github.io/img/incanter4.png" alt="incanter" /></p><p>We will try to do a basic linear regression here with incanter. If you don't know what linear regression is it is essentially finding the line of best fit. I'll demonstrate how you can find the line of best fit using incanter with a neat function called linear-model which will do a lot of the numerical calculations for us. Make sure to note that the data for the y axis is the first argument and not the second argument since at least for me it appears to be more intuitive to place the x axis in the second argument of the function but that isn't the case for the linear-model function from incanter.stat so take note of that. Let us go ahead and add our dependencies. As well as make sure that incanter is in your project.clj and your namespace looks like the following below.<pre><code>&#40;ns incantertut.core
+  &#40;:use &#91;incanter.charts :only &#91;histogram scatter-plot pie-chart add-points add-lines&#93;&#93;
         &#91;incanter.core :only &#91;view&#93;&#93;
-        &#91;incanter.stats :only &#91;sample-normal&#93;&#93;&#41;&#41;
- </code></pre> In this post we'll only be looking at histograms, scatter-plots and pie-charts. <br/><br/> Next part is fun because it is literally one line to generate and view the graph and behold.<pre><code>&#40;view &#40;histogram &#40;sample-normal 10000 :mean 10&#41;&#41; :width 700 :height 700&#41;
- </code></pre> After running that you should see the following graph pop up. <br/><br/> <img src="https://defunsm.github.io/img/incanter1.png" alt="incanter" /> <br/><br/> The above one-liner creates a histogram. The sample-normal function creates a normal gaussian distribution with 10,000 points. You can select the mean you want for the distribution in this case it was set to 10 by default it is 1. You can also set the :sd which is the standard deviation. <br/><br/> The view function takes other parameters such as a width and height so you can play around with those changing the starting height/width of the histogram. Note that the view function can do more than just graphs. It can view urls and images as well! <br/><br/> Next lets see how to make a scatter-plot which is pretty much a one liner as well and exactly the same as making a histogram expect we use <newcode>scatter-plot</newcode> instead and define some variables before hand.<pre><code>&#40;def x &#91;1 2 3 4 5&#93;&#41;
+        &#91;incanter.stats :only &#91;sample-normal linear-model&#93;&#93;&#41;&#41;
+ </code></pre> What linear-model will do for us will do a bunch of calculations off hand so that we don't have to do them ourselves which is good. However if you are interested in the math computational part like I am you should probably go learn linear algebra and some statistics which will help you understand more of whats going on but it isn't absolutely necessary if you just want a line of best fit to be displayed. <br/><br/> I am not entirely sure why computer science and the machine learning community tend to like to call the line of best fit "linear regression" which sounds a bit scary to me but really all you are doing is fitting a line that happens to be stright to a bunch of points on a x and y axis graph. Nothing complicated really. However when introducing this topic of linear regression in textbooks the impression is that this is a huge big thing but anyways I digress too much and here you go with the easy and simple line of best fit.<pre><code>&#40;def x &#91;1 2 3 4 5&#93;&#41;
 &#40;def y &#91;5 9 11 20 24&#93;&#41;
 
-&#40;view &#40;scatter-plot x y&#41;&#41;
- </code></pre> <img src="https://defunsm.github.io/img/incanter2.png" alt="incanter 2" /> <br/><br/> x and y defines the data for the x axis and the y variable contains the data for the y axis. Note that the x and y variables are of type persistentVector. <br/><br/> Notice that the data set is not perfectly linear but it looks like you could draw a line of best fit or a regression line which I'll go over on how to do that in clojure later. As well as find values such as the R<sup>2</sup> value telling us how well the data fits that line of best fit. <br/><br/> Now for the file graph we'll make a pie graph. <br/><br/> Piechart that we are about to make will include the elements making up earth's atmosphere and for that we'll define two variables called elements and percentages. Both persistent vectors however elements will consist of strings that will contain the name of the elements and percentages will contain the percentage of that element in the atmosphere. The main function here to create the pie-chart is called pie-chart which will be taking two arguments the elements and the percentages as well as you can add an additional parameter adding a :title as a string value such as "Composition of the Earth's Atmosphere".<pre><code>&#40;def elements &#91;&quot;Nitrogen&quot; &quot;Oxygen&quot; &quot;Argon&quot; &quot;Carbon&quot;&#93;&#41;
-&#40;def percentages &#91;78 21 0.9 0.03&#93;&#41;
-
-&#40;view &#40;pie-chart elements percentages :title &quot;Composition of the Earth's Atmosphere&quot;&#41;&#41;
- </code></pre> <img src="https://defunsm.github.io/img/incanter3.png" alt="incanter 3" /> <br/><br/> There are more variations of graphs avaliable in incanter but I just went through some of the more basic ones that people tend to use so there you go now you can make histograms, scatter-plots, and pie charts. All in a few lines of clojure code.</p>
+&#40;view &#40;add-lines &#40;scatter-plot x y&#41;
+                  x &#40;:fitted &#40;linear-model y x&#41;&#41;&#41;&#41;
+ </code></pre> Let me go through with what is going on here. The view is again if you haven't read through the previous post on basic incanter on how to display a histogram, scatterplot and a pie chart I suggest looking at that. However I'll assume you know what view is doing and is the function that allows you to see the graphs hence view. The add-lines is a new function from the incanter.charts that I haven't shown before and allows you to plot lines you could use add-points instead as well but than it wouldn't be line.</p><pre><code>&#40;:coefs &#40;linear-model y x&#41;&#41;
+;; =&gt; &#91;-0.8999999999999915 4.900000000000002&#93;
+</code></pre><p>Now lets take a look using :coefs gives us two numbers in a persistent vector. So what do those numbers represent? Well one of is negative and the other positive and so judging from the graph you seen the negative number can't be the slope since the slope was clearly had a positive slope. So from that conclusion you can assume that the first number is the y-intercept which it is. The second number is the slope no surprise there. <br/><br/> This is going to be a pretty short post just showing you how to obtain slope and y-intercept but you may not satisfied and be left with questions such as how well fitted is my line of best fit? What is the R<sup>2</sup> value? How do I get that kind of information from my line of best fit well if you're curious you can check the documentation or wait for the next post.</p>
 </div>
 
 <div id="post-tags">
@@ -148,10 +141,8 @@
 
                           <div id="prev-next">
                             
-                            <a class="center button3" href="/posts/clojure-linear-regression/"><i class="fa fa-arrow-left" aria-hidden="true"></i> Clojure - Linear Regression</a>
                             
-                            
-                            <a class="center button3" href="/posts/python-pyqt5/">Python - Creating a Table using PyGt5 <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                            <a class="center button3" href="/posts/clojure-incanter/">Clojure - Basic Incanter <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
                             
                           </div>
 
