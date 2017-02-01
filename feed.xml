@@ -12,11 +12,50 @@ http://salmanhossain.me
 A place to share my knowledge
 </description>
 <lastBuildDate>
-Tue, 31 Jan 2017 00:03:12 -0500
+Wed, 01 Feb 2017 18:11:12 -0500
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://salmanhossain.me/posts/clojure-r-squared/
+</guid>
+<link>
+http://salmanhossain.me/posts/clojure-r-squared/
+</link>
+<title>
+Clojure - R Squared
+</title>
+<description>
+&lt;p&gt;We'll pick back up from where we left off in the linear regression post last time. So we'll be keeping pretty much the same dependency of incanter and the name space should still look like the following below more or less.&lt;pre&gt;&lt;code&gt; &lt;/code&gt;&lt;/pre&gt;  &lt;/p&gt;&lt;p&gt;So we are going to go off of what we left off of and find some more interesting properties of the line of best fit such as the r squared value and other properties such as the residuals. So we know that the line of best fit we have which we constructed from the following data ...&lt;pre&gt;&lt;code&gt;&amp;#40;def x &amp;#91;1 2 3 4 5&amp;#93;&amp;#41;
+&amp;#40;def y &amp;#91;5 9 11 20 24&amp;#93;&amp;#41;
+
+&amp;#40;linear-model y x&amp;#41;
+
+&amp;#40;:fitted &amp;#40;linear-model y x&amp;#41;&amp;#41;
+;; =&amp;gt; &amp;#91;4.000000000000011 8.900000000000013 13.800000000000015 18.700000000000017 23.60000000000002&amp;#93;
+ &lt;/code&gt;&lt;/pre&gt; So before getting to the R&lt;sup&gt;2&lt;/sup&gt; value which we'll get soon enough. Let's look at how far the points are from the line of best fit. To do this incanter has provided :residuals.  The residuals are the distance away from the line of best fit. This is useful information to have when trying to understand how well our line of best fit 'fits' the data.&lt;pre&gt;&lt;code&gt;&amp;#40;:residuals &amp;#40;linear-model y x&amp;#41;&amp;#41;
+;; =&amp;gt; &amp;#91;0.9999999999999893 0.09999999999998721 -2.800000000000015 1.299999999999983 0.3999999999999808&amp;#93;
+ &lt;/code&gt;&lt;/pre&gt; So the residuals are nice but maybe you just want to see the absolute distance and not worry about the negatives in the residuals. Easy fix using map to just multiply it with a -1 to make it opposite like so...&lt;pre&gt;&lt;code&gt;&amp;#40;map &amp;#40;fn &amp;#91;x&amp;#93; &amp;#40;if &amp;#40;neg? x&amp;#41; &amp;#40;&amp;#42; x -1&amp;#41; x&amp;#41;&amp;#41; &amp;#40;:residuals &amp;#40;linear-model y x&amp;#41;&amp;#41;&amp;#41;
+;; =&amp;gt; &amp;#40;0.9999999999999893 0.09999999999998721 2.800000000000015 1.299999999999983 0.3999999999999808&amp;#41;
+ &lt;/code&gt;&lt;/pre&gt; Now we have all of the distances as positive lets place them on the graph! &lt;br/&gt;&lt;br/&gt; &lt;img src=&quot;https://defunsm.github.io/img/incanter5.png&quot; alt=&quot;incanter&quot; /&gt; &lt;br/&gt;&lt;br/&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;view &amp;#40;add-lines &amp;#40;scatter-plot x y&amp;#41;
+                 x &amp;#40;map &amp;#40;fn &amp;#91;x&amp;#93; &amp;#40;if &amp;#40;neg? x&amp;#41; &amp;#40;&amp;#42; x -1&amp;#41; x&amp;#41;&amp;#41; &amp;#40;:residuals &amp;#40;linear-model y x&amp;#41;&amp;#41;&amp;#41;&amp;#41;&amp;#41;
+ &lt;/code&gt;&lt;/pre&gt; You'll see somewhat of a representation of those residuals below and seeing from a visual standpoint which datapoints appear to be most out of fit with the line of best fit. Here you can see that the third point seems to be the most nearly 3 units away from the line of best fit.&lt;/p&gt;&lt;p&gt;Now lets do something else with the residuals a common thing to do is that you can square the residuals which will get you the sse or the sum of squares due to error.&lt;pre&gt;&lt;code&gt;&amp;#40;reduce + &amp;#40;map &amp;#40;fn &amp;#91;x&amp;#93; &amp;#40;&amp;#42; x x&amp;#41;&amp;#41; &amp;#40;:residuals &amp;#40;linear-model y x&amp;#41;&amp;#41;&amp;#41;&amp;#41;
+;; =&amp;gt; 10.7
+ &lt;/code&gt;&lt;/pre&gt; or actually in incanter you can just do the following instead of typing that entire thing out.&lt;pre&gt;&lt;code&gt;&amp;#40;:sse &amp;#40;linear-model y x&amp;#41;&amp;#41;
+;; =&amp;gt; 10.7
+ &lt;/code&gt;&lt;/pre&gt; So that value gives you some what of an idea of how well the data fits the line of best fit. However we can go and look further and get the R&lt;sup&gt;2&lt;/sup&gt; value from the linear-model.&lt;pre&gt;&lt;code&gt;&amp;#40;:r-square &amp;#40;linear-model y x&amp;#41;&amp;#41;
+;; =&amp;gt; 0.9573365231259969
+ &lt;/code&gt;&lt;/pre&gt; So that is our line of best fit but how well does it fit our data well that is where the R&lt;sup&gt;2&lt;/sup&gt; value comes in and determines how well our line fits our data. Typically the closer the R&lt;sup&gt;2&lt;/sup&gt; value is to 1 the better. As well as the R&lt;sup&gt;2&lt;/sup&gt; value is only ranages from 0 to 1.&lt;/p&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Wed, 01 Feb 2017 00:00:00 -0500
+</pubDate>
+</item>
 <item>
 <guid>
 http://salmanhossain.me/posts/clojure-linear-regression/

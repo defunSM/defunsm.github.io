@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-	<title>Clojure - Linear Regression</title>
+	<title>Clojure - R Squared</title>
 	<!-- Styles -->
 	<link rel="stylesheet" href="https://defunsm.github.io/css/style.css" />
 	<link rel="stylesheet" href="https://defunsm.github.io/css/font-awesome.min.css" />
@@ -82,14 +82,12 @@
 		<div class="fade child">
 			<div class="container_small">
 				<!-- Header Titles -->
-				<h1 class="header_title">Clojure - Linear Regression</h1>
+				<h1 class="header_title">Clojure - R Squared</h1>
 
-
-                                <a href="/posts/clojure-r-squared/" class="button"><i class="fa fa-arrow-left" aria-hidden="true"></i> Clojure - R Squared</a>
 
 <br/>
                                 
-                                <a href="/posts/clojure-incanter/" class="button">Clojure - Basic Incanter <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                                <a href="/posts/clojure-linear-regression/" class="button">Clojure - Linear Regression <i class="fa fa-arrow-right" aria-hidden="true"></i>
 </i></a>
 
 
@@ -108,25 +106,33 @@
                     
                     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">January 30, 2017</div>
+        <div class="col-lg-6">February 1, 2017</div>
         
     </div>
-    <h2>Clojure - Linear Regression</h2>
+    <h2>Clojure - R Squared</h2>
 </div>
 <div>
     
-    <p><img src="https://defunsm.github.io/img/incanter4.png" alt="incanter" /></p><p>We will try to do a basic linear regression here with incanter. If you don't know what linear regression is it is essentially finding the line of best fit. I'll demonstrate how you can find the line of best fit using incanter with a neat function called linear-model which will do a lot of the numerical calculations for us. Make sure to note that the data for the y axis is the first argument and not the second argument since at least for me it appears to be more intuitive to place the x axis in the second argument of the function but that isn't the case for the linear-model function from incanter.stat so take note of that. Let us go ahead and add our dependencies. As well as make sure that incanter is in your project.clj and your namespace looks like the following below.<pre><code>&#40;ns incantertut.core
-  &#40;:use &#91;incanter.charts :only &#91;histogram scatter-plot pie-chart add-points add-lines&#93;&#93;
-        &#91;incanter.core :only &#91;view&#93;&#93;
-        &#91;incanter.stats :only &#91;sample-normal linear-model&#93;&#93;&#41;&#41;
- </code></pre> What linear-model will do for us will do a bunch of calculations off hand so that we don't have to do them ourselves which is good. However if you are interested in the math computational part like I am you should probably go learn linear algebra and some statistics which will help you understand more of whats going on but it isn't absolutely necessary if you just want a line of best fit to be displayed. <br/><br/> I am not entirely sure why computer science and the machine learning community tend to like to call the line of best fit "linear regression" which sounds a bit scary to me but really all you are doing is fitting a line that happens to be stright to a bunch of points on a x and y axis graph. Nothing complicated really. However when introducing this topic of linear regression in textbooks the impression is that this is a huge big thing but anyways I digress too much and here you go with the easy and simple line of best fit.<pre><code>&#40;def x &#91;1 2 3 4 5&#93;&#41;
+    <p>We'll pick back up from where we left off in the linear regression post last time. So we'll be keeping pretty much the same dependency of incanter and the name space should still look like the following below more or less.<pre><code> </code></pre>  </p><p>So we are going to go off of what we left off of and find some more interesting properties of the line of best fit such as the r squared value and other properties such as the residuals. So we know that the line of best fit we have which we constructed from the following data ...<pre><code>&#40;def x &#91;1 2 3 4 5&#93;&#41;
 &#40;def y &#91;5 9 11 20 24&#93;&#41;
 
-&#40;view &#40;add-lines &#40;scatter-plot x y&#41;
-                  x &#40;:fitted &#40;linear-model y x&#41;&#41;&#41;&#41;
- </code></pre> Let me go through with what is going on here. The view is again if you haven't read through the previous post on basic incanter on how to display a histogram, scatterplot and a pie chart I suggest looking at that. However I'll assume you know what view is doing and is the function that allows you to see the graphs hence view. The add-lines is a new function from the incanter.charts that I haven't shown before and allows you to plot lines you could use add-points instead as well but than it wouldn't be line.</p><pre><code>&#40;:coefs &#40;linear-model y x&#41;&#41;
-;; =&gt; &#91;-0.8999999999999915 4.900000000000002&#93;
-</code></pre><p>Now lets take a look using :coefs gives us two numbers in a persistent vector. So what do those numbers represent? Well one of is negative and the other positive and so judging from the graph you seen the negative number can't be the slope since the slope was clearly had a positive slope. So from that conclusion you can assume that the first number is the y-intercept which it is. The second number is the slope no surprise there. <br/><br/> This is going to be a pretty short post just showing you how to obtain slope and y-intercept but you may not satisfied and be left with questions such as how well fitted is my line of best fit? What is the R<sup>2</sup> value? How do I get that kind of information from my line of best fit well if you're curious you can check the documentation or wait for the next post.</p>
+&#40;linear-model y x&#41;
+
+&#40;:fitted &#40;linear-model y x&#41;&#41;
+;; =&gt; &#91;4.000000000000011 8.900000000000013 13.800000000000015 18.700000000000017 23.60000000000002&#93;
+ </code></pre> So before getting to the R<sup>2</sup> value which we'll get soon enough. Let's look at how far the points are from the line of best fit. To do this incanter has provided :residuals.  The residuals are the distance away from the line of best fit. This is useful information to have when trying to understand how well our line of best fit 'fits' the data.<pre><code>&#40;:residuals &#40;linear-model y x&#41;&#41;
+;; =&gt; &#91;0.9999999999999893 0.09999999999998721 -2.800000000000015 1.299999999999983 0.3999999999999808&#93;
+ </code></pre> So the residuals are nice but maybe you just want to see the absolute distance and not worry about the negatives in the residuals. Easy fix using map to just multiply it with a -1 to make it opposite like so...<pre><code>&#40;map &#40;fn &#91;x&#93; &#40;if &#40;neg? x&#41; &#40;&#42; x -1&#41; x&#41;&#41; &#40;:residuals &#40;linear-model y x&#41;&#41;&#41;
+;; =&gt; &#40;0.9999999999999893 0.09999999999998721 2.800000000000015 1.299999999999983 0.3999999999999808&#41;
+ </code></pre> Now we have all of the distances as positive lets place them on the graph! <br/><br/> <img src="https://defunsm.github.io/img/incanter5.png" alt="incanter" /> <br/><br/><pre><code>&#40;view &#40;add-lines &#40;scatter-plot x y&#41;
+                 x &#40;map &#40;fn &#91;x&#93; &#40;if &#40;neg? x&#41; &#40;&#42; x -1&#41; x&#41;&#41; &#40;:residuals &#40;linear-model y x&#41;&#41;&#41;&#41;&#41;
+ </code></pre> You'll see somewhat of a representation of those residuals below and seeing from a visual standpoint which datapoints appear to be most out of fit with the line of best fit. Here you can see that the third point seems to be the most nearly 3 units away from the line of best fit.</p><p>Now lets do something else with the residuals a common thing to do is that you can square the residuals which will get you the sse or the sum of squares due to error.<pre><code>&#40;reduce + &#40;map &#40;fn &#91;x&#93; &#40;&#42; x x&#41;&#41; &#40;:residuals &#40;linear-model y x&#41;&#41;&#41;&#41;
+;; =&gt; 10.7
+ </code></pre> or actually in incanter you can just do the following instead of typing that entire thing out.<pre><code>&#40;:sse &#40;linear-model y x&#41;&#41;
+;; =&gt; 10.7
+ </code></pre> So that value gives you some what of an idea of how well the data fits the line of best fit. However we can go and look further and get the R<sup>2</sup> value from the linear-model.<pre><code>&#40;:r-square &#40;linear-model y x&#41;&#41;
+;; =&gt; 0.9573365231259969
+ </code></pre> So that is our line of best fit but how well does it fit our data well that is where the R<sup>2</sup> value comes in and determines how well our line fits our data. Typically the closer the R<sup>2</sup> value is to 1 the better. As well as the R<sup>2</sup> value is only ranages from 0 to 1.</p>
 </div>
 
 <div id="post-tags">
@@ -143,10 +149,8 @@
 
                           <div id="prev-next">
                             
-                            <a class="center button3" href="/posts/clojure-r-squared/"><i class="fa fa-arrow-left" aria-hidden="true"></i> Clojure - R Squared</a>
                             
-                            
-                            <a class="center button3" href="/posts/clojure-incanter/">Clojure - Basic Incanter <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                            <a class="center button3" href="/posts/clojure-linear-regression/">Clojure - Linear Regression <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
                             
                           </div>
 
