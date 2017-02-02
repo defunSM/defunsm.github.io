@@ -113,14 +113,18 @@
 </div>
 <div>
     
-    <p>We'll pick back up from where we left off in the linear regression post last time. So we'll be keeping pretty much the same dependency of incanter and the name space should still look like the following below more or less.<pre><code> </code></pre>  </p><p>So we are going to go off of what we left off of and find some more interesting properties of the line of best fit such as the r squared value and other properties such as the residuals. So we know that the line of best fit we have which we constructed from the following data ...<pre><code>&#40;def x &#91;1 2 3 4 5&#93;&#41;
+    <p>We'll pick back up from where we left off in the linear regression post last time. So we'll be keeping pretty much the same dependency of incanter and the name space should still look like the following below more or less.<pre><code>&#40;ns incantertut.core
+  &#40;:use &#91;incanter.charts :only &#91;histogram scatter-plot pie-chart add-points add-lines&#93;&#93;
+        &#91;incanter.core :only &#91;view&#93;&#93;
+        &#91;incanter.stats :only &#91;sample-normal linear-model&#93;&#93;&#41;&#41;
+ </code></pre>  </p><p>So we are going to go off of what we left off of and find some more interesting properties of the line of best fit such as the r squared value and other properties such as the residuals. So we know that the line of best fit we have which we constructed from the following data ...<pre><code>&#40;def x &#91;1 2 3 4 5&#93;&#41;
 &#40;def y &#91;5 9 11 20 24&#93;&#41;
 
 &#40;linear-model y x&#41;
 
 &#40;:fitted &#40;linear-model y x&#41;&#41;
 ;; =&gt; &#91;4.000000000000011 8.900000000000013 13.800000000000015 18.700000000000017 23.60000000000002&#93;
- </code></pre> So before getting to the R<sup>2</sup> value which we'll get soon enough. Let's look at how far the points are from the line of best fit. To do this incanter has provided :residuals.  The residuals are the distance away from the line of best fit. This is useful information to have when trying to understand how well our line of best fit 'fits' the data.<pre><code>&#40;:residuals &#40;linear-model y x&#41;&#41;
+ </code></pre> So before getting to the R squared value which we'll get soon enough. Let's look at how far the points are from the line of best fit. To do this incanter has provided :residuals.  The residuals are the distance away from the line of best fit. This is useful information to have when trying to understand how well our line of best fit 'fits' the data.<pre><code>&#40;:residuals &#40;linear-model y x&#41;&#41;
 ;; =&gt; &#91;0.9999999999999893 0.09999999999998721 -2.800000000000015 1.299999999999983 0.3999999999999808&#93;
  </code></pre> So the residuals are nice but maybe you just want to see the absolute distance and not worry about the negatives in the residuals. Easy fix using map to just multiply it with a -1 to make it opposite like so...<pre><code>&#40;map &#40;fn &#91;x&#93; &#40;if &#40;neg? x&#41; &#40;&#42; x -1&#41; x&#41;&#41; &#40;:residuals &#40;linear-model y x&#41;&#41;&#41;
 ;; =&gt; &#40;0.9999999999999893 0.09999999999998721 2.800000000000015 1.299999999999983 0.3999999999999808&#41;
@@ -132,7 +136,7 @@
 ;; =&gt; 10.7
  </code></pre> So that value gives you some what of an idea of how well the data fits the line of best fit. However we can go and look further and get the R<sup>2</sup> value from the linear-model.<pre><code>&#40;:r-square &#40;linear-model y x&#41;&#41;
 ;; =&gt; 0.9573365231259969
- </code></pre> So that is our line of best fit but how well does it fit our data well that is where the R<sup>2</sup> value comes in and determines how well our line fits our data. Typically the closer the R<sup>2</sup> value is to 1 the better. As well as the R<sup>2</sup> value is only ranages from 0 to 1.</p>
+ </code></pre> So that is our line of best fit but how well does it fit our data well that is where the R squared value comes in and determines how well our line fits our data. Typically the closer the R squared value is to 1 the better. As well as the R squared value is only ranges from 0 to 1. So 0.95 is pretty good so that our data fits the line of best fit rather well.</p>
 </div>
 
 <div id="post-tags">
