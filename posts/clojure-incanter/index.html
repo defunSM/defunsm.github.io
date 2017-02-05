@@ -119,10 +119,10 @@
                &#91;incanter &quot;1.5.5&quot;&#93;&#93;
  </code></pre> Go ahead and run lein deps so that leiningen can get incanter as a dependency.<pre><code>lein deps
  </code></pre> After that we are ready to go and start editing the core.clj and first examining how to create a neat little <newcode>histogram</newcode>. <br/><br/> So lets use the things we are going to need from incanter make your namespace as the following just replace the namespace to whatever project you created in my case I did lein new incantertut but yours will be different so rechange that part of what you did.<pre><code>&#40;ns incantertut.core
-  &#40;:use &#91;incanter.charts :only &#91;histogram scatter-plot pie-chart&#93;&#93;
+  &#40;:use &#91;incanter.charts :only &#91;histogram scatter-plot pie-chart xy-plot&#93;&#93;
         &#91;incanter.core :only &#91;view&#93;&#93;
         &#91;incanter.stats :only &#91;sample-normal&#93;&#93;&#41;&#41;
- </code></pre> In this post we'll only be looking at histograms, scatter-plots and pie-charts. <br/><br/> Next part is fun because it is literally one line to generate and view the graph and behold.<pre><code>&#40;view &#40;histogram &#40;sample-normal 10000 :mean 10&#41;&#41; :width 700 :height 700&#41;
+ </code></pre> In this post we'll only be looking at histograms, scatter-plots and pie-charts. (Plus xy-plot) <br/><br/> Next part is fun because it is literally one line to generate and view the graph and behold.<pre><code>&#40;view &#40;histogram &#40;sample-normal 10000 :mean 10&#41;&#41; :width 700 :height 700&#41;
  </code></pre> After running that you should see the following graph pop up. <br/><br/> <img src="https://defunsm.github.io/img/incanter1.png" alt="incanter" /> <br/><br/> The above one-liner creates a histogram. The sample-normal function creates a normal gaussian distribution with 10,000 points. You can select the mean you want for the distribution in this case it was set to 10 by default it is 1. You can also set the :sd which is the standard deviation. <br/><br/> The view function takes other parameters such as a width and height so you can play around with those changing the starting height/width of the histogram. Note that the view function can do more than just graphs. It can view urls and images as well! <br/><br/> Next lets see how to make a scatter-plot which is pretty much a one liner as well and exactly the same as making a histogram expect we use <newcode>scatter-plot</newcode> instead and define some variables before hand.<pre><code>&#40;def x &#91;1 2 3 4 5&#93;&#41;
 &#40;def y &#91;5 9 11 20 24&#93;&#41;
 
@@ -131,7 +131,8 @@
 &#40;def percentages &#91;78 21 0.9 0.03&#93;&#41;
 
 &#40;view &#40;pie-chart elements percentages :title &quot;Composition of the Earth's Atmosphere&quot;&#41;&#41;
- </code></pre> <img src="https://defunsm.github.io/img/incanter3.png" alt="incanter 3" /> <br/><br/> There are more variations of graphs avaliable in incanter but I just went through some of the more basic ones that people tend to use so there you go now you can make histograms, scatter-plots, and pie charts. All in a few lines of clojure code.</p>
+ </code></pre></p><p><img src="https://defunsm.github.io/img/incanter3.png" alt="incanter 3" /> Now say you wanted a scatter-plot but with the lines connected that is when you use a xy-plot.<pre><code>&#40;view &#40;xy-plot x y&#41;&#41;
+ </code></pre> <img src="https://defunsm.github.io/img/incanter6.png" alt="incanter 6" /> <br/><br/> There are more variations of graphs avaliable in incanter but I just went through some of the more basic ones that people tend to use so there you go now you can make histograms, scatter-plots, xy-plot and pie charts. All in a few lines of clojure code.</p>
 </div>
 
 <div id="post-tags">
