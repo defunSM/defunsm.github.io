@@ -1020,3 +1020,7 @@ body::-webkit-scrollbar-thumb {
     border-radius: 50%;
     margin-bottom: 50px;
 }
+
+#dates {
+    background-color: black;
+}
