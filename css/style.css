@@ -48,6 +48,9 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 
+p {
+    font: Hack;
+}
 
 
 newcode {
