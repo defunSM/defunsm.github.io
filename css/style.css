@@ -48,6 +48,10 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 
+div {
+    font-family: Hack, inherit;
+}
+
 newcode {
     color: #a67;
     padding: 0px 2px 0px 2px;
@@ -120,7 +124,7 @@ body {
 .body_hidden {  }
 
 p {
-	line-height: 30px;
+    line-height: 30px;
 }
 
 a {
