@@ -44,13 +44,11 @@ time, mark, audio, video {
 	padding: 0;
 	border: 0;
 	font-size: 100%;
-	font: Hack;
+	font: inherit;
 	vertical-align: baseline;
 }
 
-div {
-    font-family: Hack, inherit;
-}
+
 
 newcode {
     color: #a67;
