@@ -12,7 +12,7 @@ http://salmanhossain.me
 A place to share my knowledge
 </description>
 <lastBuildDate>
-Sun, 26 Feb 2017 11:11:42 -0500
+Sun, 26 Feb 2017 11:12:32 -0500
 </lastBuildDate>
 <generator>
 clj-rss
@@ -53,7 +53,7 @@ Clojure - Reading CSV files
     &amp;#40;view &amp;#40;xy-plot &amp;#40;range counter&amp;#41; sel-data&amp;#41;&amp;#41;&amp;#41;&amp;#41;
     
 &amp;#40;view-data :Open data&amp;#41;
-&lt;/code&gt;&lt;/pre&gt;Now running that should produce the following pretty graph below.&lt;br/&gt;&lt;br/&gt;&lt;img src=&quot;https://defunsm.github.io/img/cvspic.png&quot; alt=&quot;cvspic&quot; /&gt;&lt;br/&gt;&lt;br/&gt;That is about it you can fix it up a bit by using a time-series instead so that instead of numbers on the bottom you have dates. As well as overlapping it with close prices too. Prehaps in another blog post.
+&lt;/code&gt;&lt;/pre&gt;Now running that should produce the following pretty graph below.&lt;br/&gt;&lt;br/&gt;&lt;img src=&quot;https://defunsm.github.io/img/csvpic.png&quot; alt=&quot;cvspic&quot; /&gt;&lt;br/&gt;&lt;br/&gt;That is about it you can fix it up a bit by using a time-series instead so that instead of numbers on the bottom you have dates. As well as overlapping it with close prices too. Prehaps in another blog post.
 </description>
 <enclosure>
 
