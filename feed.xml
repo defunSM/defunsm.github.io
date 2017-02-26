@@ -12,11 +12,56 @@ http://salmanhossain.me
 A place to share my knowledge
 </description>
 <lastBuildDate>
-Sat, 18 Feb 2017 23:07:58 -0500
+Sun, 26 Feb 2017 11:11:42 -0500
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://salmanhossain.me/posts/clojure-reading-csv/
+</guid>
+<link>
+http://salmanhossain.me/posts/clojure-reading-csv/
+</link>
+<title>
+Clojure - Reading CSV files
+</title>
+<description>
+&lt;p&gt;Lets have some fun today and analyze some data! Let us look at the S&amp;P500 which is a index commonly used to see how well the stock market is doing. &lt;br/&gt;&lt;br/&gt; We can get the data for the S&amp;P500 from yahoo finances link to that below. Make sure you have the range from Jan 03, 1980 to recent. &lt;br/&gt;&lt;br/&gt; &lt;a href='https://finance.yahoo.com/quote/%5EGSPC/history?period1=315723600&amp;period2=1488085200&amp;interval=1d&amp;filter=history&amp;frequency=1d'&gt;Link to the S&amp;P500 Data from Yahoo Finances&lt;/a&gt; &lt;br/&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Let us go ahead and run a lein project by the following command you can skip this if you already have a  project and you can just add incanter to the dependencies.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;$ lein new incantertut
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;After you have downloaded the cvs file go ahead and rename it to &lt;newcode&gt;data.csv&lt;/newcode&gt; and move it to the directory where your project.clj is located.  &lt;br/&gt;&lt;br/&gt; Let us set up our project.clj file to be this so that we have incanter in our project so that we can read csv data and as well as display the data if we decide to do that.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;defproject incantertut &amp;quot;0.1.0-SNAPSHOT&amp;quot;
+  :description &amp;quot;FIXME: write description&amp;quot;
+  :url &amp;quot;http://example.com/FIXME&amp;quot;
+  :license {:name &amp;quot;Eclipse Public License&amp;quot;
+            :url &amp;quot;http://www.eclipse.org/legal/epl-v10.html&amp;quot;}
+  :dependencies &amp;#91;&amp;#91;org.clojure/clojure &amp;quot;1.8.0&amp;quot;&amp;#93;
+                 &amp;#91;incanter &amp;quot;1.5.5&amp;quot;&amp;#93;&amp;#93;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now we can move on to the good part and start in our core.clj that in our src directory when creating a lein project. &lt;br/&gt;&lt;br/&gt; Go ahead and include the following for the namespaces. If you haven't seen incanter charts yet I recommend going through some of the previous guides I wrote on how to make graphs with incanter but otherwise I'll re-explain it briefly here as well. &lt;br/&gt;&lt;br/&gt; &lt;a href='http://salmanhossain.me/posts/clojure-incanter/'&gt;Making Graphs With Incanter&lt;/a&gt; &lt;br/&gt;&lt;br/&gt;&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;ns incantertut.core
+  &amp;#40;:use &amp;#91;incanter.charts :only &amp;#91;histogram scatter-plot pie-chart add-points add-lines xy-plot&amp;#93;&amp;#93;
+        &amp;#91;incanter.core :only &amp;#91;view&amp;#93;&amp;#93;
+        &amp;#91;incanter.stats :only &amp;#91;sample-normal linear-model&amp;#93;&amp;#93;
+        &amp;#91;incanter.io :only &amp;#91;read-dataset&amp;#93;&amp;#93;&amp;#41;
+  &amp;#40;:require &amp;#91;clj-time.core :as tc&amp;#93;
+            &amp;#91;clj-time.periodic :as tp&amp;#93;
+            &amp;#91;clj-time.coerce :as tco&amp;#93;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;So the only new addition here will be the &lt;newcode&gt;incanter.io&lt;/newcode&gt; which will allow us to read csv files!&lt;br/&gt;&lt;br/&gt;Now to the good stuff. Add the following underneath the namespace in your core.clj file.&lt;pre&gt;&lt;code&gt;&amp;#40;def data &amp;#40;read-dataset &amp;quot;data.csv&amp;quot; :header true&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;Now you can view all of the data using the following. Be warned that this is around 30+ years of data so it could take a while for the data to appear. &lt;pre&gt;&lt;code&gt;&amp;#40;:rows data&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;However that just shows you the entire data what if we are only interested in the opening price of the stock? Well we can use map :Open to find all the opening prices.&lt;pre&gt;&lt;code&gt;&amp;#40;map :Open &amp;#40;:rows data&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;That will result in all the opening prices of the S&amp;P500. Now lets say we want to view it we can do that using the view and xy-plot from incanter to do just that. However before that notice that when we do map :Open to the data it will return the opening prices from most recent to least recent. That is not what we want since incanter xy-plot takes least recent to most recent. So we need to use reverse to fix that. So we'll just create a function to do that.&lt;pre&gt;&lt;code&gt;&amp;#40;defn view-data &amp;#91;selection data&amp;#93;
+  &amp;#40;let &amp;#91;sel-data &amp;#40;reverse &amp;#40;map selection &amp;#40;:rows data&amp;#41;&amp;#41;&amp;#41;
+        counter &amp;#40;count sel-data&amp;#41;&amp;#93;
+    &amp;#40;view &amp;#40;xy-plot &amp;#40;range counter&amp;#41; sel-data&amp;#41;&amp;#41;&amp;#41;&amp;#41;
+    
+&amp;#40;view-data :Open data&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;Now running that should produce the following pretty graph below.&lt;br/&gt;&lt;br/&gt;&lt;img src=&quot;https://defunsm.github.io/img/cvspic.png&quot; alt=&quot;cvspic&quot; /&gt;&lt;br/&gt;&lt;br/&gt;That is about it you can fix it up a bit by using a time-series instead so that instead of numbers on the bottom you have dates. As well as overlapping it with close prices too. Prehaps in another blog post.
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Sun, 26 Feb 2017 00:00:00 -0500
+</pubDate>
+</item>
 <item>
 <guid>
 http://salmanhossain.me/posts/clojure-r-squared/
