@@ -12,7 +12,7 @@ http://salmanhossain.me
 A place to share my knowledge
 </description>
 <lastBuildDate>
-Sun, 26 Feb 2017 11:12:32 -0500
+Sun, 26 Feb 2017 12:26:58 -0500
 </lastBuildDate>
 <generator>
 clj-rss
@@ -77,7 +77,7 @@ Clojure - R Squared
   &amp;#40;:use &amp;#91;incanter.charts :only &amp;#91;histogram scatter-plot pie-chart add-points add-lines&amp;#93;&amp;#93;
         &amp;#91;incanter.core :only &amp;#91;view&amp;#93;&amp;#93;
         &amp;#91;incanter.stats :only &amp;#91;sample-normal linear-model&amp;#93;&amp;#93;&amp;#41;&amp;#41;
- &lt;/code&gt;&lt;/pre&gt;  &lt;/p&gt;&lt;p&gt;So we are going to go off of what we left off of and find some more interesting properties of the line of best fit such as the r squared value and other properties such as the residuals. So we know that the line of best fit we have which we constructed from the following data ...&lt;pre&gt;&lt;code&gt;&amp;#40;def x &amp;#91;1 2 3 4 5&amp;#93;&amp;#41;
+ &lt;/code&gt;&lt;/pre&gt;  &lt;/p&gt;&lt;p&gt;We are going to pick up where we left off and find some more interesting properties of the line of best fit such as the r squared value and other properties such as the residuals. So we know that the line of best fit we have which we constructed from the following data ...&lt;pre&gt;&lt;code&gt;&amp;#40;def x &amp;#91;1 2 3 4 5&amp;#93;&amp;#41;
 &amp;#40;def y &amp;#91;5 9 11 20 24&amp;#93;&amp;#41;
 
 &amp;#40;linear-model y x&amp;#41;

@@ -1029,3 +1029,5 @@ body::-webkit-scrollbar-thumb {
 #dates {
     background-color: black;
 }
+
+.tooltip_templates { display: none; }
