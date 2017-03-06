@@ -764,7 +764,8 @@ h1, h2, h3, h4, h5, h6 {
 --------------------------------------------------------------- */
 
 footer {
-	background: #f5f5f5;
+    background: #f5f5f5;
+    padding-left: 40px;
 }
 
 .container_footer {
