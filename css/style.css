@@ -576,7 +576,7 @@ h1, h2, h3, h4, h5, h6 {
         font-size: 15px;
 	height: 50px;
 	line-height: 50px;
-	font-family: 'Montserrat', sans-serif;
+	font-family: Hack;
 	text-transform: uppercase;
 	text-decoration: none;
 	display: inline-block;
@@ -587,6 +587,7 @@ h1, h2, h3, h4, h5, h6 {
 	transition: all 300ms linear;
         color: white;
         background-color: #a67;
+        font-size: 16px;
 }
 
 /* 06 PORTFOLIO SETTINGS
