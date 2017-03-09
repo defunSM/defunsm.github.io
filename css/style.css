@@ -49,7 +49,7 @@ time, mark, audio, video {
 }
 
 p {
-    font: Hack;
+    font: Amaranth,Fjord,Hack;
 }
 
 
@@ -147,7 +147,7 @@ img {
 }
 
 h1, h2, h3, h4, h5, h6 {
-	font-family: 'Montserrat', sans-serif;
+	font-family: Amaranth,Fjord;
 }
 
 /* Section Titles */
