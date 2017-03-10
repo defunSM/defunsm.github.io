@@ -16,7 +16,6 @@ $('#toggle').click(function() {
         $('.container_small').removeClass('defaultcontactpadding');
         $('.container_small').toggleClass('addpadding');
 
-
         $('#portfolio').removeClass('defaultpadding');
         $('#portfolio').toggleClass('addpadding');
 
@@ -145,6 +144,8 @@ $(window).scroll(function(){
 
 // });
 
+// Makes the .hljs bigger on click.
+
 $('code').on('click', function() {
 
     var myvar = $(this).css('font-size')
@@ -158,6 +159,4 @@ $('code').on('click', function() {
         $(this).css({'font-size':'30px'});
 
     }
-
-
 });
