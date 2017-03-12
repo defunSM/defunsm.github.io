@@ -17,7 +17,7 @@ $('#toggle').click(function() {
         $('.container_small').toggleClass('addpadding');
 
         $('#portfolio').removeClass('defaultpadding');
-        $('#portfolio').toggleClass('addpadding');
+        $('#portfolio').toggleClass('newpadding');
 
         $('#headerspan').removeClass('fade child');
 
@@ -37,7 +37,7 @@ $('#toggle').click(function() {
         $('#about').toggleClass('defaultpadding');
         $('#downarrow').removeClass('arrowpadding');
 
-        $('#portfolio').removeClass('addpadding');
+        $('#portfolio').removeClass('newpadding');
         $('#portfolio').toggleClass('defaultpadding');
 
         $('#headerspan').toggleClass('fade child');

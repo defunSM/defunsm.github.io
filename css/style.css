@@ -64,6 +64,9 @@ newcode:hover {
     color: cyan;
 }
 
+.newpadding {
+    padding: 100px 5px 100px 33%;
+}
 
 .addpadding {
     padding: 100px 5px 100px 18%;
