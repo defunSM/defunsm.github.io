@@ -64,6 +64,10 @@ newcode:hover {
     color: cyan;
 }
 
+.newfooterpadding {
+    padding: 100px 5px 100px 32%;
+}
+
 .newpadding {
     padding: 100px 5px 100px 33%;
 }
