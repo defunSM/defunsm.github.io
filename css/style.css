@@ -72,6 +72,10 @@ newcode:hover {
     padding: 100px 5px 100px 33%;
 }
 
+.background-padding {
+    padding: 30px 0px 30px 30%;
+}
+
 .addpadding {
     padding: 100px 5px 100px 18%;
 }

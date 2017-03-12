@@ -23,6 +23,8 @@ $('#toggle').click(function() {
 
         $('.header_title').toggleClass('addpadding');
 
+        $('.fade-in').toggleClass('background-padding');
+
     } else {
 
         $('.header_title').removeClass('addpadding');
@@ -41,6 +43,8 @@ $('#toggle').click(function() {
         $('#portfolio').toggleClass('defaultpadding');
 
         $('#headerspan').toggleClass('fade child');
+
+        $('.fade-in').removeClass('background-padding');
     }
 
     if (contact == "module defaultpadding") {
