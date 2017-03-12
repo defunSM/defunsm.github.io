@@ -800,6 +800,7 @@ footer p {
 .left {
 	float: left;
 	text-align: left;
+        margin-top: 20px;
 }
 
 .left span {
