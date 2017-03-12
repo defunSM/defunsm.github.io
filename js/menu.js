@@ -13,7 +13,7 @@ $('#toggle').click(function() {
         $('.container_footer').removeClass('defaultpadding');
         $('.container_footer').toggleClass('newfooterpadding');
 
-        $('.container_small').removeClass('defaultcontactpadding');
+        // $('.container_small').removeClass('defaultcontactpadding');
         $('.container_small').toggleClass('addpadding');
 
         $('#portfolio').removeClass('defaultpadding');
@@ -30,7 +30,7 @@ $('#toggle').click(function() {
         $('.container_footer').toggleClass('defaultpadding');
         $('.container_footer').removeClass('newfooterpadding');
 
-        $('.container_small').toggleClass('defaultcontactpadding');
+        // $('.container_small').toggleClass('defaultcontactpadding');
         $('.container_small').removeClass('addpadding');
 
         $('#about').removeClass('addpadding');
