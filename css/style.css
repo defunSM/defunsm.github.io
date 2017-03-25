@@ -801,6 +801,7 @@ footer p {
 	float: left;
 	text-align: left;
         margin-top: 20px;
+        padding: 10px 10px 10px 10px;
 }
 
 .left span {
