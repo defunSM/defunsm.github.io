@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-	<title>Clojure - Reading CSV files</title>
+	<title>Racket - Intro (1)</title>
 	<!-- Styles -->
 	<link rel="stylesheet" href="https://defunsm.github.io/css/style.css" />
 	<link rel="stylesheet" href="https://defunsm.github.io/css/font-awesome.min.css" />
@@ -82,14 +82,12 @@
 		<div class="fade child">
 			<div class="container_small">
 				<!-- Header Titles -->
-				<h1 class="header_title">Clojure - Reading CSV files</h1>
+				<h1 class="header_title">Racket - Intro (1)</h1>
 
-
-                                <a href="/posts/racket-intro/" class="button"><i class="fa fa-arrow-left" aria-hidden="true"></i> Racket - Intro (1)</a>
 
 <br/>
                                 
-                                <a href="/posts/clojure-r-squared/" class="button">Clojure - R Squared <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                                <a href="/posts/clojure-reading-csv/" class="button">Clojure - Reading CSV files <i class="fa fa-arrow-right" aria-hidden="true"></i>
 </i></a>
 
 
@@ -108,45 +106,83 @@
                     
                     <div class="post-header">
     <div id="post-meta" class="row">
-        <div class="col-lg-6">February 26, 2017</div>
+        <div class="col-lg-6">March 24, 2017</div>
         
     </div>
-    <h2>Clojure - Reading CSV files</h2>
+    <h2>Racket - Intro (1)</h2>
 </div>
 <div>
     
-    <p>Lets have some fun today and analyze some data! Let us look at the S&P500 which is a index commonly used to see how well the stock market is doing. <br/><br/> We can get the data for the S&P500 from yahoo finances link to that below. Make sure you have the range from Jan 03, 1980 to recent. <br/><br/> <a href='https://finance.yahoo.com/quote/%5EGSPC/history?period1=315723600&period2=1488085200&interval=1d&filter=history&frequency=1d'>Link to the S&P500 Data from Yahoo Finances</a> <br/><br/></p><p>Let us go ahead and run a lein project by the following command you can skip this if you already have a  project and you can just add incanter to the dependencies.</p><pre><code>$ lein new incantertut
-</code></pre><p>After you have downloaded the cvs file go ahead and rename it to <newcode>data.csv</newcode> and move it to the directory where your project.clj is located.  <br/><br/> Let us set up our project.clj file to be this so that we have incanter in our project so that we can read csv data and as well as display the data if we decide to do that.</p><pre><code>&#40;defproject incantertut &quot;0.1.0-SNAPSHOT&quot;
-  :description &quot;FIXME: write description&quot;
-  :url &quot;http://example.com/FIXME&quot;
-  :license {:name &quot;Eclipse Public License&quot;
-            :url &quot;http://www.eclipse.org/legal/epl-v10.html&quot;}
-  :dependencies &#91;&#91;org.clojure/clojure &quot;1.8.0&quot;&#93;
-                 &#91;incanter &quot;1.5.5&quot;&#93;&#93;&#41;
-</code></pre><p>Now we can move on to the good part and start in our core.clj that in our src directory when creating a lein project. <br/><br/> Go ahead and include the following for the namespaces. If you haven't seen incanter charts yet I recommend going through some of the previous guides I wrote on how to make graphs with incanter but otherwise I'll re-explain it briefly here as well. <br/><br/> <a href='http://salmanhossain.me/posts/clojure-incanter/'>Making Graphs With Incanter</a> <br/><br/></p><pre><code>&#40;ns incantertut.core
-  &#40;:use &#91;incanter.charts :only &#91;histogram scatter-plot pie-chart add-points add-lines xy-plot&#93;&#93;
-        &#91;incanter.core :only &#91;view&#93;&#93;
-        &#91;incanter.stats :only &#91;sample-normal linear-model&#93;&#93;
-        &#91;incanter.io :only &#91;read-dataset&#93;&#93;&#41;
-  &#40;:require &#91;clj-time.core :as tc&#93;
-            &#91;clj-time.periodic :as tp&#93;
-            &#91;clj-time.coerce :as tco&#93;&#41;&#41;
-</code></pre>So the only new addition here will be the <newcode>incanter.io</newcode> which will allow us to read csv files!<br/><br/>Now to the good stuff. Add the following underneath the namespace in your core.clj file.<pre><code>&#40;def data &#40;read-dataset &quot;data.csv&quot; :header true&#41;&#41;
-</code></pre>Now you can view all of the data using the following. Be warned that this is around 30+ years of data so it could take a while for the data to appear. <pre><code>&#40;:rows data&#41;
-</code></pre>However that just shows you the entire data what if we are only interested in the opening price of the stock? Well we can use map :Open to find all the opening prices.<pre><code>&#40;map :Open &#40;:rows data&#41;&#41;
-</code></pre>That will result in all the opening prices of the S&P500. Now lets say we want to view it we can do that using the view and xy-plot from incanter to do just that. However before that notice that when we do map :Open to the data it will return the opening prices from most recent to least recent. That is not what we want since incanter xy-plot takes least recent to most recent. So we need to use reverse to fix that. So we'll just create a function to do that.<pre><code>&#40;defn view-data &#91;selection data&#93;
-  &#40;let &#91;sel-data &#40;reverse &#40;map selection &#40;:rows data&#41;&#41;&#41;
-        counter &#40;count sel-data&#41;&#93;
-    &#40;view &#40;xy-plot &#40;range counter&#41; sel-data&#41;&#41;&#41;&#41;
-    
-&#40;view-data :Open data&#41;
-</code></pre>Now running that should produce the following pretty graph below.<br/><br/><img src="https://defunsm.github.io/img/csvpic.png" alt="cvspic" /><br/><br/>That is about it you can fix it up a bit by using a time-series instead so that instead of numbers on the bottom you have dates. As well as overlapping it with close prices too. Prehaps in another blog post.
+     <p>A little guide on Racket. Since I been playing around with it for a while. Pretty cool but doesn't have some of the nice functions that clojure has such as the range but you can easily make it in racket. So here are some things to get familiar with racket.</p><pre><code>
+;; Needed to specify the language.
+&#40;require racket&#41;
+
+;; Addition similiar to clojure and other lisps
+&#40;+ 2 2&#41;
+
+;; accepts more than one argument thats good.
+&#40;+ 2 2 3&#41;
+
+;; That works too.
+&#40;+ 3 &#40;&#42; 2 2&#41;&#41;
+
+;; What happens when mixing with floats. Oh a float or racket calls them inexact numbers.
+
+&#40;inexact? &#40;+ 3 &#40;&#42; 2.0 2&#41;&#41;&#41;
+
+;; How do we print strings now lets try println. Same as clojure.
+
+&#40;println &quot;Hello&quot;&#41;
+
+;; Do they have format? or something to concat strings? &#126;a
+&#40;&#126;a &quot;2+2=&quot; &#40;+ 2 2&#41;&#41;
+
+;; How do you define a top level variable in racket?
+&#40;define x 10&#41;
+
+x ;; 10
+
+;; local variable within a scope.
+;; Notice that x is 3 in that specific scope not 10.
+&#40;let &#91;&#40;x 3&#41;&#93; x&#41;
+
+;; just to check that x is actually still globally defined as 10.
+x ;; still 10 cool.
+
+;; Now how do you make a function? With define as well.
+&#40;define &#40;greetings name&#41;
+  &#40;&#126;a &quot;Hello, &quot; name &quot;!&quot;&#41;&#41;
+
+&#40;greetings &quot;salman&quot;&#41; ;; Yep works.
+
+;; Oh it doesn't matter if you make them parantheses or brackets.
+
+&#40;define &#91;greetings name&#93;
+  &#40;&#126;a &quot;Hello, &quot; name &quot;!&quot;&#41;&#41;
+
+&#40;greetings &quot;salman&quot;&#41; ;; still works.
+
+;; What about the lambda functions?
+
+&#40;&#40;lambda &#40;x&#41; &#40;&#42; x x&#41;&#41; 10&#41;
+
+;; lists? Either way works they have the short hand way and the quote function.
+
+&#40;quote &#40;1 2 3 4&#41;&#41;
+
+'&#40;1 2 3 4&#41;
+
+;; Now how do I map functions to individual elements in a list.
+;; Oh they have map.
+
+&#40;map &#40;lambda &#40;x&#41; &#40;&#42; x x&#41;&#41; '&#40;1 2 3 4&#41;&#41;
+</code></pre>
 </div>
 
 <div id="post-tags">
     <b>Tags: </b>
     
-    <a href="/tags/Clojure/" class="button4">Clojure</a>
+    <a href="/tags/Racket/" class="button4">Racket</a>
     
     <a href="/tags/Code/" class="button4">Code</a>
     
@@ -157,10 +193,8 @@
 
                           <div id="prev-next">
                             
-                            <a class="center button3" href="/posts/racket-intro/"><i class="fa fa-arrow-left" aria-hidden="true"></i> Racket - Intro (1)</a>
                             
-                            
-                            <a class="center button3" href="/posts/clojure-r-squared/">Clojure - R Squared <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                            <a class="center button3" href="/posts/clojure-reading-csv/">Clojure - Reading CSV files <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
                             
                           </div>
 

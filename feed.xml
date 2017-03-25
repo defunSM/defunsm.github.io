@@ -12,11 +12,94 @@ http://salmanhossain.me
 A place to share my knowledge
 </description>
 <lastBuildDate>
-Fri, 24 Mar 2017 21:30:57 -0400
+Fri, 24 Mar 2017 23:45:16 -0400
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://salmanhossain.me/posts/racket-intro/
+</guid>
+<link>
+http://salmanhossain.me/posts/racket-intro/
+</link>
+<title>
+Racket - Intro (1)
+</title>
+<description>
+ &lt;p&gt;A little guide on Racket. Since I been playing around with it for a while. Pretty cool but doesn't have some of the nice functions that clojure has such as the range but you can easily make it in racket. So here are some things to get familiar with racket.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;
+;; Needed to specify the language.
+&amp;#40;require racket&amp;#41;
+
+;; Addition similiar to clojure and other lisps
+&amp;#40;+ 2 2&amp;#41;
+
+;; accepts more than one argument thats good.
+&amp;#40;+ 2 2 3&amp;#41;
+
+;; That works too.
+&amp;#40;+ 3 &amp;#40;&amp;#42; 2 2&amp;#41;&amp;#41;
+
+;; What happens when mixing with floats. Oh a float or racket calls them inexact numbers.
+
+&amp;#40;inexact? &amp;#40;+ 3 &amp;#40;&amp;#42; 2.0 2&amp;#41;&amp;#41;&amp;#41;
+
+;; How do we print strings now lets try println. Same as clojure.
+
+&amp;#40;println &amp;quot;Hello&amp;quot;&amp;#41;
+
+;; Do they have format? or something to concat strings? &amp;#126;a
+&amp;#40;&amp;#126;a &amp;quot;2+2=&amp;quot; &amp;#40;+ 2 2&amp;#41;&amp;#41;
+
+;; How do you define a top level variable in racket?
+&amp;#40;define x 10&amp;#41;
+
+x ;; 10
+
+;; local variable within a scope.
+;; Notice that x is 3 in that specific scope not 10.
+&amp;#40;let &amp;#91;&amp;#40;x 3&amp;#41;&amp;#93; x&amp;#41;
+
+;; just to check that x is actually still globally defined as 10.
+x ;; still 10 cool.
+
+;; Now how do you make a function? With define as well.
+&amp;#40;define &amp;#40;greetings name&amp;#41;
+  &amp;#40;&amp;#126;a &amp;quot;Hello, &amp;quot; name &amp;quot;!&amp;quot;&amp;#41;&amp;#41;
+
+&amp;#40;greetings &amp;quot;salman&amp;quot;&amp;#41; ;; Yep works.
+
+;; Oh it doesn't matter if you make them parantheses or brackets.
+
+&amp;#40;define &amp;#91;greetings name&amp;#93;
+  &amp;#40;&amp;#126;a &amp;quot;Hello, &amp;quot; name &amp;quot;!&amp;quot;&amp;#41;&amp;#41;
+
+&amp;#40;greetings &amp;quot;salman&amp;quot;&amp;#41; ;; still works.
+
+;; What about the lambda functions?
+
+&amp;#40;&amp;#40;lambda &amp;#40;x&amp;#41; &amp;#40;&amp;#42; x x&amp;#41;&amp;#41; 10&amp;#41;
+
+;; lists? Either way works they have the short hand way and the quote function.
+
+&amp;#40;quote &amp;#40;1 2 3 4&amp;#41;&amp;#41;
+
+'&amp;#40;1 2 3 4&amp;#41;
+
+;; Now how do I map functions to individual elements in a list.
+;; Oh they have map.
+
+&amp;#40;map &amp;#40;lambda &amp;#40;x&amp;#41; &amp;#40;&amp;#42; x x&amp;#41;&amp;#41; '&amp;#40;1 2 3 4&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Fri, 24 Mar 2017 00:00:00 -0400
+</pubDate>
+</item>
 <item>
 <guid>
 http://salmanhossain.me/posts/clojure-reading-csv/
