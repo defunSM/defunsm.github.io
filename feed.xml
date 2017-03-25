@@ -12,11 +12,107 @@ http://salmanhossain.me
 A place to share my knowledge
 </description>
 <lastBuildDate>
-Fri, 24 Mar 2017 23:45:16 -0400
+Sat, 25 Mar 2017 09:47:49 -0400
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
+<item>
+<guid>
+http://salmanhossain.me/posts/racket-intro2/
+</guid>
+<link>
+http://salmanhossain.me/posts/racket-intro2/
+</link>
+<title>
+Racket - Intro (2)
+</title>
+<description>
+ &lt;p&gt;This is continuing off of the previous blog post on racket. Make sure you have gone through that before going to this. In this section we'll cover booleans, loops, apply and some others.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;;; Booleans
+;; Racket uses #t and #f for true and false.
+
+&amp;#40;= 2 &amp;#40;+ 1 1&amp;#41;&amp;#41;
+&amp;#40;= 2 &amp;#40;+ 1 2&amp;#41;&amp;#41;
+
+;; if statements in racket
+;; First part is the conditional which is the &amp;#40;= 2 &amp;#40;+ 1 1&amp;#41;&amp;#41; which is #t
+;; Second part is &amp;#40;println &amp;quot;True&amp;quot;&amp;#41; which is the true branch that'll execute if the condition is met.
+;; Third part &amp;#40;println &amp;quot;False&amp;quot;&amp;#41; is the false branch which won't be executed.
+
+&amp;#40;if &amp;#40;= 2 &amp;#40;+ 1 1&amp;#41;&amp;#41;
+    &amp;#40;println &amp;quot;True&amp;quot;&amp;#41;
+    &amp;#40;println &amp;quot;False&amp;quot;&amp;#41;&amp;#41;
+
+;; Notice that and will return true if nothing provided.
+;; and is #t if no arguments provided.
+;; or is #f is no arguments provided.
+;; and  will return the argument if only one argument is provided.
+;; or will do the same if one argument is provided.
+
+&amp;#40;define a 10&amp;#41;
+&amp;#40;define b 5&amp;#41;
+
+&amp;#40;and&amp;#41;
+&amp;#40;and b&amp;#41;
+
+&amp;#40;or&amp;#41;
+&amp;#40;or b&amp;#41;
+
+&amp;#40;and &amp;#40;even? a&amp;#41; &amp;#40;odd? b&amp;#41;&amp;#41;
+&amp;#40;and &amp;#40;odd? a&amp;#41; &amp;#40;odd? b&amp;#41;&amp;#41;
+&amp;#40;or &amp;#40;odd? a&amp;#41; &amp;#40;odd? b&amp;#41;&amp;#41;
+
+;; Conditionals in racket
+;; Must start with a bracket to start a conditional.
+;; Than there is the testing condition and if its met executes.
+
+&amp;#40;cond
+  &amp;#91;&amp;#40;positive? n&amp;#41; &amp;#40;println &amp;quot;This number is positive&amp;quot;&amp;#41;&amp;#93;
+  &amp;#91;&amp;#40;negative? n&amp;#41; &amp;#40;println &amp;quot;This number is negative&amp;quot;&amp;#41;&amp;#93;&amp;#41;
+
+
+;; There is also an else if not of the conditionals are met.
+;; Tells us if the quadradic has 2 roots, 1 root or imaginary roots.
+&amp;#40;define &amp;#40;roots a b c&amp;#41;
+  &amp;#40;let &amp;#40;&amp;#91;discriminant &amp;#40;- &amp;#40;expt b 2&amp;#41; &amp;#40;&amp;#42; 4 a c&amp;#41;&amp;#41;&amp;#93;&amp;#41;
+    &amp;#40;cond
+        &amp;#91;&amp;#40;positive? discriminant&amp;#41; &amp;#40;println &amp;quot;This quadradic has 2 roots&amp;quot;&amp;#41;&amp;#93;
+        &amp;#91;&amp;#40;negative? discriminant&amp;#41; &amp;#40;println &amp;quot;This quadradic has imaginary roots&amp;quot;&amp;#41;&amp;#93;
+        &amp;#91;else &amp;#40;println &amp;quot;This quadradic has 1 root&amp;quot;&amp;#41;&amp;#93;&amp;#41;&amp;#41;&amp;#41;
+
+;; Also note that racket makes a distinction between let and let&amp;#42; like in lisp.
+;; let won't allow you to use previous bindings as you would sometimes expect.
+;; let&amp;#42; however does let you use previous bindings.
+;; First one with let will provide an error because of the difference between let and let&amp;#42;
+;; You'll find that num is undefined in the first one. Second one works fine.
+
+&amp;#40;let &amp;#91;&amp;#40;num 10&amp;#41;
+      &amp;#40;result &amp;#40;+ 2 num&amp;#41;&amp;#41;&amp;#93;
+  result&amp;#41;
+
+&amp;#40;let&amp;#42; &amp;#91;&amp;#40;num 10&amp;#41;
+       &amp;#40;result &amp;#40;+ 2 num&amp;#41;&amp;#41;&amp;#93;
+  result&amp;#41;
+
+;; Apply which will distribute the prodecure across the list.
+;; Notice that the last argument for apply must be a list.
+
+&amp;#40;apply &amp;#42; '&amp;#40;1 2 3 4&amp;#41;&amp;#41;
+
+&amp;#40;apply &amp;#42; 1 2 '&amp;#40;3 4&amp;#41;&amp;#41;
+
+&amp;#40;apply &amp;#42; 1 2 3 '&amp;#40;4&amp;#41;&amp;#41;
+
+&amp;#40;apply &amp;#42; 1 2 3 4&amp;#41; ;; error: contract violation
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Sat, 25 Mar 2017 00:00:00 -0400
+</pubDate>
+</item>
 <item>
 <guid>
 http://salmanhossain.me/posts/racket-intro/
@@ -35,7 +131,7 @@ Racket - Intro (1)
 ;; Addition similiar to clojure and other lisps
 &amp;#40;+ 2 2&amp;#41;
 
-;; accepts more than one argument thats good.
+;; accepts more than two arguments thats good.
 &amp;#40;+ 2 2 3&amp;#41;
 
 ;; That works too.
