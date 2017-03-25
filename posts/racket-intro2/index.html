@@ -113,7 +113,7 @@
 </div>
 <div>
     
-     <p>This is continuing off of the previous blog post on racket. Make sure you have gone through that before going to this. In this section we'll cover booleans, loops, apply and some others.</p><pre><code>;; Booleans
+     <p>This is continuing off of the previous blog post on racket. Make sure you have gone through that before going to this. In this section we'll cover <newcode>booleans</newcode>, <newcode>conditionals</newcode> and <newcode>apply</newcode>.</p><pre><code>;; Booleans
 ;; Racket uses #t and #f for true and false.
 
 &#40;= 2 &#40;+ 1 1&#41;&#41;
@@ -156,8 +156,9 @@
   &#91;&#40;negative? n&#41; &#40;println &quot;This number is negative&quot;&#41;&#93;&#41;
 
 
-;; There is also an else if not of the conditionals are met.
+;; There is also an else if none of the conditionals are met.
 ;; Tells us if the quadradic has 2 roots, 1 root or imaginary roots.
+
 &#40;define &#40;roots a b c&#41;
   &#40;let &#40;&#91;discriminant &#40;- &#40;expt b 2&#41; &#40;&#42; 4 a c&#41;&#41;&#93;&#41;
     &#40;cond

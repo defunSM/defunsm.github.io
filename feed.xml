@@ -12,7 +12,7 @@ http://salmanhossain.me
 A place to share my knowledge
 </description>
 <lastBuildDate>
-Sat, 25 Mar 2017 09:47:49 -0400
+Sat, 25 Mar 2017 10:04:23 -0400
 </lastBuildDate>
 <generator>
 clj-rss
@@ -28,7 +28,7 @@ http://salmanhossain.me/posts/racket-intro2/
 Racket - Intro (2)
 </title>
 <description>
- &lt;p&gt;This is continuing off of the previous blog post on racket. Make sure you have gone through that before going to this. In this section we'll cover booleans, loops, apply and some others.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;;; Booleans
+ &lt;p&gt;This is continuing off of the previous blog post on racket. Make sure you have gone through that before going to this. In this section we'll cover &lt;newcode&gt;booleans&lt;/newcode&gt;, &lt;newcode&gt;conditionals&lt;/newcode&gt; and &lt;newcode&gt;apply&lt;/newcode&gt;.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;;; Booleans
 ;; Racket uses #t and #f for true and false.
 
 &amp;#40;= 2 &amp;#40;+ 1 1&amp;#41;&amp;#41;
@@ -71,8 +71,9 @@ Racket - Intro (2)
   &amp;#91;&amp;#40;negative? n&amp;#41; &amp;#40;println &amp;quot;This number is negative&amp;quot;&amp;#41;&amp;#93;&amp;#41;
 
 
-;; There is also an else if not of the conditionals are met.
+;; There is also an else if none of the conditionals are met.
 ;; Tells us if the quadradic has 2 roots, 1 root or imaginary roots.
+
 &amp;#40;define &amp;#40;roots a b c&amp;#41;
   &amp;#40;let &amp;#40;&amp;#91;discriminant &amp;#40;- &amp;#40;expt b 2&amp;#41; &amp;#40;&amp;#42; 4 a c&amp;#41;&amp;#41;&amp;#93;&amp;#41;
     &amp;#40;cond
