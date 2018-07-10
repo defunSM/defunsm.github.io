@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+	<title>Python - Creating a Table using PyGt5</title>
+	<!-- Styles -->
+	<link rel="stylesheet" href="https://defunsm.github.io/css/style.css" />
+	<link rel="stylesheet" href="https://defunsm.github.io/css/font-awesome.min.css" />
+	<link type="text/css" rel="stylesheet" href="https://defunsm.github.io/featherlight.css" />
+        <link rel="stylesheet" href="https://defunsm.github.io/css/screen.css" />
+        <!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css"> -->
+        <link rel="stylesheet" href="https://defunsm.github.io/css/solarized-dark.css" />
+
+	<style type="text/css">
+		@media all {
+			.lightbox { display: none; }
+		}
+	</style>
+	<!-- jQuery -->
+	<script src="https://defunsm.github.io/js/jquery.min.js"></script>
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="images/favicon.png">
+</head>
+<body class="fade-in cmon body">
+
+
+  <!-- HEADER /////////////////////////////////////////////////////////////////////////// -->
+
+
+  <!--    <ul3 class="nav-two"> -->
+  <!-- <li3 class="three"><a href="http://defunsm.github.io/">Home <i class="fa fa-home" aria-hidden="true"></i></a></li3> -->
+  <!-- <li3 class="fourl"><a href="http://defunsm.github.io/pages-output/another-page/">About <i class="fa fa-heart" aria-hidden="true"></i></a></li3> -->
+  <!-- <li3 class="onel"><a href="https://github.com/defunSM">GitHub <i class="fa fa-github" aria-hidden="true"></i></a></li3> -->
+  <!-- <li3 class="twol"><a href="http://defunsm.github.io/archives/">Archives <i class="fa fa-book" aria-hidden="true"></i></a></li3> -->
+  <!-- </ul3> -->
+
+  <!--  <div class="menubarblack"></div> -->
+
+	<header id="postwelcome" class="parent module parallax parallax-1">
+		<div class="burger" id="toggle">
+			<span class="top"></span>
+			<span class="middle"></span>
+			<span class="bottom"></span>
+
+		</div>
+
+		<div class="navigation" id="navigation">
+			<nav class="overlay-menu">
+			  <ul>
+                                          <li>
+                              <a href="https://defunsm.github.io/#Welcome" class="menu">Home <i class="fa fa-home" aria-hidden="true"></i>
+</a>
+			      <span class="simple_line"></span>
+                              </li>
+					<li >
+						<a href="https://defunsm.github.io/#about" class="menu">About <i class="fa fa-heart" aria-hidden="true"></i></a>
+						<span class="simple_line"></span>
+					</li>
+					<li>
+						<a href="https://defunsm.github.io/#portfolio" class="menu">Github <i class="fa fa-github" aria-hidden="true"></i></a>
+						<span class="simple_line"></span>
+					</li>
+					<li>
+					  <a href="https://defunsm.github.io/archives" class="menu">Archives <i class="fa fa-book" aria-hidden="true"></i></a>
+                                          <span class="simple_line"></span>
+					</li>
+
+                              
+
+
+
+
+
+
+
+
+			  </ul>
+			</nav>
+		</div>
+		<div class="scroll_down"></div>
+		<div class="fade child">
+			<div class="container_small">
+				<!-- Header Titles -->
+				<h1 class="header_title">Python - Creating a Table using PyGt5</h1>
+
+
+                                <a href="/posts/clojure-incanter/" class="button"><i class="fa fa-arrow-left" aria-hidden="true"></i> Clojure - Basic Incanter</a>
+
+<br/>
+                                
+                                <a href="/posts/python-commands/" class="button">Python - Running Commands <i class="fa fa-arrow-right" aria-hidden="true"></i>
+</i></a>
+
+
+			</div>
+		</div>
+	</header>
+	<!-- END HEADER /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- ABOUT SECTION /////////////////////////////////////////////////////////////////////////// -->
+	<section id="about" class="module defaultpadding">
+
+
+          <div class="anotherclass">
+
+
+                    
+                    <div class="post-header">
+    <div id="post-meta" class="row">
+        <div class="col-lg-6">January 14, 2017</div>
+        
+    </div>
+    <h2>Python - Creating a Table using PyGt5</h2>
+</div>
+<div>
+    
+     <p><img src="http://defunsm.github.io/img/pytable.png" alt="table" /></p><p><a href='http://pyqt.sourceforge.net/Docs/PyQt5/index.html'>PyGt5</a> is pretty nice when it comes to constructing some nice tables. I found that making tables in PyGt5 is easier than Gtk. So I thought I would just show you how to create a really quick python script to take a file such as the one below and create a table from it in a frame. Create the following text file below as example.txt and make sure you add those , because we are going to be later spliting by ',' to get each of the element and place them into the table.<pre><code>red,blue,yellow
+c++,java,python
+physics,chemistry,biology
+1,2,3
+ </code></pre> So if you don't have pyqt5 yet go ahead and install that with pip or whatever you use to download python modules.<pre><code>pip install pyqt5
+ </code></pre> Now there's already some basic tutorials out there to make tables like the one from <a href='https://pythonspot.com/en/pyqt5-table/'>pythonspot</a>. However I wanna show how to make a more functional table of taking the example.txt and placing it into the table. So we'll just follow the example given and modify it. So go ahead and copy that code into the sample in pythonspot and we'll be modifying specifically the the <newcode>create_table()</newcode> part.<pre><code>#!/usr/bin/env python
+import sys
+from PyQt5.QtWidgets import QMainWindow, QApplication, QWidget, QAction, QTableWidget,QTableWidgetItem,QVBoxLayout
+from PyQt5.QtGui import QIcon
+from PyQt5.QtCore import pyqtSlot
+
+class App&#40;QWidget&#41;:
+
+    def &#95;&#95;init&#95;&#95;&#40;self&#41;:
+        super&#40;&#41;.&#95;&#95;init&#95;&#95;&#40;&#41;
+        self.title = 'PyQt5 table - pythonspot.com'
+        self.left = 0
+        self.top = 0
+        self.width = 300
+        self.height = 200
+        self.initUI&#40;&#41;
+
+    def initUI&#40;self&#41;:
+        self.setWindowTitle&#40;self.title&#41;
+        self.setGeometry&#40;self.left, self.top, self.width, self.height&#41;
+
+        self.createTable&#40;&#41;
+
+        # Add box layout, add table to box layout and add box layout to widget
+        self.layout = QVBoxLayout&#40;&#41;
+        self.layout.addWidget&#40;self.tableWidget&#41;
+        self.setLayout&#40;self.layout&#41;
+
+        # Show widget
+        self.show&#40;&#41;
+
+    def createTable&#40;self&#41;:
+       # Create table
+        self.tableWidget = QTableWidget&#40;&#41;
+        self.tableWidget.setRowCount&#40;4&#41;
+        self.tableWidget.setColumnCount&#40;2&#41;
+        self.tableWidget.setItem&#40;0,0, QTableWidgetItem&#40;&quot;Cell &#40;1,1&#41;&quot;&#41;&#41;
+        self.tableWidget.setItem&#40;0,1, QTableWidgetItem&#40;&quot;Cell &#40;1,2&#41;&quot;&#41;&#41;
+        self.tableWidget.setItem&#40;1,0, QTableWidgetItem&#40;&quot;Cell &#40;2,1&#41;&quot;&#41;&#41;
+        self.tableWidget.setItem&#40;1,1, QTableWidgetItem&#40;&quot;Cell &#40;2,2&#41;&quot;&#41;&#41;
+        self.tableWidget.setItem&#40;2,0, QTableWidgetItem&#40;&quot;Cell &#40;3,1&#41;&quot;&#41;&#41;
+        self.tableWidget.setItem&#40;2,1, QTableWidgetItem&#40;&quot;Cell &#40;3,2&#41;&quot;&#41;&#41;
+        self.tableWidget.setItem&#40;3,0, QTableWidgetItem&#40;&quot;Cell &#40;4,1&#41;&quot;&#41;&#41;
+        self.tableWidget.setItem&#40;3,1, QTableWidgetItem&#40;&quot;Cell &#40;4,2&#41;&quot;&#41;&#41;
+        self.tableWidget.move&#40;0,0&#41;
+
+        # table selection change
+        self.tableWidget.doubleClicked.connect&#40;self.on&#95;click&#41;
+
+    @pyqtSlot&#40;&#41;
+    def on&#95;click&#40;self&#41;:
+        print&#40;&quot;\n&quot;&#41;
+        for currentQTableWidgetItem in self.tableWidget.selectedItems&#40;&#41;:
+            print&#40;currentQTableWidgetItem.row&#40;&#41;, currentQTableWidgetItem.column&#40;&#41;, currentQTableWidgetItem.text&#40;&#41;&#41;
+
+if &#95;&#95;name&#95;&#95; == '&#95;&#95;main&#95;&#95;':
+    app = QApplication&#40;sys.argv&#41;
+    ex = App&#40;&#41;
+    sys.exit&#40;app.exec&#95;&#40;&#41;&#41;
+ </code></pre></p><p>So you should have it like this so far. And if you run it you'll see a cell 4 by 2. So now lets get to editing this to make it take from the example.txt so we'll go stright to createTable and edit that method specifically since that is what we want. Change it to the following...<pre><code>    def createTable&#40;self&#41;:
+       # Create table
+        elements = &#91;&#93;
+        f = open&#40;'example.txt','r'&#41;
+
+        for line in f.readlines&#40;&#41;:
+            elements.append&#40;line.split&#40;&quot;,&quot;&#41;&#41;
+            
+        f.close&#40;&#41;
+
+        self.tableWidget = QTableWidget&#40;&#41;
+        self.tableWidget.setRowCount&#40;len&#40;elements&#41;&#41;
+        self.tableWidget.setColumnCount&#40;3&#41;
+
+        for i in range&#40;len&#40;elements&#41;&#41;:
+            self.tableWidget.setItem&#40;i, 0, QTableWidgetItem&#40;elements&#91;i&#93;&#91;0&#93;&#41;&#41;
+            self.tableWidget.setItem&#40;i, 1, QTableWidgetItem&#40;elements&#91;i&#93;&#91;1&#93;&#41;&#41;
+            self.tableWidget.setItem&#40;i, 2, QTableWidgetItem&#40;elements&#91;i&#93;&#91;2&#93;&#41;&#41;
+
+        # table selection change
+        self.tableWidget.doubleClicked.connect&#40;self.on&#95;click&#41;
+ </code></pre> Now if you run this you'll see that it will read from the example.txt and actually take those and put it into the table. Try it put more elements into the example.txt and you'll see it correctly places them into the table. Now let me explain what we did the method to do this.<pre><code>elements = &#91;&#93;
+f = open&#40;'example.txt','r'&#41;
+ </code></pre> This part is creating a variable to store all the elements in the example.txt file to store into an array. After that we open the example.txt using the read param since all we are going to do is read the example.txt file. Of course we also close it later on which you should always remember to do with <newcode>f.close()</newcode>.<pre><code>for line in f.readlines&#40;&#41;:
+   elements.append&#40;line.split&#40;&quot;,&quot;&#41;&#41;
+            
+f.close&#40;&#41;
+ </code></pre> This is we loop through each line with a for statement and spliting based on the comma. If you're confused by this just place a print(elements[1]) in the table method to see how the array looks so that you can see how exactly we are going to put them into the tableWidget.<pre><code>self.tableWidget = QTableWidget&#40;&#41;
+self.tableWidget.setRowCount&#40;len&#40;elements&#41;&#41;
+self.tableWidget.setColumnCount&#40;3&#41;
+ </code></pre> This part is actually creating the QTableWidget which is the table. As well as stating how many rows we are going to have and this is determined by counting how using len on elements to count the amount of rows there is going to be and than since we already know the column amount it is hard coded into the code but we could've done a similiar thing for the column if there is a varity on the column. <pre><code>for i in range&#40;len&#40;elements&#41;&#41;:
+   self.tableWidget.setItem&#40;i, 0, QTableWidgetItem&#40;elements&#91;i&#93;&#91;0&#93;&#41;&#41;
+   self.tableWidget.setItem&#40;i, 1, QTableWidgetItem&#40;elements&#91;i&#93;&#91;1&#93;&#41;&#41;
+   self.tableWidget.setItem&#40;i, 2, QTableWidgetItem&#40;elements&#91;i&#93;&#91;2&#93;&#41;&#41;
+ </code></pre> This is the meat of the code so to speak. Where all of the major action is going on. The for statement is looping and placing the elements into its respective cell. This is done by using the <newcode>setItem</newcode> method and as you can see it is looped for the amount of arrays in elements using len to find that value.  <br/><br/> The majority of the rest of the code is just to set up the frame which is not so vital but now you can create tables from a .txt file which is amazing and can extend this even further and create some graphs using matplotlib which is built into PyGt5.</p>
+</div>
+
+<div id="post-tags">
+    <b>Tags: </b>
+    
+    <a href="/tags/Python/" class="button4">Python</a>
+    
+    <a href="/tags/Code/" class="button4">Code</a>
+    
+    <a href="/tags/Guide/" class="button4">Guide</a>
+    
+</div>
+
+
+                          <div id="prev-next">
+                            
+                            <a class="center button3" href="/posts/clojure-incanter/"><i class="fa fa-arrow-left" aria-hidden="true"></i> Clojure - Basic Incanter</a>
+                            
+                            
+                            <a class="center button3" href="/posts/python-commands/">Python - Running Commands <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                            
+                          </div>
+
+                          
+                          <div id="disqus_thread"></div>
+                          <script type="text/javascript">
+                            (function() {
+                            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                            dsq.src = '//defunsm-github-io.disqus.com/embed.js';
+                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                            })();
+                          </script>
+                          
+
+
+
+                        
+          </div>
+
+
+
+	</section>
+
+        <!-- END ABOUT SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- PORTFOLIO SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- END CONTACT SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- FOOTER /////////////////////////////////////////////////////////////////////////// -->
+	<footer>
+		<div class="container_footer">
+		  <div class="left">
+                    <a href="https://github.com/defunSM"><i class="fa fa-github-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://www.facebook.com/salman.hossain.944"><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://plus.google.com/u/0/109736817709668742056"><i class="fa fa-google-plus-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://twitter.com/SmSalmanHossain"><i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://www.linkedin.com/in/salman-hossain"><i class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i></a>
+                    <p>&nbsp;</p>
+
+
+                    <p>Email: &nbsp;&nbsp; <span>sxh8083@g.rit.edu</span></p>
+                    <p>Phone: &nbsp;&nbsp; <span>(347) - 398 - 1701 </span></p>
+				<p>© 2016-17 <span>Salman Hossain</span></p>
+			</div>
+			<div class="right">
+				<a href="#postwelcome">Top <i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+			</div>
+		</div>
+	</footer>
+	<!-- END FOOTER /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- Scripts -->
+	<script src="https://defunsm.github.io/js/parallax.js"></script>
+	<script src="https://defunsm.github.io/js/diffscroll.js"></script>
+	<script src="https://defunsm.github.io/js/featherlight.js" type="text/javascript" charset="utf-8"></script>
+	<script src="https://defunsm.github.io/js/scroll.js"></script>
+        <!-- <script src="//code.jquery.com/jquery-1.11.0.min.js"></script> -->
+        <!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script> -->
+
+        <script src="https://defunsm.github.io/js/highlight.pack.js"></script>
+        <script src="/js/highlight.pack.js" type="text/javascript"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>

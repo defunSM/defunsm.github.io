@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+	<title>Python - Variables</title>
+	<!-- Styles -->
+	<link rel="stylesheet" href="https://defunsm.github.io/css/style.css" />
+	<link rel="stylesheet" href="https://defunsm.github.io/css/font-awesome.min.css" />
+	<link type="text/css" rel="stylesheet" href="https://defunsm.github.io/featherlight.css" />
+        <link rel="stylesheet" href="https://defunsm.github.io/css/screen.css" />
+        <!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css"> -->
+        <link rel="stylesheet" href="https://defunsm.github.io/css/solarized-dark.css" />
+
+	<style type="text/css">
+		@media all {
+			.lightbox { display: none; }
+		}
+	</style>
+	<!-- jQuery -->
+	<script src="https://defunsm.github.io/js/jquery.min.js"></script>
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="images/favicon.png">
+</head>
+<body class="fade-in cmon body">
+
+
+  <!-- HEADER /////////////////////////////////////////////////////////////////////////// -->
+
+
+  <!--    <ul3 class="nav-two"> -->
+  <!-- <li3 class="three"><a href="http://defunsm.github.io/">Home <i class="fa fa-home" aria-hidden="true"></i></a></li3> -->
+  <!-- <li3 class="fourl"><a href="http://defunsm.github.io/pages-output/another-page/">About <i class="fa fa-heart" aria-hidden="true"></i></a></li3> -->
+  <!-- <li3 class="onel"><a href="https://github.com/defunSM">GitHub <i class="fa fa-github" aria-hidden="true"></i></a></li3> -->
+  <!-- <li3 class="twol"><a href="http://defunsm.github.io/archives/">Archives <i class="fa fa-book" aria-hidden="true"></i></a></li3> -->
+  <!-- </ul3> -->
+
+  <!--  <div class="menubarblack"></div> -->
+
+	<header id="postwelcome" class="parent module parallax parallax-1">
+		<div class="burger" id="toggle">
+			<span class="top"></span>
+			<span class="middle"></span>
+			<span class="bottom"></span>
+
+		</div>
+
+		<div class="navigation" id="navigation">
+			<nav class="overlay-menu">
+			  <ul>
+                                          <li>
+                              <a href="https://defunsm.github.io/#Welcome" class="menu">Home <i class="fa fa-home" aria-hidden="true"></i>
+</a>
+			      <span class="simple_line"></span>
+                              </li>
+					<li >
+						<a href="https://defunsm.github.io/#about" class="menu">About <i class="fa fa-heart" aria-hidden="true"></i></a>
+						<span class="simple_line"></span>
+					</li>
+					<li>
+						<a href="https://defunsm.github.io/#portfolio" class="menu">Github <i class="fa fa-github" aria-hidden="true"></i></a>
+						<span class="simple_line"></span>
+					</li>
+					<li>
+					  <a href="https://defunsm.github.io/archives" class="menu">Archives <i class="fa fa-book" aria-hidden="true"></i></a>
+                                          <span class="simple_line"></span>
+					</li>
+
+                              
+
+
+
+
+
+
+
+
+			  </ul>
+			</nav>
+		</div>
+		<div class="scroll_down"></div>
+		<div class="fade child">
+			<div class="container_small">
+				<!-- Header Titles -->
+				<h1 class="header_title">Python - Variables</h1>
+
+
+                                <a href="/posts/python-booleans/" class="button"><i class="fa fa-arrow-left" aria-hidden="true"></i> Python - Booleans</a>
+
+<br/>
+                                
+                                <a href="/posts/python2/" class="button">Python - Numbers <i class="fa fa-arrow-right" aria-hidden="true"></i>
+</i></a>
+
+
+			</div>
+		</div>
+	</header>
+	<!-- END HEADER /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- ABOUT SECTION /////////////////////////////////////////////////////////////////////////// -->
+	<section id="about" class="module defaultpadding">
+
+
+          <div class="anotherclass">
+
+
+                    
+                    <div class="post-header">
+    <div id="post-meta" class="row">
+        <div class="col-lg-6">October 7, 2016</div>
+        
+    </div>
+    <h2>Python - Variables</h2>
+</div>
+<div>
+    
+     <p>Now we'll actually be using a text editor and no longer the python interpreter. However you should periodically use the python interpreter which is a good way to learn.  <br/><br/> To write python code you need to create a file with the .py extension this will tell your computer that you are writing python code. There is a way to get around this but for now it isn't really necessarily to do that but know that there is. For now just create a file called "pyvariables.py" in your favorite text editor. <br/><br/> Type out the following code into the file. Actually type it out to get that muscle memory into your fingers instead of pasting it onto your text editor and type out the entire code and I'll explain it through one line at a time. <br/><br/></p><pre><code>import math
+
+def main&#40;&#41;:
+
+    circumference&#95;of&#95;earth&#95;in&#95;km = 40000
+    time&#95;for&#95;one&#95;rotation&#95;in&#95;hours = 24
+    minutes&#95;in&#95;hour = 60
+    seconds&#95;in&#95;minute = 60
+
+    radius&#95;of&#95;earth = circumference&#95;of&#95;earth&#95;in&#95;km / &#40;2 &#42; math.pi&#41;
+
+    print&#40;&quot;Radius of Earth:&quot;, radius&#95;of&#95;earth , &quot; km&quot;&#41;
+
+    velocity&#95;of&#95;earths&#95;rotation = &#40;circumference&#95;of&#95;earth&#95;in&#95;km &#42; 1000&#41; / &#40;time&#95;for&#95;one&#95;rotation&#95;in&#95;hours &#42; minutes&#95;in&#95;hour &#42; seconds&#95;in&#95;minute&#41;
+
+    print&#40;&quot;Velocity:&quot;, velocity&#95;of&#95;earths&#95;rotation , &quot;m/s&quot;&#41; 
+
+    acceleration&#95;of&#95;earth = &#40;velocity&#95;of&#95;earths&#95;rotation &#42;&#42; 2&#41; / &#40;radius&#95;of&#95;earth &#42; 1000&#41;
+
+    print&#40;&quot;Acceleration:&quot;, acceleration&#95;of&#95;earth , &quot;m/s&#94;2&quot;&#41; 
+
+main&#40;&#41;
+</code></pre><br /><p>Now after you have done typing it out go ahead and open up a terminal and run the following command in the same directory that you have created the file in.</p><pre><code>$ python pyvariables.py
+</code></pre><p>Result:<pre><code>Radius of Earth: 6366 km
+Velocity: 462 m/s
+Acceleration: 0.033528 m/s&#94;2
+ </code></pre></p><p>If you get an error running it than make sure you have typed out everything exactly.</p><p>Below are the explanations: <br/><br/> Line 1:<pre><code>import math
+ </code></pre> In the first line we are importing functions from the math "module" which will allow us to use the math.pi which you seen in line 10. Without the import we would get an error. Right now you don't have to know too much about what modules are but know that Python has a very convinent way of bringing in other libraries to use in your code in this case you are able to use all the math functions without actually having to type in the functions into the code hence importing them. If you have coded in C++ than this is basically equivilant to #include where you are bringing in other libraries into your file. <br/><br/> Line 3: <pre><code>def main&#40;&#41;:
+ </code></pre> This is how you define a function in python. Every file has a main function which is where all the action happens. Main is the name of the function followed by parantheses which right now is empty but if our function took any arguments which we'll get to in a later in depth discussion about functions there would be variables inbetween the parantheses. For now just realize that this is the snytax for creating a function in python. Using def and than followed by the name of the function and parantheses finally double colon.  <br/><br/> Also take note that everything in the main function is indented expect the final line which is not in the function. <br/><br/> Line 5-8:<pre><code>    circumference&#95;of&#95;earth&#95;in&#95;km = 40000
+    time&#95;for&#95;one&#95;rotation&#95;in&#95;hours = 24
+    minutes&#95;in&#95;hour = 60
+    seconds&#95;in&#95;minute = 60
+ </code></pre> So we have 4 variables listed above. Variables in python have specific naming conventions such as variables can not contain dashes, numbers or special characters in them and must be lowercase and if you need to use multiple words in a variable it is customary to use an underscore. Followed by the variable name is an equal sign which is the assignment operator in Python. It is assigning the number 40000 to the variable circumference of the earth variable and binding the number to it. We see that we have four variables recieving assignment. <br/><br/> Line 10:<pre><code>radius&#95;of&#95;earth = circumference&#95;of&#95;earth&#95;in&#95;km / &#40;2 &#42; math.pi&#41;
+ </code></pre> So we have another variable the radius of the earth which is being assigned whatever the result of circumference of the earth divided by (2 * math.pi). The math.pi is the value of pi and is imported from the math library from line 1. So we can do math with variables and set it to another variable. <br/><br/> Line 12:<pre><code>print&#40;&quot;Radius of Earth:&quot; , radius&#95;of&#95;earth , &quot; km&quot;&#41;
+ </code></pre> Then we have our good old friend print that will display the radius of the earth. Notice that instead of a number or string we are putting in a variable that contains a number. This is essentially the same thing as giving it a number as we did in previous exercises. <br/><br/> Line 14:<pre><code>velocity&#95;of&#95;earths&#95;rotation = &#40;circumference&#95;of&#95;earth&#95;in&#95;km &#42; 1000&#41; / &#40;time&#95;for&#95;one&#95;rotation&#95;in&#95;hours &#42; minutes&#95;in&#95;hour &#42; seconds&#95;in&#95;minute&#41;
+ </code></pre> Calculating the velocity of the earth by converting the circumference into meters and the rotation of the earth into seconds so that you can get a velocity in terms of meters per second. Notice that instead of typing out the conversation which we could do we are using the variables we have already set. <br/><br/> Line 16:<pre><code>print&#40;&quot;Velocity:&quot;, velocity&#95;of&#95;earths&#95;rotation , &quot; m/s&quot;&#41; 
+ </code></pre> Prints the velocity of the earth's rotation for us. <br/><br/> Line 18:<pre><code>acceleration&#95;of&#95;earth = &#40;velocity&#95;of&#95;earths&#95;rotation &#42;&#42; 2&#41; / &#40;radius&#95;of&#95;earth &#42; 1000&#41;
+ </code></pre> Sets the acceleration of the earth using the a = (v<sup>2)/r.</sup> Nothing we haven't seen. ** to raise the value of the velocity of the earth to the second power. <br/><br/> Line 20:<pre><code>print&#40;&quot;Acceleration:&quot;,  acceleration&#95;of&#95;earth, &quot;m/s&#94;2&quot;&#41; 
+ </code></pre> Nothing new. Prints the acceleration. <br/><br/> Line 22:<pre><code>main&#40;&#41;
+ </code></pre> Notice that this is the name of the function and is outside of the function. This basically calls the function main. If you removed this last line and ran it nothing would happen because you didn't call it. </p>
+</div>
+
+<div id="post-tags">
+    <b>Tags: </b>
+    
+    <a href="/tags/Python/" class="button4">Python</a>
+    
+    <a href="/tags/Code/" class="button4">Code</a>
+    
+    <a href="/tags/Guide/" class="button4">Guide</a>
+    
+</div>
+
+
+                          <div id="prev-next">
+                            
+                            <a class="center button3" href="/posts/python-booleans/"><i class="fa fa-arrow-left" aria-hidden="true"></i> Python - Booleans</a>
+                            
+                            
+                            <a class="center button3" href="/posts/python2/">Python - Numbers <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                            
+                          </div>
+
+                          
+                          <div id="disqus_thread"></div>
+                          <script type="text/javascript">
+                            (function() {
+                            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                            dsq.src = '//defunsm-github-io.disqus.com/embed.js';
+                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                            })();
+                          </script>
+                          
+
+
+
+                        
+          </div>
+
+
+
+	</section>
+
+        <!-- END ABOUT SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- PORTFOLIO SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- END CONTACT SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- FOOTER /////////////////////////////////////////////////////////////////////////// -->
+	<footer>
+		<div class="container_footer">
+		  <div class="left">
+                    <a href="https://github.com/defunSM"><i class="fa fa-github-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://www.facebook.com/salman.hossain.944"><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://plus.google.com/u/0/109736817709668742056"><i class="fa fa-google-plus-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://twitter.com/SmSalmanHossain"><i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://www.linkedin.com/in/salman-hossain"><i class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i></a>
+                    <p>&nbsp;</p>
+
+
+                    <p>Email: &nbsp;&nbsp; <span>sxh8083@g.rit.edu</span></p>
+                    <p>Phone: &nbsp;&nbsp; <span>(347) - 398 - 1701 </span></p>
+				<p>© 2016-17 <span>Salman Hossain</span></p>
+			</div>
+			<div class="right">
+				<a href="#postwelcome">Top <i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+			</div>
+		</div>
+	</footer>
+	<!-- END FOOTER /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- Scripts -->
+	<script src="https://defunsm.github.io/js/parallax.js"></script>
+	<script src="https://defunsm.github.io/js/diffscroll.js"></script>
+	<script src="https://defunsm.github.io/js/featherlight.js" type="text/javascript" charset="utf-8"></script>
+	<script src="https://defunsm.github.io/js/scroll.js"></script>
+        <!-- <script src="//code.jquery.com/jquery-1.11.0.min.js"></script> -->
+        <!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script> -->
+
+        <script src="https://defunsm.github.io/js/highlight.pack.js"></script>
+        <script src="/js/highlight.pack.js" type="text/javascript"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>

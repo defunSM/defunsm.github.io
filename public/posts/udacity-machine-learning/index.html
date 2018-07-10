@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+	<title>Python - Naive Bayes Algorithm</title>
+	<!-- Styles -->
+	<link rel="stylesheet" href="https://defunsm.github.io/css/style.css" />
+	<link rel="stylesheet" href="https://defunsm.github.io/css/font-awesome.min.css" />
+	<link type="text/css" rel="stylesheet" href="https://defunsm.github.io/featherlight.css" />
+        <link rel="stylesheet" href="https://defunsm.github.io/css/screen.css" />
+        <!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css"> -->
+        <link rel="stylesheet" href="https://defunsm.github.io/css/solarized-dark.css" />
+
+	<style type="text/css">
+		@media all {
+			.lightbox { display: none; }
+		}
+	</style>
+	<!-- jQuery -->
+	<script src="https://defunsm.github.io/js/jquery.min.js"></script>
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="images/favicon.png">
+</head>
+<body class="fade-in cmon body">
+
+
+  <!-- HEADER /////////////////////////////////////////////////////////////////////////// -->
+
+
+  <!--    <ul3 class="nav-two"> -->
+  <!-- <li3 class="three"><a href="http://defunsm.github.io/">Home <i class="fa fa-home" aria-hidden="true"></i></a></li3> -->
+  <!-- <li3 class="fourl"><a href="http://defunsm.github.io/pages-output/another-page/">About <i class="fa fa-heart" aria-hidden="true"></i></a></li3> -->
+  <!-- <li3 class="onel"><a href="https://github.com/defunSM">GitHub <i class="fa fa-github" aria-hidden="true"></i></a></li3> -->
+  <!-- <li3 class="twol"><a href="http://defunsm.github.io/archives/">Archives <i class="fa fa-book" aria-hidden="true"></i></a></li3> -->
+  <!-- </ul3> -->
+
+  <!--  <div class="menubarblack"></div> -->
+
+	<header id="postwelcome" class="parent module parallax parallax-1">
+		<div class="burger" id="toggle">
+			<span class="top"></span>
+			<span class="middle"></span>
+			<span class="bottom"></span>
+
+		</div>
+
+		<div class="navigation" id="navigation">
+			<nav class="overlay-menu">
+			  <ul>
+                                          <li>
+                              <a href="https://defunsm.github.io/#Welcome" class="menu">Home <i class="fa fa-home" aria-hidden="true"></i>
+</a>
+			      <span class="simple_line"></span>
+                              </li>
+					<li >
+						<a href="https://defunsm.github.io/#about" class="menu">About <i class="fa fa-heart" aria-hidden="true"></i></a>
+						<span class="simple_line"></span>
+					</li>
+					<li>
+						<a href="https://defunsm.github.io/#portfolio" class="menu">Github <i class="fa fa-github" aria-hidden="true"></i></a>
+						<span class="simple_line"></span>
+					</li>
+					<li>
+					  <a href="https://defunsm.github.io/archives" class="menu">Archives <i class="fa fa-book" aria-hidden="true"></i></a>
+                                          <span class="simple_line"></span>
+					</li>
+
+                              
+
+
+
+
+
+
+
+
+			  </ul>
+			</nav>
+		</div>
+		<div class="scroll_down"></div>
+		<div class="fade child">
+			<div class="container_small">
+				<!-- Header Titles -->
+				<h1 class="header_title">Python - Naive Bayes Algorithm</h1>
+
+
+                                <a href="/posts/python-optparse/" class="button"><i class="fa fa-arrow-left" aria-hidden="true"></i> Python - Optparse</a>
+
+<br/>
+                                
+                                <a href="/posts/python-bokeh/" class="button">Python - Bokeh to Graph Boot Times <i class="fa fa-arrow-right" aria-hidden="true"></i>
+</i></a>
+
+
+			</div>
+		</div>
+	</header>
+	<!-- END HEADER /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- ABOUT SECTION /////////////////////////////////////////////////////////////////////////// -->
+	<section id="about" class="module defaultpadding">
+
+
+          <div class="anotherclass">
+
+
+                    
+                    <div class="post-header">
+    <div id="post-meta" class="row">
+        <div class="col-lg-6">December 25, 2016</div>
+        
+    </div>
+    <h2>Python - Naive Bayes Algorithm</h2>
+</div>
+<div>
+    
+     <p>Been trying to get into machine learning and found that the udacity courses are extremely well. Specially at their intro into machine learning course which is what I'm doing over the winter break to familiarize myself with different algorithms. They go step by step and don't really require much background besides some python programming as a prerequisite.  <br/><br/> <a href='https://www.udacity.com/course/intro-to-artificial-intelligence&ndash;cs271'>Udacity Intro into Machine Learning Course</a></p><p><a href='https://github.com/udacity/ud120-projects'>Udacity Project Repo for Intro Into Machine Learning</a> <br/><br/></p><p>The udacity course goes through explaining the concepts of machine learning rather well. One of the first algorithms that the course introduces you to is the Naive Bayes algoirthm.  <br/><br/> <a href='http://scikit-learn.org/stable/modules/naive_bayes.html'>Naive Bayes Algorithm Sklearn</a> <br/><br/></p><p>Python has a varity of libraries for machine learning like tensorflow, sklearn, and numpy. Sklearn has algorithms which is pretty stright forward to use and implement in your code. You can google it and sklearn will provide a short example code on how to use that particular algorithm and also displays the pros and cons of that particular algorithm. For example the Naive Bayes Algorithm shows a short example code in just 3 lines of code you can make your prediction dataset. Also using the <a href='http://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html'>sklearn.metrics</a> you can get a feel for how well your classifer does in predicting new data points.</p><pre><code>from sklearn.naive&#95;bayes import GaussianNB
+gnb = GaussianNB&#40;&#41;
+y&#95;pred = gnb.fit&#40;iris.data, iris.target&#41;.predict&#40;iris.data&#41;
+</code></pre><pre><code>from sklearn.metrics import accuracy&#95;score
+acc = accuracy&#95;score&#40;iris.data, y&#95;pred&#41;
+</code></pre><p>As you continue through the udacity course you'll be introduced to two other algorithms the Support Vector Machines and the Decision Tree algorithm. The course is approximated to be 4 months but I started 2 days ago and finished about 1/4 of it getting up to Decision Trees in two days so it can definitely be finished in less than a month if you go through it really quickly.</p>
+</div>
+
+<div id="post-tags">
+    <b>Tags: </b>
+    
+    <a href="/tags/Python/" class="button4">Python</a>
+    
+    <a href="/tags/Code/" class="button4">Code</a>
+    
+    <a href="/tags/Machine Learning/" class="button4">Machine Learning</a>
+    
+</div>
+
+
+                          <div id="prev-next">
+                            
+                            <a class="center button3" href="/posts/python-optparse/"><i class="fa fa-arrow-left" aria-hidden="true"></i> Python - Optparse</a>
+                            
+                            
+                            <a class="center button3" href="/posts/python-bokeh/">Python - Bokeh to Graph Boot Times <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                            
+                          </div>
+
+                          
+                          <div id="disqus_thread"></div>
+                          <script type="text/javascript">
+                            (function() {
+                            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                            dsq.src = '//defunsm-github-io.disqus.com/embed.js';
+                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                            })();
+                          </script>
+                          
+
+
+
+                        
+          </div>
+
+
+
+	</section>
+
+        <!-- END ABOUT SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- PORTFOLIO SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- END CONTACT SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- FOOTER /////////////////////////////////////////////////////////////////////////// -->
+	<footer>
+		<div class="container_footer">
+		  <div class="left">
+                    <a href="https://github.com/defunSM"><i class="fa fa-github-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://www.facebook.com/salman.hossain.944"><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://plus.google.com/u/0/109736817709668742056"><i class="fa fa-google-plus-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://twitter.com/SmSalmanHossain"><i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://www.linkedin.com/in/salman-hossain"><i class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i></a>
+                    <p>&nbsp;</p>
+
+
+                    <p>Email: &nbsp;&nbsp; <span>sxh8083@g.rit.edu</span></p>
+                    <p>Phone: &nbsp;&nbsp; <span>(347) - 398 - 1701 </span></p>
+				<p>© 2016-17 <span>Salman Hossain</span></p>
+			</div>
+			<div class="right">
+				<a href="#postwelcome">Top <i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+			</div>
+		</div>
+	</footer>
+	<!-- END FOOTER /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- Scripts -->
+	<script src="https://defunsm.github.io/js/parallax.js"></script>
+	<script src="https://defunsm.github.io/js/diffscroll.js"></script>
+	<script src="https://defunsm.github.io/js/featherlight.js" type="text/javascript" charset="utf-8"></script>
+	<script src="https://defunsm.github.io/js/scroll.js"></script>
+        <!-- <script src="//code.jquery.com/jquery-1.11.0.min.js"></script> -->
+        <!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script> -->
+
+        <script src="https://defunsm.github.io/js/highlight.pack.js"></script>
+        <script src="/js/highlight.pack.js" type="text/javascript"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>

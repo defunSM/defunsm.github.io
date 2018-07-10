@@ -3,11 +3,11 @@
 <head>
 	<meta charset="utf-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-	<title>Salman Hossain</title>
+	<title>Salman's Blog</title>
 	<!-- Styles -->
 	<link rel="stylesheet" href="https://defunsm.github.io/css/style.css" />
 	<link rel="stylesheet" href="https://defunsm.github.io/css/font-awesome.min.css" />
-	<link type="text/css" rel="stylesheet" href="https://defunsm.github.io/featherlight.css" />
+	<link type="text/css" rel="stylesheet" href="https://defunsm.github.io/css/featherlight.css" />
 
 	<style type="text/css">
 		@media all {
@@ -15,14 +15,25 @@
 		}
 	</style>
 	<!-- jQuery -->
-	<script src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js'></script>
+        <script src="https://defunsm.github.io/js/jquery.min.js"></script>
 	<!-- Favicon -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.xx.x/css/uikit.min.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.xx.x/js/uikit.min.js"></script>
 	<link rel="shortcut icon" href="images/favicon.png">
 </head>
 <body class="fade-in cmon body">
 
 
-	<!-- HEADER /////////////////////////////////////////////////////////////////////////// -->
+  <!-- HEADER /////////////////////////////////////////////////////////////////////////// -->
+
+  <!-- <ul3 class="nav-two"> -->
+  <!-- <li3 class="three"><a href="#welcome">Home <i class="fa fa-home" aria-hidden="true"></i></a></li3> -->
+  <!-- <li3 class="four"><a href="#about">About <i class="fa fa-heart" aria-hidden="true"></i></a></li3> -->
+  <!-- <li3 class="one"><a href="#portfolio">GitHub <i class="fa fa-github" aria-hidden="true"></i></a></li3> -->
+  <!-- <li3 class="two"><a href="#contact">Blog <i class="fa fa-book" aria-hidden="true"></i></a></li3> -->
+  <!-- </ul3> -->
+
+  <!-- <div class="menubarblack"></div> -->
 
 	<header id="welcome" class="parent module parallax parallax-1">
 
@@ -43,27 +54,27 @@
 			      <span class="simple_line"></span>
                               </li>
 					<li >
-						<a href="#about" class="menu">About <i class="fa fa-heart" aria-hidden="true"></i></a>
+						<a href="http://defunsm.github.io/pages/another-page/" class="menu">About <i class="fa fa-heart" aria-hidden="true"></i></a>
 						<span class="simple_line"></span>
 					</li>
 					<li>
-						<a href="#portfolio" class="menu">Github <i class="fa fa-github" aria-hidden="true"></i></a>
+						<a href="https://github.com/defunSM" class="menu">Github <i class="fa fa-github" aria-hidden="true"></i></a>
 						<span class="simple_line"></span>
 					</li>
 					<li>
-						<a href="/posts-output/udacity-machine-learning/" class="menu">Blog <i class="fa fa-book" aria-hidden="true"></i></a>
+						<a href="/posts/clojure-r-squared/" class="menu">Blog <i class="fa fa-book" aria-hidden="true"></i></a>
 					</li>
 				</ul>
 			</nav>
 		</div>
 		<div class="scroll_down"></div>
-		<div class="fade child">
+		<div id="headerspan" class="fade child">
 			<div class="container_small">
 				<!-- Header Titles -->
 				<h1 class="header_title">Salman Hossain</h1>
-				<h2 class="header_subtitle">A ployglot, full stack developer, young physicist</h2>
+				<h2 class="header_subtitle">A polyglot, full stack developer, young physicist</h2>
 
-                                <a href="#about"><center><span id="downarrow"><i class="fa fa-angle-down fa-4x" aria-hidden="true"></i></span>
+                                <a class="header_paralaxstyle" href="#about"><center><span id="downarrow"></span>
 </center></a>
 
 			</div>
@@ -72,19 +83,22 @@
 	<!-- END HEADER /////////////////////////////////////////////////////////////////////////// -->
 
 	<!-- ABOUT SECTION /////////////////////////////////////////////////////////////////////////// -->
-	<section id="about" class="module">
+	<section id="about" class="module defaultpadding">
 		<div class="container_small">
 			<h2 class="section_title">Who Am I?</h2>
 			<h3 class="section_subtitle">An Enthusiastic Programmer</h3>
 			<p> Been programming since high school. I coded particularly in a few languages some of which are C++, C, Perl, Ruby, Python, Java, JavaScript, LISP, Clojure, Haskell. I would say I'm most familiar with are Python and Clojure. Those two are my go to programming languages the other are just for variety. I use linux because why wouldn't you want to dual boot your laptop with Windows and Ubuntu? Yes. I use Emacs so now you know my political stance on the whole Emacs vs Vim debate.</p>
-
-			<a href="https://defunsm.github.io/pages-output/another-page/" class="button"> Learn more about me <i class="fa fa-heart" aria-hidden="true"></i></a>
+<!--                          <br></br>
+                        <img src="https://defunsm.github.io/img/bizpic.png" style="width:300px"></img>
+     <br></br>  -->
+      
+			<a href="https://defunsm.github.io/pages/another-page/" class="button1"> Learn more about me <i class="fa fa-heart" aria-hidden="true"></i></a>
 
                         <a href="#portfolio"><center><span id="downarrow"><i class="fa fa-angle-down fa-4x" aria-hidden="true"></i></span>
 </center></a>
 		</div>
 	</section>
-        <section id="portfolio" class="module">
+        <section id="portfolio" class="module defaultpadding">
         <!-- END ABOUT SECTION /////////////////////////////////////////////////////////////////////////// -->
 
 	<!-- PORTFOLIO SECTION /////////////////////////////////////////////////////////////////////////// -->
@@ -153,7 +167,7 @@
 					</a>
 				</article>
 			</div>
-                        <a href="https://github.com/defunsm" class="button">Follow My Github <i class="fa fa-github" aria-hidden="true"></i>
+                        <a href="https://github.com/defunsm" class="button1">Follow My Github <i class="fa fa-github" aria-hidden="true"></i>
                         </a>
 
                                                 <a href="#contact"><center><span id="downarrow"><i class="fa fa-angle-down fa-4x" aria-hidden="true"></i></span>
@@ -163,23 +177,33 @@
 	<!-- END PORTFOLIO SECTION /////////////////////////////////////////////////////////////////////////// -->
 
 	<!-- CONTACT SECTION /////////////////////////////////////////////////////////////////////////// -->
-	<section id="contact" class="module">
+	<section id="contact" class="module defaultpadding">
 		<div class="container_small">
 		  <h2 class="section_title">Blog</h2>
                   <h3 class="section_subtitle">Physics, Computers and Code</h3>
                   <p class="fadeInBlock">In general I write quite a bit about clojure which is what I mostly write code in. However I do write about other programming languages occasionally. I do also write about other things beside code once in a blue moon. It is largely just a collection of how to do this and how to do that guides. So if you really want to learn how to do something feel free to take a look.</p>
 
 		</div>
-                <a href="/posts-output/udacity-machine-learning/" class="button">Read My Blog <i class="fa fa-book" aria-hidden="true"></i>
+                <a href="/posts/clojure-r-squared/" class="button1">Read My Blog <i class="fa fa-book" aria-hidden="true"></i>
 </a>
 	</section>
 	<!-- END CONTACT SECTION /////////////////////////////////////////////////////////////////////////// -->
 
 	<!-- FOOTER /////////////////////////////////////////////////////////////////////////// -->
 	<footer>
-		<div class="container_footer">
-			<div class="left">
-				<p>© 2016 <span>Salman Hossain</span></p>
+		<div class="container_footer defaultpadding">
+		  <div class="left">
+                    <a href="https://github.com/defunSM"><i class="fa fa-github-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://www.facebook.com/salman.hossain.944"><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://plus.google.com/u/0/109736817709668742056"><i class="fa fa-google-plus-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://twitter.com/SmSalmanHossain"><i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://www.linkedin.com/in/salman-hossain"><i class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i></a>
+                    <p>&nbsp;</p>
+
+
+                    <p>Email: &nbsp;&nbsp; <span>sxh8083@g.rit.edu</span></p>
+                    <p>Phone: &nbsp;&nbsp; <span>(347) - 398 - 1701 </span></p>
+				<p>© 2016-17 <span>Salman Hossain</span></p>
 			</div>
 			<div class="right">
 				<a href="#welcome">Top <i class="fa fa-arrow-up" aria-hidden="true"></i>
