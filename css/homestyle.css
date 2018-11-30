@@ -1074,9 +1074,3 @@ body::-webkit-scrollbar-thumb {
     transition: all 300ms linear;
     border-radius: 5px;
 }
-
-mark {
-    background-color: #1D90CD;
-    padding: 0em 0em;
-    margin: 0em 0em;
-}
