@@ -1,5 +1,5 @@
 h1, h2, h3, h4, h5, h6 {
-    font-family: Amaranth,Fjord;
+    font-family: 'Alegreya';
 }
 
 body {
@@ -140,9 +140,7 @@ pre code {
 code {
     color: #93a1a1;
     font-family: Menlo,Monaco,"Andale Mono","lucida console","Courier New",monospace;
-    transition: font 1s ease;
 }
-
 
 
 pre {
@@ -152,7 +150,6 @@ pre {
     font-family: Menlo,Monaco,"Andale Mono","lucida console","Courier New",monospace;
     margin: 20px 10px 30px 10px;
 }
-
 
 
 @media (min-width: 768px) {
