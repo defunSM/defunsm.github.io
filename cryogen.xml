@@ -1,18 +1,18 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <rss version='2.0' xmlns:atom='http://www.w3.org/2005/Atom'>
 <channel>
-<atom:link href='http://blogawesome.com/' rel='self' type='application/rss+xml'/>
+<atom:link href='http://salmanhossain.me' rel='self' type='application/rss+xml'/>
 <title>
 Physics. Computers. Code.
 </title>
 <link>
-http://blogawesome.com/
+http://salmanhossain.me
 </link>
 <description>
 A place to share my knowledge
 </description>
 <lastBuildDate>
-Sun, 09 Dec 2018 15:58:57 -0500
+Fri, 21 Apr 2017 23:08:03 -0400
 </lastBuildDate>
 <generator>
 clj-rss

@@ -12,3 +12,14 @@ $(document).ready(function(){
 		});
 	});
 });
+
+// $('.tooltip').tooltipster({
+//     contentCloning: true
+// });
+
+// $('.tooltip').tooltipster({
+//     functionInit: function(instance, helper){
+//         var content = $(helper.origin).find('.tooltip_content').detach();
+//         instance.content(content);
+//     }
+// });

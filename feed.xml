@@ -1,89 +1,957 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <rss version='2.0' xmlns:atom='http://www.w3.org/2005/Atom'>
 <channel>
-<atom:link href='http://blogawesome.com/' rel='self' type='application/rss+xml'/>
+<atom:link href='http://salmanhossain.me' rel='self' type='application/rss+xml'/>
 <title>
 Physics. Computers. Code.
 </title>
 <link>
-http://blogawesome.com/
+http://salmanhossain.me
 </link>
 <description>
 A place to share my knowledge
 </description>
 <lastBuildDate>
-Sun, 09 Dec 2018 15:58:57 -0500
+Fri, 21 Apr 2017 23:08:03 -0400
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
 <item>
 <guid>
-http://blogawesome.com/posts-output/2018-12-09-Art_with_quil/
+http://salmanhossain.me/posts/racket-intro2/
 </guid>
 <link>
-http://blogawesome.com/posts-output/2018-12-09-Art_with_quil/
+http://salmanhossain.me/posts/racket-intro2/
 </link>
 <title>
-Art with Quil
+Racket - Intro (2)
 </title>
 <description>
- &lt;p&gt; It has been more than a year since the last post so trying to start that back up. I have made a couple posts previously about quil. Seeing some of the art created by Tyler inspired to look into quil and clojure again. Link to his site &lt;a href='https://www.tylerlhobbs.com/'&gt;here&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;He describes the dependencies he uses but I think they are a bit outdated since his guides were made awhile ago but from what I gathered this would be a better defproject.clj that I got working.&lt;/p&gt;&lt;p&gt;I'll post some interesting sketches later when I have time make a part two to this post.&lt;/p&gt;&lt;p&gt;&lt;i&gt;project.clj&lt;/i&gt;&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;defproject hello-quil &amp;quot;0.1.0-SNAPSHOT&amp;quot;
-  :description &amp;quot;FIXME: write description&amp;quot;
-  :url &amp;quot;http://example.com/FIXME&amp;quot;
-  :license {:name &amp;quot;Eclipse Public License&amp;quot;
-            :url &amp;quot;http://www.eclipse.org/legal/epl-v10.html&amp;quot;}
-  :dependencies &amp;#91;&amp;#91;org.clojure/clojure &amp;quot;1.9.0&amp;quot;&amp;#93;
-                 &amp;#91;org.clojure/clojure-contrib &amp;quot;1.2.0&amp;quot;&amp;#93;
-                 &amp;#91;quil &amp;quot;2.8.0&amp;quot;&amp;#93;
-                 &amp;#91;org.clojure/tools.nrepl &amp;quot;0.2.13&amp;quot;&amp;#93;
-                 &amp;#91;org.apache.commons/commons-math3 &amp;quot;3.3&amp;quot;&amp;#93;
-                 &amp;#91;incanter &amp;quot;1.5.5&amp;quot;&amp;#93;&amp;#93;
-  :plugins &amp;#91;&amp;#91;refactor-nrepl &amp;quot;2.4.0&amp;quot;&amp;#93;
-            &amp;#91;cider/cider-nrepl &amp;quot;0.18.0&amp;quot;&amp;#93;&amp;#93;
-  :jvm-opts &amp;#91;&amp;quot;-Xms1100m&amp;quot; &amp;quot;-Xmx1100M&amp;quot; &amp;quot;-server&amp;quot;&amp;#93;
-  :source-paths &amp;#91;&amp;quot;src/clj&amp;quot;&amp;#93;&amp;#41;
+ &lt;p&gt;This is continuing off of the previous blog post on racket. Make sure you have gone through that before going to this. In this section we'll cover &lt;newcode&gt;booleans&lt;/newcode&gt;, &lt;newcode&gt;conditionals&lt;/newcode&gt; and &lt;newcode&gt;apply&lt;/newcode&gt;.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;;; Booleans
+;; Racket uses #t and #f for true and false.
 
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;i&gt; core.clj &lt;/i&gt;&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;ns sketch.core
-  &amp;#40;:require &amp;#91;quil.core :as q&amp;#93;
-            &amp;#91;quil.middleware :as m&amp;#93;&amp;#41;
-  &amp;#40;:use &amp;#91;incanter.core :only &amp;#91;$=&amp;#93;&amp;#93;&amp;#41;
-  &amp;#40;:use &amp;#91;clojure.math.combinatorics :only &amp;#91;combinations cartesian-product&amp;#93;&amp;#93;&amp;#41;
-  &amp;#40;:use &amp;#91;clojure.pprint&amp;#93;&amp;#41;
-  &amp;#40;:use &amp;#91;clojure.set :only &amp;#91;union&amp;#93;&amp;#93;&amp;#41;
-  &amp;#40;:use &amp;#91;clojure.contrib.map-utils :only &amp;#91;deep-merge-with&amp;#93;&amp;#93;&amp;#41;
-  &amp;#40;:import &amp;#91;org.apache.commons.math3.distribution ParetoDistribution&amp;#93;&amp;#41;
-  &amp;#40;:import &amp;#91;processing.core PShape PGraphics&amp;#93;&amp;#41;
-  &amp;#40;:gen-class&amp;#41;&amp;#41;
+&amp;#40;= 2 &amp;#40;+ 1 1&amp;#41;&amp;#41;
+&amp;#40;= 2 &amp;#40;+ 1 2&amp;#41;&amp;#41;
 
-&amp;#40;defn setup &amp;#91;&amp;#93;
-  &amp;#40;q/frame-rate 1&amp;#41;&amp;#41;
+;; if statements in racket
+;; First part is the conditional which is the &amp;#40;= 2 &amp;#40;+ 1 1&amp;#41;&amp;#41; which is #t
+;; Second part is &amp;#40;println &amp;quot;True&amp;quot;&amp;#41; which is the true branch that'll execute if the condition is met.
+;; Third part &amp;#40;println &amp;quot;False&amp;quot;&amp;#41; is the false branch which won't be executed.
 
-&amp;#40;defn draw &amp;#91;&amp;#93;&amp;#41;
+&amp;#40;if &amp;#40;= 2 &amp;#40;+ 1 1&amp;#41;&amp;#41;
+    &amp;#40;println &amp;quot;True&amp;quot;&amp;#41;
+    &amp;#40;println &amp;quot;False&amp;quot;&amp;#41;&amp;#41;
 
-&amp;#40;q/defsketch example
-  :title &amp;quot;Sketch&amp;quot;
-  :settings #&amp;#40;q/smooth 1&amp;#41;
-  :setup setup
-  :draw draw
-  :size &amp;#91;500 500&amp;#93;
-  :middleware &amp;#91;m/fun-mode&amp;#93;&amp;#41;
+;; Notice that and will return true if nothing provided.
+;; and is #t if no arguments provided.
+;; or is #f is no arguments provided.
+;; and  will return the argument if only one argument is provided.
+;; or will do the same if one argument is provided.
 
+&amp;#40;define a 10&amp;#41;
+&amp;#40;define b 5&amp;#41;
+
+&amp;#40;and&amp;#41;
+&amp;#40;and b&amp;#41;
+
+&amp;#40;or&amp;#41;
+&amp;#40;or b&amp;#41;
+
+&amp;#40;and &amp;#40;even? a&amp;#41; &amp;#40;odd? b&amp;#41;&amp;#41;
+&amp;#40;and &amp;#40;odd? a&amp;#41; &amp;#40;odd? b&amp;#41;&amp;#41;
+&amp;#40;or &amp;#40;odd? a&amp;#41; &amp;#40;odd? b&amp;#41;&amp;#41;
+
+;; Conditionals in racket
+;; Must start with a bracket to start a conditional.
+;; Than there is the testing condition and if its met executes.
+
+&amp;#40;cond
+  &amp;#91;&amp;#40;positive? n&amp;#41; &amp;#40;println &amp;quot;This number is positive&amp;quot;&amp;#41;&amp;#93;
+  &amp;#91;&amp;#40;negative? n&amp;#41; &amp;#40;println &amp;quot;This number is negative&amp;quot;&amp;#41;&amp;#93;&amp;#41;
+
+
+;; There is also an else if none of the conditionals are met.
+;; Tells us if the quadradic has 2 roots, 1 root or imaginary roots.
+
+&amp;#40;define &amp;#40;roots a b c&amp;#41;
+  &amp;#40;let &amp;#40;&amp;#91;discriminant &amp;#40;- &amp;#40;expt b 2&amp;#41; &amp;#40;&amp;#42; 4 a c&amp;#41;&amp;#41;&amp;#93;&amp;#41;
+    &amp;#40;cond
+        &amp;#91;&amp;#40;positive? discriminant&amp;#41; &amp;#40;println &amp;quot;This quadradic has 2 roots&amp;quot;&amp;#41;&amp;#93;
+        &amp;#91;&amp;#40;negative? discriminant&amp;#41; &amp;#40;println &amp;quot;This quadradic has imaginary roots&amp;quot;&amp;#41;&amp;#93;
+        &amp;#91;else &amp;#40;println &amp;quot;This quadradic has 1 root&amp;quot;&amp;#41;&amp;#93;&amp;#41;&amp;#41;&amp;#41;
+
+;; Also note that racket makes a distinction between let and let&amp;#42; like in lisp.
+;; let won't allow you to use previous bindings as you would sometimes expect.
+;; let&amp;#42; however does let you use previous bindings.
+;; First one with let will provide an error because of the difference between let and let&amp;#42;
+;; You'll find that num is undefined in the first one. Second one works fine.
+
+&amp;#40;let &amp;#91;&amp;#40;num 10&amp;#41;
+      &amp;#40;result &amp;#40;+ 2 num&amp;#41;&amp;#41;&amp;#93;
+  result&amp;#41;
+
+&amp;#40;let&amp;#42; &amp;#91;&amp;#40;num 10&amp;#41;
+       &amp;#40;result &amp;#40;+ 2 num&amp;#41;&amp;#41;&amp;#93;
+  result&amp;#41;
+
+;; Apply which will distribute the prodecure across the list.
+;; Notice that the last argument for apply must be a list.
+
+&amp;#40;apply &amp;#42; '&amp;#40;1 2 3 4&amp;#41;&amp;#41;
+
+&amp;#40;apply &amp;#42; 1 2 '&amp;#40;3 4&amp;#41;&amp;#41;
+
+&amp;#40;apply &amp;#42; 1 2 3 '&amp;#40;4&amp;#41;&amp;#41;
+
+&amp;#40;apply &amp;#42; 1 2 3 4&amp;#41; ;; error: contract violation
 &lt;/code&gt;&lt;/pre&gt;
 </description>
 <enclosure>
 
 </enclosure>
 <pubDate>
-Sun, 09 Dec 2018 00:00:00 -0500
+Sat, 25 Mar 2017 00:00:00 -0400
 </pubDate>
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/clojure-using-quil-4/
+http://salmanhossain.me/posts/racket-intro/
 </guid>
 <link>
-http://blogawesome.com/posts-output/clojure-using-quil-4/
+http://salmanhossain.me/posts/racket-intro/
+</link>
+<title>
+Racket - Intro (1)
+</title>
+<description>
+ &lt;p&gt;A little guide on Racket. Since I been playing around with it for a while. Pretty cool but doesn't have some of the nice functions that clojure has such as the range but you can easily make it in racket. So here are some things to get familiar with racket.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;
+;; Needed to specify the language.
+&amp;#40;require racket&amp;#41;
+
+;; Addition similiar to clojure and other lisps
+&amp;#40;+ 2 2&amp;#41;
+
+;; accepts more than two arguments thats good.
+&amp;#40;+ 2 2 3&amp;#41;
+
+;; That works too.
+&amp;#40;+ 3 &amp;#40;&amp;#42; 2 2&amp;#41;&amp;#41;
+
+;; What happens when mixing with floats. Oh a float or racket calls them inexact numbers.
+
+&amp;#40;inexact? &amp;#40;+ 3 &amp;#40;&amp;#42; 2.0 2&amp;#41;&amp;#41;&amp;#41;
+
+;; How do we print strings now lets try println. Same as clojure.
+
+&amp;#40;println &amp;quot;Hello&amp;quot;&amp;#41;
+
+;; Do they have format? or something to concat strings? &amp;#126;a
+&amp;#40;&amp;#126;a &amp;quot;2+2=&amp;quot; &amp;#40;+ 2 2&amp;#41;&amp;#41;
+
+;; How do you define a top level variable in racket?
+&amp;#40;define x 10&amp;#41;
+
+x ;; 10
+
+;; local variable within a scope.
+;; Notice that x is 3 in that specific scope not 10.
+&amp;#40;let &amp;#91;&amp;#40;x 3&amp;#41;&amp;#93; x&amp;#41;
+
+;; just to check that x is actually still globally defined as 10.
+x ;; still 10 cool.
+
+;; Now how do you make a function? With define as well.
+&amp;#40;define &amp;#40;greetings name&amp;#41;
+  &amp;#40;&amp;#126;a &amp;quot;Hello, &amp;quot; name &amp;quot;!&amp;quot;&amp;#41;&amp;#41;
+
+&amp;#40;greetings &amp;quot;salman&amp;quot;&amp;#41; ;; Yep works.
+
+;; Oh it doesn't matter if you make them parantheses or brackets.
+
+&amp;#40;define &amp;#91;greetings name&amp;#93;
+  &amp;#40;&amp;#126;a &amp;quot;Hello, &amp;quot; name &amp;quot;!&amp;quot;&amp;#41;&amp;#41;
+
+&amp;#40;greetings &amp;quot;salman&amp;quot;&amp;#41; ;; still works.
+
+;; What about the lambda functions?
+
+&amp;#40;&amp;#40;lambda &amp;#40;x&amp;#41; &amp;#40;&amp;#42; x x&amp;#41;&amp;#41; 10&amp;#41;
+
+;; lists? Either way works they have the short hand way and the quote function.
+
+&amp;#40;quote &amp;#40;1 2 3 4&amp;#41;&amp;#41;
+
+'&amp;#40;1 2 3 4&amp;#41;
+
+;; Now how do I map functions to individual elements in a list.
+;; Oh they have map.
+
+&amp;#40;map &amp;#40;lambda &amp;#40;x&amp;#41; &amp;#40;&amp;#42; x x&amp;#41;&amp;#41; '&amp;#40;1 2 3 4&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Fri, 24 Mar 2017 00:00:00 -0400
+</pubDate>
+</item>
+<item>
+<guid>
+http://salmanhossain.me/posts/clojure-reading-csv/
+</guid>
+<link>
+http://salmanhossain.me/posts/clojure-reading-csv/
+</link>
+<title>
+Clojure - Reading CSV files
+</title>
+<description>
+&lt;p&gt;Lets have some fun today and analyze some data! Let us look at the S&amp;P500 which is a index commonly used to see how well the stock market is doing. &lt;br/&gt;&lt;br/&gt; We can get the data for the S&amp;P500 from yahoo finances link to that below. Make sure you have the range from Jan 03, 1980 to recent. &lt;br/&gt;&lt;br/&gt; &lt;a href='https://finance.yahoo.com/quote/%5EGSPC/history?period1=315723600&amp;period2=1488085200&amp;interval=1d&amp;filter=history&amp;frequency=1d'&gt;Link to the S&amp;P500 Data from Yahoo Finances&lt;/a&gt; &lt;br/&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Let us go ahead and run a lein project by the following command you can skip this if you already have a  project and you can just add incanter to the dependencies.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;$ lein new incantertut
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;After you have downloaded the cvs file go ahead and rename it to &lt;newcode&gt;data.csv&lt;/newcode&gt; and move it to the directory where your project.clj is located.  &lt;br/&gt;&lt;br/&gt; Let us set up our project.clj file to be this so that we have incanter in our project so that we can read csv data and as well as display the data if we decide to do that.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;defproject incantertut &amp;quot;0.1.0-SNAPSHOT&amp;quot;
+  :description &amp;quot;FIXME: write description&amp;quot;
+  :url &amp;quot;http://example.com/FIXME&amp;quot;
+  :license {:name &amp;quot;Eclipse Public License&amp;quot;
+            :url &amp;quot;http://www.eclipse.org/legal/epl-v10.html&amp;quot;}
+  :dependencies &amp;#91;&amp;#91;org.clojure/clojure &amp;quot;1.8.0&amp;quot;&amp;#93;
+                 &amp;#91;incanter &amp;quot;1.5.5&amp;quot;&amp;#93;&amp;#93;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now we can move on to the good part and start in our core.clj that in our src directory when creating a lein project. &lt;br/&gt;&lt;br/&gt; Go ahead and include the following for the namespaces. If you haven't seen incanter charts yet I recommend going through some of the previous guides I wrote on how to make graphs with incanter but otherwise I'll re-explain it briefly here as well. &lt;br/&gt;&lt;br/&gt; &lt;a href='http://salmanhossain.me/posts/clojure-incanter/'&gt;Making Graphs With Incanter&lt;/a&gt; &lt;br/&gt;&lt;br/&gt;&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;ns incantertut.core
+  &amp;#40;:use &amp;#91;incanter.charts :only &amp;#91;histogram scatter-plot pie-chart add-points add-lines xy-plot&amp;#93;&amp;#93;
+        &amp;#91;incanter.core :only &amp;#91;view&amp;#93;&amp;#93;
+        &amp;#91;incanter.stats :only &amp;#91;sample-normal linear-model&amp;#93;&amp;#93;
+        &amp;#91;incanter.io :only &amp;#91;read-dataset&amp;#93;&amp;#93;&amp;#41;
+  &amp;#40;:require &amp;#91;clj-time.core :as tc&amp;#93;
+            &amp;#91;clj-time.periodic :as tp&amp;#93;
+            &amp;#91;clj-time.coerce :as tco&amp;#93;&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;So the only new addition here will be the &lt;newcode&gt;incanter.io&lt;/newcode&gt; which will allow us to read csv files!&lt;br/&gt;&lt;br/&gt;Now to the good stuff. Add the following underneath the namespace in your core.clj file.&lt;pre&gt;&lt;code&gt;&amp;#40;def data &amp;#40;read-dataset &amp;quot;data.csv&amp;quot; :header true&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;Now you can view all of the data using the following. Be warned that this is around 30+ years of data so it could take a while for the data to appear. &lt;pre&gt;&lt;code&gt;&amp;#40;:rows data&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;However that just shows you the entire data what if we are only interested in the opening price of the stock? Well we can use map :Open to find all the opening prices.&lt;pre&gt;&lt;code&gt;&amp;#40;map :Open &amp;#40;:rows data&amp;#41;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;That will result in all the opening prices of the S&amp;P500. Now lets say we want to view it we can do that using the view and xy-plot from incanter to do just that. However before that notice that when we do map :Open to the data it will return the opening prices from most recent to least recent. That is not what we want since incanter xy-plot takes least recent to most recent. So we need to use reverse to fix that. So we'll just create a function to do that.&lt;pre&gt;&lt;code&gt;&amp;#40;defn view-data &amp;#91;selection data&amp;#93;
+  &amp;#40;let &amp;#91;sel-data &amp;#40;reverse &amp;#40;map selection &amp;#40;:rows data&amp;#41;&amp;#41;&amp;#41;
+        counter &amp;#40;count sel-data&amp;#41;&amp;#93;
+    &amp;#40;view &amp;#40;xy-plot &amp;#40;range counter&amp;#41; sel-data&amp;#41;&amp;#41;&amp;#41;&amp;#41;
+    
+&amp;#40;view-data :Open data&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;Now running that should produce the following pretty graph below.&lt;br/&gt;&lt;br/&gt;&lt;img src=&quot;https://defunsm.github.io/img/csvpic.png&quot; alt=&quot;cvspic&quot; /&gt;&lt;br/&gt;&lt;br/&gt;That is about it you can fix it up a bit by using a time-series instead so that instead of numbers on the bottom you have dates. As well as overlapping it with close prices too. Prehaps in another blog post.
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Sun, 26 Feb 2017 00:00:00 -0500
+</pubDate>
+</item>
+<item>
+<guid>
+http://salmanhossain.me/posts/clojure-r-squared/
+</guid>
+<link>
+http://salmanhossain.me/posts/clojure-r-squared/
+</link>
+<title>
+Clojure - R Squared
+</title>
+<description>
+&lt;p&gt;We'll pick back up from where we left off in the linear regression post last time. So we'll be keeping pretty much the same dependency of incanter and the name space should still look like the following below more or less.&lt;pre&gt;&lt;code&gt;&amp;#40;ns incantertut.core
+  &amp;#40;:use &amp;#91;incanter.charts :only &amp;#91;histogram scatter-plot pie-chart add-points add-lines&amp;#93;&amp;#93;
+        &amp;#91;incanter.core :only &amp;#91;view&amp;#93;&amp;#93;
+        &amp;#91;incanter.stats :only &amp;#91;sample-normal linear-model&amp;#93;&amp;#93;&amp;#41;&amp;#41;
+ &lt;/code&gt;&lt;/pre&gt;  &lt;/p&gt;&lt;p&gt;We are going to pick up where we left off and find some more interesting properties of the line of best fit such as the r squared value and other properties such as the residuals. So we know that the line of best fit we have which we constructed from the following data ...&lt;pre&gt;&lt;code&gt;&amp;#40;def x &amp;#91;1 2 3 4 5&amp;#93;&amp;#41;
+&amp;#40;def y &amp;#91;5 9 11 20 24&amp;#93;&amp;#41;
+
+&amp;#40;linear-model y x&amp;#41;
+
+&amp;#40;:fitted &amp;#40;linear-model y x&amp;#41;&amp;#41;
+;; =&amp;gt; &amp;#91;4.000000000000011 8.900000000000013 13.800000000000015 18.700000000000017 23.60000000000002&amp;#93;
+ &lt;/code&gt;&lt;/pre&gt; So before getting to the R squared value which we'll get soon enough. Let's look at how far the points are from the line of best fit. To do this incanter has provided :residuals.  The residuals are the distance away from the line of best fit. This is useful information to have when trying to understand how well our line of best fit 'fits' the data.&lt;pre&gt;&lt;code&gt;&amp;#40;:residuals &amp;#40;linear-model y x&amp;#41;&amp;#41;
+;; =&amp;gt; &amp;#91;0.9999999999999893 0.09999999999998721 -2.800000000000015 1.299999999999983 0.3999999999999808&amp;#93;
+ &lt;/code&gt;&lt;/pre&gt; So the residuals are nice but maybe you just want to see the absolute distance and not worry about the negatives in the residuals. Easy fix using map to just multiply it with a -1 to make it opposite like so...&lt;pre&gt;&lt;code&gt;&amp;#40;map &amp;#40;fn &amp;#91;x&amp;#93; &amp;#40;if &amp;#40;neg? x&amp;#41; &amp;#40;&amp;#42; x -1&amp;#41; x&amp;#41;&amp;#41; &amp;#40;:residuals &amp;#40;linear-model y x&amp;#41;&amp;#41;&amp;#41;
+;; =&amp;gt; &amp;#40;0.9999999999999893 0.09999999999998721 2.800000000000015 1.299999999999983 0.3999999999999808&amp;#41;
+ &lt;/code&gt;&lt;/pre&gt; Now we have all of the distances as positive lets place them on the graph! &lt;br/&gt;&lt;br/&gt; &lt;img src=&quot;https://defunsm.github.io/img/incanter5.png&quot; alt=&quot;incanter&quot; /&gt; &lt;br/&gt;&lt;br/&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;view &amp;#40;add-lines &amp;#40;scatter-plot x y&amp;#41;
+                 x &amp;#40;map &amp;#40;fn &amp;#91;x&amp;#93; &amp;#40;if &amp;#40;neg? x&amp;#41; &amp;#40;&amp;#42; x -1&amp;#41; x&amp;#41;&amp;#41; &amp;#40;:residuals &amp;#40;linear-model y x&amp;#41;&amp;#41;&amp;#41;&amp;#41;&amp;#41;
+ &lt;/code&gt;&lt;/pre&gt; You'll see somewhat of a representation of those residuals below and seeing from a visual standpoint which datapoints appear to be most out of fit with the line of best fit. Here you can see that the third point seems to be the most nearly 3 units away from the line of best fit.&lt;/p&gt;&lt;p&gt;Now lets do something else with the residuals a common thing to do is that you can square the residuals which will get you the sse or the sum of squares due to error.&lt;pre&gt;&lt;code&gt;&amp;#40;reduce + &amp;#40;map &amp;#40;fn &amp;#91;x&amp;#93; &amp;#40;&amp;#42; x x&amp;#41;&amp;#41; &amp;#40;:residuals &amp;#40;linear-model y x&amp;#41;&amp;#41;&amp;#41;&amp;#41;
+;; =&amp;gt; 10.7
+ &lt;/code&gt;&lt;/pre&gt; or actually in incanter you can just do the following instead of typing that entire thing out.&lt;pre&gt;&lt;code&gt;&amp;#40;:sse &amp;#40;linear-model y x&amp;#41;&amp;#41;
+;; =&amp;gt; 10.7
+ &lt;/code&gt;&lt;/pre&gt; So that value gives you some what of an idea of how well the data fits the line of best fit. However we can go and look further and get the R&lt;sup&gt;2&lt;/sup&gt; value from the linear-model.&lt;pre&gt;&lt;code&gt;&amp;#40;:r-square &amp;#40;linear-model y x&amp;#41;&amp;#41;
+;; =&amp;gt; 0.9573365231259969
+ &lt;/code&gt;&lt;/pre&gt; So that is our line of best fit but how well does it fit our data well that is where the R squared value comes in and determines how well our line fits our data. Typically the closer the R squared value is to 1 the better. As well as the R squared value is only ranges from 0 to 1. So 0.95 is pretty good so that our data fits the line of best fit rather well.&lt;/p&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Wed, 01 Feb 2017 00:00:00 -0500
+</pubDate>
+</item>
+<item>
+<guid>
+http://salmanhossain.me/posts/clojure-linear-regression/
+</guid>
+<link>
+http://salmanhossain.me/posts/clojure-linear-regression/
+</link>
+<title>
+Clojure - Linear Regression
+</title>
+<description>
+&lt;p&gt;&lt;img src=&quot;https://defunsm.github.io/img/incanter4.png&quot; alt=&quot;incanter&quot; /&gt;&lt;/p&gt;&lt;p&gt;We will try to do a basic linear regression here with incanter. If you don't know what linear regression is it is essentially finding the line of best fit. I'll demonstrate how you can find the line of best fit using incanter with a neat function called linear-model which will do a lot of the numerical calculations for us. Make sure to note that the data for the y axis is the first argument and not the second argument since at least for me it appears to be more intuitive to place the x axis in the second argument of the function but that isn't the case for the linear-model function from incanter.stat so take note of that. Let us go ahead and add our dependencies. As well as make sure that incanter is in your project.clj and your namespace looks like the following below.&lt;pre&gt;&lt;code&gt;&amp;#40;ns incantertut.core
+  &amp;#40;:use &amp;#91;incanter.charts :only &amp;#91;histogram scatter-plot pie-chart add-points add-lines&amp;#93;&amp;#93;
+        &amp;#91;incanter.core :only &amp;#91;view&amp;#93;&amp;#93;
+        &amp;#91;incanter.stats :only &amp;#91;sample-normal linear-model&amp;#93;&amp;#93;&amp;#41;&amp;#41;
+ &lt;/code&gt;&lt;/pre&gt; What linear-model will do for us will do a bunch of calculations off hand so that we don't have to do them ourselves which is good. However if you are interested in the math computational part like I am you should probably go learn linear algebra and some statistics which will help you understand more of whats going on but it isn't absolutely necessary if you just want a line of best fit to be displayed. &lt;br/&gt;&lt;br/&gt; I am not entirely sure why computer science and the machine learning community tend to like to call the line of best fit &quot;linear regression&quot; which sounds a bit scary to me but really all you are doing is fitting a line that happens to be stright to a bunch of points on a x and y axis graph. Nothing complicated really. However when introducing this topic of linear regression in textbooks the impression is that this is a huge big thing but anyways I digress too much and here you go with the easy and simple line of best fit.&lt;pre&gt;&lt;code&gt;&amp;#40;def x &amp;#91;1 2 3 4 5&amp;#93;&amp;#41;
+&amp;#40;def y &amp;#91;5 9 11 20 24&amp;#93;&amp;#41;
+
+&amp;#40;view &amp;#40;add-lines &amp;#40;scatter-plot x y&amp;#41;
+                  x &amp;#40;:fitted &amp;#40;linear-model y x&amp;#41;&amp;#41;&amp;#41;&amp;#41;
+ &lt;/code&gt;&lt;/pre&gt; Let me go through with what is going on here. The view is again if you haven't read through the previous post on basic incanter on how to display a histogram, scatterplot and a pie chart I suggest looking at that. However I'll assume you know what view is doing and is the function that allows you to see the graphs hence view. The add-lines is a new function from the incanter.charts that I haven't shown before and allows you to plot lines you could use add-points instead as well but than it wouldn't be line.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;:coefs &amp;#40;linear-model y x&amp;#41;&amp;#41;
+;; =&amp;gt; &amp;#91;-0.8999999999999915 4.900000000000002&amp;#93;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now lets take a look using :coefs gives us two numbers in a persistent vector. So what do those numbers represent? Well one of is negative and the other positive and so judging from the graph you seen the negative number can't be the slope since the slope was clearly had a positive slope. So from that conclusion you can assume that the first number is the y-intercept which it is. The second number is the slope no surprise there. &lt;br/&gt;&lt;br/&gt; This is going to be a pretty short post just showing you how to obtain slope and y-intercept but you may not satisfied and be left with questions such as how well fitted is my line of best fit? What is the R&lt;sup&gt;2&lt;/sup&gt; value? How do I get that kind of information from my line of best fit well if you're curious you can check the documentation or wait for the next post.&lt;/p&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Mon, 30 Jan 2017 00:00:00 -0500
+</pubDate>
+</item>
+<item>
+<guid>
+http://salmanhossain.me/posts/clojure-incanter/
+</guid>
+<link>
+http://salmanhossain.me/posts/clojure-incanter/
+</link>
+<title>
+Clojure - Basic Incanter
+</title>
+<description>
+ &lt;p&gt;&lt;a href='http://incanter.github.io/incanter/index.html'&gt;Incanter&lt;/a&gt; is similiar to R which has many uses for statistical computing. Incanter is a clojure based version of R which runs on the JVM. It has many useful functions to help aid in making graphs and analyze data. We'll only be looking on making graphs in this post but in a later post we'll look at analyzing data using incanter. For now lets make some graphs! &lt;br/&gt;&lt;br/&gt; Go ahead make a new clojure project with leiningen. Add the following to your project.clj to include incanter into your dependencies.&lt;pre&gt;&lt;code&gt;:dependencies &amp;#91;&amp;#91;org.clojure/clojure &amp;quot;1.8.0&amp;quot;&amp;#93;
+               &amp;#91;incanter &amp;quot;1.5.5&amp;quot;&amp;#93;&amp;#93;
+ &lt;/code&gt;&lt;/pre&gt; Go ahead and run lein deps so that leiningen can get incanter as a dependency.&lt;pre&gt;&lt;code&gt;lein deps
+ &lt;/code&gt;&lt;/pre&gt; After that we are ready to go and start editing the core.clj and first examining how to create a neat little &lt;newcode&gt;histogram&lt;/newcode&gt;. &lt;br/&gt;&lt;br/&gt; So lets use the things we are going to need from incanter make your namespace as the following just replace the namespace to whatever project you created in my case I did lein new incantertut but yours will be different so rechange that part of what you did.&lt;pre&gt;&lt;code&gt;&amp;#40;ns incantertut.core
+  &amp;#40;:use &amp;#91;incanter.charts :only &amp;#91;histogram scatter-plot pie-chart xy-plot&amp;#93;&amp;#93;
+        &amp;#91;incanter.core :only &amp;#91;view&amp;#93;&amp;#93;
+        &amp;#91;incanter.stats :only &amp;#91;sample-normal&amp;#93;&amp;#93;&amp;#41;&amp;#41;
+ &lt;/code&gt;&lt;/pre&gt; In this post we'll only be looking at histograms, scatter-plots and pie-charts. (Plus xy-plot) &lt;br/&gt;&lt;br/&gt; Next part is fun because it is literally one line to generate and view the graph and behold.&lt;pre&gt;&lt;code&gt;&amp;#40;view &amp;#40;histogram &amp;#40;sample-normal 10000 :mean 10&amp;#41;&amp;#41; :width 700 :height 700&amp;#41;
+ &lt;/code&gt;&lt;/pre&gt; After running that you should see the following graph pop up. &lt;br/&gt;&lt;br/&gt; &lt;img src=&quot;https://defunsm.github.io/img/incanter1.png&quot; alt=&quot;incanter&quot; /&gt; &lt;br/&gt;&lt;br/&gt; The above one-liner creates a histogram. The sample-normal function creates a normal gaussian distribution with 10,000 points. You can select the mean you want for the distribution in this case it was set to 10 by default it is 1. You can also set the :sd which is the standard deviation. &lt;br/&gt;&lt;br/&gt; The view function takes other parameters such as a width and height so you can play around with those changing the starting height/width of the histogram. Note that the view function can do more than just graphs. It can view urls and images as well! &lt;br/&gt;&lt;br/&gt; Next lets see how to make a scatter-plot which is pretty much a one liner as well and exactly the same as making a histogram expect we use &lt;newcode&gt;scatter-plot&lt;/newcode&gt; instead and define some variables before hand.&lt;pre&gt;&lt;code&gt;&amp;#40;def x &amp;#91;1 2 3 4 5&amp;#93;&amp;#41;
+&amp;#40;def y &amp;#91;5 9 11 20 24&amp;#93;&amp;#41;
+
+&amp;#40;view &amp;#40;scatter-plot x y&amp;#41;&amp;#41;
+ &lt;/code&gt;&lt;/pre&gt; &lt;img src=&quot;https://defunsm.github.io/img/incanter2.png&quot; alt=&quot;incanter 2&quot; /&gt; &lt;br/&gt;&lt;br/&gt; x and y defines the data for the x axis and the y variable contains the data for the y axis. Note that the x and y variables are of type persistentVector. &lt;br/&gt;&lt;br/&gt; Notice that the data set is not perfectly linear but it looks like you could draw a line of best fit or a regression line which I'll go over on how to do that in clojure later. As well as find values such as the R&lt;sup&gt;2&lt;/sup&gt; value telling us how well the data fits that line of best fit. &lt;br/&gt;&lt;br/&gt; Now for the file graph we'll make a pie graph. &lt;br/&gt;&lt;br/&gt; Piechart that we are about to make will include the elements making up earth's atmosphere and for that we'll define two variables called elements and percentages. Both persistent vectors however elements will consist of strings that will contain the name of the elements and percentages will contain the percentage of that element in the atmosphere. The main function here to create the pie-chart is called pie-chart which will be taking two arguments the elements and the percentages as well as you can add an additional parameter adding a :title as a string value such as &quot;Composition of the Earth's Atmosphere&quot;.&lt;pre&gt;&lt;code&gt;&amp;#40;def elements &amp;#91;&amp;quot;Nitrogen&amp;quot; &amp;quot;Oxygen&amp;quot; &amp;quot;Argon&amp;quot; &amp;quot;Carbon&amp;quot;&amp;#93;&amp;#41;
+&amp;#40;def percentages &amp;#91;78 21 0.9 0.03&amp;#93;&amp;#41;
+
+&amp;#40;view &amp;#40;pie-chart elements percentages :title &amp;quot;Composition of the Earth's Atmosphere&amp;quot;&amp;#41;&amp;#41;
+ &lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;https://defunsm.github.io/img/incanter3.png&quot; alt=&quot;incanter 3&quot; /&gt; Now say you wanted a scatter-plot but with the lines connected that is when you use a xy-plot.&lt;pre&gt;&lt;code&gt;&amp;#40;view &amp;#40;xy-plot x y&amp;#41;&amp;#41;
+ &lt;/code&gt;&lt;/pre&gt; &lt;img src=&quot;https://defunsm.github.io/img/incanter6.png&quot; alt=&quot;incanter 6&quot; /&gt; &lt;br/&gt;&lt;br/&gt; There are more variations of graphs avaliable in incanter but I just went through some of the more basic ones that people tend to use so there you go now you can make histograms, scatter-plots, xy-plot and pie charts. All in a few lines of clojure code.&lt;/p&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Sun, 29 Jan 2017 00:00:00 -0500
+</pubDate>
+</item>
+<item>
+<guid>
+http://salmanhossain.me/posts/python-pyqt5/
+</guid>
+<link>
+http://salmanhossain.me/posts/python-pyqt5/
+</link>
+<title>
+Python - Creating a Table using PyGt5
+</title>
+<description>
+ &lt;p&gt;&lt;img src=&quot;http://defunsm.github.io/img/pytable.png&quot; alt=&quot;table&quot; /&gt;&lt;/p&gt;&lt;p&gt;&lt;a href='http://pyqt.sourceforge.net/Docs/PyQt5/index.html'&gt;PyGt5&lt;/a&gt; is pretty nice when it comes to constructing some nice tables. I found that making tables in PyGt5 is easier than Gtk. So I thought I would just show you how to create a really quick python script to take a file such as the one below and create a table from it in a frame. Create the following text file below as example.txt and make sure you add those , because we are going to be later spliting by ',' to get each of the element and place them into the table.&lt;pre&gt;&lt;code&gt;red,blue,yellow
+c++,java,python
+physics,chemistry,biology
+1,2,3
+ &lt;/code&gt;&lt;/pre&gt; So if you don't have pyqt5 yet go ahead and install that with pip or whatever you use to download python modules.&lt;pre&gt;&lt;code&gt;pip install pyqt5
+ &lt;/code&gt;&lt;/pre&gt; Now there's already some basic tutorials out there to make tables like the one from &lt;a href='https://pythonspot.com/en/pyqt5-table/'&gt;pythonspot&lt;/a&gt;. However I wanna show how to make a more functional table of taking the example.txt and placing it into the table. So we'll just follow the example given and modify it. So go ahead and copy that code into the sample in pythonspot and we'll be modifying specifically the the &lt;newcode&gt;create_table()&lt;/newcode&gt; part.&lt;pre&gt;&lt;code&gt;#!/usr/bin/env python
+import sys
+from PyQt5.QtWidgets import QMainWindow, QApplication, QWidget, QAction, QTableWidget,QTableWidgetItem,QVBoxLayout
+from PyQt5.QtGui import QIcon
+from PyQt5.QtCore import pyqtSlot
+
+class App&amp;#40;QWidget&amp;#41;:
+
+    def &amp;#95;&amp;#95;init&amp;#95;&amp;#95;&amp;#40;self&amp;#41;:
+        super&amp;#40;&amp;#41;.&amp;#95;&amp;#95;init&amp;#95;&amp;#95;&amp;#40;&amp;#41;
+        self.title = 'PyQt5 table - pythonspot.com'
+        self.left = 0
+        self.top = 0
+        self.width = 300
+        self.height = 200
+        self.initUI&amp;#40;&amp;#41;
+
+    def initUI&amp;#40;self&amp;#41;:
+        self.setWindowTitle&amp;#40;self.title&amp;#41;
+        self.setGeometry&amp;#40;self.left, self.top, self.width, self.height&amp;#41;
+
+        self.createTable&amp;#40;&amp;#41;
+
+        # Add box layout, add table to box layout and add box layout to widget
+        self.layout = QVBoxLayout&amp;#40;&amp;#41;
+        self.layout.addWidget&amp;#40;self.tableWidget&amp;#41;
+        self.setLayout&amp;#40;self.layout&amp;#41;
+
+        # Show widget
+        self.show&amp;#40;&amp;#41;
+
+    def createTable&amp;#40;self&amp;#41;:
+       # Create table
+        self.tableWidget = QTableWidget&amp;#40;&amp;#41;
+        self.tableWidget.setRowCount&amp;#40;4&amp;#41;
+        self.tableWidget.setColumnCount&amp;#40;2&amp;#41;
+        self.tableWidget.setItem&amp;#40;0,0, QTableWidgetItem&amp;#40;&amp;quot;Cell &amp;#40;1,1&amp;#41;&amp;quot;&amp;#41;&amp;#41;
+        self.tableWidget.setItem&amp;#40;0,1, QTableWidgetItem&amp;#40;&amp;quot;Cell &amp;#40;1,2&amp;#41;&amp;quot;&amp;#41;&amp;#41;
+        self.tableWidget.setItem&amp;#40;1,0, QTableWidgetItem&amp;#40;&amp;quot;Cell &amp;#40;2,1&amp;#41;&amp;quot;&amp;#41;&amp;#41;
+        self.tableWidget.setItem&amp;#40;1,1, QTableWidgetItem&amp;#40;&amp;quot;Cell &amp;#40;2,2&amp;#41;&amp;quot;&amp;#41;&amp;#41;
+        self.tableWidget.setItem&amp;#40;2,0, QTableWidgetItem&amp;#40;&amp;quot;Cell &amp;#40;3,1&amp;#41;&amp;quot;&amp;#41;&amp;#41;
+        self.tableWidget.setItem&amp;#40;2,1, QTableWidgetItem&amp;#40;&amp;quot;Cell &amp;#40;3,2&amp;#41;&amp;quot;&amp;#41;&amp;#41;
+        self.tableWidget.setItem&amp;#40;3,0, QTableWidgetItem&amp;#40;&amp;quot;Cell &amp;#40;4,1&amp;#41;&amp;quot;&amp;#41;&amp;#41;
+        self.tableWidget.setItem&amp;#40;3,1, QTableWidgetItem&amp;#40;&amp;quot;Cell &amp;#40;4,2&amp;#41;&amp;quot;&amp;#41;&amp;#41;
+        self.tableWidget.move&amp;#40;0,0&amp;#41;
+
+        # table selection change
+        self.tableWidget.doubleClicked.connect&amp;#40;self.on&amp;#95;click&amp;#41;
+
+    @pyqtSlot&amp;#40;&amp;#41;
+    def on&amp;#95;click&amp;#40;self&amp;#41;:
+        print&amp;#40;&amp;quot;\n&amp;quot;&amp;#41;
+        for currentQTableWidgetItem in self.tableWidget.selectedItems&amp;#40;&amp;#41;:
+            print&amp;#40;currentQTableWidgetItem.row&amp;#40;&amp;#41;, currentQTableWidgetItem.column&amp;#40;&amp;#41;, currentQTableWidgetItem.text&amp;#40;&amp;#41;&amp;#41;
+
+if &amp;#95;&amp;#95;name&amp;#95;&amp;#95; == '&amp;#95;&amp;#95;main&amp;#95;&amp;#95;':
+    app = QApplication&amp;#40;sys.argv&amp;#41;
+    ex = App&amp;#40;&amp;#41;
+    sys.exit&amp;#40;app.exec&amp;#95;&amp;#40;&amp;#41;&amp;#41;
+ &lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;So you should have it like this so far. And if you run it you'll see a cell 4 by 2. So now lets get to editing this to make it take from the example.txt so we'll go stright to createTable and edit that method specifically since that is what we want. Change it to the following...&lt;pre&gt;&lt;code&gt;    def createTable&amp;#40;self&amp;#41;:
+       # Create table
+        elements = &amp;#91;&amp;#93;
+        f = open&amp;#40;'example.txt','r'&amp;#41;
+
+        for line in f.readlines&amp;#40;&amp;#41;:
+            elements.append&amp;#40;line.split&amp;#40;&amp;quot;,&amp;quot;&amp;#41;&amp;#41;
+            
+        f.close&amp;#40;&amp;#41;
+
+        self.tableWidget = QTableWidget&amp;#40;&amp;#41;
+        self.tableWidget.setRowCount&amp;#40;len&amp;#40;elements&amp;#41;&amp;#41;
+        self.tableWidget.setColumnCount&amp;#40;3&amp;#41;
+
+        for i in range&amp;#40;len&amp;#40;elements&amp;#41;&amp;#41;:
+            self.tableWidget.setItem&amp;#40;i, 0, QTableWidgetItem&amp;#40;elements&amp;#91;i&amp;#93;&amp;#91;0&amp;#93;&amp;#41;&amp;#41;
+            self.tableWidget.setItem&amp;#40;i, 1, QTableWidgetItem&amp;#40;elements&amp;#91;i&amp;#93;&amp;#91;1&amp;#93;&amp;#41;&amp;#41;
+            self.tableWidget.setItem&amp;#40;i, 2, QTableWidgetItem&amp;#40;elements&amp;#91;i&amp;#93;&amp;#91;2&amp;#93;&amp;#41;&amp;#41;
+
+        # table selection change
+        self.tableWidget.doubleClicked.connect&amp;#40;self.on&amp;#95;click&amp;#41;
+ &lt;/code&gt;&lt;/pre&gt; Now if you run this you'll see that it will read from the example.txt and actually take those and put it into the table. Try it put more elements into the example.txt and you'll see it correctly places them into the table. Now let me explain what we did the method to do this.&lt;pre&gt;&lt;code&gt;elements = &amp;#91;&amp;#93;
+f = open&amp;#40;'example.txt','r'&amp;#41;
+ &lt;/code&gt;&lt;/pre&gt; This part is creating a variable to store all the elements in the example.txt file to store into an array. After that we open the example.txt using the read param since all we are going to do is read the example.txt file. Of course we also close it later on which you should always remember to do with &lt;newcode&gt;f.close()&lt;/newcode&gt;.&lt;pre&gt;&lt;code&gt;for line in f.readlines&amp;#40;&amp;#41;:
+   elements.append&amp;#40;line.split&amp;#40;&amp;quot;,&amp;quot;&amp;#41;&amp;#41;
+            
+f.close&amp;#40;&amp;#41;
+ &lt;/code&gt;&lt;/pre&gt; This is we loop through each line with a for statement and spliting based on the comma. If you're confused by this just place a print(elements[1]) in the table method to see how the array looks so that you can see how exactly we are going to put them into the tableWidget.&lt;pre&gt;&lt;code&gt;self.tableWidget = QTableWidget&amp;#40;&amp;#41;
+self.tableWidget.setRowCount&amp;#40;len&amp;#40;elements&amp;#41;&amp;#41;
+self.tableWidget.setColumnCount&amp;#40;3&amp;#41;
+ &lt;/code&gt;&lt;/pre&gt; This part is actually creating the QTableWidget which is the table. As well as stating how many rows we are going to have and this is determined by counting how using len on elements to count the amount of rows there is going to be and than since we already know the column amount it is hard coded into the code but we could've done a similiar thing for the column if there is a varity on the column. &lt;pre&gt;&lt;code&gt;for i in range&amp;#40;len&amp;#40;elements&amp;#41;&amp;#41;:
+   self.tableWidget.setItem&amp;#40;i, 0, QTableWidgetItem&amp;#40;elements&amp;#91;i&amp;#93;&amp;#91;0&amp;#93;&amp;#41;&amp;#41;
+   self.tableWidget.setItem&amp;#40;i, 1, QTableWidgetItem&amp;#40;elements&amp;#91;i&amp;#93;&amp;#91;1&amp;#93;&amp;#41;&amp;#41;
+   self.tableWidget.setItem&amp;#40;i, 2, QTableWidgetItem&amp;#40;elements&amp;#91;i&amp;#93;&amp;#91;2&amp;#93;&amp;#41;&amp;#41;
+ &lt;/code&gt;&lt;/pre&gt; This is the meat of the code so to speak. Where all of the major action is going on. The for statement is looping and placing the elements into its respective cell. This is done by using the &lt;newcode&gt;setItem&lt;/newcode&gt; method and as you can see it is looped for the amount of arrays in elements using len to find that value.  &lt;br/&gt;&lt;br/&gt; The majority of the rest of the code is just to set up the frame which is not so vital but now you can create tables from a .txt file which is amazing and can extend this even further and create some graphs using matplotlib which is built into PyGt5.&lt;/p&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Sat, 14 Jan 2017 00:00:00 -0500
+</pubDate>
+</item>
+<item>
+<guid>
+http://salmanhossain.me/posts/python-commands/
+</guid>
+<link>
+http://salmanhossain.me/posts/python-commands/
+</link>
+<title>
+Python - Running Commands
+</title>
+<description>
+&lt;p&gt;If you want to run some shell commands from your python script. Often this is sometimes needed in your code and the way that this is done in python is with &lt;newcode&gt;subprocess&lt;/newcode&gt; module. So to run a shell command using the subprocess module you import call.&lt;pre&gt;&lt;code&gt;from subprocess import call
+ &lt;/code&gt;&lt;/pre&gt; After that you can use call to pass the arguments and call the shell command like the following.&lt;pre&gt;&lt;code&gt;call&amp;#40;&amp;#91;&amp;quot;touch&amp;quot;, &amp;quot;newfile.txt&amp;quot;&amp;#93;&amp;#41;
+ &lt;/code&gt;&lt;/pre&gt; That is all there is to it. More about how to use the subprocess module you can check the &lt;a href='https://docs.python.org/2/library/subprocess.html'&gt;documentation&lt;/a&gt;.&lt;/p&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Wed, 11 Jan 2017 00:00:00 -0500
+</pubDate>
+</item>
+<item>
+<guid>
+http://salmanhossain.me/posts/python-posterior-probability/
+</guid>
+<link>
+http://salmanhossain.me/posts/python-posterior-probability/
+</link>
+<title>
+Python - Prior, Posterior Probability and Normalization
+</title>
+<description>
+&lt;p&gt;When learning about Baye's theorem there is often talk about &lt;newcode&gt;Priors&lt;/newcode&gt;, &lt;newcode&gt;Posterior Probability&lt;/newcode&gt;, and &lt;newcode&gt;Normalization&lt;/newcode&gt;. Those are fancy words when I first heard them but really they are simple concepts so I will try to explain them in the simplest terms I can. So lets start with trying to give a basic idea of a prior. &lt;br/&gt;&lt;br/&gt; A way to think about a prior is as your belief in a certain event or information. If a person believes that theres equal chances for either event to occur such as maybe a coin flip than that person has a prior of 0.5 for heads and 0.5 for tails. One thing to note about the prior is that this is a value assigned before any evidence and before the coin is even flipped. Now lets say we flip the coin a thousand of times and it seems to favor heads slightly more than tails for whatever reason than your original prior can be updated to favor the evidence and so now you're prior could be 0.60 for heads and 0.40 for tails.  &lt;br/&gt;&lt;br/&gt; Normalization is done by first finding the probability of being heads and not being heads which is done by multiplying by the prior and than adding up the probabilities. Adding up the probability will give you the total probability which does not usually add up to one. In that case you have to normalize it by adding both probabilities and than dividing the probability of the event over the total probability. &lt;br/&gt;&lt;br/&gt; The posterior probability is than determined by calculating the probability of the event by multiplying by the prior but this time dividing by the total probability so that the probability of not occuring will equal to 1. So you can think of the posterior probability as your updated probability after examining the data. &lt;br/&gt;&lt;br/&gt; So lets look at an example of putting all this stuff into practice. Lets say we have two guys Jake and Tony who both like Emily. Lets say our belief/prior is that they both have a fifty-fifty chance of hooking up with Emily. Now the next part is a bit unrealistic as we are going to quantify personality, appearance, and intelligence which are things that are quite difficult to do so. However for now we'll just be using this example to demonstrate and look at a more realistic example later on. So lets say Tony has 0.5 appearance, 0.3 intelligence, and 0.2 personality. Notice we are making the character traits into a probabity adding to 1. Now the same for Jake but he may not be as appearance inclined as Tony but has slightly more intelligence. So Jake has 0.3 appearance, 0.5 intelligence, 0.2 personality. Now lets say Emily doesn't care about appearance since you know its overrated now a days. So she values intelligence and personality so how do we know who is more likely to hook up with Emily? From just common sense you could probably figure it out since it isn't really a close call but lets do the math. &lt;br/&gt;&lt;br/&gt; So lets write a quick python script to figure it out or you could just do the math on a calculator if you want but I would rather create a small script so if you wanted to change the values you would do it rather quickly and easily.&lt;pre&gt;&lt;code&gt;def main&amp;#40;&amp;#41;:
+
+    prior = 0.5
+    tony = {&amp;quot;Appearance&amp;quot;: 0.5, &amp;quot;Intelligence&amp;quot;: 0.3, &amp;quot;Personality&amp;quot;: 0.2}
+    jake = {&amp;quot;Appearance&amp;quot;: 0.3, &amp;quot;Intelligence&amp;quot;: 0.5, &amp;quot;Personality&amp;quot;: 0.2}
+
+    total&amp;#95;probability = &amp;#40;tony&amp;#91;&amp;quot;Intelligence&amp;quot;&amp;#93; &amp;#42; tony&amp;#91;&amp;quot;Personality&amp;quot;&amp;#93; &amp;#42; prior&amp;#41; + &amp;#40;jake&amp;#91;&amp;quot;Intelligence&amp;quot;&amp;#93; &amp;#42; tony&amp;#91;&amp;quot;Personality&amp;quot;&amp;#93; &amp;#42; prior&amp;#41;
+
+    print&amp;#40;total&amp;#95;probability&amp;#41;
+
+    tony&amp;#95;posterior&amp;#95;probability = &amp;#40;tony&amp;#91;&amp;quot;Intelligence&amp;quot;&amp;#93; &amp;#42; tony&amp;#91;&amp;quot;Personality&amp;quot;&amp;#93; &amp;#42; prior&amp;#41; / total&amp;#95;probability
+    jake&amp;#95;posterior&amp;#95;probability = &amp;#40;jake&amp;#91;&amp;quot;Intelligence&amp;quot;&amp;#93; &amp;#42; jake&amp;#91;&amp;quot;Personality&amp;quot;&amp;#93; &amp;#42; prior&amp;#41; / total&amp;#95;probability
+
+    print&amp;#40;&amp;quot;Tony's Posterior Probability: &amp;quot;, tony&amp;#95;posterior&amp;#95;probability&amp;#41;
+    print&amp;#40;&amp;quot;Jake's Posterior Probability: &amp;quot;, jake&amp;#95;posterior&amp;#95;probability&amp;#41;
+
+
+if &amp;#95;&amp;#95;name&amp;#95;&amp;#95;==&amp;quot;&amp;#95;&amp;#95;main&amp;#95;&amp;#95;&amp;quot;:
+    main&amp;#40;&amp;#41;
+ &lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;After running the calculations you'll find that the results are that jake has a higher posterior probabilty and that makes sense since you put into consideration that Emily doesn't care about appearance. So you would get that Tony has a posterior probability of 0.375 and Jake has a posterior probability of 0.625. Sad news for Tony unfortunately. &lt;/p&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Tue, 10 Jan 2017 00:00:00 -0500
+</pubDate>
+</item>
+<item>
+<guid>
+http://salmanhossain.me/posts/python-entropy/
+</guid>
+<link>
+http://salmanhossain.me/posts/python-entropy/
+</link>
+<title>
+Python - Entropy in Machine Learning
+</title>
+<description>
+  &lt;p&gt; &lt;newcode&gt;Entropy&lt;/newcode&gt; when talked about in information theory relates to the &lt;newcode&gt;randomness&lt;/newcode&gt; in data. Another way to think about entropy is that it is the &lt;newcode&gt;unpredictability&lt;/newcode&gt; of the data. So a high entropy is essentially saying that the data is scattered around while a low entropy means that nearly all the data is the same. So since in machine learning data is essentially the way that we build classifiers we often need to manage the entropy to be not too low nor too high and reach a nice balance. The &lt;newcode&gt;Pi&lt;/newcode&gt; in the entropy equation below represents the probability of the event occuring. &lt;/p&gt;&lt;p&gt; &lt;img src=&quot;https://defunsm.github.io/img/entropypic.png&quot; alt=&quot;picture of entropy equation&quot; /&gt;&lt;/p&gt;&lt;p&gt;So just a few things to note when calculating entropy we are using log 2 and not log 10 small distinction but does change your result. You may see different forms of this equation if you search up entropy but generally you'll find it'll look something like the above. &lt;br/&gt;&lt;br/&gt; So what is the point of finding entropy? I mean yes its nice I guess to know if your data is more or less random but what can we do with entropy? Well entropy also tells us how much &lt;newcode&gt;information&lt;/newcode&gt; we are going to get from a specific event. For example if we have a coin and say it isn't loaded in any way and has a 50/50 chance of either head or tails. This will result in lower entropy since the chances are fair which means more information. &lt;br/&gt;&lt;br/&gt; We could create a nice python script to calculate the entropy for us. So lets go ahead and do that we'll need the &lt;newcode&gt;math module&lt;/newcode&gt; for the log. After that we'll make a function that will take an &lt;newcode&gt;array of probabilities&lt;/newcode&gt; of each event occuring. So our probability array will be [0.5, 0.5] since it is an equal chance of either heads or tails occuring.&lt;pre&gt;&lt;code&gt;import math
+
+def entropy&amp;#95;cal&amp;#40;array&amp;#41;:
+
+    total&amp;#95;entropy = 0
+
+    for i in array:
+        total&amp;#95;entropy += -i &amp;#42; math.log&amp;#40;2, i&amp;#41;
+
+    return total&amp;#95;entropy
+
+def main&amp;#40;&amp;#41;:
+
+    probabilities = &amp;#91;0.5, 0.5&amp;#93;
+    entropy = entropy&amp;#95;cal&amp;#40;probabilities&amp;#41;
+
+    print&amp;#40;entropy&amp;#41;
+
+if &amp;#95;&amp;#95;name&amp;#95;&amp;#95;==&amp;quot;&amp;#95;&amp;#95;main&amp;#95;&amp;#95;&amp;quot;:
+    main&amp;#40;&amp;#41;
+ &lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;One of the things you'll find out if you play around with the entropy equation is that equal chance events give out more  information because there is less entropy. For example try changing the probability to [0.75, 0.25] in other words a rigged coin  toss in which heads is 0.75 and tails is 0.25 or vise versa and you'll find that there is a higher entropy. Events that are more tilted have higher entropy than those with equal chances resulting in less information. So essentially more entropy is less information and less entropy is more information. You can also see this as reduced uncertainity means a lower entropy. Since a higher entropy means there is a higher uncertainity. &lt;br/&gt;&lt;br/&gt; So that is about it as far as calculating entropies go and if you were wondering what the units are for entropy it is usally refered to as a 'bit' but this depends on the log base you are using but since we are using 2 which means it can either be 1 or 0. &lt;br/&gt;&lt;br/&gt; Thats about it when it comes to just doing some basic calculations with the entropy equation.&lt;/p&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Mon, 09 Jan 2017 00:00:00 -0500
+</pubDate>
+</item>
+<item>
+<guid>
+http://salmanhossain.me/posts/python-gtk/
+</guid>
+<link>
+http://salmanhossain.me/posts/python-gtk/
+</link>
+<title>
+Python - GTK 3.0
+</title>
+<description>
+ &lt;p&gt;If you're looking to make GUI's using python. You should take a look at GTK 3.0 which is a nice module for building GUIs.  &lt;br/&gt;&lt;br/&gt; &lt;a href='http://python-gtk-3-tutorial.readthedocs.io/en/latest/install.html'&gt;GTK 3.0&lt;/a&gt; &lt;br/&gt;&lt;br/&gt; After installing it they have a couple of example code to get started with. Put the following in a file called gtktut.py and go ahead and run the code below.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;import gi
+gi.require&amp;#95;version&amp;#40;'Gtk', '3.0'&amp;#41;
+from gi.repository import Gtk
+
+class MyWindow&amp;#40;Gtk.Window&amp;#41;:
+
+    def &amp;#95;&amp;#95;init&amp;#95;&amp;#95;&amp;#40;self&amp;#41;:
+        Gtk.Window.&amp;#95;&amp;#95;init&amp;#95;&amp;#95;&amp;#40;self, title=&amp;quot;Hello World&amp;quot;&amp;#41;
+
+        self.button = Gtk.Button&amp;#40;label=&amp;quot;Click Here&amp;quot;&amp;#41;
+        self.button.connect&amp;#40;&amp;quot;clicked&amp;quot;, self.on&amp;#95;button&amp;#95;clicked&amp;#41;
+        self.add&amp;#40;self.button&amp;#41;
+
+    def on&amp;#95;button&amp;#95;clicked&amp;#40;self, widget&amp;#41;:
+        print&amp;#40;&amp;quot;Hello World&amp;quot;&amp;#41;
+
+win = MyWindow&amp;#40;&amp;#41;
+win.connect&amp;#40;&amp;quot;delete-event&amp;quot;, Gtk.main&amp;#95;quit&amp;#41;
+win.show&amp;#95;all&amp;#40;&amp;#41;
+Gtk.main&amp;#40;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;I'll go through some of the code above. So the first line is the basic import you have probably seen it just imports gi which allows you to import GTK from the gi.repository specifically you have to require Gtk 3.0. &lt;pre&gt;&lt;code&gt;Gtk.Window.&amp;#95;&amp;#95;init&amp;#95;&amp;#95;&amp;#40;self, title=&amp;quot;Hello World&amp;quot;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;This is the class constructor to set the window title.&lt;pre&gt;&lt;code&gt;self.button = Gtk.Button&amp;#40;label=&amp;quot;Click Here&amp;quot;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;So in this code you're just inheriting from the Gtk.Window class and initializing some basic things on the 8th line. Also then setting up a button which you do by calling Gtk.Button().&lt;pre&gt;&lt;code&gt;self.button.connect&amp;#40;&amp;quot;clicked&amp;quot;, self.on&amp;#95;button&amp;#95;clicked&amp;#41;
+self.add&amp;#40;self.button&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Then you are connecting the button to a function called on&amp;#95;button&amp;#95;clicked which you define within the class.&lt;pre&gt;&lt;code&gt;win = MyWindow&amp;#40;&amp;#41;
+win.connect&amp;#40;&amp;quot;delete-event&amp;quot;, Gtk.main&amp;#95;quit&amp;#41;
+win.show&amp;#95;all&amp;#40;&amp;#41;
+Gtk.main&amp;#40;&amp;#41;
+ &lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;p&gt;The first line is setting win as an object of the class MyWindow(). The second line allows you to close the window and without it you wont be able to close it. The second line shows the window and finally the Gtk.main() creates the main loop. &lt;br/&gt;&lt;br/&gt; So we can easily make a menu launcher just by knowing how to make buttons, a grid, and running commands in python using call. So lets start with the example code that the documentation gives us to start with and make our own menu launcher. First we'll start off by importing call from subprocesses.&lt;pre&gt;&lt;code&gt;from subprocess import call
+ &lt;/code&gt;&lt;/pre&gt; Now using call you can exechute commands in python. So if we wanted to open firefox we could do something like the following and change on&amp;#95;button&amp;#95;clicked.&lt;pre&gt;&lt;code&gt;def on&amp;#95;button&amp;#95;clicked&amp;#40;self, widget&amp;#41;:
+   call&amp;#40;&amp;#91;&amp;quot;firefox&amp;quot;&amp;#93;&amp;#41;
+ &lt;/code&gt;&lt;/pre&gt; Now you can launch firefox by pressing the button and you change the label of the button to 'Firefox'.&lt;pre&gt;&lt;code&gt;self.button = Gtk.Button&amp;#40;label=&amp;quot;Firefox&amp;quot;&amp;#41;
+ &lt;/code&gt;&lt;/pre&gt; Now the button will be labeled as firefox and launches firefox. You could essentially make more of these buttons and make a launcher if you wanted to but I'll leave that up to you. So you're final code for gtktut.py should be something like this...&lt;/p&gt;&lt;pre&gt;&lt;code&gt;import gi
+gi.require&amp;#95;version&amp;#40;'Gtk', '3.0'&amp;#41;
+from gi.repository import Gtk
+from subprocess import call
+
+class MyWindow&amp;#40;Gtk.Window&amp;#41;:
+
+    def &amp;#95;&amp;#95;init&amp;#95;&amp;#95;&amp;#40;self&amp;#41;:
+        Gtk.Window.&amp;#95;&amp;#95;init&amp;#95;&amp;#95;&amp;#40;self, title=&amp;quot;Hello World&amp;quot;&amp;#41;
+
+        self.button = Gtk.Button&amp;#40;label=&amp;quot;Firefox&amp;quot;&amp;#41;
+        self.button.connect&amp;#40;&amp;quot;clicked&amp;quot;, self.on&amp;#95;button&amp;#95;clicked&amp;#41;
+        self.add&amp;#40;self.button&amp;#41;
+
+    def on&amp;#95;button&amp;#95;clicked&amp;#40;self, widget&amp;#41;:
+        call&amp;#40;&amp;#91;&amp;quot;firefox&amp;quot;&amp;#93;&amp;#41;
+
+win = MyWindow&amp;#40;&amp;#41;
+win.connect&amp;#40;&amp;quot;delete-event&amp;quot;, Gtk.main&amp;#95;quit&amp;#41;
+win.show&amp;#95;all&amp;#40;&amp;#41;
+Gtk.main&amp;#40;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;I just overviewed a small amount of what Gtk can do but you could look into comboboxs, entries, progressbars, and lists. Prehaps in a later blog post I'll go over a more complex project using GTK.&lt;/p&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Sun, 08 Jan 2017 00:00:00 -0500
+</pubDate>
+</item>
+<item>
+<guid>
+http://salmanhossain.me/posts/python-reading-writing-files/
+</guid>
+<link>
+http://salmanhossain.me/posts/python-reading-writing-files/
+</link>
+<title>
+Python - Reading and Writing Files
+</title>
+<description>
+ &lt;p&gt; Reading and Writing to files in python is rather useful when you want to store down some of the results you get after running a program. So here is a simple stright forward guide to doing just that.  &lt;br/&gt;&lt;br/&gt; Go ahead and open up a file as ex1.py or whatever you prefer really.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;$ touch ex1.py
+&lt;/code&gt;&lt;/pre&gt;Also create a .txt file for our dummy text file that we'll read with python.&lt;pre&gt;&lt;code&gt;$ echo &amp;quot;This is a text file&amp;quot; &amp;gt;&amp;gt; dummytext.txt
+&lt;/code&gt;&lt;/pre&gt;If doing that confuses you than you can just use a text editor and create the .txt file that way same thing but the above is just a command to send the string into a file in this case dummytext.txt. &lt;br/&gt;&lt;br/&gt;Just as a sanity check I usually like to cat the file to make that the text is actually there so go ahead and do that.&lt;pre&gt;&lt;code&gt;cat dummytext.txt
+&lt;/code&gt;&lt;/pre&gt;Alright we aren't crazy and text is there. If it's not there than go ahead and do it manually and use a text editor to type it into the file or whatever method you prefer.&lt;br/&gt;&lt;br/&gt;Now on to the python part where we code up the program that will read the the .txt file. So go ahead and open up ex1.py. Write in the following into ex1.py...&lt;pre&gt;&lt;code&gt;#!/usr/bin/env python
+import sys, os
+
+def main&amp;#40;&amp;#41;:
+
+    f = open&amp;#40;'dummytext.txt', 'r'&amp;#41;
+    text = f.read&amp;#40;&amp;#41;
+
+    print&amp;#40;text&amp;#41;
+    
+    f.close&amp;#40;&amp;#41;
+
+if &amp;#95;&amp;#95;name&amp;#95;&amp;#95;==&amp;quot;&amp;#95;&amp;#95;main&amp;#95;&amp;#95;&amp;quot;:
+    main&amp;#40;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;Run that and you'll see the text appears that appears in dummytext.txt file. So let me explain what exactly happened.&lt;br/&gt;&lt;br/&gt;So using open() will open up the file you want so that you can read it which is told to the open function by passing the 'r' if you passed it 'w' it would write to the file and if you did 'a' it would append. &lt;br/&gt;&lt;br/&gt;When calling read() on the f you are taking all the text in the file  and placing it into the variable called text and than later printing it out.&lt;br/&gt;&lt;br/&gt;Now lets do something else and write to a file. Note that when doing this you'll realize when using 'w' rather than 'r' in the open function it'll cause the original file to be trancated. This means whenever opening a file with the 'w' parameter it'll remove all the text in the file before hand. This is important to know if you're going to be using this on important files so be aware that using 'w' will remove the text in the file. So continuing on lets change the code we have to the following...&lt;pre&gt;&lt;code&gt;#!/usr/bin/env python
+import sys, os
+
+def main&amp;#40;&amp;#41;:
+
+    f = open&amp;#40;'dummytext.txt', 'w'&amp;#41;
+
+    f.write&amp;#40;&amp;quot;New text in the file&amp;quot;&amp;#41;
+    f.write&amp;#40;&amp;quot;\n&amp;quot;&amp;#41;
+
+    f.close&amp;#40;&amp;#41;
+
+if &amp;#95;&amp;#95;name&amp;#95;&amp;#95;==&amp;quot;&amp;#95;&amp;#95;main&amp;#95;&amp;#95;&amp;quot;:
+    main&amp;#40;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;After running that check the dummytext.txt file and you'll realize that the file has be changed to contain &quot;New text in the file&quot;. This is because of the write() function that is avaliable for you to use when you open a file with 'w'. Also keep in mind to always close the file after opening it as this could lead to problems in more complex programs.&lt;br/&gt;&lt;br/&gt;Now let me show you another way where you can preserve your file and insert other text into it. So change your code one more time to the following.&lt;pre&gt;&lt;code&gt;#!/usr/bin/env python
+import sys, os
+
+def main&amp;#40;&amp;#41;:
+
+    f = open&amp;#40;'dummytext.txt', 'a'&amp;#41;
+
+    f.write&amp;#40;&amp;quot;The previous text will be preserved this time.&amp;quot;&amp;#41;
+    f.write&amp;#40;&amp;quot;\n&amp;quot;&amp;#41;
+
+    f.close&amp;#40;&amp;#41;
+
+if &amp;#95;&amp;#95;name&amp;#95;&amp;#95;==&amp;quot;&amp;#95;&amp;#95;main&amp;#95;&amp;#95;&amp;quot;:
+    main&amp;#40;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;Now when you check the file you'll see the the previous text in the dummytext is still there and the new text that was writen into the file is also there. When opening a file with 'a' you are preserving the original text in the file but appending new strings into it thus 'a' stands for appending. &lt;br/&gt;&lt;br/&gt;Thats pretty much it when it comes to all the basic reading and writing in python.
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Fri, 30 Dec 2016 00:00:00 -0500
+</pubDate>
+</item>
+<item>
+<guid>
+http://salmanhossain.me/posts/python-web-scraper/
+</guid>
+<link>
+http://salmanhossain.me/posts/python-web-scraper/
+</link>
+<title>
+Python - Parsing HTML with BeautifulSoup
+</title>
+<description>
+&lt;p&gt;I wanted to gather a collection of all the links on a wikipedia page so I decided to code something up real quick. Luckily it is rather easy in python using BeautifulSoup. You'll need to download the python module &lt;newcode&gt;bs4&lt;/newcode&gt; first which you can do with pip...&lt;/p&gt;&lt;pre&gt;&lt;code&gt;sudo pip install bs4
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;After the installing is completed. Go ahead and open up a file called webscraper.py and import requests and bs4. &lt;/p&gt;&lt;pre&gt;&lt;code&gt;import requests
+from bs4 import BeautifulSoup
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;To get the html of a document from the web we'll be using requests. The variable resp will contain all of the html for the site.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;link = 'https://en.wikipedia.org/wiki/Physics'
+resp = requests.get&amp;#40;link&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now that we have all the html we'll begin to parse it using BeautifulSoup.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;soup = BeautifulSoup&amp;#40;resp.text, 'lxml'&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;soup is an object in which we can parse and manipulate to obtain all the href's that may be contained within the html like so.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;urls = &amp;#91;&amp;#93;
+  for h in soup.find&amp;#95;all&amp;#40;'p'&amp;#41;:
+
+    a = h.find&amp;#95;all&amp;#40;'a'&amp;#41;
+
+    for t in a:
+
+      urls.append&amp;#40;t.attrs&amp;#91;'href'&amp;#93;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;This will place all the hrefs in the urls array. So than you can print all the urls you find but say you want to write them to a file instead you can do the following...&lt;/p&gt;&lt;pre&gt;&lt;code&gt;f = open&amp;#40;'urls.txt', 'w'&amp;#41;
+
+for url in urls:
+
+   f.write&amp;#40;link + url&amp;#41;
+   f.write&amp;#40;&amp;quot;\n&amp;quot;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The link is added in to the f.write so it shows the full url rather than just the /wiki/something. So now you have a bunch of urls in a file named urls.txt when you run the command. Of course you'll notice something when looking at the urls.txt is that there are citiation urls which you don't want. Well it is rather simple to remove that by filtering out based on &quot;#&quot;. So rewriting your for statement like this will filter out the cititation urls.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;    for url in urls:
+
+        if '#' in url:
+            pass
+        else:
+            f.write&amp;#40;link + url&amp;#41;
+            f.write&amp;#40;&amp;quot;\n&amp;quot;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Oh and of course don't forget to close the file. Which I always do.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;f.close&amp;#40;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;And that is pretty much it. Of course you can use optparse python module to make it so it takes an argument which can be the link and then generates the site and add on to this. So the full file should look something like this.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;#!/usr/bin/env python
+import requests
+from bs4 import BeautifulSoup
+
+def main&amp;#40;&amp;#41;:
+
+    link = 'https://en.wikipedia.org/wiki/Physics'
+    resp = requests.get&amp;#40;link&amp;#41;
+    soup = BeautifulSoup&amp;#40;resp.text, 'lxml'&amp;#41;
+
+    urls = &amp;#91;&amp;#93;
+    for h in soup.find&amp;#95;all&amp;#40;'p'&amp;#41;:
+
+        a = h.find&amp;#95;all&amp;#40;'a'&amp;#41;
+
+        for t in a:
+
+            urls.append&amp;#40;t.attrs&amp;#91;'href'&amp;#93;&amp;#41;
+
+
+    f = open&amp;#40;'urls.txt', 'w'&amp;#41;
+
+    for url in urls:
+
+        if '#' in url:
+            pass
+        else:
+            f.write&amp;#40;link + url&amp;#41;
+            f.write&amp;#40;&amp;quot;\n&amp;quot;&amp;#41;
+
+    f.close&amp;#40;&amp;#41;
+
+if &amp;#95;&amp;#95;name&amp;#95;&amp;#95;==&amp;quot;&amp;#95;&amp;#95;main&amp;#95;&amp;#95;&amp;quot;:
+    main&amp;#40;&amp;#41;
+
+&lt;/code&gt;&lt;/pre&gt;Now you can just run that and it'll generate the urls.txt file. Enjoy scraping the web.&lt;br/&gt;&lt;br/&gt;&lt;a href='https://github.com/defunSM/web-scraper'&gt;WebScraper&lt;/a&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Wed, 28 Dec 2016 00:00:00 -0500
+</pubDate>
+</item>
+<item>
+<guid>
+http://salmanhossain.me/posts/python-color-in-terminal/
+</guid>
+<link>
+http://salmanhossain.me/posts/python-color-in-terminal/
+</link>
+<title>
+Python - Color in Terminal
+</title>
+<description>
+ &lt;p&gt;So say you have a script written and displays some sort of information. It isn't just enough to just display it in normal colors but you want to add color coded messages to help readability. So there is a few options such as the &lt;a href='https://pypi.python.org/pypi/colorama/0.3.3'&gt;colorama&lt;/a&gt; module which helps you add color when you print. &lt;br&gt;&lt;br/&gt; I wanted to create a small python file and make my own functions in order to quickly color in text being printed to the terminal. Set the colors as strings into variables.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;green = &amp;quot;\033&amp;#91;1;32;40m&amp;quot;
+red = &amp;quot;\033&amp;#91;1;31;40m&amp;quot;
+yellow = &amp;quot;\033&amp;#91;1;33;40m&amp;quot;
+purple = &amp;quot;\033&amp;#91;1;35;40m&amp;quot;
+cyan = &amp;quot;\033&amp;#91;1;36;40m&amp;quot;
+white = &amp;quot;\033&amp;#91;1;37;40m&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Than put the variables into an array as c short handing it for color. &lt;/p&gt;&lt;pre&gt;&lt;code&gt;c = &amp;#91;green, red, yellow, purple, cyan, white&amp;#93;
+&lt;/code&gt;&lt;/pre&gt;So you can call green just by doing c[0] infront of a string. So if you wanted to have a green colored text appear in the terminal you can do the following... &lt;pre&gt;&lt;code&gt;print&amp;#40;c&amp;#91;0&amp;#93;, &amp;quot;Green text&amp;quot;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;I also made a function &lt;newcode&gt;display_colors&lt;/newcode&gt; in case you want to see which default color you want to use. I also made a ctext function which takes in the style, textcolor and background color in case you want to use something else besides the default colors. &lt;pre&gt;&lt;code&gt;def ctext&amp;#40;style, textcolor, bgcolor&amp;#41;:
+
+    return &amp;quot;\033&amp;#91;&amp;quot; + str&amp;#40;style&amp;#41; + &amp;quot;;&amp;quot; + str&amp;#40;textcolor&amp;#41; + &amp;quot;;&amp;quot; + str&amp;#40;bgcolor&amp;#41; + &amp;quot;m&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The github Repo of &lt;a href='https://github.com/defunSM/colormyterminal'&gt;colormyterminal&lt;/a&gt;.&lt;/p&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Tue, 27 Dec 2016 00:00:00 -0500
+</pubDate>
+</item>
+<item>
+<guid>
+http://salmanhossain.me/posts/python-optparse/
+</guid>
+<link>
+http://salmanhossain.me/posts/python-optparse/
+</link>
+<title>
+Python - Optparse
+</title>
+<description>
+ &lt;p&gt;Optparse is pretty nice way to make command-line tools. It streamlines the process of making arguments.  To add the parser from the optparse library in Python.&lt;pre&gt;&lt;code&gt;from optparse import OptionParser
+ &lt;/code&gt;&lt;/pre&gt; This will allow you to make a parser using OptionParser() like the following.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;parser = OptionParser&amp;#40;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;This will allow you to add options to it like the following.&lt;pre&gt;&lt;code&gt;parser.add&amp;#95;option&amp;#40;&amp;quot;-c&amp;quot;, &amp;quot;--cos&amp;quot;, help=&amp;quot;Calculates the cosine given the degree.&amp;quot;, dest=&amp;quot;cosdegree&amp;quot;, action=&amp;quot;store&amp;quot;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;The add_option is avaliable can allows you to store the value passed to the -c option. So on the command line you can do things like the following..&lt;pre&gt;&lt;code&gt;&amp;lt;scriptname&amp;gt; -c 3
+&lt;/code&gt;&lt;/pre&gt;You can also add something like this...&lt;pre&gt;&lt;code&gt;options, arguments = parser.parse&amp;#95;args&amp;#40;&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;so now you can put the values passed to each option as a variable. Like so...&lt;pre&gt;&lt;code&gt;ans = options.cosine
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;and you can retrieve the value passed to -c using options.cosdegree since it was stored in that using the dest=&quot;cosdegree&quot; like I showed you above. &lt;br&gt;&lt;br/&gt; You will be able to change the dest= to something else by default if not specified it would be cos since that is the option it is being assigned to. &lt;br&gt;&lt;br/&gt; So you can create some useful scripts to calculate the cos or sin from the command line without opening up a calculator. You could essentially make a command line for commonly used math functions on the command line using optparse. If you're too lazy to open up a calculator. &lt;br&gt;&lt;br/&gt; Also have the classical &amp;ndash;help or -h which will list a short description of each option. You can specify the help that'll be show for each option using the help= when creating the option using add_option.  &lt;br&gt;&lt;br/&gt; The documentation for &lt;a href='https://docs.python.org/3/library/optparse.html'&gt;Optparse&lt;/a&gt;.&lt;/p&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Mon, 26 Dec 2016 00:00:00 -0500
+</pubDate>
+</item>
+<item>
+<guid>
+http://salmanhossain.me/posts/udacity-machine-learning/
+</guid>
+<link>
+http://salmanhossain.me/posts/udacity-machine-learning/
+</link>
+<title>
+Python - Naive Bayes Algorithm
+</title>
+<description>
+ &lt;p&gt;Been trying to get into machine learning and found that the udacity courses are extremely well. Specially at their intro into machine learning course which is what I'm doing over the winter break to familiarize myself with different algorithms. They go step by step and don't really require much background besides some python programming as a prerequisite.  &lt;br/&gt;&lt;br/&gt; &lt;a href='https://www.udacity.com/course/intro-to-artificial-intelligence&amp;ndash;cs271'&gt;Udacity Intro into Machine Learning Course&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;a href='https://github.com/udacity/ud120-projects'&gt;Udacity Project Repo for Intro Into Machine Learning&lt;/a&gt; &lt;br/&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;The udacity course goes through explaining the concepts of machine learning rather well. One of the first algorithms that the course introduces you to is the Naive Bayes algoirthm.  &lt;br/&gt;&lt;br/&gt; &lt;a href='http://scikit-learn.org/stable/modules/naive_bayes.html'&gt;Naive Bayes Algorithm Sklearn&lt;/a&gt; &lt;br/&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Python has a varity of libraries for machine learning like tensorflow, sklearn, and numpy. Sklearn has algorithms which is pretty stright forward to use and implement in your code. You can google it and sklearn will provide a short example code on how to use that particular algorithm and also displays the pros and cons of that particular algorithm. For example the Naive Bayes Algorithm shows a short example code in just 3 lines of code you can make your prediction dataset. Also using the &lt;a href='http://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html'&gt;sklearn.metrics&lt;/a&gt; you can get a feel for how well your classifer does in predicting new data points.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;from sklearn.naive&amp;#95;bayes import GaussianNB
+gnb = GaussianNB&amp;#40;&amp;#41;
+y&amp;#95;pred = gnb.fit&amp;#40;iris.data, iris.target&amp;#41;.predict&amp;#40;iris.data&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;from sklearn.metrics import accuracy&amp;#95;score
+acc = accuracy&amp;#95;score&amp;#40;iris.data, y&amp;#95;pred&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;As you continue through the udacity course you'll be introduced to two other algorithms the Support Vector Machines and the Decision Tree algorithm. The course is approximated to be 4 months but I started 2 days ago and finished about 1/4 of it getting up to Decision Trees in two days so it can definitely be finished in less than a month if you go through it really quickly.&lt;/p&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Sun, 25 Dec 2016 00:00:00 -0500
+</pubDate>
+</item>
+<item>
+<guid>
+http://salmanhossain.me/posts/python-bokeh/
+</guid>
+<link>
+http://salmanhossain.me/posts/python-bokeh/
+</link>
+<title>
+Python - Bokeh to Graph Boot Times
+</title>
+<description>
+ &lt;p&gt; So I been playing around with Bokeh's graphing utilities which is always fun. So I wanted to make some graphs using the boot times that I keep using a script. So I made three different graphs 2 of which represent the total boot time and the other pie graph represents the total boot time into segments of firmware, loader, kernel and userspace.  &lt;/p&gt;&lt;p&gt;&lt;img src=&quot;https://defunsm.github.io/img/bokeh3.png&quot; alt=&quot;graph image&quot; /&gt;&lt;/p&gt;&lt;p&gt;The one above demonstrates the total time as an area under the line. You can clearly see here that there was a spike in the boot time since that 40 second boot time is distinguishable from the other plots are around 12 seconds.&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;https://defunsm.github.io/img/bokeh2.png&quot; alt=&quot;graph pie graph&quot; /&gt;&lt;/p&gt;&lt;p&gt;This one is a pie graph I couldn't figure out how to label them but it just demonstrates each part of the boot as a pie graph (Firmware, Loader, Kernel, Userspace).&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;https://defunsm.github.io/img/bokeh1.png&quot; alt=&quot;graph histogram&quot; /&gt;&lt;/p&gt;&lt;p&gt;There is also a histogram showing the usual time it takes to boot up which you can see from this graph is around 12 seconds since that is the most frequent time it takes to boot up. &lt;br/&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;The data is collected from &lt;newcode&gt;systemd-analyze&lt;/newcode&gt;. Which I have a script which just stores all the boot times into a file from time.txt.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;systemd-analyze time &amp;gt;&amp;gt; time.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;a href='https://github.com/defunSM/visualize-my-boot-time'&gt;Github Repo&lt;/a&gt;&lt;/p&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Sat, 17 Dec 2016 00:00:00 -0500
+</pubDate>
+</item>
+<item>
+<guid>
+http://salmanhossain.me/posts/special-relativity/
+</guid>
+<link>
+http://salmanhossain.me/posts/special-relativity/
+</link>
+<title>
+Python - SpaceTime Diagrams
+</title>
+<description>
+ &lt;p&gt; So I been playing around with numpy and matplotlib in python lately. Wonderful tools for numerical analysis and data ploting. So I played around with them and decided to use them to construct a script in order to generate spacetime graphs. For those that don't know what a space time graph or diagram is essentially a way to visualize an object moving or not moving through space and time. Looks something like that on the bottom. &lt;br/&gt;&lt;br/&gt;  &lt;img src=&quot;https://defunsm.github.io/img/spacetimegraph.png&quot; alt=&quot;spacetime&quot; /&gt; &lt;br/&gt;&lt;br/&gt; One of the things you'll instantly maybe find alarming about spacetime diagrams is that time is on the y axis. I know I was since usually time is normally placed on the x axis. Placing time on the y axis as I been told is somewhat traditional not really done on purpose but thats the way spacetime diagrams should be done. &lt;br/&gt;&lt;br/&gt; So since time is on the y axis this means a few things our y intercept, b is going to be a value with units of time usually seconds. However in spacetime diagrams you can essentially make the units whatever you want as long as they make sense so if you wanted you could make the units of time as meters using the speed of light constant c. So whatever the distance that light will cover in 1 second you can convert to that for meters and use that as a value of time since it is equivilant. Of course that might sound a bit wierd and probably I didn't explain that too well but your x axis is a measure of space. Space can be measured in meters. So now you have the same units for both x and y axis.  &lt;br/&gt;&lt;br/&gt; Now remember that time is onthe y axis so this brings about some consequences such as the slope of the line becomes 1 over the speed of the object. So we can write an equation for this line in the following way as t = (1/v)*x + b. &lt;br/&gt;&lt;br/&gt; The t stands for the time (m), the v in this case is the velocity which is in units of c, the x is the position of the object (m), and the y intercept is b which remember would originally be seconds but we converted time to meters using the speed of light constant so b is in terms of meters. &lt;br/&gt;&lt;br/&gt; In order to generate the script you need the &lt;a href='https://github.com/defunSM/SpecialRel/blob/master/SpecialRel.py'&gt;SpecialRel.py&lt;/a&gt; and &lt;a href='https://github.com/defunSM/SpecialRel/blob/master/SpaceTimeGraph.py'&gt;SpaceTimeGraph.py&lt;/a&gt;. &lt;br/&gt;&lt;br/&gt; You can get those scripts by just cloning the entire repo or just downloading them individually. &lt;br/&gt;&lt;br/&gt;&lt;h2&gt;&lt;a name=&quot;usage&quot;&gt;&lt;/a&gt;Usage&lt;/h2&gt; &lt;br/&gt;&lt;br/&gt; The way you use the script is the following.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;$ python SpaceTimeGraph.py -v 0.2 -b 2
+&lt;/code&gt;&lt;/pre&gt;You are specifiying the speed as 0.2c and the y intercept as 2m. You should see a graph pop up hopefully if not you will probably need to install numpy and matplotlib if you do not have those.&lt;br/&gt;&lt;br/&gt;There are other options that you can specify and to see all of them type the following.&lt;pre&gt;&lt;code&gt;$ python SpaceTimeGraph.py -h
+&lt;/code&gt;&lt;/pre&gt;You should get something like the picture below.&lt;br/&gt;&lt;br/&gt;&lt;img src=&quot;https://defunsm.github.io/img/options.png&quot; alt=&quot;options&quot; /&gt;&lt;br/&gt;&lt;br/&gt;You can change the upper and lower limits of the graph and determine how far you want the graph to extend out to using the options &lt;newcode&gt;-u&lt;/newcode&gt; and &lt;newcode&gt;-l&lt;/newcode&gt;. As well as name the object with &lt;newcode&gt;-n&lt;/newcode&gt; so the object's name will appear on the legend. 
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Sun, 04 Dec 2016 00:00:00 -0500
+</pubDate>
+</item>
+<item>
+<guid>
+http://salmanhossain.me/posts/Heroku/
+</guid>
+<link>
+http://salmanhossain.me/posts/Heroku/
+</link>
+<title>
+Clojure - How to start a web app using Heroku
+</title>
+<description>
+&lt;p&gt;Heroku is a platform that allows developers to build web apps and run them on their servers. It is really nice that they do have documentation on how to start a server using clojure as well. I'll go over through some of the stuff that they tell you to do from their set up page. You can follow along here or just follow their &lt;a href='https://devcenter.heroku.com/articles/getting-started-with-clojure#set-up'&gt;instructions&lt;/a&gt;. &lt;br/&gt;&lt;br/&gt;&lt;h1&gt;&lt;a name=&quot;make&amp;#95;a&amp;#95;heroku&amp;#95;account&quot;&gt;&lt;/a&gt;Make a Heroku Account&lt;/h1&gt; &lt;br/&gt;&lt;br/&gt; First things first is that you will need an account to manage your web apps. Just go ahead and do that on &lt;a href='https://signup.heroku.com/dc'&gt;Heorku&lt;/a&gt;. &lt;br/&gt;&lt;br/&gt;&lt;h1&gt;&lt;a name=&quot;installing&amp;#95;the&amp;#95;heroku&amp;#95;cli&quot;&gt;&lt;/a&gt;Installing the Heroku CLI&lt;/h1&gt; &lt;br/&gt;&lt;br/&gt; Now let us go on ahead and install the &lt;newcode&gt;Heroku Command Line Interface&lt;/newcode&gt; which you'll need to manage your web apps from the terminal. You can do that using the following command from the terminal.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;$ wget -qO- https://toolbelt.heroku.com/install.sh | sh 
+&lt;/code&gt;&lt;/pre&gt;*You will need to make sure that you have ruby installed as well.&lt;br/&gt;&lt;br/&gt;&lt;h1&gt;&lt;a name=&quot;create&amp;#95;the&amp;#95;web&amp;#95;app&quot;&gt;&lt;/a&gt;Create the web app&lt;/h1&gt;&lt;p&gt;&lt;br/&gt;&lt;br/&gt; Lets go ahead and clone a sample web app that heroku provides or you can clone the reagent heroku web app template either one.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;$ git clone https://github.com/heroku/clojure-getting-started.git
+&lt;/code&gt;&lt;/pre&gt;or&lt;pre&gt;&lt;code&gt;$ git clone https://github.com/reagent-project/reagent-template.git
+&lt;/code&gt;&lt;/pre&gt;&lt;br/&gt;&lt;br/&gt;&lt;h1&gt;&lt;a name=&quot;create&amp;#95;the&amp;#95;web&amp;#95;app&amp;#95;on&amp;#95;heroku&quot;&gt;&lt;/a&gt;Create the web app on heroku&lt;/h1&gt;&lt;p&gt;&lt;br/&gt;&lt;br/&gt; Now lets create a heroku app to recieve the code. You can decide to specify the name or leave it blank and it'll give you a random name.&lt;pre&gt;&lt;code&gt;$ heroku create 
+ &lt;/code&gt;&lt;/pre&gt; or&lt;pre&gt;&lt;code&gt;$ heroku create heroku-app-name
+ &lt;/code&gt;&lt;/pre&gt; &lt;br/&gt;&lt;br/&gt;&lt;h1&gt;&lt;a name=&quot;push&amp;#95;the&amp;#95;web&amp;#95;app&quot;&gt;&lt;/a&gt;Push the web app&lt;/h1&gt; &lt;br/&gt;&lt;br/&gt; Now you can push the source code like you do for git. First make sure to add all files.&lt;pre&gt;&lt;code&gt;$ git add .
+ &lt;/code&gt;&lt;/pre&gt; Commit all the files with the message &quot;init&quot;.&lt;pre&gt;&lt;code&gt;$ git commit -m &amp;quot;init&amp;quot;
+ &lt;/code&gt;&lt;/pre&gt; Push to the heroku web app.&lt;pre&gt;&lt;code&gt;$ git push heroku master
+ &lt;/code&gt;&lt;/pre&gt; Now you should be able to visit the site hosting the source code at heroku-app-name.herokuapp.com!&lt;/p&gt;
+</description>
+<enclosure>
+
+</enclosure>
+<pubDate>
+Wed, 30 Nov 2016 00:00:00 -0500
+</pubDate>
+</item>
+<item>
+<guid>
+http://salmanhossain.me/posts/clojure-using-quil-4/
+</guid>
+<link>
+http://salmanhossain.me/posts/clojure-using-quil-4/
 </link>
 <title>
 Graphics using Quil in Clojure (Part 4)
@@ -266,10 +1134,10 @@ Sat, 05 Nov 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/clojure-ringserver/
+http://salmanhossain.me/posts/clojure-ringserver/
 </guid>
 <link>
-http://blogawesome.com/posts-output/clojure-ringserver/
+http://salmanhossain.me/posts/clojure-ringserver/
 </link>
 <title>
 Clojure - Ring
@@ -321,10 +1189,10 @@ Mon, 31 Oct 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/clojurescript-reagent/
+http://salmanhossain.me/posts/clojurescript-reagent/
 </guid>
 <link>
-http://blogawesome.com/posts-output/clojurescript-reagent/
+http://salmanhossain.me/posts/clojurescript-reagent/
 </link>
 <title>
 ClojureScript - Reagent
@@ -404,10 +1272,10 @@ Sun, 30 Oct 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/quantum-common-sense/
+http://salmanhossain.me/posts/quantum-common-sense/
 </guid>
 <link>
-http://blogawesome.com/posts-output/quantum-common-sense/
+http://salmanhossain.me/posts/quantum-common-sense/
 </link>
 <title>
 Quantum Mechanics - Common Sense
@@ -424,10 +1292,10 @@ Wed, 26 Oct 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/clojure-figwheel/
+http://salmanhossain.me/posts/clojure-figwheel/
 </guid>
 <link>
-http://blogawesome.com/posts-output/clojure-figwheel/
+http://salmanhossain.me/posts/clojure-figwheel/
 </link>
 <title>
 Clojure - Figwheel
@@ -447,10 +1315,10 @@ Tue, 25 Oct 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/clojure-leiningen/
+http://salmanhossain.me/posts/clojure-leiningen/
 </guid>
 <link>
-http://blogawesome.com/posts-output/clojure-leiningen/
+http://salmanhossain.me/posts/clojure-leiningen/
 </link>
 <title>
 Clojure - Leiningen
@@ -499,10 +1367,10 @@ Mon, 24 Oct 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/clojure-reading-writing/
+http://salmanhossain.me/posts/clojure-reading-writing/
 </guid>
 <link>
-http://blogawesome.com/posts-output/clojure-reading-writing/
+http://salmanhossain.me/posts/clojure-reading-writing/
 </link>
 <title>
 Clojure - Shell Commands
@@ -527,10 +1395,10 @@ Sun, 23 Oct 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/clojure-probabilities/
+http://salmanhossain.me/posts/clojure-probabilities/
 </guid>
 <link>
-http://blogawesome.com/posts-output/clojure-probabilities/
+http://salmanhossain.me/posts/clojure-probabilities/
 </link>
 <title>
 Clojure - Probabilities
@@ -599,10 +1467,10 @@ Sat, 22 Oct 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/pythonlists/
+http://salmanhossain.me/posts/pythonlists/
 </guid>
 <link>
-http://blogawesome.com/posts-output/pythonlists/
+http://salmanhossain.me/posts/pythonlists/
 </link>
 <title>
 Python - Lists
@@ -695,10 +1563,10 @@ Fri, 21 Oct 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/Zshvsbash/
+http://salmanhossain.me/posts/Zshvsbash/
 </guid>
 <link>
-http://blogawesome.com/posts-output/Zshvsbash/
+http://salmanhossain.me/posts/Zshvsbash/
 </link>
 <title>
 Zsh vs Bash (Shell Comparsion)
@@ -715,10 +1583,10 @@ Thu, 20 Oct 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/dualbooting/
+http://salmanhossain.me/posts/dualbooting/
 </guid>
 <link>
-http://blogawesome.com/posts-output/dualbooting/
+http://salmanhossain.me/posts/dualbooting/
 </link>
 <title>
 Dual Booting (Linux + Windows)
@@ -735,10 +1603,10 @@ Wed, 19 Oct 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/virtualmachine/
+http://salmanhossain.me/posts/virtualmachine/
 </guid>
 <link>
-http://blogawesome.com/posts-output/virtualmachine/
+http://salmanhossain.me/posts/virtualmachine/
 </link>
 <title>
 Virtual Machine
@@ -755,10 +1623,10 @@ Tue, 18 Oct 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/pythonclasses/
+http://salmanhossain.me/posts/pythonclasses/
 </guid>
 <link>
-http://blogawesome.com/posts-output/pythonclasses/
+http://salmanhossain.me/posts/pythonclasses/
 </link>
 <title>
 Python - Classes
@@ -893,10 +1761,10 @@ Sat, 15 Oct 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/livebooting/
+http://salmanhossain.me/posts/livebooting/
 </guid>
 <link>
-http://blogawesome.com/posts-output/livebooting/
+http://salmanhossain.me/posts/livebooting/
 </link>
 <title>
 Live Booting (USB)
@@ -913,10 +1781,10 @@ Fri, 14 Oct 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/pythonloops/
+http://salmanhossain.me/posts/pythonloops/
 </guid>
 <link>
-http://blogawesome.com/posts-output/pythonloops/
+http://salmanhossain.me/posts/pythonloops/
 </link>
 <title>
 Python - Recursion
@@ -969,10 +1837,10 @@ Wed, 12 Oct 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/pythonfunctions/
+http://salmanhossain.me/posts/pythonfunctions/
 </guid>
 <link>
-http://blogawesome.com/posts-output/pythonfunctions/
+http://salmanhossain.me/posts/pythonfunctions/
 </link>
 <title>
 Python - Functions
@@ -1008,10 +1876,10 @@ Tue, 11 Oct 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/pythonuserinput/
+http://salmanhossain.me/posts/pythonuserinput/
 </guid>
 <link>
-http://blogawesome.com/posts-output/pythonuserinput/
+http://salmanhossain.me/posts/pythonuserinput/
 </link>
 <title>
 Python - User input
@@ -1079,10 +1947,10 @@ Mon, 10 Oct 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/pythonifstatements/
+http://salmanhossain.me/posts/pythonifstatements/
 </guid>
 <link>
-http://blogawesome.com/posts-output/pythonifstatements/
+http://salmanhossain.me/posts/pythonifstatements/
 </link>
 <title>
 Python - If-else-statements
@@ -1174,10 +2042,10 @@ Sun, 09 Oct 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/python-booleans/
+http://salmanhossain.me/posts/python-booleans/
 </guid>
 <link>
-http://blogawesome.com/posts-output/python-booleans/
+http://salmanhossain.me/posts/python-booleans/
 </link>
 <title>
 Python - Booleans
@@ -1262,10 +2130,10 @@ Sat, 08 Oct 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/pythonvariables/
+http://salmanhossain.me/posts/pythonvariables/
 </guid>
 <link>
-http://blogawesome.com/posts-output/pythonvariables/
+http://salmanhossain.me/posts/pythonvariables/
 </link>
 <title>
 Python - Variables
@@ -1321,10 +2189,10 @@ Fri, 07 Oct 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/python2/
+http://salmanhossain.me/posts/python2/
 </guid>
 <link>
-http://blogawesome.com/posts-output/python2/
+http://salmanhossain.me/posts/python2/
 </link>
 <title>
 Python - Numbers
@@ -1388,10 +2256,10 @@ Thu, 06 Oct 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/pythonpart1/
+http://salmanhossain.me/posts/pythonpart1/
 </guid>
 <link>
-http://blogawesome.com/posts-output/pythonpart1/
+http://salmanhossain.me/posts/pythonpart1/
 </link>
 <title>
 Python - Printing
@@ -1452,10 +2320,10 @@ Wed, 05 Oct 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/pythonpart0/
+http://salmanhossain.me/posts/pythonpart0/
 </guid>
 <link>
-http://blogawesome.com/posts-output/pythonpart0/
+http://salmanhossain.me/posts/pythonpart0/
 </link>
 <title>
 Python - Setup
@@ -1473,10 +2341,10 @@ Tue, 04 Oct 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/introductiontopython/
+http://salmanhossain.me/posts/introductiontopython/
 </guid>
 <link>
-http://blogawesome.com/posts-output/introductiontopython/
+http://salmanhossain.me/posts/introductiontopython/
 </link>
 <title>
 Python - A short introduction
@@ -1501,10 +2369,10 @@ Mon, 03 Oct 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/wordcal/
+http://salmanhossain.me/posts/wordcal/
 </guid>
 <link>
-http://blogawesome.com/posts-output/wordcal/
+http://salmanhossain.me/posts/wordcal/
 </link>
 <title>
 WordCal - A Python Script
@@ -1521,10 +2389,10 @@ Sun, 02 Oct 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/partitioningandmounting/
+http://salmanhossain.me/posts/partitioningandmounting/
 </guid>
 <link>
-http://blogawesome.com/posts-output/partitioningandmounting/
+http://salmanhossain.me/posts/partitioningandmounting/
 </link>
 <title>
 Partitoning and Mounting (Linux)
@@ -1541,10 +2409,10 @@ Sat, 01 Oct 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/smchat/
+http://salmanhossain.me/posts/smchat/
 </guid>
 <link>
-http://blogawesome.com/posts-output/smchat/
+http://salmanhossain.me/posts/smchat/
 </link>
 <title>
 SMChat
@@ -1561,10 +2429,10 @@ Tue, 27 Sep 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/haskellpart1-ghci/
+http://salmanhossain.me/posts/haskellpart1-ghci/
 </guid>
 <link>
-http://blogawesome.com/posts-output/haskellpart1-ghci/
+http://salmanhossain.me/posts/haskellpart1-ghci/
 </link>
 <title>
 Haskell - Loading functions into GHCI (Part 1)
@@ -1607,10 +2475,10 @@ Mon, 26 Sep 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/intro-to-haskell/
+http://salmanhossain.me/posts/intro-to-haskell/
 </guid>
 <link>
-http://blogawesome.com/posts-output/intro-to-haskell/
+http://salmanhossain.me/posts/intro-to-haskell/
 </link>
 <title>
 Haskell - Introduction
@@ -1629,10 +2497,10 @@ Sun, 25 Sep 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/Using_swingpart3/
+http://salmanhossain.me/posts/Using_swingpart3/
 </guid>
 <link>
-http://blogawesome.com/posts-output/Using_swingpart3/
+http://salmanhossain.me/posts/Using_swingpart3/
 </link>
 <title>
 Graphics using Quil in Clojure (Part 3)
@@ -1649,10 +2517,10 @@ Sat, 24 Sep 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/basics-of-clojure5/
+http://salmanhossain.me/posts/basics-of-clojure5/
 </guid>
 <link>
-http://blogawesome.com/posts-output/basics-of-clojure5/
+http://salmanhossain.me/posts/basics-of-clojure5/
 </link>
 <title>
 Basics of Clojure - Watching an Atom (Part 5)
@@ -1680,10 +2548,10 @@ Wed, 21 Sep 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/basics-of-clojurepart4/
+http://salmanhossain.me/posts/basics-of-clojurepart4/
 </guid>
 <link>
-http://blogawesome.com/posts-output/basics-of-clojurepart4/
+http://salmanhossain.me/posts/basics-of-clojurepart4/
 </link>
 <title>
 Basics of Clojure - Atoms (Part 4)
@@ -1725,10 +2593,10 @@ Tue, 20 Sep 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/basics-of-clojurepart3/
+http://salmanhossain.me/posts/basics-of-clojurepart3/
 </guid>
 <link>
-http://blogawesome.com/posts-output/basics-of-clojurepart3/
+http://salmanhossain.me/posts/basics-of-clojurepart3/
 </link>
 <title>
 Basics of Clojure - Recursion (Part 3)
@@ -1761,10 +2629,10 @@ Sun, 18 Sep 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/basics-of-clojurepart2/
+http://salmanhossain.me/posts/basics-of-clojurepart2/
 </guid>
 <link>
-http://blogawesome.com/posts-output/basics-of-clojurepart2/
+http://salmanhossain.me/posts/basics-of-clojurepart2/
 </link>
 <title>
 Basics of Clojure - Mapping (Part 2)
@@ -1806,10 +2674,10 @@ Sat, 17 Sep 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/basics-of-clojure/
+http://salmanhossain.me/posts/basics-of-clojure/
 </guid>
 <link>
-http://blogawesome.com/posts-output/basics-of-clojure/
+http://salmanhossain.me/posts/basics-of-clojure/
 </link>
 <title>
 Basics of Clojure (Part 1)
@@ -1870,10 +2738,10 @@ Sun, 11 Sep 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/terminalshell/
+http://salmanhossain.me/posts/terminalshell/
 </guid>
 <link>
-http://blogawesome.com/posts-output/terminalshell/
+http://salmanhossain.me/posts/terminalshell/
 </link>
 <title>
 Terminals and Shell Commands
@@ -1890,10 +2758,10 @@ Thu, 08 Sep 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/path-finding/
+http://salmanhossain.me/posts/path-finding/
 </guid>
 <link>
-http://blogawesome.com/posts-output/path-finding/
+http://salmanhossain.me/posts/path-finding/
 </link>
 <title>
 Pathfinding
@@ -1910,10 +2778,10 @@ Wed, 07 Sep 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/2016-09-03-using_quil_part_2/
+http://salmanhossain.me/posts/2016-09-03-using_quil_part_2/
 </guid>
 <link>
-http://blogawesome.com/posts-output/2016-09-03-using_quil_part_2/
+http://salmanhossain.me/posts/2016-09-03-using_quil_part_2/
 </link>
 <title>
 Graphics using Quil in Clojure (Part 2)
@@ -2034,10 +2902,10 @@ Sat, 03 Sep 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/getting-started-with-clojure/
+http://salmanhossain.me/posts/getting-started-with-clojure/
 </guid>
 <link>
-http://blogawesome.com/posts-output/getting-started-with-clojure/
+http://salmanhossain.me/posts/getting-started-with-clojure/
 </link>
 <title>
 Getting Started with Clojure
@@ -2055,10 +2923,10 @@ Fri, 02 Sep 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/using_quil/
+http://salmanhossain.me/posts/using_quil/
 </guid>
 <link>
-http://blogawesome.com/posts-output/using_quil/
+http://salmanhossain.me/posts/using_quil/
 </link>
 <title>
 Graphics using Quil in Clojure (Part 1)
@@ -2124,10 +2992,10 @@ Thu, 01 Sep 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/2016-08-31-Using_Swing_Part_2/
+http://salmanhossain.me/posts/2016-08-31-Using_Swing_Part_2/
 </guid>
 <link>
-http://blogawesome.com/posts-output/2016-08-31-Using_Swing_Part_2/
+http://salmanhossain.me/posts/2016-08-31-Using_Swing_Part_2/
 </link>
 <title>
 Creating JFrames using Swing APIs in Clojure (Part 2)
@@ -2187,10 +3055,10 @@ Wed, 31 Aug 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/2016-08-30-Using_Swing/
+http://salmanhossain.me/posts/2016-08-30-Using_Swing/
 </guid>
 <link>
-http://blogawesome.com/posts-output/2016-08-30-Using_Swing/
+http://salmanhossain.me/posts/2016-08-30-Using_Swing/
 </link>
 <title>
 Creating JFrames using Swing APIs in Clojure (Part 1)
@@ -2257,10 +3125,10 @@ Tue, 30 Aug 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/2016-08-29-Clojure_GUI_as_an_Exe/
+http://salmanhossain.me/posts/2016-08-29-Clojure_GUI_as_an_Exe/
 </guid>
 <link>
-http://blogawesome.com/posts-output/2016-08-29-Clojure_GUI_as_an_Exe/
+http://salmanhossain.me/posts/2016-08-29-Clojure_GUI_as_an_Exe/
 </link>
 <title>
 Creating an Exechuteable GUI
@@ -2277,10 +3145,10 @@ Mon, 29 Aug 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/2016-08-28-jar/
+http://salmanhossain.me/posts/2016-08-28-jar/
 </guid>
 <link>
-http://blogawesome.com/posts-output/2016-08-28-jar/
+http://salmanhossain.me/posts/2016-08-28-jar/
 </link>
 <title>
 Clojure File to Standalone Jar
@@ -2327,10 +3195,10 @@ Sun, 28 Aug 2016 00:00:00 -0400
 </item>
 <item>
 <guid>
-http://blogawesome.com/posts-output/2016-08-27-new/
+http://salmanhossain.me/posts/2016-08-27-new/
 </guid>
 <link>
-http://blogawesome.com/posts-output/2016-08-27-new/
+http://salmanhossain.me/posts/2016-08-27-new/
 </link>
 <title>
 A New Beginning
