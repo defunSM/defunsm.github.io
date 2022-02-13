@@ -11,40 +11,30 @@ $('#toggle').click(function() {
         $('#downarrow').toggleClass('arrowpadding');
 
         $('.container_footer').removeClass('defaultpadding');
-        $('.container_footer').toggleClass('newfooterpadding');
-
-        // $('.container_small').removeClass('defaultcontactpadding');
-        $('.container_small').toggleClass('addpadding');
+        $('.container_footer').toggleClass('addpadding');
 
         $('#portfolio').removeClass('defaultpadding');
-        $('#portfolio').toggleClass('newpadding');
+        $('#portfolio').toggleClass('addpadding');
 
         $('#headerspan').removeClass('fade child');
 
         $('.header_title').toggleClass('addpadding');
-
-        $('.fade-in').toggleClass('background-padding');
 
     } else {
 
         $('.header_title').removeClass('addpadding');
 
         $('.container_footer').toggleClass('defaultpadding');
-        $('.container_footer').removeClass('newfooterpadding');
-
-        // $('.container_small').toggleClass('defaultcontactpadding');
-        $('.container_small').removeClass('addpadding');
+        $('.container_footer').removeClass('addpadding');
 
         $('#about').removeClass('addpadding');
         $('#about').toggleClass('defaultpadding');
         $('#downarrow').removeClass('arrowpadding');
 
-        $('#portfolio').removeClass('newpadding');
+        $('#portfolio').removeClass('addpadding');
         $('#portfolio').toggleClass('defaultpadding');
 
         $('#headerspan').toggleClass('fade child');
-
-        $('.fade-in').removeClass('background-padding');
     }
 
     if (contact == "module defaultpadding") {
@@ -148,8 +138,6 @@ $(window).scroll(function(){
 
 // });
 
-// Makes the .hljs bigger on click.
-
 $('code').on('click', function() {
 
     var myvar = $(this).css('font-size')
@@ -163,4 +151,6 @@ $('code').on('click', function() {
         $(this).css({'font-size':'30px'});
 
     }
+
+
 });

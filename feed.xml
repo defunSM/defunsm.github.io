@@ -12,236 +12,11 @@ http://salmanhossain.me
 A place to share my knowledge
 </description>
 <lastBuildDate>
-Fri, 21 Apr 2017 23:08:03 -0400
+Sun, 13 Feb 2022 18:06:27 -0500
 </lastBuildDate>
 <generator>
 clj-rss
 </generator>
-<item>
-<guid>
-http://salmanhossain.me/posts/racket-intro2/
-</guid>
-<link>
-http://salmanhossain.me/posts/racket-intro2/
-</link>
-<title>
-Racket - Intro (2)
-</title>
-<description>
- &lt;p&gt;This is continuing off of the previous blog post on racket. Make sure you have gone through that before going to this. In this section we'll cover &lt;newcode&gt;booleans&lt;/newcode&gt;, &lt;newcode&gt;conditionals&lt;/newcode&gt; and &lt;newcode&gt;apply&lt;/newcode&gt;.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;;; Booleans
-;; Racket uses #t and #f for true and false.
-
-&amp;#40;= 2 &amp;#40;+ 1 1&amp;#41;&amp;#41;
-&amp;#40;= 2 &amp;#40;+ 1 2&amp;#41;&amp;#41;
-
-;; if statements in racket
-;; First part is the conditional which is the &amp;#40;= 2 &amp;#40;+ 1 1&amp;#41;&amp;#41; which is #t
-;; Second part is &amp;#40;println &amp;quot;True&amp;quot;&amp;#41; which is the true branch that'll execute if the condition is met.
-;; Third part &amp;#40;println &amp;quot;False&amp;quot;&amp;#41; is the false branch which won't be executed.
-
-&amp;#40;if &amp;#40;= 2 &amp;#40;+ 1 1&amp;#41;&amp;#41;
-    &amp;#40;println &amp;quot;True&amp;quot;&amp;#41;
-    &amp;#40;println &amp;quot;False&amp;quot;&amp;#41;&amp;#41;
-
-;; Notice that and will return true if nothing provided.
-;; and is #t if no arguments provided.
-;; or is #f is no arguments provided.
-;; and  will return the argument if only one argument is provided.
-;; or will do the same if one argument is provided.
-
-&amp;#40;define a 10&amp;#41;
-&amp;#40;define b 5&amp;#41;
-
-&amp;#40;and&amp;#41;
-&amp;#40;and b&amp;#41;
-
-&amp;#40;or&amp;#41;
-&amp;#40;or b&amp;#41;
-
-&amp;#40;and &amp;#40;even? a&amp;#41; &amp;#40;odd? b&amp;#41;&amp;#41;
-&amp;#40;and &amp;#40;odd? a&amp;#41; &amp;#40;odd? b&amp;#41;&amp;#41;
-&amp;#40;or &amp;#40;odd? a&amp;#41; &amp;#40;odd? b&amp;#41;&amp;#41;
-
-;; Conditionals in racket
-;; Must start with a bracket to start a conditional.
-;; Than there is the testing condition and if its met executes.
-
-&amp;#40;cond
-  &amp;#91;&amp;#40;positive? n&amp;#41; &amp;#40;println &amp;quot;This number is positive&amp;quot;&amp;#41;&amp;#93;
-  &amp;#91;&amp;#40;negative? n&amp;#41; &amp;#40;println &amp;quot;This number is negative&amp;quot;&amp;#41;&amp;#93;&amp;#41;
-
-
-;; There is also an else if none of the conditionals are met.
-;; Tells us if the quadradic has 2 roots, 1 root or imaginary roots.
-
-&amp;#40;define &amp;#40;roots a b c&amp;#41;
-  &amp;#40;let &amp;#40;&amp;#91;discriminant &amp;#40;- &amp;#40;expt b 2&amp;#41; &amp;#40;&amp;#42; 4 a c&amp;#41;&amp;#41;&amp;#93;&amp;#41;
-    &amp;#40;cond
-        &amp;#91;&amp;#40;positive? discriminant&amp;#41; &amp;#40;println &amp;quot;This quadradic has 2 roots&amp;quot;&amp;#41;&amp;#93;
-        &amp;#91;&amp;#40;negative? discriminant&amp;#41; &amp;#40;println &amp;quot;This quadradic has imaginary roots&amp;quot;&amp;#41;&amp;#93;
-        &amp;#91;else &amp;#40;println &amp;quot;This quadradic has 1 root&amp;quot;&amp;#41;&amp;#93;&amp;#41;&amp;#41;&amp;#41;
-
-;; Also note that racket makes a distinction between let and let&amp;#42; like in lisp.
-;; let won't allow you to use previous bindings as you would sometimes expect.
-;; let&amp;#42; however does let you use previous bindings.
-;; First one with let will provide an error because of the difference between let and let&amp;#42;
-;; You'll find that num is undefined in the first one. Second one works fine.
-
-&amp;#40;let &amp;#91;&amp;#40;num 10&amp;#41;
-      &amp;#40;result &amp;#40;+ 2 num&amp;#41;&amp;#41;&amp;#93;
-  result&amp;#41;
-
-&amp;#40;let&amp;#42; &amp;#91;&amp;#40;num 10&amp;#41;
-       &amp;#40;result &amp;#40;+ 2 num&amp;#41;&amp;#41;&amp;#93;
-  result&amp;#41;
-
-;; Apply which will distribute the prodecure across the list.
-;; Notice that the last argument for apply must be a list.
-
-&amp;#40;apply &amp;#42; '&amp;#40;1 2 3 4&amp;#41;&amp;#41;
-
-&amp;#40;apply &amp;#42; 1 2 '&amp;#40;3 4&amp;#41;&amp;#41;
-
-&amp;#40;apply &amp;#42; 1 2 3 '&amp;#40;4&amp;#41;&amp;#41;
-
-&amp;#40;apply &amp;#42; 1 2 3 4&amp;#41; ;; error: contract violation
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-<enclosure>
-
-</enclosure>
-<pubDate>
-Sat, 25 Mar 2017 00:00:00 -0400
-</pubDate>
-</item>
-<item>
-<guid>
-http://salmanhossain.me/posts/racket-intro/
-</guid>
-<link>
-http://salmanhossain.me/posts/racket-intro/
-</link>
-<title>
-Racket - Intro (1)
-</title>
-<description>
- &lt;p&gt;A little guide on Racket. Since I been playing around with it for a while. Pretty cool but doesn't have some of the nice functions that clojure has such as the range but you can easily make it in racket. So here are some things to get familiar with racket.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;
-;; Needed to specify the language.
-&amp;#40;require racket&amp;#41;
-
-;; Addition similiar to clojure and other lisps
-&amp;#40;+ 2 2&amp;#41;
-
-;; accepts more than two arguments thats good.
-&amp;#40;+ 2 2 3&amp;#41;
-
-;; That works too.
-&amp;#40;+ 3 &amp;#40;&amp;#42; 2 2&amp;#41;&amp;#41;
-
-;; What happens when mixing with floats. Oh a float or racket calls them inexact numbers.
-
-&amp;#40;inexact? &amp;#40;+ 3 &amp;#40;&amp;#42; 2.0 2&amp;#41;&amp;#41;&amp;#41;
-
-;; How do we print strings now lets try println. Same as clojure.
-
-&amp;#40;println &amp;quot;Hello&amp;quot;&amp;#41;
-
-;; Do they have format? or something to concat strings? &amp;#126;a
-&amp;#40;&amp;#126;a &amp;quot;2+2=&amp;quot; &amp;#40;+ 2 2&amp;#41;&amp;#41;
-
-;; How do you define a top level variable in racket?
-&amp;#40;define x 10&amp;#41;
-
-x ;; 10
-
-;; local variable within a scope.
-;; Notice that x is 3 in that specific scope not 10.
-&amp;#40;let &amp;#91;&amp;#40;x 3&amp;#41;&amp;#93; x&amp;#41;
-
-;; just to check that x is actually still globally defined as 10.
-x ;; still 10 cool.
-
-;; Now how do you make a function? With define as well.
-&amp;#40;define &amp;#40;greetings name&amp;#41;
-  &amp;#40;&amp;#126;a &amp;quot;Hello, &amp;quot; name &amp;quot;!&amp;quot;&amp;#41;&amp;#41;
-
-&amp;#40;greetings &amp;quot;salman&amp;quot;&amp;#41; ;; Yep works.
-
-;; Oh it doesn't matter if you make them parantheses or brackets.
-
-&amp;#40;define &amp;#91;greetings name&amp;#93;
-  &amp;#40;&amp;#126;a &amp;quot;Hello, &amp;quot; name &amp;quot;!&amp;quot;&amp;#41;&amp;#41;
-
-&amp;#40;greetings &amp;quot;salman&amp;quot;&amp;#41; ;; still works.
-
-;; What about the lambda functions?
-
-&amp;#40;&amp;#40;lambda &amp;#40;x&amp;#41; &amp;#40;&amp;#42; x x&amp;#41;&amp;#41; 10&amp;#41;
-
-;; lists? Either way works they have the short hand way and the quote function.
-
-&amp;#40;quote &amp;#40;1 2 3 4&amp;#41;&amp;#41;
-
-'&amp;#40;1 2 3 4&amp;#41;
-
-;; Now how do I map functions to individual elements in a list.
-;; Oh they have map.
-
-&amp;#40;map &amp;#40;lambda &amp;#40;x&amp;#41; &amp;#40;&amp;#42; x x&amp;#41;&amp;#41; '&amp;#40;1 2 3 4&amp;#41;&amp;#41;
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-<enclosure>
-
-</enclosure>
-<pubDate>
-Fri, 24 Mar 2017 00:00:00 -0400
-</pubDate>
-</item>
-<item>
-<guid>
-http://salmanhossain.me/posts/clojure-reading-csv/
-</guid>
-<link>
-http://salmanhossain.me/posts/clojure-reading-csv/
-</link>
-<title>
-Clojure - Reading CSV files
-</title>
-<description>
-&lt;p&gt;Lets have some fun today and analyze some data! Let us look at the S&amp;P500 which is a index commonly used to see how well the stock market is doing. &lt;br/&gt;&lt;br/&gt; We can get the data for the S&amp;P500 from yahoo finances link to that below. Make sure you have the range from Jan 03, 1980 to recent. &lt;br/&gt;&lt;br/&gt; &lt;a href='https://finance.yahoo.com/quote/%5EGSPC/history?period1=315723600&amp;period2=1488085200&amp;interval=1d&amp;filter=history&amp;frequency=1d'&gt;Link to the S&amp;P500 Data from Yahoo Finances&lt;/a&gt; &lt;br/&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Let us go ahead and run a lein project by the following command you can skip this if you already have a  project and you can just add incanter to the dependencies.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;$ lein new incantertut
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;After you have downloaded the cvs file go ahead and rename it to &lt;newcode&gt;data.csv&lt;/newcode&gt; and move it to the directory where your project.clj is located.  &lt;br/&gt;&lt;br/&gt; Let us set up our project.clj file to be this so that we have incanter in our project so that we can read csv data and as well as display the data if we decide to do that.&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;defproject incantertut &amp;quot;0.1.0-SNAPSHOT&amp;quot;
-  :description &amp;quot;FIXME: write description&amp;quot;
-  :url &amp;quot;http://example.com/FIXME&amp;quot;
-  :license {:name &amp;quot;Eclipse Public License&amp;quot;
-            :url &amp;quot;http://www.eclipse.org/legal/epl-v10.html&amp;quot;}
-  :dependencies &amp;#91;&amp;#91;org.clojure/clojure &amp;quot;1.8.0&amp;quot;&amp;#93;
-                 &amp;#91;incanter &amp;quot;1.5.5&amp;quot;&amp;#93;&amp;#93;&amp;#41;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now we can move on to the good part and start in our core.clj that in our src directory when creating a lein project. &lt;br/&gt;&lt;br/&gt; Go ahead and include the following for the namespaces. If you haven't seen incanter charts yet I recommend going through some of the previous guides I wrote on how to make graphs with incanter but otherwise I'll re-explain it briefly here as well. &lt;br/&gt;&lt;br/&gt; &lt;a href='http://salmanhossain.me/posts/clojure-incanter/'&gt;Making Graphs With Incanter&lt;/a&gt; &lt;br/&gt;&lt;br/&gt;&lt;/p&gt;&lt;pre&gt;&lt;code&gt;&amp;#40;ns incantertut.core
-  &amp;#40;:use &amp;#91;incanter.charts :only &amp;#91;histogram scatter-plot pie-chart add-points add-lines xy-plot&amp;#93;&amp;#93;
-        &amp;#91;incanter.core :only &amp;#91;view&amp;#93;&amp;#93;
-        &amp;#91;incanter.stats :only &amp;#91;sample-normal linear-model&amp;#93;&amp;#93;
-        &amp;#91;incanter.io :only &amp;#91;read-dataset&amp;#93;&amp;#93;&amp;#41;
-  &amp;#40;:require &amp;#91;clj-time.core :as tc&amp;#93;
-            &amp;#91;clj-time.periodic :as tp&amp;#93;
-            &amp;#91;clj-time.coerce :as tco&amp;#93;&amp;#41;&amp;#41;
-&lt;/code&gt;&lt;/pre&gt;So the only new addition here will be the &lt;newcode&gt;incanter.io&lt;/newcode&gt; which will allow us to read csv files!&lt;br/&gt;&lt;br/&gt;Now to the good stuff. Add the following underneath the namespace in your core.clj file.&lt;pre&gt;&lt;code&gt;&amp;#40;def data &amp;#40;read-dataset &amp;quot;data.csv&amp;quot; :header true&amp;#41;&amp;#41;
-&lt;/code&gt;&lt;/pre&gt;Now you can view all of the data using the following. Be warned that this is around 30+ years of data so it could take a while for the data to appear. &lt;pre&gt;&lt;code&gt;&amp;#40;:rows data&amp;#41;
-&lt;/code&gt;&lt;/pre&gt;However that just shows you the entire data what if we are only interested in the opening price of the stock? Well we can use map :Open to find all the opening prices.&lt;pre&gt;&lt;code&gt;&amp;#40;map :Open &amp;#40;:rows data&amp;#41;&amp;#41;
-&lt;/code&gt;&lt;/pre&gt;That will result in all the opening prices of the S&amp;P500. Now lets say we want to view it we can do that using the view and xy-plot from incanter to do just that. However before that notice that when we do map :Open to the data it will return the opening prices from most recent to least recent. That is not what we want since incanter xy-plot takes least recent to most recent. So we need to use reverse to fix that. So we'll just create a function to do that.&lt;pre&gt;&lt;code&gt;&amp;#40;defn view-data &amp;#91;selection data&amp;#93;
-  &amp;#40;let &amp;#91;sel-data &amp;#40;reverse &amp;#40;map selection &amp;#40;:rows data&amp;#41;&amp;#41;&amp;#41;
-        counter &amp;#40;count sel-data&amp;#41;&amp;#93;
-    &amp;#40;view &amp;#40;xy-plot &amp;#40;range counter&amp;#41; sel-data&amp;#41;&amp;#41;&amp;#41;&amp;#41;
-    
-&amp;#40;view-data :Open data&amp;#41;
-&lt;/code&gt;&lt;/pre&gt;Now running that should produce the following pretty graph below.&lt;br/&gt;&lt;br/&gt;&lt;img src=&quot;https://defunsm.github.io/img/csvpic.png&quot; alt=&quot;cvspic&quot; /&gt;&lt;br/&gt;&lt;br/&gt;That is about it you can fix it up a bit by using a time-series instead so that instead of numbers on the bottom you have dates. As well as overlapping it with close prices too. Prehaps in another blog post.
-</description>
-<enclosure>
-
-</enclosure>
-<pubDate>
-Sun, 26 Feb 2017 00:00:00 -0500
-</pubDate>
-</item>
 <item>
 <guid>
 http://salmanhossain.me/posts/clojure-r-squared/
@@ -257,7 +32,7 @@ Clojure - R Squared
   &amp;#40;:use &amp;#91;incanter.charts :only &amp;#91;histogram scatter-plot pie-chart add-points add-lines&amp;#93;&amp;#93;
         &amp;#91;incanter.core :only &amp;#91;view&amp;#93;&amp;#93;
         &amp;#91;incanter.stats :only &amp;#91;sample-normal linear-model&amp;#93;&amp;#93;&amp;#41;&amp;#41;
- &lt;/code&gt;&lt;/pre&gt;  &lt;/p&gt;&lt;p&gt;We are going to pick up where we left off and find some more interesting properties of the line of best fit such as the r squared value and other properties such as the residuals. So we know that the line of best fit we have which we constructed from the following data ...&lt;pre&gt;&lt;code&gt;&amp;#40;def x &amp;#91;1 2 3 4 5&amp;#93;&amp;#41;
+ &lt;/code&gt;&lt;/pre&gt;  &lt;/p&gt;&lt;p&gt;So we are going to go off of what we left off of and find some more interesting properties of the line of best fit such as the r squared value and other properties such as the residuals. So we know that the line of best fit we have which we constructed from the following data ...&lt;pre&gt;&lt;code&gt;&amp;#40;def x &amp;#91;1 2 3 4 5&amp;#93;&amp;#41;
 &amp;#40;def y &amp;#91;5 9 11 20 24&amp;#93;&amp;#41;
 
 &amp;#40;linear-model y x&amp;#41;
@@ -550,7 +325,7 @@ def entropy&amp;#95;cal&amp;#40;array&amp;#41;:
     total&amp;#95;entropy = 0
 
     for i in array:
-        total&amp;#95;entropy += -i &amp;#42; math.log&amp;#40;2, i&amp;#41;
+        total&amp;#95;entropy += -i &amp;#42; math.log&amp;#40;i, 2&amp;#41;
 
     return total&amp;#95;entropy
 
