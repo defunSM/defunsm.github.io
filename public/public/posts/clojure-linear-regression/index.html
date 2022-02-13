@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+	<title>Clojure - Linear Regression</title>
+	<!-- Styles -->
+	<link rel="stylesheet" href="https://defunsm.github.io/css/style.css" />
+	<link rel="stylesheet" href="https://defunsm.github.io/css/font-awesome.min.css" />
+	<link type="text/css" rel="stylesheet" href="https://defunsm.github.io/featherlight.css" />
+        <link rel="stylesheet" href="https://defunsm.github.io/css/screen.css" />
+        <!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css"> -->
+        <link rel="stylesheet" href="https://defunsm.github.io/css/solarized-dark.css" />
+
+	<style type="text/css">
+		@media all {
+			.lightbox { display: none; }
+		}
+	</style>
+	<!-- jQuery -->
+	<script src="https://defunsm.github.io/js/jquery.min.js"></script>
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="images/favicon.png">
+</head>
+<body class="fade-in cmon body">
+
+
+  <!-- HEADER /////////////////////////////////////////////////////////////////////////// -->
+
+
+  <!--    <ul3 class="nav-two"> -->
+  <!-- <li3 class="three"><a href="http://defunsm.github.io/">Home <i class="fa fa-home" aria-hidden="true"></i></a></li3> -->
+  <!-- <li3 class="fourl"><a href="http://defunsm.github.io/pages-output/another-page/">About <i class="fa fa-heart" aria-hidden="true"></i></a></li3> -->
+  <!-- <li3 class="onel"><a href="https://github.com/defunSM">GitHub <i class="fa fa-github" aria-hidden="true"></i></a></li3> -->
+  <!-- <li3 class="twol"><a href="http://defunsm.github.io/archives/">Archives <i class="fa fa-book" aria-hidden="true"></i></a></li3> -->
+  <!-- </ul3> -->
+
+  <!--  <div class="menubarblack"></div> -->
+
+	<header id="postwelcome" class="parent module parallax parallax-1">
+		<div class="burger" id="toggle">
+			<span class="top"></span>
+			<span class="middle"></span>
+			<span class="bottom"></span>
+
+		</div>
+
+		<div class="navigation" id="navigation">
+			<nav class="overlay-menu">
+			  <ul>
+                                          <li>
+                              <a href="https://defunsm.github.io/#Welcome" class="menu">Home <i class="fa fa-home" aria-hidden="true"></i>
+</a>
+			      <span class="simple_line"></span>
+                              </li>
+					<li >
+						<a href="https://defunsm.github.io/#about" class="menu">About <i class="fa fa-heart" aria-hidden="true"></i></a>
+						<span class="simple_line"></span>
+					</li>
+					<li>
+						<a href="https://defunsm.github.io/#portfolio" class="menu">Github <i class="fa fa-github" aria-hidden="true"></i></a>
+						<span class="simple_line"></span>
+					</li>
+					<li>
+					  <a href="https://defunsm.github.io/archives" class="menu">Archives <i class="fa fa-book" aria-hidden="true"></i></a>
+                                          <span class="simple_line"></span>
+					</li>
+
+                              
+
+
+
+
+
+
+
+
+			  </ul>
+			</nav>
+		</div>
+		<div class="scroll_down"></div>
+		<div class="fade child">
+			<div class="container_small">
+				<!-- Header Titles -->
+				<h1 class="header_title">Clojure - Linear Regression</h1>
+
+
+                                <a href="/posts/clojure-r-squared/" class="button"><i class="fa fa-arrow-left" aria-hidden="true"></i> Clojure - R Squared</a>
+
+<br/>
+                                
+                                <a href="/posts/clojure-incanter/" class="button">Clojure - Basic Incanter <i class="fa fa-arrow-right" aria-hidden="true"></i>
+</i></a>
+
+
+			</div>
+		</div>
+	</header>
+	<!-- END HEADER /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- ABOUT SECTION /////////////////////////////////////////////////////////////////////////// -->
+	<section id="about" class="module defaultpadding">
+
+
+          <div class="anotherclass">
+
+
+                    
+                    <div class="post-header">
+    <div id="post-meta" class="row">
+        <div class="col-lg-6">January 30, 2017</div>
+        
+    </div>
+    <h2>Clojure - Linear Regression</h2>
+</div>
+<div>
+    
+    <p><img src="https://defunsm.github.io/img/incanter4.png" alt="incanter" /></p><p>We will try to do a basic linear regression here with incanter. If you don't know what linear regression is it is essentially finding the line of best fit. I'll demonstrate how you can find the line of best fit using incanter with a neat function called linear-model which will do a lot of the numerical calculations for us. Make sure to note that the data for the y axis is the first argument and not the second argument since at least for me it appears to be more intuitive to place the x axis in the second argument of the function but that isn't the case for the linear-model function from incanter.stat so take note of that. Let us go ahead and add our dependencies. As well as make sure that incanter is in your project.clj and your namespace looks like the following below.<pre><code>&#40;ns incantertut.core
+  &#40;:use &#91;incanter.charts :only &#91;histogram scatter-plot pie-chart add-points add-lines&#93;&#93;
+        &#91;incanter.core :only &#91;view&#93;&#93;
+        &#91;incanter.stats :only &#91;sample-normal linear-model&#93;&#93;&#41;&#41;
+ </code></pre> What linear-model will do for us will do a bunch of calculations off hand so that we don't have to do them ourselves which is good. However if you are interested in the math computational part like I am you should probably go learn linear algebra and some statistics which will help you understand more of whats going on but it isn't absolutely necessary if you just want a line of best fit to be displayed. <br/><br/> I am not entirely sure why computer science and the machine learning community tend to like to call the line of best fit "linear regression" which sounds a bit scary to me but really all you are doing is fitting a line that happens to be stright to a bunch of points on a x and y axis graph. Nothing complicated really. However when introducing this topic of linear regression in textbooks the impression is that this is a huge big thing but anyways I digress too much and here you go with the easy and simple line of best fit.<pre><code>&#40;def x &#91;1 2 3 4 5&#93;&#41;
+&#40;def y &#91;5 9 11 20 24&#93;&#41;
+
+&#40;view &#40;add-lines &#40;scatter-plot x y&#41;
+                  x &#40;:fitted &#40;linear-model y x&#41;&#41;&#41;&#41;
+ </code></pre> Let me go through with what is going on here. The view is again if you haven't read through the previous post on basic incanter on how to display a histogram, scatterplot and a pie chart I suggest looking at that. However I'll assume you know what view is doing and is the function that allows you to see the graphs hence view. The add-lines is a new function from the incanter.charts that I haven't shown before and allows you to plot lines you could use add-points instead as well but than it wouldn't be line.</p><pre><code>&#40;:coefs &#40;linear-model y x&#41;&#41;
+;; =&gt; &#91;-0.8999999999999915 4.900000000000002&#93;
+</code></pre><p>Now lets take a look using :coefs gives us two numbers in a persistent vector. So what do those numbers represent? Well one of is negative and the other positive and so judging from the graph you seen the negative number can't be the slope since the slope was clearly had a positive slope. So from that conclusion you can assume that the first number is the y-intercept which it is. The second number is the slope no surprise there. <br/><br/> This is going to be a pretty short post just showing you how to obtain slope and y-intercept but you may not satisfied and be left with questions such as how well fitted is my line of best fit? What is the R<sup>2</sup> value? How do I get that kind of information from my line of best fit well if you're curious you can check the documentation or wait for the next post.</p>
+</div>
+
+<div id="post-tags">
+    <b>Tags: </b>
+    
+    <a href="/tags/Clojure/" class="button4">Clojure</a>
+    
+    <a href="/tags/Code/" class="button4">Code</a>
+    
+    <a href="/tags/Guide/" class="button4">Guide</a>
+    
+</div>
+
+
+                          <div id="prev-next">
+                            
+                            <a class="center button3" href="/posts/clojure-r-squared/"><i class="fa fa-arrow-left" aria-hidden="true"></i> Clojure - R Squared</a>
+                            
+                            
+                            <a class="center button3" href="/posts/clojure-incanter/">Clojure - Basic Incanter <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                            
+                          </div>
+
+                          
+                          <div id="disqus_thread"></div>
+                          <script type="text/javascript">
+                            (function() {
+                            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                            dsq.src = '//defunsm-github-io.disqus.com/embed.js';
+                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                            })();
+                          </script>
+                          
+
+
+
+                        
+          </div>
+
+
+
+	</section>
+
+        <!-- END ABOUT SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- PORTFOLIO SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- END CONTACT SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- FOOTER /////////////////////////////////////////////////////////////////////////// -->
+	<footer>
+		<div class="container_footer">
+		  <div class="left">
+                    <a href="https://github.com/defunSM"><i class="fa fa-github-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://www.facebook.com/salman.hossain.944"><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://plus.google.com/u/0/109736817709668742056"><i class="fa fa-google-plus-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://twitter.com/SmSalmanHossain"><i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://www.linkedin.com/in/salman-hossain"><i class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i></a>
+                    <p>&nbsp;</p>
+
+
+                    <p>Email: &nbsp;&nbsp; <span>sxh8083@g.rit.edu</span></p>
+                    <p>Phone: &nbsp;&nbsp; <span>(347) - 398 - 1701 </span></p>
+				<p>© 2016-17 <span>Salman Hossain</span></p>
+			</div>
+			<div class="right">
+				<a href="#postwelcome">Top <i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+			</div>
+		</div>
+	</footer>
+	<!-- END FOOTER /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- Scripts -->
+	<script src="https://defunsm.github.io/js/parallax.js"></script>
+	<script src="https://defunsm.github.io/js/diffscroll.js"></script>
+	<script src="https://defunsm.github.io/js/featherlight.js" type="text/javascript" charset="utf-8"></script>
+	<script src="https://defunsm.github.io/js/scroll.js"></script>
+        <!-- <script src="//code.jquery.com/jquery-1.11.0.min.js"></script> -->
+        <!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script> -->
+
+        <script src="https://defunsm.github.io/js/highlight.pack.js"></script>
+        <script src="/js/highlight.pack.js" type="text/javascript"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>

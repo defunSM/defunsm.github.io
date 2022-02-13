@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+	<title>Python - Reading and Writing Files</title>
+	<!-- Styles -->
+	<link rel="stylesheet" href="https://defunsm.github.io/css/style.css" />
+	<link rel="stylesheet" href="https://defunsm.github.io/css/font-awesome.min.css" />
+	<link type="text/css" rel="stylesheet" href="https://defunsm.github.io/featherlight.css" />
+        <link rel="stylesheet" href="https://defunsm.github.io/css/screen.css" />
+        <!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css"> -->
+        <link rel="stylesheet" href="https://defunsm.github.io/css/solarized-dark.css" />
+
+	<style type="text/css">
+		@media all {
+			.lightbox { display: none; }
+		}
+	</style>
+	<!-- jQuery -->
+	<script src="https://defunsm.github.io/js/jquery.min.js"></script>
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="images/favicon.png">
+</head>
+<body class="fade-in cmon body">
+
+
+  <!-- HEADER /////////////////////////////////////////////////////////////////////////// -->
+
+
+  <!--    <ul3 class="nav-two"> -->
+  <!-- <li3 class="three"><a href="http://defunsm.github.io/">Home <i class="fa fa-home" aria-hidden="true"></i></a></li3> -->
+  <!-- <li3 class="fourl"><a href="http://defunsm.github.io/pages-output/another-page/">About <i class="fa fa-heart" aria-hidden="true"></i></a></li3> -->
+  <!-- <li3 class="onel"><a href="https://github.com/defunSM">GitHub <i class="fa fa-github" aria-hidden="true"></i></a></li3> -->
+  <!-- <li3 class="twol"><a href="http://defunsm.github.io/archives/">Archives <i class="fa fa-book" aria-hidden="true"></i></a></li3> -->
+  <!-- </ul3> -->
+
+  <!--  <div class="menubarblack"></div> -->
+
+	<header id="postwelcome" class="parent module parallax parallax-1">
+		<div class="burger" id="toggle">
+			<span class="top"></span>
+			<span class="middle"></span>
+			<span class="bottom"></span>
+
+		</div>
+
+		<div class="navigation" id="navigation">
+			<nav class="overlay-menu">
+			  <ul>
+                                          <li>
+                              <a href="https://defunsm.github.io/#Welcome" class="menu">Home <i class="fa fa-home" aria-hidden="true"></i>
+</a>
+			      <span class="simple_line"></span>
+                              </li>
+					<li >
+						<a href="https://defunsm.github.io/#about" class="menu">About <i class="fa fa-heart" aria-hidden="true"></i></a>
+						<span class="simple_line"></span>
+					</li>
+					<li>
+						<a href="https://defunsm.github.io/#portfolio" class="menu">Github <i class="fa fa-github" aria-hidden="true"></i></a>
+						<span class="simple_line"></span>
+					</li>
+					<li>
+					  <a href="https://defunsm.github.io/archives" class="menu">Archives <i class="fa fa-book" aria-hidden="true"></i></a>
+                                          <span class="simple_line"></span>
+					</li>
+
+                              
+
+
+
+
+
+
+
+
+			  </ul>
+			</nav>
+		</div>
+		<div class="scroll_down"></div>
+		<div class="fade child">
+			<div class="container_small">
+				<!-- Header Titles -->
+				<h1 class="header_title">Python - Reading and Writing Files</h1>
+
+
+                                <a href="/posts/python-gtk/" class="button"><i class="fa fa-arrow-left" aria-hidden="true"></i> Python - GTK 3.0</a>
+
+<br/>
+                                
+                                <a href="/posts/python-web-scraper/" class="button">Python - Parsing HTML with BeautifulSoup <i class="fa fa-arrow-right" aria-hidden="true"></i>
+</i></a>
+
+
+			</div>
+		</div>
+	</header>
+	<!-- END HEADER /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- ABOUT SECTION /////////////////////////////////////////////////////////////////////////// -->
+	<section id="about" class="module defaultpadding">
+
+
+          <div class="anotherclass">
+
+
+                    
+                    <div class="post-header">
+    <div id="post-meta" class="row">
+        <div class="col-lg-6">December 30, 2016</div>
+        
+    </div>
+    <h2>Python - Reading and Writing Files</h2>
+</div>
+<div>
+    
+     <p> Reading and Writing to files in python is rather useful when you want to store down some of the results you get after running a program. So here is a simple stright forward guide to doing just that.  <br/><br/> Go ahead and open up a file as ex1.py or whatever you prefer really.</p><pre><code>$ touch ex1.py
+</code></pre>Also create a .txt file for our dummy text file that we'll read with python.<pre><code>$ echo &quot;This is a text file&quot; &gt;&gt; dummytext.txt
+</code></pre>If doing that confuses you than you can just use a text editor and create the .txt file that way same thing but the above is just a command to send the string into a file in this case dummytext.txt. <br/><br/>Just as a sanity check I usually like to cat the file to make that the text is actually there so go ahead and do that.<pre><code>cat dummytext.txt
+</code></pre>Alright we aren't crazy and text is there. If it's not there than go ahead and do it manually and use a text editor to type it into the file or whatever method you prefer.<br/><br/>Now on to the python part where we code up the program that will read the the .txt file. So go ahead and open up ex1.py. Write in the following into ex1.py...<pre><code>#!/usr/bin/env python
+import sys, os
+
+def main&#40;&#41;:
+
+    f = open&#40;'dummytext.txt', 'r'&#41;
+    text = f.read&#40;&#41;
+
+    print&#40;text&#41;
+    
+    f.close&#40;&#41;
+
+if &#95;&#95;name&#95;&#95;==&quot;&#95;&#95;main&#95;&#95;&quot;:
+    main&#40;&#41;
+</code></pre>Run that and you'll see the text appears that appears in dummytext.txt file. So let me explain what exactly happened.<br/><br/>So using open() will open up the file you want so that you can read it which is told to the open function by passing the 'r' if you passed it 'w' it would write to the file and if you did 'a' it would append. <br/><br/>When calling read() on the f you are taking all the text in the file  and placing it into the variable called text and than later printing it out.<br/><br/>Now lets do something else and write to a file. Note that when doing this you'll realize when using 'w' rather than 'r' in the open function it'll cause the original file to be trancated. This means whenever opening a file with the 'w' parameter it'll remove all the text in the file before hand. This is important to know if you're going to be using this on important files so be aware that using 'w' will remove the text in the file. So continuing on lets change the code we have to the following...<pre><code>#!/usr/bin/env python
+import sys, os
+
+def main&#40;&#41;:
+
+    f = open&#40;'dummytext.txt', 'w'&#41;
+
+    f.write&#40;&quot;New text in the file&quot;&#41;
+    f.write&#40;&quot;\n&quot;&#41;
+
+    f.close&#40;&#41;
+
+if &#95;&#95;name&#95;&#95;==&quot;&#95;&#95;main&#95;&#95;&quot;:
+    main&#40;&#41;
+</code></pre>After running that check the dummytext.txt file and you'll realize that the file has be changed to contain "New text in the file". This is because of the write() function that is avaliable for you to use when you open a file with 'w'. Also keep in mind to always close the file after opening it as this could lead to problems in more complex programs.<br/><br/>Now let me show you another way where you can preserve your file and insert other text into it. So change your code one more time to the following.<pre><code>#!/usr/bin/env python
+import sys, os
+
+def main&#40;&#41;:
+
+    f = open&#40;'dummytext.txt', 'a'&#41;
+
+    f.write&#40;&quot;The previous text will be preserved this time.&quot;&#41;
+    f.write&#40;&quot;\n&quot;&#41;
+
+    f.close&#40;&#41;
+
+if &#95;&#95;name&#95;&#95;==&quot;&#95;&#95;main&#95;&#95;&quot;:
+    main&#40;&#41;
+</code></pre>Now when you check the file you'll see the the previous text in the dummytext is still there and the new text that was writen into the file is also there. When opening a file with 'a' you are preserving the original text in the file but appending new strings into it thus 'a' stands for appending. <br/><br/>Thats pretty much it when it comes to all the basic reading and writing in python.
+</div>
+
+<div id="post-tags">
+    <b>Tags: </b>
+    
+    <a href="/tags/Python/" class="button4">Python</a>
+    
+    <a href="/tags/Code/" class="button4">Code</a>
+    
+    <a href="/tags/Guide/" class="button4">Guide</a>
+    
+</div>
+
+
+                          <div id="prev-next">
+                            
+                            <a class="center button3" href="/posts/python-gtk/"><i class="fa fa-arrow-left" aria-hidden="true"></i> Python - GTK 3.0</a>
+                            
+                            
+                            <a class="center button3" href="/posts/python-web-scraper/">Python - Parsing HTML with BeautifulSoup <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                            
+                          </div>
+
+                          
+                          <div id="disqus_thread"></div>
+                          <script type="text/javascript">
+                            (function() {
+                            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                            dsq.src = '//defunsm-github-io.disqus.com/embed.js';
+                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                            })();
+                          </script>
+                          
+
+
+
+                        
+          </div>
+
+
+
+	</section>
+
+        <!-- END ABOUT SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- PORTFOLIO SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- END CONTACT SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- FOOTER /////////////////////////////////////////////////////////////////////////// -->
+	<footer>
+		<div class="container_footer">
+		  <div class="left">
+                    <a href="https://github.com/defunSM"><i class="fa fa-github-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://www.facebook.com/salman.hossain.944"><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://plus.google.com/u/0/109736817709668742056"><i class="fa fa-google-plus-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://twitter.com/SmSalmanHossain"><i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://www.linkedin.com/in/salman-hossain"><i class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i></a>
+                    <p>&nbsp;</p>
+
+
+                    <p>Email: &nbsp;&nbsp; <span>sxh8083@g.rit.edu</span></p>
+                    <p>Phone: &nbsp;&nbsp; <span>(347) - 398 - 1701 </span></p>
+				<p>© 2016-17 <span>Salman Hossain</span></p>
+			</div>
+			<div class="right">
+				<a href="#postwelcome">Top <i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+			</div>
+		</div>
+	</footer>
+	<!-- END FOOTER /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- Scripts -->
+	<script src="https://defunsm.github.io/js/parallax.js"></script>
+	<script src="https://defunsm.github.io/js/diffscroll.js"></script>
+	<script src="https://defunsm.github.io/js/featherlight.js" type="text/javascript" charset="utf-8"></script>
+	<script src="https://defunsm.github.io/js/scroll.js"></script>
+        <!-- <script src="//code.jquery.com/jquery-1.11.0.min.js"></script> -->
+        <!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script> -->
+
+        <script src="https://defunsm.github.io/js/highlight.pack.js"></script>
+        <script src="/js/highlight.pack.js" type="text/javascript"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>

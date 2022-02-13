@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+	<title>Python - Entropy in Machine Learning</title>
+	<!-- Styles -->
+	<link rel="stylesheet" href="https://defunsm.github.io/css/style.css" />
+	<link rel="stylesheet" href="https://defunsm.github.io/css/font-awesome.min.css" />
+	<link type="text/css" rel="stylesheet" href="https://defunsm.github.io/featherlight.css" />
+        <link rel="stylesheet" href="https://defunsm.github.io/css/screen.css" />
+        <!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css"> -->
+        <link rel="stylesheet" href="https://defunsm.github.io/css/solarized-dark.css" />
+
+	<style type="text/css">
+		@media all {
+			.lightbox { display: none; }
+		}
+	</style>
+	<!-- jQuery -->
+	<script src="https://defunsm.github.io/js/jquery.min.js"></script>
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="images/favicon.png">
+</head>
+<body class="fade-in cmon body">
+
+
+  <!-- HEADER /////////////////////////////////////////////////////////////////////////// -->
+
+
+  <!--    <ul3 class="nav-two"> -->
+  <!-- <li3 class="three"><a href="http://defunsm.github.io/">Home <i class="fa fa-home" aria-hidden="true"></i></a></li3> -->
+  <!-- <li3 class="fourl"><a href="http://defunsm.github.io/pages-output/another-page/">About <i class="fa fa-heart" aria-hidden="true"></i></a></li3> -->
+  <!-- <li3 class="onel"><a href="https://github.com/defunSM">GitHub <i class="fa fa-github" aria-hidden="true"></i></a></li3> -->
+  <!-- <li3 class="twol"><a href="http://defunsm.github.io/archives/">Archives <i class="fa fa-book" aria-hidden="true"></i></a></li3> -->
+  <!-- </ul3> -->
+
+  <!--  <div class="menubarblack"></div> -->
+
+	<header id="postwelcome" class="parent module parallax parallax-1">
+		<div class="burger" id="toggle">
+			<span class="top"></span>
+			<span class="middle"></span>
+			<span class="bottom"></span>
+
+		</div>
+
+		<div class="navigation" id="navigation">
+			<nav class="overlay-menu">
+			  <ul>
+                                          <li>
+                              <a href="https://defunsm.github.io/#Welcome" class="menu">Home <i class="fa fa-home" aria-hidden="true"></i>
+</a>
+			      <span class="simple_line"></span>
+                              </li>
+					<li >
+						<a href="https://defunsm.github.io/#about" class="menu">About <i class="fa fa-heart" aria-hidden="true"></i></a>
+						<span class="simple_line"></span>
+					</li>
+					<li>
+						<a href="https://defunsm.github.io/#portfolio" class="menu">Github <i class="fa fa-github" aria-hidden="true"></i></a>
+						<span class="simple_line"></span>
+					</li>
+					<li>
+					  <a href="https://defunsm.github.io/archives" class="menu">Archives <i class="fa fa-book" aria-hidden="true"></i></a>
+                                          <span class="simple_line"></span>
+					</li>
+
+                              
+
+
+
+
+
+
+
+
+			  </ul>
+			</nav>
+		</div>
+		<div class="scroll_down"></div>
+		<div class="fade child">
+			<div class="container_small">
+				<!-- Header Titles -->
+				<h1 class="header_title">Python - Entropy in Machine Learning</h1>
+
+
+                                <a href="/posts/python-posterior-probability/" class="button"><i class="fa fa-arrow-left" aria-hidden="true"></i> Python - Prior, Posterior Probability and Normalization</a>
+
+<br/>
+                                
+                                <a href="/posts/python-gtk/" class="button">Python - GTK 3.0 <i class="fa fa-arrow-right" aria-hidden="true"></i>
+</i></a>
+
+
+			</div>
+		</div>
+	</header>
+	<!-- END HEADER /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- ABOUT SECTION /////////////////////////////////////////////////////////////////////////// -->
+	<section id="about" class="module defaultpadding">
+
+
+          <div class="anotherclass">
+
+
+                    
+                    <div class="post-header">
+    <div id="post-meta" class="row">
+        <div class="col-lg-6">January 9, 2017</div>
+        
+    </div>
+    <h2>Python - Entropy in Machine Learning</h2>
+</div>
+<div>
+    
+      <p> <newcode>Entropy</newcode> when talked about in information theory relates to the <newcode>randomness</newcode> in data. Another way to think about entropy is that it is the <newcode>unpredictability</newcode> of the data. So a high entropy is essentially saying that the data is scattered around while a low entropy means that nearly all the data is the same. So since in machine learning data is essentially the way that we build classifiers we often need to manage the entropy to be not too low nor too high and reach a nice balance. The <newcode>Pi</newcode> in the entropy equation below represents the probability of the event occuring. </p><p> <img src="https://defunsm.github.io/img/entropypic.png" alt="picture of entropy equation" /></p><p>So just a few things to note when calculating entropy we are using log 2 and not log 10 small distinction but does change your result. You may see different forms of this equation if you search up entropy but generally you'll find it'll look something like the above. <br/><br/> So what is the point of finding entropy? I mean yes its nice I guess to know if your data is more or less random but what can we do with entropy? Well entropy also tells us how much <newcode>information</newcode> we are going to get from a specific event. For example if we have a coin and say it isn't loaded in any way and has a 50/50 chance of either head or tails. This will result in lower entropy since the chances are fair which means more information. <br/><br/> We could create a nice python script to calculate the entropy for us. So lets go ahead and do that we'll need the <newcode>math module</newcode> for the log. After that we'll make a function that will take an <newcode>array of probabilities</newcode> of each event occuring. So our probability array will be [0.5, 0.5] since it is an equal chance of either heads or tails occuring.<pre><code>import math
+
+def entropy&#95;cal&#40;array&#41;:
+
+    total&#95;entropy = 0
+
+    for i in array:
+        total&#95;entropy += -i &#42; math.log&#40;i, 2&#41;
+
+    return total&#95;entropy
+
+def main&#40;&#41;:
+
+    probabilities = &#91;0.5, 0.5&#93;
+    entropy = entropy&#95;cal&#40;probabilities&#41;
+
+    print&#40;entropy&#41;
+
+if &#95;&#95;name&#95;&#95;==&quot;&#95;&#95;main&#95;&#95;&quot;:
+    main&#40;&#41;
+ </code></pre></p><p>One of the things you'll find out if you play around with the entropy equation is that equal chance events give out more  information because there is less entropy. For example try changing the probability to [0.75, 0.25] in other words a rigged coin  toss in which heads is 0.75 and tails is 0.25 or vise versa and you'll find that there is a higher entropy. Events that are more tilted have higher entropy than those with equal chances resulting in less information. So essentially more entropy is less information and less entropy is more information. You can also see this as reduced uncertainity means a lower entropy. Since a higher entropy means there is a higher uncertainity. <br/><br/> So that is about it as far as calculating entropies go and if you were wondering what the units are for entropy it is usally refered to as a 'bit' but this depends on the log base you are using but since we are using 2 which means it can either be 1 or 0. <br/><br/> Thats about it when it comes to just doing some basic calculations with the entropy equation.</p>
+</div>
+
+<div id="post-tags">
+    <b>Tags: </b>
+    
+    <a href="/tags/Python/" class="button4">Python</a>
+    
+    <a href="/tags/Machine Learning/" class="button4">Machine Learning</a>
+    
+    <a href="/tags/Guide/" class="button4">Guide</a>
+    
+</div>
+
+
+                          <div id="prev-next">
+                            
+                            <a class="center button3" href="/posts/python-posterior-probability/"><i class="fa fa-arrow-left" aria-hidden="true"></i> Python - Prior, Posterior Probability and Normalization</a>
+                            
+                            
+                            <a class="center button3" href="/posts/python-gtk/">Python - GTK 3.0 <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                            
+                          </div>
+
+                          
+                          <div id="disqus_thread"></div>
+                          <script type="text/javascript">
+                            (function() {
+                            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                            dsq.src = '//defunsm-github-io.disqus.com/embed.js';
+                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                            })();
+                          </script>
+                          
+
+
+
+                        
+          </div>
+
+
+
+	</section>
+
+        <!-- END ABOUT SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- PORTFOLIO SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- END CONTACT SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- FOOTER /////////////////////////////////////////////////////////////////////////// -->
+	<footer>
+		<div class="container_footer">
+		  <div class="left">
+                    <a href="https://github.com/defunSM"><i class="fa fa-github-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://www.facebook.com/salman.hossain.944"><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://plus.google.com/u/0/109736817709668742056"><i class="fa fa-google-plus-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://twitter.com/SmSalmanHossain"><i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://www.linkedin.com/in/salman-hossain"><i class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i></a>
+                    <p>&nbsp;</p>
+
+
+                    <p>Email: &nbsp;&nbsp; <span>sxh8083@g.rit.edu</span></p>
+                    <p>Phone: &nbsp;&nbsp; <span>(347) - 398 - 1701 </span></p>
+				<p>© 2016-17 <span>Salman Hossain</span></p>
+			</div>
+			<div class="right">
+				<a href="#postwelcome">Top <i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+			</div>
+		</div>
+	</footer>
+	<!-- END FOOTER /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- Scripts -->
+	<script src="https://defunsm.github.io/js/parallax.js"></script>
+	<script src="https://defunsm.github.io/js/diffscroll.js"></script>
+	<script src="https://defunsm.github.io/js/featherlight.js" type="text/javascript" charset="utf-8"></script>
+	<script src="https://defunsm.github.io/js/scroll.js"></script>
+        <!-- <script src="//code.jquery.com/jquery-1.11.0.min.js"></script> -->
+        <!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script> -->
+
+        <script src="https://defunsm.github.io/js/highlight.pack.js"></script>
+        <script src="/js/highlight.pack.js" type="text/javascript"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>

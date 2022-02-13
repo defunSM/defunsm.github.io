@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+	<title>Clojure - R Squared</title>
+	<!-- Styles -->
+	<link rel="stylesheet" href="https://defunsm.github.io/css/style.css" />
+	<link rel="stylesheet" href="https://defunsm.github.io/css/font-awesome.min.css" />
+	<link type="text/css" rel="stylesheet" href="https://defunsm.github.io/featherlight.css" />
+        <link rel="stylesheet" href="https://defunsm.github.io/css/screen.css" />
+        <!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css"> -->
+        <link rel="stylesheet" href="https://defunsm.github.io/css/solarized-dark.css" />
+
+	<style type="text/css">
+		@media all {
+			.lightbox { display: none; }
+		}
+	</style>
+	<!-- jQuery -->
+	<script src="https://defunsm.github.io/js/jquery.min.js"></script>
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="images/favicon.png">
+</head>
+<body class="fade-in cmon body">
+
+
+  <!-- HEADER /////////////////////////////////////////////////////////////////////////// -->
+
+
+  <!--    <ul3 class="nav-two"> -->
+  <!-- <li3 class="three"><a href="http://defunsm.github.io/">Home <i class="fa fa-home" aria-hidden="true"></i></a></li3> -->
+  <!-- <li3 class="fourl"><a href="http://defunsm.github.io/pages-output/another-page/">About <i class="fa fa-heart" aria-hidden="true"></i></a></li3> -->
+  <!-- <li3 class="onel"><a href="https://github.com/defunSM">GitHub <i class="fa fa-github" aria-hidden="true"></i></a></li3> -->
+  <!-- <li3 class="twol"><a href="http://defunsm.github.io/archives/">Archives <i class="fa fa-book" aria-hidden="true"></i></a></li3> -->
+  <!-- </ul3> -->
+
+  <!--  <div class="menubarblack"></div> -->
+
+	<header id="postwelcome" class="parent module parallax parallax-1">
+		<div class="burger" id="toggle">
+			<span class="top"></span>
+			<span class="middle"></span>
+			<span class="bottom"></span>
+
+		</div>
+
+		<div class="navigation" id="navigation">
+			<nav class="overlay-menu">
+			  <ul>
+                                          <li>
+                              <a href="https://defunsm.github.io/#Welcome" class="menu">Home <i class="fa fa-home" aria-hidden="true"></i>
+</a>
+			      <span class="simple_line"></span>
+                              </li>
+					<li >
+						<a href="https://defunsm.github.io/#about" class="menu">About <i class="fa fa-heart" aria-hidden="true"></i></a>
+						<span class="simple_line"></span>
+					</li>
+					<li>
+						<a href="https://defunsm.github.io/#portfolio" class="menu">Github <i class="fa fa-github" aria-hidden="true"></i></a>
+						<span class="simple_line"></span>
+					</li>
+					<li>
+					  <a href="https://defunsm.github.io/archives" class="menu">Archives <i class="fa fa-book" aria-hidden="true"></i></a>
+                                          <span class="simple_line"></span>
+					</li>
+
+                              
+
+
+
+
+
+
+
+
+			  </ul>
+			</nav>
+		</div>
+		<div class="scroll_down"></div>
+		<div class="fade child">
+			<div class="container_small">
+				<!-- Header Titles -->
+				<h1 class="header_title">Clojure - R Squared</h1>
+
+
+<br/>
+                                
+                                <a href="/posts/clojure-linear-regression/" class="button">Clojure - Linear Regression <i class="fa fa-arrow-right" aria-hidden="true"></i>
+</i></a>
+
+
+			</div>
+		</div>
+	</header>
+	<!-- END HEADER /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- ABOUT SECTION /////////////////////////////////////////////////////////////////////////// -->
+	<section id="about" class="module defaultpadding">
+
+
+          <div class="anotherclass">
+
+
+                    
+                    <div class="post-header">
+    <div id="post-meta" class="row">
+        <div class="col-lg-6">February 1, 2017</div>
+        
+    </div>
+    <h2>Clojure - R Squared</h2>
+</div>
+<div>
+    
+    <p>We'll pick back up from where we left off in the linear regression post last time. So we'll be keeping pretty much the same dependency of incanter and the name space should still look like the following below more or less.<pre><code>&#40;ns incantertut.core
+  &#40;:use &#91;incanter.charts :only &#91;histogram scatter-plot pie-chart add-points add-lines&#93;&#93;
+        &#91;incanter.core :only &#91;view&#93;&#93;
+        &#91;incanter.stats :only &#91;sample-normal linear-model&#93;&#93;&#41;&#41;
+ </code></pre>  </p><p>So we are going to go off of what we left off of and find some more interesting properties of the line of best fit such as the r squared value and other properties such as the residuals. So we know that the line of best fit we have which we constructed from the following data ...<pre><code>&#40;def x &#91;1 2 3 4 5&#93;&#41;
+&#40;def y &#91;5 9 11 20 24&#93;&#41;
+
+&#40;linear-model y x&#41;
+
+&#40;:fitted &#40;linear-model y x&#41;&#41;
+;; =&gt; &#91;4.000000000000011 8.900000000000013 13.800000000000015 18.700000000000017 23.60000000000002&#93;
+ </code></pre> So before getting to the R squared value which we'll get soon enough. Let's look at how far the points are from the line of best fit. To do this incanter has provided :residuals.  The residuals are the distance away from the line of best fit. This is useful information to have when trying to understand how well our line of best fit 'fits' the data.<pre><code>&#40;:residuals &#40;linear-model y x&#41;&#41;
+;; =&gt; &#91;0.9999999999999893 0.09999999999998721 -2.800000000000015 1.299999999999983 0.3999999999999808&#93;
+ </code></pre> So the residuals are nice but maybe you just want to see the absolute distance and not worry about the negatives in the residuals. Easy fix using map to just multiply it with a -1 to make it opposite like so...<pre><code>&#40;map &#40;fn &#91;x&#93; &#40;if &#40;neg? x&#41; &#40;&#42; x -1&#41; x&#41;&#41; &#40;:residuals &#40;linear-model y x&#41;&#41;&#41;
+;; =&gt; &#40;0.9999999999999893 0.09999999999998721 2.800000000000015 1.299999999999983 0.3999999999999808&#41;
+ </code></pre> Now we have all of the distances as positive lets place them on the graph! <br/><br/> <img src="https://defunsm.github.io/img/incanter5.png" alt="incanter" /> <br/><br/><pre><code>&#40;view &#40;add-lines &#40;scatter-plot x y&#41;
+                 x &#40;map &#40;fn &#91;x&#93; &#40;if &#40;neg? x&#41; &#40;&#42; x -1&#41; x&#41;&#41; &#40;:residuals &#40;linear-model y x&#41;&#41;&#41;&#41;&#41;
+ </code></pre> You'll see somewhat of a representation of those residuals below and seeing from a visual standpoint which datapoints appear to be most out of fit with the line of best fit. Here you can see that the third point seems to be the most nearly 3 units away from the line of best fit.</p><p>Now lets do something else with the residuals a common thing to do is that you can square the residuals which will get you the sse or the sum of squares due to error.<pre><code>&#40;reduce + &#40;map &#40;fn &#91;x&#93; &#40;&#42; x x&#41;&#41; &#40;:residuals &#40;linear-model y x&#41;&#41;&#41;&#41;
+;; =&gt; 10.7
+ </code></pre> or actually in incanter you can just do the following instead of typing that entire thing out.<pre><code>&#40;:sse &#40;linear-model y x&#41;&#41;
+;; =&gt; 10.7
+ </code></pre> So that value gives you some what of an idea of how well the data fits the line of best fit. However we can go and look further and get the R<sup>2</sup> value from the linear-model.<pre><code>&#40;:r-square &#40;linear-model y x&#41;&#41;
+;; =&gt; 0.9573365231259969
+ </code></pre> So that is our line of best fit but how well does it fit our data well that is where the R squared value comes in and determines how well our line fits our data. Typically the closer the R squared value is to 1 the better. As well as the R squared value is only ranges from 0 to 1. So 0.95 is pretty good so that our data fits the line of best fit rather well.</p>
+</div>
+
+<div id="post-tags">
+    <b>Tags: </b>
+    
+    <a href="/tags/Clojure/" class="button4">Clojure</a>
+    
+    <a href="/tags/Code/" class="button4">Code</a>
+    
+    <a href="/tags/Guide/" class="button4">Guide</a>
+    
+</div>
+
+
+                          <div id="prev-next">
+                            
+                            
+                            <a class="center button3" href="/posts/clojure-linear-regression/">Clojure - Linear Regression <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                            
+                          </div>
+
+                          
+                          <div id="disqus_thread"></div>
+                          <script type="text/javascript">
+                            (function() {
+                            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                            dsq.src = '//defunsm-github-io.disqus.com/embed.js';
+                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                            })();
+                          </script>
+                          
+
+
+
+                        
+          </div>
+
+
+
+	</section>
+
+        <!-- END ABOUT SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- PORTFOLIO SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- END CONTACT SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- FOOTER /////////////////////////////////////////////////////////////////////////// -->
+	<footer>
+		<div class="container_footer">
+		  <div class="left">
+                    <a href="https://github.com/defunSM"><i class="fa fa-github-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://www.facebook.com/salman.hossain.944"><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://plus.google.com/u/0/109736817709668742056"><i class="fa fa-google-plus-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://twitter.com/SmSalmanHossain"><i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://www.linkedin.com/in/salman-hossain"><i class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i></a>
+                    <p>&nbsp;</p>
+
+
+                    <p>Email: &nbsp;&nbsp; <span>sxh8083@g.rit.edu</span></p>
+                    <p>Phone: &nbsp;&nbsp; <span>(347) - 398 - 1701 </span></p>
+				<p>© 2016-17 <span>Salman Hossain</span></p>
+			</div>
+			<div class="right">
+				<a href="#postwelcome">Top <i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+			</div>
+		</div>
+	</footer>
+	<!-- END FOOTER /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- Scripts -->
+	<script src="https://defunsm.github.io/js/parallax.js"></script>
+	<script src="https://defunsm.github.io/js/diffscroll.js"></script>
+	<script src="https://defunsm.github.io/js/featherlight.js" type="text/javascript" charset="utf-8"></script>
+	<script src="https://defunsm.github.io/js/scroll.js"></script>
+        <!-- <script src="//code.jquery.com/jquery-1.11.0.min.js"></script> -->
+        <!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script> -->
+
+        <script src="https://defunsm.github.io/js/highlight.pack.js"></script>
+        <script src="/js/highlight.pack.js" type="text/javascript"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>

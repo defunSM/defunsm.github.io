@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+	<title>Basics of Clojure (Part 1)</title>
+	<!-- Styles -->
+	<link rel="stylesheet" href="https://defunsm.github.io/css/style.css" />
+	<link rel="stylesheet" href="https://defunsm.github.io/css/font-awesome.min.css" />
+	<link type="text/css" rel="stylesheet" href="https://defunsm.github.io/featherlight.css" />
+        <link rel="stylesheet" href="https://defunsm.github.io/css/screen.css" />
+        <!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css"> -->
+        <link rel="stylesheet" href="https://defunsm.github.io/css/solarized-dark.css" />
+
+	<style type="text/css">
+		@media all {
+			.lightbox { display: none; }
+		}
+	</style>
+	<!-- jQuery -->
+	<script src="https://defunsm.github.io/js/jquery.min.js"></script>
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="images/favicon.png">
+</head>
+<body class="fade-in cmon body">
+
+
+  <!-- HEADER /////////////////////////////////////////////////////////////////////////// -->
+
+
+  <!--    <ul3 class="nav-two"> -->
+  <!-- <li3 class="three"><a href="http://defunsm.github.io/">Home <i class="fa fa-home" aria-hidden="true"></i></a></li3> -->
+  <!-- <li3 class="fourl"><a href="http://defunsm.github.io/pages-output/another-page/">About <i class="fa fa-heart" aria-hidden="true"></i></a></li3> -->
+  <!-- <li3 class="onel"><a href="https://github.com/defunSM">GitHub <i class="fa fa-github" aria-hidden="true"></i></a></li3> -->
+  <!-- <li3 class="twol"><a href="http://defunsm.github.io/archives/">Archives <i class="fa fa-book" aria-hidden="true"></i></a></li3> -->
+  <!-- </ul3> -->
+
+  <!--  <div class="menubarblack"></div> -->
+
+	<header id="postwelcome" class="parent module parallax parallax-1">
+		<div class="burger" id="toggle">
+			<span class="top"></span>
+			<span class="middle"></span>
+			<span class="bottom"></span>
+
+		</div>
+
+		<div class="navigation" id="navigation">
+			<nav class="overlay-menu">
+			  <ul>
+                                          <li>
+                              <a href="https://defunsm.github.io/#Welcome" class="menu">Home <i class="fa fa-home" aria-hidden="true"></i>
+</a>
+			      <span class="simple_line"></span>
+                              </li>
+					<li >
+						<a href="https://defunsm.github.io/#about" class="menu">About <i class="fa fa-heart" aria-hidden="true"></i></a>
+						<span class="simple_line"></span>
+					</li>
+					<li>
+						<a href="https://defunsm.github.io/#portfolio" class="menu">Github <i class="fa fa-github" aria-hidden="true"></i></a>
+						<span class="simple_line"></span>
+					</li>
+					<li>
+					  <a href="https://defunsm.github.io/archives" class="menu">Archives <i class="fa fa-book" aria-hidden="true"></i></a>
+                                          <span class="simple_line"></span>
+					</li>
+
+                              
+
+
+
+
+
+
+
+
+			  </ul>
+			</nav>
+		</div>
+		<div class="scroll_down"></div>
+		<div class="fade child">
+			<div class="container_small">
+				<!-- Header Titles -->
+				<h1 class="header_title">Basics of Clojure (Part 1)</h1>
+
+
+                                <a href="/posts/basics-of-clojurepart2/" class="button"><i class="fa fa-arrow-left" aria-hidden="true"></i> Basics of Clojure - Mapping (Part 2)</a>
+
+<br/>
+                                
+                                <a href="/posts/terminalshell/" class="button">Terminals and Shell Commands <i class="fa fa-arrow-right" aria-hidden="true"></i>
+</i></a>
+
+
+			</div>
+		</div>
+	</header>
+	<!-- END HEADER /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- ABOUT SECTION /////////////////////////////////////////////////////////////////////////// -->
+	<section id="about" class="module defaultpadding">
+
+
+          <div class="anotherclass">
+
+
+                    
+                    <div class="post-header">
+    <div id="post-meta" class="row">
+        <div class="col-lg-6">September 11, 2016</div>
+        
+    </div>
+    <h2>Basics of Clojure (Part 1)</h2>
+</div>
+<div>
+    
+    <p>Hello world is kind of the basic thing to start off with in any kind of programming language so we'll start with that. So open up your favorite text editor that has clojure preferably emacs or vim. Type out the following code. First start a nrepl in your text editor. Type the following into the repl.</p><pre><code>&#40;println &quot;Hello World&quot;&#41; ;; displays hello world in the repl.
+
+;; &quot;Hello World&quot;
+</code></pre>Now that you have done the hello world lets look at addition, subtraction, multiplication, and division.<pre><code>&#40;+ 2 3&#41; ;; same as doing 2 + 3
+
+;; 5
+
+&#40;- 2 3&#41; ;; same as doing 2 - 3
+
+;; -1
+
+&#40;&#42; 2 3&#41; ;; same as doing 2 &#42; 3
+
+;; 6
+
+&#40;/ 2 3&#41; ;; same as doing 2 / 3 notice that the result is displayed in a fraction try doing &#40;float &#40;/ 2 3&#41;&#41;.
+
+;; 2/3
+
+</code></pre><p>Notice that the operand is <i>after</i> the operator. This is polish notation which is used in lisp dialects. This way doing 2 + 2 + 2 is easier since you won't have to repeat the + operator (+ 2 2 2). You can think of the applying the addition to all of the things in the parantheses. At first you might wonder whats the point of doing it like that instead of just doing (2 + 2) which will give you an error.</p><pre><code>&#40;def five 5&#41; ;; binds the symbol five to the number 5. Creating a global variable.
+
+&#40;+ 2 five&#41; ;; same thing as doing &#40;+ 2 5&#41; since five is binded to 5.
+
+;; 7
+</code></pre><p>Using def is how you can create variables and I'll show you now how to make functions.</p><pre><code>&#40;&#40;fn &#91;x&#93; &#40;&#42; x x&#41;&#41; 5&#41; ;; as you can see the fn is how you start the function and than it takes one input the x and than does whatever is in the parantheses.
+
+;; 25
+
+&#40;def square &#40;fn &#91;x&#93; &#40;&#42; x x&#41;&#41;&#41; ;; this is the same thing as before but now we are binding the function to the symbol square. So we can use it else where without typing the function again.
+
+&#40;square 5&#41; ;; same result of 25.
+
+;; 25
+
+&#40;defn square &#91;x&#93; &#40;&#42; x x&#41;&#41; ;; this creates the function and notice how we don't use fn anymore.
+
+&#40;square 5&#41; ;; results are the same so now you have 3 different ways to produce the same result.
+
+;; 25
+</code></pre><p>A quick useful example of using functions is making a function that calculates the hypothenuse given both legs a and b.</p><pre><code>&#40;defn find-hypothenuse &#91;a b&#93; &#40;Math/sqrt &#40;+ &#40;&#42; a a&#41; &#40;&#42; b b&#41;&#41;&#41;&#41; ;; this is making our function basically using the pythagorean theorem a&#94;2 + b&#94;2 = c&#94;2.
+
+&#40;find-hypothenuse 3 4&#41; ;; if you know your pythagorean triples you know easily this is 5 which is what the result gives us.
+
+;; 5.0  
+</code></pre><p>That is about it for now as you can see you can make some useful things out of these functions and get them to work for you rather easily. Be careful when using def and defn since sometimes it is confusing to realize the subtle difference between them. </p>
+</div>
+
+<div id="post-tags">
+    <b>Tags: </b>
+    
+    <a href="/tags/Clojure/" class="button4">Clojure</a>
+    
+    <a href="/tags/Code/" class="button4">Code</a>
+    
+    <a href="/tags/Guide/" class="button4">Guide</a>
+    
+</div>
+
+
+                          <div id="prev-next">
+                            
+                            <a class="center button3" href="/posts/basics-of-clojurepart2/"><i class="fa fa-arrow-left" aria-hidden="true"></i> Basics of Clojure - Mapping (Part 2)</a>
+                            
+                            
+                            <a class="center button3" href="/posts/terminalshell/">Terminals and Shell Commands <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                            
+                          </div>
+
+                          
+                          <div id="disqus_thread"></div>
+                          <script type="text/javascript">
+                            (function() {
+                            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                            dsq.src = '//defunsm-github-io.disqus.com/embed.js';
+                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                            })();
+                          </script>
+                          
+
+
+
+                        
+          </div>
+
+
+
+	</section>
+
+        <!-- END ABOUT SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- PORTFOLIO SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- END CONTACT SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- FOOTER /////////////////////////////////////////////////////////////////////////// -->
+	<footer>
+		<div class="container_footer">
+		  <div class="left">
+                    <a href="https://github.com/defunSM"><i class="fa fa-github-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://www.facebook.com/salman.hossain.944"><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://plus.google.com/u/0/109736817709668742056"><i class="fa fa-google-plus-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://twitter.com/SmSalmanHossain"><i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://www.linkedin.com/in/salman-hossain"><i class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i></a>
+                    <p>&nbsp;</p>
+
+
+                    <p>Email: &nbsp;&nbsp; <span>sxh8083@g.rit.edu</span></p>
+                    <p>Phone: &nbsp;&nbsp; <span>(347) - 398 - 1701 </span></p>
+				<p>© 2016-17 <span>Salman Hossain</span></p>
+			</div>
+			<div class="right">
+				<a href="#postwelcome">Top <i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+			</div>
+		</div>
+	</footer>
+	<!-- END FOOTER /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- Scripts -->
+	<script src="https://defunsm.github.io/js/parallax.js"></script>
+	<script src="https://defunsm.github.io/js/diffscroll.js"></script>
+	<script src="https://defunsm.github.io/js/featherlight.js" type="text/javascript" charset="utf-8"></script>
+	<script src="https://defunsm.github.io/js/scroll.js"></script>
+        <!-- <script src="//code.jquery.com/jquery-1.11.0.min.js"></script> -->
+        <!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script> -->
+
+        <script src="https://defunsm.github.io/js/highlight.pack.js"></script>
+        <script src="/js/highlight.pack.js" type="text/javascript"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>

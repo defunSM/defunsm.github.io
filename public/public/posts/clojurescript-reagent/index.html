@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+	<title>ClojureScript - Reagent</title>
+	<!-- Styles -->
+	<link rel="stylesheet" href="https://defunsm.github.io/css/style.css" />
+	<link rel="stylesheet" href="https://defunsm.github.io/css/font-awesome.min.css" />
+	<link type="text/css" rel="stylesheet" href="https://defunsm.github.io/featherlight.css" />
+        <link rel="stylesheet" href="https://defunsm.github.io/css/screen.css" />
+        <!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css"> -->
+        <link rel="stylesheet" href="https://defunsm.github.io/css/solarized-dark.css" />
+
+	<style type="text/css">
+		@media all {
+			.lightbox { display: none; }
+		}
+	</style>
+	<!-- jQuery -->
+	<script src="https://defunsm.github.io/js/jquery.min.js"></script>
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="images/favicon.png">
+</head>
+<body class="fade-in cmon body">
+
+
+  <!-- HEADER /////////////////////////////////////////////////////////////////////////// -->
+
+
+  <!--    <ul3 class="nav-two"> -->
+  <!-- <li3 class="three"><a href="http://defunsm.github.io/">Home <i class="fa fa-home" aria-hidden="true"></i></a></li3> -->
+  <!-- <li3 class="fourl"><a href="http://defunsm.github.io/pages-output/another-page/">About <i class="fa fa-heart" aria-hidden="true"></i></a></li3> -->
+  <!-- <li3 class="onel"><a href="https://github.com/defunSM">GitHub <i class="fa fa-github" aria-hidden="true"></i></a></li3> -->
+  <!-- <li3 class="twol"><a href="http://defunsm.github.io/archives/">Archives <i class="fa fa-book" aria-hidden="true"></i></a></li3> -->
+  <!-- </ul3> -->
+
+  <!--  <div class="menubarblack"></div> -->
+
+	<header id="postwelcome" class="parent module parallax parallax-1">
+		<div class="burger" id="toggle">
+			<span class="top"></span>
+			<span class="middle"></span>
+			<span class="bottom"></span>
+
+		</div>
+
+		<div class="navigation" id="navigation">
+			<nav class="overlay-menu">
+			  <ul>
+                                          <li>
+                              <a href="https://defunsm.github.io/#Welcome" class="menu">Home <i class="fa fa-home" aria-hidden="true"></i>
+</a>
+			      <span class="simple_line"></span>
+                              </li>
+					<li >
+						<a href="https://defunsm.github.io/#about" class="menu">About <i class="fa fa-heart" aria-hidden="true"></i></a>
+						<span class="simple_line"></span>
+					</li>
+					<li>
+						<a href="https://defunsm.github.io/#portfolio" class="menu">Github <i class="fa fa-github" aria-hidden="true"></i></a>
+						<span class="simple_line"></span>
+					</li>
+					<li>
+					  <a href="https://defunsm.github.io/archives" class="menu">Archives <i class="fa fa-book" aria-hidden="true"></i></a>
+                                          <span class="simple_line"></span>
+					</li>
+
+                              
+
+
+
+
+
+
+
+
+			  </ul>
+			</nav>
+		</div>
+		<div class="scroll_down"></div>
+		<div class="fade child">
+			<div class="container_small">
+				<!-- Header Titles -->
+				<h1 class="header_title">ClojureScript - Reagent</h1>
+
+
+                                <a href="/posts/clojure-ringserver/" class="button"><i class="fa fa-arrow-left" aria-hidden="true"></i> Clojure - Ring</a>
+
+<br/>
+                                
+                                <a href="/posts/quantum-common-sense/" class="button">Quantum Mechanics - Common Sense <i class="fa fa-arrow-right" aria-hidden="true"></i>
+</i></a>
+
+
+			</div>
+		</div>
+	</header>
+	<!-- END HEADER /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- ABOUT SECTION /////////////////////////////////////////////////////////////////////////// -->
+	<section id="about" class="module defaultpadding">
+
+
+          <div class="anotherclass">
+
+
+                    
+                    <div class="post-header">
+    <div id="post-meta" class="row">
+        <div class="col-lg-6">October 30, 2016</div>
+        
+    </div>
+    <h2>ClojureScript - Reagent</h2>
+</div>
+<div>
+    
+     <p><a href='https://github.com/Reagent-project/Reagent'>Reagent</a> is a pretty amazing library based off of the facebook library <a href='https://facebook.github.io/react/'>React.js</a> and is a game changer for ClojureScript. If you haven't done much ClojureScript before you might want to check that out first. ClojureScript uses pretty much the same syntax as Clojure expect using the <newcode>Google Closure Compiler</newcode> to compile ClojureScript code into JavaScript which is pretty neat. Which means you can write ClojureScript code and the people on your site won't even know it was originally written in ClojureScript. <br/><br/> The best way to get into ClojureScript is taking a look at the <a href='http://clojurescript.org/guides/quick-start'>getting started</a> in the ClojureScript website. You probably don't want to dive stright into Reagent without knowing a bit of ClojureScript since while it is pretty much the same as Clojure there are slight differences that can trick you up if your not careful and going through the tutorial is pretty helpful. <br/><br/> Don't get confused between React and Reagent. I know I did at first but Reagent is the ClojureScript library that is based of the Facebook's JavaScript library for building user interfaces. Also there are other libraries that do the similiar things of Reagent such as Om and there is a few others. However Reagent is said to be pretty good compared to those other ones which are a bit more complicated. Just knowing one will definitely help no need to learn all of them but the idea between all of them is the same. Allowing you to build a dom which allows you to keep state while doing manipulations with state in a container which is the dom. <br/><br/> Reagent shows off a really nice example of UI's you can build right on your browser on their <a href='http://Reagent-project.github.io/'>site</a>. Looking at them will help you definitely learn Reagent. I'll also go over certain things that I think is most useful like having timed updates and creating a Reagent atom which is pretty much the same as a Clojure atom in its usage. <br/><br/> To create a new Reagent template which includes <a href='https://defunsm.github.io/posts-output/clojure-figwheel/'>figwheel</a>, Reagent, and you can stright off the back push it to your heroku app site.<pre><code>$ lein new reagent newreagentproject
+ </code></pre> Now go ahead and <newcode>cd</newcode> into newreagentproject/src. <pre><code>$ cd &#126;/newreagentproject/src
+ </code></pre> Unlike other typical lein templates now that we have ClojureScript we have three directories in our src directory. The clj is for clojure files, the cljc is for cljc files which can handle both ClojureScript and Clojure files and the cljs is for ClojureScript files.  <br/><br/> For now we aren't really interested in the clj and cljc files but you can fiddle with them if you want but we are really interested in the cljs files. So go ahead and <newcode>cd</newcode> into cljs/newreagentproject. <br/><br/><pre><code>$ cd cljs/newreagentproject
+ </code></pre> Now go ahead and open up the core.cljs file in your favorite text editor. Once you open it up you should see the following in the core.cljs<pre><code>&#40;ns newreagentproject.core
+    &#40;:require &#91;Reagent.core :as reagent :refer &#91;atom&#93;&#93;
+              &#91;Reagent.session :as session&#93;
+              &#91;secretary.core :as secretary :include-macros true&#93;
+              &#91;accountant.core :as accountant&#93;&#41;&#41;
+
+;; -------------------------
+;; Views
+
+&#40;defn home-page &#91;&#93;
+  &#91;:div &#91;:h2 &quot;Welcome to newreagentproject&quot;&#93;
+   &#91;:div &#91;:a {:href &quot;/about&quot;} &quot;go to about page&quot;&#93;&#93;&#93;&#41;
+
+&#40;defn about-page &#91;&#93;
+  &#91;:div &#91;:h2 &quot;About newreagentproject&quot;&#93;
+   &#91;:div &#91;:a {:href &quot;/&quot;} &quot;go to the home page&quot;&#93;&#93;&#93;&#41;
+
+&#40;defn current-page &#91;&#93;
+  &#91;:div &#91;&#40;session/get :current-page&#41;&#93;&#93;&#41;
+
+;; -------------------------
+;; Routes
+
+&#40;secretary/defroute &quot;/&quot; &#91;&#93;
+  &#40;session/put! :current-page #'home-page&#41;&#41;
+
+&#40;secretary/defroute &quot;/about&quot; &#91;&#93;
+  &#40;session/put! :current-page #'about-page&#41;&#41;
+
+;; -------------------------
+;; Initialize app
+
+&#40;defn mount-root &#91;&#93;
+  &#40;Reagent/render &#91;current-page&#93; &#40;.getElementById js/document &quot;app&quot;&#41;&#41;&#41;
+
+&#40;defn init! &#91;&#93;
+  &#40;accountant/configure-navigation!
+    {:nav-handler
+     &#40;fn &#91;path&#93;
+       &#40;secretary/dispatch! path&#41;&#41;
+     :path-exists?
+     &#40;fn &#91;path&#93;
+       &#40;secretary/locate-route path&#41;&#41;}&#41;
+  &#40;accountant/dispatch-current!&#41;
+  &#40;mount-root&#41;&#41;
+ </code></pre> The section with the functions of home-page, about-page, and current-page are the web pages of the site. If you have used hiccup you'll realize that the web page is made of these brackets which represent a specific html element. <br/><br/> The routing part of the code is dealing with which page is displayed depending on the uri. <br/><br/> The actual initalization of the app happens at init! as well as where all of the page html elements will be rendered at is done by a Reagent function called <newcode>reagent/render</newcode>. <br/><br/> So now lets look at how the site looks by starting lein figwheel from within the newreagentproject directory.<pre><code>$ lein figwheel
+ </code></pre> Once that loads up go to the localhost to open up the site which is usally on http://0.0.0.0:3449/ <br/><br/> The great thing about figwheel is you see the changes you make in your code instantly. So lets get started. Lets begin by playing around in the home-page and make your home-page function in the core.cljs file into this.<pre><code>&#40;defn home-page &#91;&#93;
+    &#91;:div &#40;for &#91;i &#40;range 0 12&#41;&#93;
+          &#91;:div &#40;range 0 i&#41;&#93;&#41;&#93;&#41;
+ </code></pre> <img src="https://defunsm.github.io/img/reagent1.png" alt="reagent1" /></p><p>Notice now that you have a sequence of numbers being printed starting from 1 and than continuing to go higher and higher and ending at 10. So You can actually use these html elements in for loops to create rather dynamic html elements. The Reagent examples page has an excellent varity of examples of things you can do with reagent to see more complex things. However I'll leave it here and show you some things like how to create new pages. <br/><br/> So to create a new page lets first create a function to represent the new page. So lets call it reagent-page and put it right under the home-page function.<pre><code>&#40;defn reagent-page &#91;&#93;
+  &#91;:div &quot;Hello new reagent page!&quot;&#93;&#41;
+ </code></pre> So now save that but you won't be able to go to the /reagent page just yet. You need to set up the roots for it so put this new route into the routes section right under the other defroutes.</p><pre><code>&#40;secretary/defroute &quot;/reagent&quot; &#91;&#93;
+  &#40;session/put! :current-page #'reagent-page&#41;&#41;
+</code></pre>Great but we aren't done yet we need to do one last thing. Go back to the src directory and go into the clj directory and you'll come across a handler.clj and edit it so that your defroutes at the bottom look something like this just adding the /reagent.<pre><code>&#40;defroutes routes
+  &#40;GET &quot;/&quot; &#91;&#93; &#40;loading-page&#41;&#41;
+  &#40;GET &quot;/about&quot; &#91;&#93; &#40;loading-page&#41;&#41;
+  &#40;GET &quot;/reagent&quot; &#91;&#93; &#40;loading-page&#41;&#41; ;; add this.
+
+  &#40;resources &quot;/&quot;&#41;
+  &#40;not-found &quot;Not Found&quot;&#41;&#41;
+</code></pre><p>So now that you have seen just a little of what Reagent can do and you can create pages with Reagent you can go and do experiment with it and do some more complicated manipulations with Reagent.</p>
+</div>
+
+<div id="post-tags">
+    <b>Tags: </b>
+    
+    <a href="/tags/ClojureScript/" class="button4">ClojureScript</a>
+    
+    <a href="/tags/Code/" class="button4">Code</a>
+    
+    <a href="/tags/Guide/" class="button4">Guide</a>
+    
+</div>
+
+
+                          <div id="prev-next">
+                            
+                            <a class="center button3" href="/posts/clojure-ringserver/"><i class="fa fa-arrow-left" aria-hidden="true"></i> Clojure - Ring</a>
+                            
+                            
+                            <a class="center button3" href="/posts/quantum-common-sense/">Quantum Mechanics - Common Sense <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                            
+                          </div>
+
+                          
+                          <div id="disqus_thread"></div>
+                          <script type="text/javascript">
+                            (function() {
+                            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                            dsq.src = '//defunsm-github-io.disqus.com/embed.js';
+                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                            })();
+                          </script>
+                          
+
+
+
+                        
+          </div>
+
+
+
+	</section>
+
+        <!-- END ABOUT SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- PORTFOLIO SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- END CONTACT SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- FOOTER /////////////////////////////////////////////////////////////////////////// -->
+	<footer>
+		<div class="container_footer">
+		  <div class="left">
+                    <a href="https://github.com/defunSM"><i class="fa fa-github-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://www.facebook.com/salman.hossain.944"><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://plus.google.com/u/0/109736817709668742056"><i class="fa fa-google-plus-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://twitter.com/SmSalmanHossain"><i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://www.linkedin.com/in/salman-hossain"><i class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i></a>
+                    <p>&nbsp;</p>
+
+
+                    <p>Email: &nbsp;&nbsp; <span>sxh8083@g.rit.edu</span></p>
+                    <p>Phone: &nbsp;&nbsp; <span>(347) - 398 - 1701 </span></p>
+				<p>© 2016-17 <span>Salman Hossain</span></p>
+			</div>
+			<div class="right">
+				<a href="#postwelcome">Top <i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+			</div>
+		</div>
+	</footer>
+	<!-- END FOOTER /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- Scripts -->
+	<script src="https://defunsm.github.io/js/parallax.js"></script>
+	<script src="https://defunsm.github.io/js/diffscroll.js"></script>
+	<script src="https://defunsm.github.io/js/featherlight.js" type="text/javascript" charset="utf-8"></script>
+	<script src="https://defunsm.github.io/js/scroll.js"></script>
+        <!-- <script src="//code.jquery.com/jquery-1.11.0.min.js"></script> -->
+        <!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script> -->
+
+        <script src="https://defunsm.github.io/js/highlight.pack.js"></script>
+        <script src="/js/highlight.pack.js" type="text/javascript"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>
