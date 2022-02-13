@@ -12,7 +12,7 @@ http://salmanhossain.me
 A place to share my knowledge
 </description>
 <lastBuildDate>
-Tue, 10 Jul 2018 19:15:06 -0400
+Sun, 13 Feb 2022 18:06:27 -0500
 </lastBuildDate>
 <generator>
 clj-rss
@@ -325,7 +325,7 @@ def entropy&amp;#95;cal&amp;#40;array&amp;#41;:
     total&amp;#95;entropy = 0
 
     for i in array:
-        total&amp;#95;entropy += -i &amp;#42; math.log&amp;#40;2, i&amp;#41;
+        total&amp;#95;entropy += -i &amp;#42; math.log&amp;#40;i, 2&amp;#41;
 
     return total&amp;#95;entropy
 
