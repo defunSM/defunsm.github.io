@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+	<title>Racket - Intro (2)</title>
+	<!-- Styles -->
+	<link rel="stylesheet" href="https://defunsm.github.io/css/style.css" />
+	<link rel="stylesheet" href="https://defunsm.github.io/css/font-awesome.min.css" />
+	<link type="text/css" rel="stylesheet" href="https://defunsm.github.io/featherlight.css" />
+        <link rel="stylesheet" href="https://defunsm.github.io/css/screen.css" />
+        <!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css"> -->
+        <link rel="stylesheet" href="https://defunsm.github.io/css/solarized-dark.css" />
+
+	<style type="text/css">
+		@media all {
+			.lightbox { display: none; }
+		}
+	</style>
+	<!-- jQuery -->
+	<script src="https://defunsm.github.io/js/jquery.min.js"></script>
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="images/favicon.png">
+</head>
+<body class="fade-in cmon body">
+
+
+  <!-- HEADER /////////////////////////////////////////////////////////////////////////// -->
+
+
+  <!--    <ul3 class="nav-two"> -->
+  <!-- <li3 class="three"><a href="http://defunsm.github.io/">Home <i class="fa fa-home" aria-hidden="true"></i></a></li3> -->
+  <!-- <li3 class="fourl"><a href="http://defunsm.github.io/pages-output/another-page/">About <i class="fa fa-heart" aria-hidden="true"></i></a></li3> -->
+  <!-- <li3 class="onel"><a href="https://github.com/defunSM">GitHub <i class="fa fa-github" aria-hidden="true"></i></a></li3> -->
+  <!-- <li3 class="twol"><a href="http://defunsm.github.io/archives/">Archives <i class="fa fa-book" aria-hidden="true"></i></a></li3> -->
+  <!-- </ul3> -->
+
+  <!--  <div class="menubarblack"></div> -->
+
+	<header id="postwelcome" class="parent module parallax parallax-1">
+		<div class="burger" id="toggle">
+			<span class="top"></span>
+			<span class="middle"></span>
+			<span class="bottom"></span>
+
+		</div>
+
+		<div class="navigation" id="navigation">
+			<nav class="overlay-menu">
+			  <ul>
+                                          <li>
+                              <a href="https://defunsm.github.io/#Welcome" class="menu">Home <i class="fa fa-home" aria-hidden="true"></i>
+</a>
+			      <span class="simple_line"></span>
+                              </li>
+					<li >
+						<a href="https://defunsm.github.io/#about" class="menu">About <i class="fa fa-heart" aria-hidden="true"></i></a>
+						<span class="simple_line"></span>
+					</li>
+					<li>
+						<a href="https://defunsm.github.io/#portfolio" class="menu">Github <i class="fa fa-github" aria-hidden="true"></i></a>
+						<span class="simple_line"></span>
+					</li>
+					<li>
+					  <a href="https://defunsm.github.io/archives" class="menu">Archives <i class="fa fa-book" aria-hidden="true"></i></a>
+                                          <span class="simple_line"></span>
+					</li>
+
+                              
+
+
+
+
+
+
+
+
+			  </ul>
+			</nav>
+		</div>
+		<div class="scroll_down"></div>
+		<div class="fade child">
+			<div class="container_small">
+				<!-- Header Titles -->
+				<h1 class="header_title">Racket - Intro (2)</h1>
+
+
+<br/>
+                                
+                                <a href="/posts/racket-intro/" class="button">Racket - Intro (1) <i class="fa fa-arrow-right" aria-hidden="true"></i>
+</i></a>
+
+
+			</div>
+		</div>
+	</header>
+	<!-- END HEADER /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- ABOUT SECTION /////////////////////////////////////////////////////////////////////////// -->
+	<section id="about" class="module defaultpadding">
+
+
+          <div class="anotherclass">
+
+
+                    
+                    <div class="post-header">
+    <div id="post-meta" class="row">
+        <div class="col-lg-6">March 25, 2017</div>
+        
+    </div>
+    <h2>Racket - Intro (2)</h2>
+</div>
+<div>
+    
+     <p>This is continuing off of the previous blog post on racket. Make sure you have gone through that before going to this. In this section we'll cover <newcode>booleans</newcode>, <newcode>conditionals</newcode> and <newcode>apply</newcode>.</p><pre><code>;; Booleans
+;; Racket uses #t and #f for true and false.
+
+&#40;= 2 &#40;+ 1 1&#41;&#41;
+&#40;= 2 &#40;+ 1 2&#41;&#41;
+
+;; if statements in racket
+;; First part is the conditional which is the &#40;= 2 &#40;+ 1 1&#41;&#41; which is #t
+;; Second part is &#40;println &quot;True&quot;&#41; which is the true branch that'll execute if the condition is met.
+;; Third part &#40;println &quot;False&quot;&#41; is the false branch which won't be executed.
+
+&#40;if &#40;= 2 &#40;+ 1 1&#41;&#41;
+    &#40;println &quot;True&quot;&#41;
+    &#40;println &quot;False&quot;&#41;&#41;
+
+;; Notice that and will return true if nothing provided.
+;; and is #t if no arguments provided.
+;; or is #f is no arguments provided.
+;; and  will return the argument if only one argument is provided.
+;; or will do the same if one argument is provided.
+
+&#40;define a 10&#41;
+&#40;define b 5&#41;
+
+&#40;and&#41;
+&#40;and b&#41;
+
+&#40;or&#41;
+&#40;or b&#41;
+
+&#40;and &#40;even? a&#41; &#40;odd? b&#41;&#41;
+&#40;and &#40;odd? a&#41; &#40;odd? b&#41;&#41;
+&#40;or &#40;odd? a&#41; &#40;odd? b&#41;&#41;
+
+;; Conditionals in racket
+;; Must start with a bracket to start a conditional.
+;; Than there is the testing condition and if its met executes.
+
+&#40;cond
+  &#91;&#40;positive? n&#41; &#40;println &quot;This number is positive&quot;&#41;&#93;
+  &#91;&#40;negative? n&#41; &#40;println &quot;This number is negative&quot;&#41;&#93;&#41;
+
+
+;; There is also an else if none of the conditionals are met.
+;; Tells us if the quadradic has 2 roots, 1 root or imaginary roots.
+
+&#40;define &#40;roots a b c&#41;
+  &#40;let &#40;&#91;discriminant &#40;- &#40;expt b 2&#41; &#40;&#42; 4 a c&#41;&#41;&#93;&#41;
+    &#40;cond
+        &#91;&#40;positive? discriminant&#41; &#40;println &quot;This quadradic has 2 roots&quot;&#41;&#93;
+        &#91;&#40;negative? discriminant&#41; &#40;println &quot;This quadradic has imaginary roots&quot;&#41;&#93;
+        &#91;else &#40;println &quot;This quadradic has 1 root&quot;&#41;&#93;&#41;&#41;&#41;
+
+;; Also note that racket makes a distinction between let and let&#42; like in lisp.
+;; let won't allow you to use previous bindings as you would sometimes expect.
+;; let&#42; however does let you use previous bindings.
+;; First one with let will provide an error because of the difference between let and let&#42;
+;; You'll find that num is undefined in the first one. Second one works fine.
+
+&#40;let &#91;&#40;num 10&#41;
+      &#40;result &#40;+ 2 num&#41;&#41;&#93;
+  result&#41;
+
+&#40;let&#42; &#91;&#40;num 10&#41;
+       &#40;result &#40;+ 2 num&#41;&#41;&#93;
+  result&#41;
+
+;; Apply which will distribute the prodecure across the list.
+;; Notice that the last argument for apply must be a list.
+
+&#40;apply &#42; '&#40;1 2 3 4&#41;&#41;
+
+&#40;apply &#42; 1 2 '&#40;3 4&#41;&#41;
+
+&#40;apply &#42; 1 2 3 '&#40;4&#41;&#41;
+
+&#40;apply &#42; 1 2 3 4&#41; ;; error: contract violation
+</code></pre>
+</div>
+
+<div id="post-tags">
+    <b>Tags: </b>
+    
+    <a href="/tags/Racket/" class="button4">Racket</a>
+    
+    <a href="/tags/Code/" class="button4">Code</a>
+    
+    <a href="/tags/Guide/" class="button4">Guide</a>
+    
+</div>
+
+
+                          <div id="prev-next">
+                            
+                            
+                            <a class="center button3" href="/posts/racket-intro/">Racket - Intro (1) <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                            
+                          </div>
+
+                          
+                          <div id="disqus_thread"></div>
+                          <script type="text/javascript">
+                            (function() {
+                            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                            dsq.src = '//defunsm-github-io.disqus.com/embed.js';
+                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                            })();
+                          </script>
+                          
+
+
+
+                        
+          </div>
+
+
+
+	</section>
+
+        <!-- END ABOUT SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- PORTFOLIO SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- END CONTACT SECTION /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- FOOTER /////////////////////////////////////////////////////////////////////////// -->
+	<footer>
+		<div class="container_footer">
+		  <div class="left">
+                    <a href="https://github.com/defunSM"><i class="fa fa-github-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://www.facebook.com/salman.hossain.944"><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://plus.google.com/u/0/109736817709668742056"><i class="fa fa-google-plus-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://twitter.com/SmSalmanHossain"><i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i></a>
+                    <a href="https://www.linkedin.com/in/salman-hossain"><i class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i></a>
+                    <p>&nbsp;</p>
+
+
+                    <p>Email: &nbsp;&nbsp; <span>salmanhossain500@gmail.com</span></p>
+                    <p>Phone: &nbsp;&nbsp; <span>(347) - 398 - 1701 </span></p>
+				<p>© 2016-18 <span>Salman Hossain</span></p>
+			</div>
+			<div class="right">
+				<a href="#postwelcome">Top <i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+			</div>
+		</div>
+	</footer>
+	<!-- END FOOTER /////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- Scripts -->
+	<script src="https://defunsm.github.io/js/parallax.js"></script>
+	<script src="https://defunsm.github.io/js/diffscroll.js"></script>
+	<script src="https://defunsm.github.io/js/featherlight.js" type="text/javascript" charset="utf-8"></script>
+	<script src="https://defunsm.github.io/js/scroll.js"></script>
+        <!-- <script src="//code.jquery.com/jquery-1.11.0.min.js"></script> -->
+        <!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script> -->
+
+        <script src="https://defunsm.github.io/js/highlight.pack.js"></script>
+        <script src="/js/highlight.pack.js" type="text/javascript"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>
